@@ -1,0 +1,122 @@
+[
+  {
+    "wardCd": "NNN",
+    "roomCd": "1",
+    "bedCd": "1",
+    "wardType": "A",
+    "pid": "1",
+    "hngNm": "홍길동",
+    "age": "1",
+    "sex": "F",
+    "ordDeptCd": "NN",
+    "ordDrNm": "나의사"
+  },
+  {
+    "wardCd": "NNN",
+    "roomCd": "1",
+    "bedCd": "2",
+    "wardType": "A",
+    "pid": "2",
+    "hngNm": "홍길동",
+    "age": "2",
+    "sex": "M",
+    "ordDeptCd": "NN",
+    "ordDrNm": "나의사"
+  },
+  {
+    "wardCd": "NNN",
+    "roomCd": "1",
+    "bedCd": "3",
+    "wardType": "A",
+    "pid": "3",
+    "hngNm": "홍길동",
+    "age": "3",
+    "sex": "F",
+    "ordDeptCd": "NN",
+    "ordDrNm": "나의사"
+  },
+  {
+    "wardCd": "NNN",
+    "roomCd": "1",
+    "bedCd": "4",
+    "wardType": "A",
+    "pid": "4",
+    "hngNm": "홍길동",
+    "age": "4",
+    "sex": "M",
+    "ordDeptCd": "NN",
+    "ordDrNm": "나의사"
+  },
+  {
+    "wardCd": "NNN",
+    "roomCd": "1",
+    "bedCd": "5",
+    "wardType": "A",
+    "pid": "5",
+    "hngNm": "홍길동",
+    "age": "5",
+    "sex": "F",
+    "ordDeptCd": "NN",
+    "ordDrNm": "나의사"
+  },
+  {
+    "wardCd": "NNN",
+    "roomCd": "1",
+    "bedCd": "6",
+    "wardType": "A",
+    "pid": "6",
+    "hngNm": "홍길동",
+    "age": "6",
+    "sex": "M",
+    "ordDeptCd": "NN",
+    "ordDrNm": "나의사"
+  },
+  {
+    "wardCd": "NNN",
+    "roomCd": "1",
+    "bedCd": "7",
+    "wardType": "A",
+    "pid": "7",
+    "hngNm": "홍길동",
+    "age": "7",
+    "sex": "F",
+    "ordDeptCd": "NN",
+    "ordDrNm": "나의사"
+  },
+  {
+    "wardCd": "NNN",
+    "roomCd": "1",
+    "bedCd": "8",
+    "wardType": "A",
+    "pid": "8",
+    "hngNm": "홍길동",
+    "age": "8",
+    "sex": "M",
+    "ordDeptCd": "NN",
+    "ordDrNm": "나의사"
+  },
+  {
+    "wardCd": "NNN",
+    "roomCd": "1",
+    "bedCd": "9",
+    "wardType": "A",
+    "pid": "9",
+    "hngNm": "홍길동",
+    "age": "9",
+    "sex": "F",
+    "ordDeptCd": "NN",
+    "ordDrNm": "나의사"
+  },
+  {
+    "wardCd": "NNN",
+    "roomCd": "1",
+    "bedCd": "10",
+    "wardType": "A",
+    "pid": "10",
+    "hngNm": "홍길동",
+    "age": "10",
+    "sex": "M",
+    "ordDeptCd": "NN",
+    "ordDrNm": "나의사"
+  }
+]

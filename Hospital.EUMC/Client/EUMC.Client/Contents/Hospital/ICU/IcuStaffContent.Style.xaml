@@ -1,0 +1,114 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:ui="clr-namespace:UIControls;assembly=UIControls"
+                    xmlns:local="clr-namespace:EUMC.Client">
+
+  <DataTemplate DataType="{x:Type local:IcuStaffContentVM}">
+    <Grid DataContext="{Binding ITEM}">
+      <Grid>
+        <Grid.Resources>
+          <sys:Int32 x:Key="HDR_COLUMNS">5</sys:Int32>
+          <sys:Int32 x:Key="PT_COLUMNS">9</sys:Int32>
+          <sys:String x:Key="HDR_COLUMN_VALUES">1.7*,5*,5.3*,3*,5*</sys:String>
+          <sys:String x:Key="PT_COLUMN_VALUES" >1.7*,5*,5.3*,3*,1*,1*,1*,1*,1*</sys:String>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+          <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="96" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+
+          <!-- 0. Header -->
+          <ui:TableGrid Grid.Row="0"
+                         RowCount="1"
+                         ColumnCount="{StaticResource HDR_COLUMNS}"
+                         ColumnValues="{StaticResource HDR_COLUMN_VALUES}"
+                         DrawOutterBorder="False"
+                         ColumnLineRatio="0.7"
+                         Background="{StaticResource primary}"
+                         BorderBrush="White"
+                         BorderThickness="3">
+            <Grid.Resources>
+              <Style TargetType="{x:Type Label}" BasedOn="{StaticResource CommonLabel}">
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Bold" />
+              </Style>
+            </Grid.Resources>
+
+            <Label Grid.Column="0" Content="병상 번호" />
+            <Label Grid.Column="1" Content="환자명 (성별/연령)" />
+            <Label Grid.Column="2" Content="진료과" />
+            <Label Grid.Column="3" Content="진료의사" />
+            <Label Grid.Column="4" Content="격리 현황" />
+          </ui:TableGrid>
+
+          <!-- 1. 환자  -->
+          <Grid Grid.Row="1">
+
+            <!-- background -->
+            <ui:TableGrid RowCount="{Binding CONFIG.ItemRows}"
+                             ColumnCount="{StaticResource PT_COLUMNS}"
+                             ColumnValues="{StaticResource PT_COLUMN_VALUES}"
+                             BorderBrush="{StaticResource grid_border_brush}"
+                             BorderThickness="{StaticResource grid_border_thick}">
+              <ui:TableGrid.RowBackgroundBrushes>
+                <ui:BrushValue Color="{StaticResource grid_row_bg_2}" />
+                <ui:BrushValue Color="White" />
+              </ui:TableGrid.RowBackgroundBrushes>
+            </ui:TableGrid>
+
+            <!-- patients -->
+            <ItemsControl ItemsSource="{Binding Content.Patients}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <UniformGrid Rows="{Binding CONFIG.ItemRows}" Columns="1" />
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <ui:TableGrid RowCount="1"
+                               ColumnCount="{StaticResource PT_COLUMNS}"
+                               ColumnValues="{StaticResource PT_COLUMN_VALUES}">
+                    <Grid.Resources>
+                      <Style TargetType="{x:Type Label}" BasedOn="{StaticResource CommonLabel}">
+                        <Setter Property="Foreground" Value="{StaticResource Gray800}" />
+                        <Setter Property="FontSize" Value="52" />
+                        <Setter Property="FontWeight" Value="SemiBold" />
+                      </Style>
+                    </Grid.Resources>
+
+                    <ui:TextBorder Grid.Column="0" Text="{Binding BedNo}" FontSize="44" />
+                    <ui:TextBorder Grid.Column="1" Text="{Binding PatientDetail}" FontSize="44" />
+                    <ui:TextBorder Grid.Column="2" Text="{Binding DeptName}" FontSize="44" />
+                    <ui:TextBorder Grid.Column="3" Text="{Binding DoctorName}" FontSize="44" />
+
+                    <Label Grid.Column="4" Content="{Binding R}" Foreground="Red" />
+                    <Label Grid.Column="5" Content="{Binding A}" Foreground="Red" />
+                    <Label Grid.Column="6" Content="{Binding B}" Foreground="Red" />
+                    <Label Grid.Column="7" Content="{Binding C}" Foreground="Red" />
+                    <Label Grid.Column="8" Content="{Binding D}" Foreground="Red" />
+                  </ui:TableGrid>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </Grid>
+        </Grid>
+
+        <!-- 0. PageNo -->
+        <ContentControl Grid.Row="1" Content="{Binding PAGE}"
+                        HorizontalAlignment="Center"
+                      Visibility="{Binding PAGE.IsRotate, Converter={StaticResource BooleanToVisibilityConverter}}" />
+      </Grid>
+
+      <ContentControl Content="{Binding CallMessages}"
+                      Visibility="{Binding CallMessages.ShowPopup, Converter={StaticResource BooleanToVisibilityConverter}}"
+                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

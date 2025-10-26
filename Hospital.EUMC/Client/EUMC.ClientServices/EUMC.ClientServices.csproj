@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B7153654-DD3E-4A84-9994-90CE182D4EBC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EUMC.ClientServices</RootNamespace>
+    <AssemblyName>EUMC.ClientServices</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClientService\ClientServiceImpl.cs" />
+    <Compile Include="ClientService\ClientSessionHandler\CLIENT_SESSION_HANDLER.cs" />
+    <Compile Include="ClientService\ClientSessionHandler\SHD_GrpcSSClientSessionHandler.cs" />
+    <Compile Include="ClientService\Config\KeyXml.cs" />
+    <Compile Include="ClientService\Playlist\PackageConfigurationsFactory.cs" />
+    <Compile Include="ClientService\Playlist\PlaylistUpdater.cs" />
+    <Compile Include="ClientService\Playlist\PlaylistXmlFile.cs" />
+    <Compile Include="CLIENT_SERVICE.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\Emergency\ErPatientViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\ETC\DrSchViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\ETC\DrugViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\ETC\PromotionViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\IPD\DeliveryRoomViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\IPD\IcuViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\IPD\OperationViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\IPD\WardRoomViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\ODP\EndoViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\ODP\ExamMultiViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\ODP\ExamSingleViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\ODP\MixRoomViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\ODP\OfficeMultiViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\ODP\OfficeSingleViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Internal\ErrorViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Internal\InformationViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Internal\NoScheduleViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Internal\UpdaterViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\PackageNames.cs" />
+    <Compile Include="PackageViewConfigs\PackageViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\PackageViewConfigFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Common\Common.csproj">
+      <Project>{ae628b92-969a-4032-a07e-b4d0b7712189}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Framework\Networks\Network.TCP\Framework.Network.TCP.csproj">
+      <Project>{871d3a9e-e05e-4263-ba26-78cc7f56c6e0}</Project>
+      <Name>Framework.Network.TCP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Framework\Networks\Network\Framework.Network.csproj">
+      <Project>{3418fe83-44a1-4031-af6d-e15d069b853c}</Project>
+      <Name>Framework.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ServiceCommon\ServiceCommon.ClientServices\ServiceCommon.ClientServices.csproj">
+      <Project>{cf588fd4-f09e-44f8-884b-b7cbd30a3c1b}</Project>
+      <Name>ServiceCommon.ClientServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ServiceCommon\ServiceCommon\ServiceCommon.csproj">
+      <Project>{1f35525c-5141-4e42-b692-55246a179d95}</Project>
+      <Name>ServiceCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

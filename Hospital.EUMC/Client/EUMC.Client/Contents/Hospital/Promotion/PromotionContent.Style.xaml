@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tv="clr-namespace:WinFormTV;assembly=WinFormTV"
+                    xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+                    xmlns:ui="clr-namespace:UIControls;assembly=UIControls"
+                    xmlns:local="clr-namespace:EUMC.Client">
+
+  <DataTemplate DataType="{x:Type local:PromotionContentVM}">
+    <Grid DataContext="{Binding ITEM}">
+      <ui:MediaControl Visibility="{Binding UseMedia, Converter={StaticResource BooleanToVisibilityConverter}}"
+                       UseMedia="{Binding UseMedia}"
+                       IsPlaying="{Binding IsPlaying}"
+                       ItemsSource="{Binding Contents}"
+                       MediaVolumn="{Binding MediaVolumn}"
+                       Duration="{Binding Duration}"
+                       MediaId="{Binding MediaId, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" />
+
+      <tv:TvCanvas Visibility="{Binding UseTV, Converter={StaticResource BooleanToVisibilityConverter}}"
+                   UseTV="{Binding UseTV}"
+                   IsPlaying="{Binding IsPlaying}"
+                   TvChannel="{Binding TvChannel}" />
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

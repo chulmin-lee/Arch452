@@ -1,0 +1,122 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:ui="clr-namespace:UIControls;assembly=UIControls"
+                    xmlns:local="clr-namespace:EUMC.Client">
+
+  <sys:Int32 x:Key="FIXED_ROWS_COUNT">3</sys:Int32>
+  <sys:String x:Key="FIXED_ROWS_VALUES">87,85,84</sys:String>
+  <Thickness x:Key="BorderMargin">5</Thickness>
+
+  <DataTemplate DataType="{x:Type local:ExamRoomViewModel}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="90" />
+        <RowDefinition Height="145" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <!-- 방이름 -->
+      <Border Grid.Row="0" Background="{StaticResource primary}" Margin="{StaticResource BorderMargin}">
+        <Label Content="{Binding RoomName}" Style="{StaticResource CommonLabel}" Foreground="White">
+          <Label.Resources>
+            <Style TargetType="{x:Type Label}" BasedOn="{StaticResource CommonLabel}">
+              <Setter Property="FontSize" Value="40" />
+              <Setter Property="FontWeight" Value="Bold" />
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding IsPanel}" Value="true">
+                  <Setter Property="FontSize" Value="36" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </Label.Resources>
+        </Label>
+      </Border>
+
+      <!-- 진료중 -->
+      <Border Grid.Row="1"  BorderBrush="{StaticResource primary}" BorderThickness="1" Margin="{StaticResource BorderMargin}">
+        <Border.Background>
+          <LinearGradientBrush StartPoint="0 0" EndPoint="0 1">
+            <LinearGradientBrush.GradientStops>
+              <GradientStop Offset="0.0" Color="#FFD036" />
+              <GradientStop Offset="1.0" Color="#FFF5D4" />
+            </LinearGradientBrush.GradientStops>
+          </LinearGradientBrush>
+        </Border.Background>
+        <Label Content="{Binding InRoomPatientName}" Style="{StaticResource CommonLabel}" FontSize="52" Foreground="Black" />
+      </Border>
+
+      <ItemsControl Grid.Row="2" ItemsSource="{Binding Patients}">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <UniformGrid Rows="{Binding ItemRows}" Columns="1" />
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Border BorderBrush="{StaticResource primary}" BorderThickness="1" Margin="{StaticResource BorderMargin}">
+              <Border.Resources>
+                <Style TargetType="{x:Type Border}">
+                  <Setter Property="Background" Value="White" />
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding Index}" Value="1">
+                      <Setter Property="Background">
+                        <Setter.Value>
+                          <LinearGradientBrush StartPoint="0 0" EndPoint="0 1">
+                            <LinearGradientBrush.GradientStops>
+                              <GradientStop Offset="0.0" Color="#FFC081" />
+                              <GradientStop Offset="1.0" Color="#FFF2E6" />
+                            </LinearGradientBrush.GradientStops>
+                          </LinearGradientBrush>
+                        </Setter.Value>
+                      </Setter>
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Border.Resources>
+
+              <Label Content="{Binding PatientName}"   Foreground="Black">
+                <Label.Resources>
+                  <Style TargetType="{x:Type Label}" BasedOn="{StaticResource CommonLabel}">
+                    <Setter Property="FontSize" Value="52" />
+                    <Style.Triggers>
+                      <DataTrigger Binding="{Binding IsPanel}" Value="true">
+                        <Setter Property="FontSize" Value="36" />
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </Label.Resources>
+              </Label>
+            </Border>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </Grid>
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type local:ExamMultiContentVM}">
+    <Grid DataContext="{Binding ITEM}">
+      <Grid Margin="5,1,5,1">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="280" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ContentControl Grid.Column="0" Content="{Binding RoomPanel}" />
+
+        <!-- rooms -->
+        <ItemsControl Grid.Column="1" ItemsSource="{Binding Rooms}">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <UniformGrid Rows="1" Columns="{Binding Rooms.Count}" />
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+        </ItemsControl>
+      </Grid>
+
+      <ContentControl Content="{Binding CallMessages}"
+                      Visibility="{Binding CallMessages.ShowPopup, Converter={StaticResource BooleanToVisibilityConverter}}"
+                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

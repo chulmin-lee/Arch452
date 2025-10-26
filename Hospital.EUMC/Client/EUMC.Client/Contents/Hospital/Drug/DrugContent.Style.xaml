@@ -1,0 +1,79 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:ui="clr-namespace:UIControls;assembly=UIControls"
+                    xmlns:local="clr-namespace:EUMC.Client">
+
+  <DataTemplate DataType="{x:Type local:DrugContentVM}">
+    <Grid DataContext="{Binding ITEM}">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="auto" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{StaticResource primary}">
+          <Grid.Resources>
+            <Style TargetType="{x:Type Grid}">
+              <Setter Property="Height" Value="0" />
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding DrugCall.IsCalling}" Value="True">
+                  <Setter Property="Height" Value="120" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </Grid.Resources>
+
+          <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock
+                     FontWeight="Bold">
+                <Run Foreground="White" FontSize="60" Text="{Binding DrugCall.PatientName}" />
+                <Run Foreground="{StaticResource accent2}" FontSize="45">&#x00A0; 님의 약이 제조 되었습니다. 창구에서 받아 가시길 바랍니다.</Run>
+            </TextBlock>
+          </Border>
+        </Grid>
+
+        <!-- drug -->
+        <Grid Grid.Row="1" Background="#F4F7FF">
+
+          <!-- background -->
+          <ui:TableGrid ColumnCount="{Binding CONFIG.ItemColumns}"
+                        RowCount="{Binding CONFIG.ItemRows}">
+            <ui:TableGrid.RowBackgroundBrushes>
+              <ui:BrushValue Color="{StaticResource OpRow1}" />
+              <ui:BrushValue Color="{StaticResource OpRow2}" />
+            </ui:TableGrid.RowBackgroundBrushes>
+
+            <ui:TableGrid.ColumnBackgroundBrushes>
+              <ui:BrushValue Color="{StaticResource OpColumn1}" />
+              <ui:BrushValue Color="{StaticResource OpColumn2}" />
+            </ui:TableGrid.ColumnBackgroundBrushes>
+          </ui:TableGrid>
+
+          <ItemsControl ItemsSource="{Binding Items}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate>
+                <UniformGrid Rows="{Binding CONFIG.ItemRows}" Columns="{Binding CONFIG.ItemColumns}" />
+              </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border>
+                  <Label Content="{Binding DrugNo}"
+                         Style="{StaticResource CommonLabel}"
+                         FontSize="70"
+                         HorizontalContentAlignment="Center"
+                         VerticalContentAlignment="Center" />
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </Grid>
+      </Grid>
+
+      <ContentControl Content="{Binding CallMessages}"
+                      Visibility="{Binding CallMessages.ShowPopup, Converter={StaticResource BooleanToVisibilityConverter}}"
+                      HorizontalAlignment="Right" VerticalAlignment="Center" />
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

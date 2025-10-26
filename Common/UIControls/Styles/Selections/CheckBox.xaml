@@ -1,0 +1,118 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+  <!-- ################################################################### -->
+  <!-- Polygon                                                             -->
+  <!-- ################################################################### -->
+  <Geometry x:Key="CheckBox_Box">M0,0 H10 V10 H0 z</Geometry>
+  <Geometry x:Key="CheckBox_Mark">M 0 5 L 5 10 L 10 0</Geometry>
+
+  <!-- ################################################################### -->
+  <!-- Visual                                                              -->
+  <!-- ################################################################### -->
+  <sys:Double x:Key="CheckBox_Height">30</sys:Double>
+  <sys:Double x:Key="CheckBox_FontSize">13</sys:Double>
+  <Thickness  x:Key="CheckBox_Margin" Left="0" Right="0" Top="0" Bottom="0" />
+
+  <SolidColorBrush x:Key="CheckBox_Foreground" Color="#EEEE00"/>
+  <SolidColorBrush x:Key="CheckBox_Foreground.Unchecked" Color="#EEEEEE"/>
+  <SolidColorBrush x:Key="CheckBox_Foreground.Disalbed" Color="DarkGray"/>
+
+  <SolidColorBrush x:Key="CheckBox_Background" Color="White"/>
+  <SolidColorBrush x:Key="CheckBox_Background.Checked" Color="Yellow"/>
+
+  <SolidColorBrush x:Key="CheckBoxBorder_BorderBrush" Color="#555555"/>
+  <SolidColorBrush x:Key="CheckBoxBorder_Background" Color="#333333"/>
+  <SolidColorBrush x:Key="CheckBoxBorder_Background.Intermediate" Color="DarkGreen"/>
+
+  <SolidColorBrush x:Key="CheckBox_Mark_Stroke" Color="#3ef79b"/>
+
+
+  <!-- disable : Disabled 시 Background는 설정안됨. Template를 수정해야할것 같다. -->
+  <!--<SolidColorBrush x:Key="CheckBox_Background.Disalbed" Color="#30353A"/>-->
+
+  <!-- Binding 형식으로 설정 -->
+  <!--  <Setter Property="Height" Value="{Binding Source={StaticResource CheckBox_Height}}"/> -->
+  <Style TargetType="{x:Type Path}" x:Key="CheckedStyle">
+    <Setter Property="Stretch" Value="UniformToFill" />
+    <Setter Property="Stroke" Value="{StaticResource CheckBox_Mark_Stroke}" />
+    <Setter Property="StrokeThickness" Value="2" />
+    <Setter Property="Data" Value="{StaticResource CheckBox_Mark}" />
+    <Setter Property="Fill" Value="Transparent" />
+  </Style>
+
+  <Style TargetType="{x:Type Path}" x:Key="IntermediateStyle">
+    <Setter Property="Stretch" Value="UniformToFill" />
+    <Setter Property="StrokeThickness" Value="0" />
+    <Setter Property="Data" Value="{StaticResource CheckBox_Box}" />
+    <Setter Property="Fill" Value="DarkGreen" />
+  </Style>
+
+
+  <Style x:Key="CommonCheckBoxStyle" TargetType="{x:Type CheckBox}">
+    <Setter Property="Foreground" Value="{StaticResource CheckBox_Foreground.Unchecked}" />
+    <Setter Property="Background" Value="{StaticResource CheckBox_Background}" />
+    <Setter Property="Height"     Value="{StaticResource CheckBox_Height}"/>
+    <Setter Property="FontSize"   Value="{StaticResource CheckBox_FontSize}" />
+    <Setter Property="Margin"     Value="{StaticResource CheckBox_Margin}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type CheckBox}">
+          <BulletDecorator Background="Transparent" VerticalAlignment="Center">
+            <BulletDecorator.Bullet>
+              <Border x:Name="Border" Width="18" Height="18" CornerRadius="1"
+                      VerticalAlignment="Center"
+                      Background="{StaticResource CheckBoxBorder_Background}"
+                      BorderBrush="{StaticResource CheckBoxBorder_BorderBrush}"
+                      BorderThickness="1"
+                      Padding="3"
+                      >
+                <Path x:Name="CheckMark" VerticalAlignment="Center" HorizontalAlignment="Center"
+                      Stretch="Fill"
+                      SnapsToDevicePixels="True"
+                      StrokeThickness="2"
+                      Stroke="{StaticResource CheckBox_Mark_Stroke}"
+                      Data="{StaticResource CheckBox_Mark}" />
+              </Border>
+            </BulletDecorator.Bullet>
+
+            <ContentPresenter Margin="4,0,0,0" VerticalAlignment="Center"
+                              HorizontalAlignment="Left"
+                              RecognizesAccessKey="True" />
+          </BulletDecorator>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="true">
+              <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+              <Setter Property="Foreground" Value="{StaticResource CheckBox_Foreground}" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="false">
+              <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+            </Trigger>
+
+            <Trigger Property="IsChecked" Value="{x:Null}">
+              <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+              <Setter TargetName="CheckMark" Property="StrokeThickness" Value="0" />
+              <Setter TargetName="CheckMark" Property="Data" Value="{StaticResource CheckBox_Box}" />
+              <Setter TargetName="CheckMark" Property="Fill" Value="#505050" />
+              <Setter TargetName="Border" Property="Padding" Value="2" />
+              <!--<Setter TargetName="CheckMark" Property="Style" Value="{StaticResource IntermediateStyle}"/>-->
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Border" Property="BorderBrush" Value="Orange" />
+            </Trigger>
+            <Trigger Property="IsEnabled"  Value="False">
+              <Setter Property="Foreground" Value="{StaticResource CheckBox_Foreground.Disalbed}" />
+              <!--<Setter Property="Background" Value="{StaticResource CheckBox_Background.Disalbed}" />-->
+            </Trigger>
+          </ControlTemplate.Triggers>
+
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+
+  </Style>
+
+</ResourceDictionary>

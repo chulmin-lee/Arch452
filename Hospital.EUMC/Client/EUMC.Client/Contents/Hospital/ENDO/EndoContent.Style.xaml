@@ -1,0 +1,123 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:ui="clr-namespace:UIControls;assembly=UIControls"
+                    xmlns:local="clr-namespace:EUMC.Client">
+
+  <DataTemplate DataType="{x:Type local:EndoContentVM}">
+    <Grid DataContext="{Binding ITEM}" x:Name="RootGrid">
+      <Grid>
+        <Grid.Resources>
+          <sys:Int32 x:Key="COLUMNS">3</sys:Int32>
+          <sys:String x:Key="COLUMN_VALUES">1*, 1*, 2*</sys:String>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="108" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- 0. header -->
+        <ui:TableGrid Grid.Row="0"
+                         RowCount="1"
+                         ColumnCount="{StaticResource COLUMNS}"
+                         ColumnValues="{StaticResource COLUMN_VALUES}"
+                         DrawOutterBorder="False"
+                         ColumnLineRatio="0.7"
+                         Background="{StaticResource primary}"
+                         BorderBrush="White"
+                         BorderThickness="3">
+          <Grid.Resources>
+            <Style TargetType="{x:Type Label}" BasedOn="{StaticResource CommonLabel}">
+              <Setter Property="Foreground" Value="White" />
+              <Setter Property="FontSize" Value="52" />
+              <Setter Property="FontWeight" Value="Bold" />
+            </Style>
+          </Grid.Resources>
+
+          <Label Grid.Column="0" Content="대기중" />
+          <Label Grid.Column="1" Content="검사중" />
+          <Label Grid.Column="2" Content="회복중" />
+        </ui:TableGrid>
+
+        <!-- 1. patients-->
+        <Grid Grid.Row="1">
+
+          <!-- background -->
+          <ui:TableGrid ColumnCount="{StaticResource COLUMNS}"
+                        ColumnValues="{StaticResource COLUMN_VALUES}"
+                        RowCount="{Binding CONFIG.ItemRows}"
+                        BorderBrush="{StaticResource primary}"
+                        BorderThickness="{StaticResource grid_border_thick}">
+            <ui:TableGrid.ColumnBackgroundBrushes>
+              <ui:BrushValue Color="White" />
+              <ui:BrushValue Color="#7FFAD45D" />
+              <ui:BrushValue Color="#7FF8B744" />
+            </ui:TableGrid.ColumnBackgroundBrushes>
+          </ui:TableGrid>
+
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="1*" />
+              <ColumnDefinition Width="1*" />
+              <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- col 0 -->
+            <ItemsControl Grid.Column="0" ItemsSource="{Binding Waiting}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <UniformGrid Rows="{Binding CONFIG.ItemRows}" Columns="1" />
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Border VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Label Content="{Binding PatientName}" Style="{StaticResource CommonLabel}"
+                         FontSize="52" FontWeight="SemiBold" />
+                  </Border>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- col 1 -->
+            <ItemsControl Grid.Column="1" ItemsSource="{Binding Inspecting}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <UniformGrid Rows="{Binding CONFIG.ItemRows}" Columns="1" />
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Border VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Label Content="{Binding PatientName}" Style="{StaticResource CommonLabel}"
+                         FontSize="52" FontWeight="SemiBold" />
+                  </Border>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- col 2 -->
+            <ItemsControl Grid.Column="2" ItemsSource="{Binding Recovering}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <ui:UniformGridWithOrientation Orientation="Vertical"  Rows="{Binding CONFIG.ItemRows}" Columns="2" />
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Border VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Label Content="{Binding PatientName}" Style="{StaticResource CommonLabel}"
+                         FontSize="52" FontWeight="SemiBold" />
+                  </Border>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </Grid>
+        </Grid>
+      </Grid>
+
+      <!-- popup -->
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

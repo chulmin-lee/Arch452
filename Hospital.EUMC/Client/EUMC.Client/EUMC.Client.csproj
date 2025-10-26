@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E9588D07-EA8F-440E-9129-064FA4A81392}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>EUMC.Client</RootNamespace>
+    <AssemblyName>EUMC.Client</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\assembiles\client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\assembiles\client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Contents\Common\CallMessageVM.cs" />
+    <Compile Include="Contents\Common\ContentInformation.cs" />
+    <Compile Include="Contents\Common\PageIndexer.cs" />
+    <Compile Include="Contents\Common\TimerHelper.cs" />
+    <Compile Include="Contents\ContentViewFactory.cs" />
+    <Compile Include="Contents\ContentViewModelBase.cs" />
+    <Compile Include="Contents\ETC\Error\ErrorContentVM.cs" />
+    <Compile Include="Contents\ETC\NoSchedule\NoScheduleContentVM.cs" />
+    <Compile Include="Contents\ETC\Updater\UpdaterContentVM.cs" />
+    <Compile Include="Contents\ETC\Updater\UpdaterInformation.cs" />
+    <Compile Include="Contents\Hospital\Delivery\DeliveryContentVM.cs" />
+    <Compile Include="Contents\Hospital\Delivery\DeliveryInformation.cs" />
+    <Compile Include="Contents\Hospital\Drug\DrugContentVM.cs" />
+    <Compile Include="Contents\Hospital\Drug\DrugInformation.cs" />
+    <Compile Include="Contents\Hospital\Emergency\ErPatientContentVM.cs" />
+    <Compile Include="Contents\Hospital\Emergency\ErPatientInformation.cs" />
+    <Compile Include="Contents\Hospital\ENDO\EndoContentVM.cs" />
+    <Compile Include="Contents\Hospital\ENDO\EndoInformation.cs" />
+    <Compile Include="Contents\Hospital\Exam\ExamMultiContentVM.cs" />
+    <Compile Include="Contents\Hospital\Exam\ExamMultiInformation.cs" />
+    <Compile Include="Contents\Hospital\Exam\ExamSingleContentVM.cs" />
+    <Compile Include="Contents\Hospital\Exam\ExamSingleInformation.cs" />
+    <Compile Include="Contents\Hospital\ICU\IcuContentVM.cs" />
+    <Compile Include="Contents\Hospital\ICU\IcuInformation.cs" />
+    <Compile Include="Contents\Hospital\ICU\ICU_GROUP.cs" />
+    <Compile Include="Contents\Hospital\Information\Common\IInformationContent.cs" />
+    <Compile Include="Contents\Hospital\Information\Common\IInformationMenu.cs" />
+    <Compile Include="Contents\Hospital\Information\Common\INFO_TYPE.cs" />
+    <Compile Include="Contents\Hospital\Information\ContentMenu\InformationContentVM.cs" />
+    <Compile Include="Contents\Hospital\Information\ContentMenu\InformationHomeVM.cs" />
+    <Compile Include="Contents\Hospital\Information\ContentMenu\Menu\InfoButton.cs" />
+    <Compile Include="Contents\Hospital\Information\ContentMenu\Menu\InfoButtonBar.cs" />
+    <Compile Include="Contents\Hospital\Information\Contents\AmenitiesVM.cs" />
+    <Compile Include="Contents\Hospital\Information\Contents\FindCarVM.cs" />
+    <Compile Include="Contents\Hospital\Information\Contents\FloorMapVM.cs" />
+    <Compile Include="Contents\Hospital\Information\Contents\ReceptionVM.cs" />
+    <Compile Include="Contents\Hospital\Information\Contents\TrafficVM.cs" />
+    <Compile Include="Contents\Hospital\Information\InfomationMainVM.cs" />
+    <Compile Include="Contents\Hospital\Office\OfficeConverter.cs" />
+    <Compile Include="Contents\Hospital\Office\OfficeMultiContentVM.cs" />
+    <Compile Include="Contents\Hospital\Office\OfficeMultiInformation.cs" />
+    <Compile Include="Contents\Hospital\Office\OfficeSingleContentVM.cs" />
+    <Compile Include="Contents\Hospital\Office\OfficeSingleInformation.cs" />
+    <Compile Include="Contents\Hospital\Operation\OperationContentVM.cs" />
+    <Compile Include="Contents\Hospital\Operation\OperationConverter.cs" />
+    <Compile Include="Contents\Hospital\Operation\OperationInformation.cs" />
+    <Compile Include="Contents\Hospital\Promotion\PromotionContentVM.cs" />
+    <Compile Include="Contents\Hospital\Promotion\PromotionInformation.cs" />
+    <Compile Include="Contents\Hospital\WardRoom\WardConverter.cs" />
+    <Compile Include="Contents\Hospital\WardRoom\WardRoomContentVM.cs" />
+    <Compile Include="Contents\Hospital\WardRoom\WardRoomInformation.cs" />
+    <Compile Include="Contents\IContentViewModel.cs" />
+    <Compile Include="Window\ContentWindow\ContentWindow.xaml.cs">
+      <DependentUpon>ContentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window\ContentWindow\ContentWindowConverter.cs" />
+    <Compile Include="Window\ContentWindow\ContentWindowViewModel.cs" />
+    <Compile Include="Window\ContentWindow\ContentWindowViewModel.Test.cs" />
+    <Compile Include="Window\CustomWindow\CustomWindow.xaml.cs">
+      <DependentUpon>CustomWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window\CustomWindow\CustomWindowViewModel.cs" />
+    <Compile Include="Window\IWindowViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClientViewManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Contents\ETC\Error\ErrorContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\ETC\NoSchedule\NoScheduleContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\ETC\Updater\UpdaterContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Delivery\DeliveryContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Drug\DrugContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Emergency\ErPatientContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\ENDO\EndoContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Exam\ExamMultiContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Exam\ExamSingleContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\ICU\IcuBabyContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\ICU\IcuGuardContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\ICU\IcuStaffContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Information\ContentMenu\InformationContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Information\ContentMenu\InformationHome.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Information\ContentMenu\Menu\InfoButton.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Information\Contents\Amenities.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Information\Contents\FindCar.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Information\Contents\FloorMap.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Information\Contents\Reception.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Information\Contents\Traffic.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Information\InformationMain.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Office\OfficeMultiContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Office\OfficeSingleContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Operation\OperationContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\Promotion\PromotionContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\WardRoom\WardRoomContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Window.Color.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Window\ContentWindow\ContentWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Window\CustomWindow\CustomWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Fonts\" />
+    <Folder Include="Resources\Images\Delivery\" />
+    <Folder Include="Resources\Images\Emergency\" />
+    <Folder Include="Resources\Images\Exam\" />
+    <Folder Include="Resources\Images\Funeral\" />
+    <Folder Include="Resources\Images\MainView\" />
+    <Folder Include="Resources\Images\Office\" />
+    <Folder Include="Resources\Sound\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Common\Common.csproj">
+      <Project>{ae628b92-969a-4032-a07e-b4d0b7712189}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\UIControls\UIControls.csproj">
+      <Project>{215ea93f-9187-450c-a41a-2b4d8979cc23}</Project>
+      <Name>UIControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\WinFormTV\WinFormTV.csproj">
+      <Project>{24d4a82b-f487-4789-a5b0-c028010502c4}</Project>
+      <Name>WinFormTV</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ServiceCommon\ServiceCommon.ClientServices\ServiceCommon.ClientServices.csproj">
+      <Project>{cf588fd4-f09e-44f8-884b-b7cbd30a3c1b}</Project>
+      <Name>ServiceCommon.ClientServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ServiceCommon\ServiceCommon\ServiceCommon.csproj">
+      <Project>{1f35525c-5141-4e42-b692-55246a179d95}</Project>
+      <Name>ServiceCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EUMC.ClientServices\EUMC.ClientServices.csproj">
+      <Project>{b7153654-dd3e-4a84-9994-90ce182d4ebc}</Project>
+      <Name>EUMC.ClientServices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

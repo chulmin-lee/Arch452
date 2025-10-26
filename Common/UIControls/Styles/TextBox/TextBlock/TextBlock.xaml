@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+  <sys:Double x:Key="TextBlock_Height">30</sys:Double>
+  <Thickness  x:Key="TextBlock_Margin" Left="1" Right="1" Top="0" Bottom="0" />
+  <SolidColorBrush x:Key="TextBlock_Foreground" Color="#EEEEEE"/>
+  <SolidColorBrush x:Key="TextBlock_Background" Color="Transparent"/>
+
+  <!-- ################################################################### -->
+  <!-- TextBlock base                                                      -->
+  <!-- ################################################################### -->
+
+  <!-- 주의: TextBlock은 content에 대한 VerticalAlignment 를 조절할 수 없다. 필요하다면 Label을 대신 사용할것 -->
+  <!-- 주의: Height 설정하지 말것. TextBlock 스타일을 전역으로 적용할때 Menu item 이 영향받는다 -->
+  <Style x:Key="CommonTextBlockStyle"  TargetType="{x:Type TextBlock}" >
+    <Setter Property="Margin" Value="{StaticResource TextBlock_Margin}"/>
+    <Setter Property="Background" Value="{StaticResource TextBlock_Background}"/>
+    <Setter Property="Foreground" Value="{StaticResource TextBlock_Foreground}"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+    <Setter Property="HorizontalAlignment" Value="Left"/>
+    <Setter Property="TextAlignment" Value="Center" />
+  </Style>
+
+  <Style x:Key="CommonLabelStyle"  TargetType="{x:Type Label}" >
+    <Setter Property="Margin" Value="{StaticResource TextBlock_Margin}"/>
+    <Setter Property="Background" Value="{StaticResource TextBlock_Background}"/>
+    <Setter Property="Foreground" Value="{StaticResource TextBlock_Foreground}"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+  </Style>
+
+</ResourceDictionary>

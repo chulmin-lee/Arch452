@@ -1,0 +1,57 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="clr-namespace:UIControls;assembly=UIControls"
+                    xmlns:local="clr-namespace:EUMC.Client">
+
+  <DataTemplate DataType="{x:Type local:ErrorContentVM}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="130" />
+        <RowDefinition />
+      </Grid.RowDefinitions>
+
+      <Grid Grid.Row="0" Height="130">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!-- 0.logo -->
+        <Border Grid.Column="0">
+          <Image Source="{StaticResource LogoLarge_Normal}" Stretch="None" />
+        </Border>
+
+        <!-- 1.ContentTitle -->
+        <Border Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center">
+          <TextBlock Text="ERROR"
+                       Style="{StaticResource CommonTextBlock}"
+                       FontSize="60" FontWeight="Bold"
+                       Foreground="{StaticResource primary}" />
+        </Border>
+        <!-- 2. Clock -->
+        <Border Grid.Column="2">
+          <ui:ClockControl DateFontColor="{StaticResource Gray800}"
+                           TimeFontColor="{StaticResource Gray800}"
+                           DateFontSize="36"
+                           TimeFontSize="36"
+                           ClockSetting="{Binding ClockSetting}" />
+        </Border>
+      </Grid>
+
+      <Border Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid Grid.Row="1">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+          </Grid.RowDefinitions>
+
+          <Label Grid.Row="0" Content="{Binding Error}" Style="{StaticResource CommonLabel}"
+                 FontSize="80" />
+          <Label Grid.Row="1" Content="{Binding ErrorMessage}" Style="{StaticResource CommonLabel}"
+                 FontSize="80" Foreground="Blue" />
+        </Grid>
+      </Border>
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

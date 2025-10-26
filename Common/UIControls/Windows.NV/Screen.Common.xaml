@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+
+  <!-- Window Outer Border -->
+  <SolidColorBrush x:Key="OutBorder_Background" Color="Black"/>
+  <SolidColorBrush x:Key="OutBorder_BorderBrush.Active" Color="#A6ADF2"/>
+  <SolidColorBrush x:Key="OutBorder_BorderBrush.ActiveTrans" Color="#885965e7"/>
+  <SolidColorBrush x:Key="OutBorder_BorderBrush.Inactive" Color="Black"/>
+  <SolidColorBrush x:Key="OutBorder_BorderBrush.Dialog" Color="Black"/>
+  <Thickness       x:Key="OutBorder_BorderThickness" Left="1" Right="1" Top="1" Bottom="1" />
+  <CornerRadius    x:Key="OutBorder_CornerRadius" TopLeft="0" TopRight="0" BottomRight="0"  BottomLeft="0" />
+
+  <!-- Window Titlebar Border -->
+  <SolidColorBrush x:Key="TitleBar_Foreground" Color="#EEEEEE"/>
+  <SolidColorBrush x:Key="TitleBar_Foreground.Inactive" Color="#CCCCCC"/>
+  <SolidColorBrush x:Key="TitleBar_Background" Color="#30353a"/>
+  <Thickness       x:Key="TitleBar_BorderThickness" Left="0" Right="0" Top="0" Bottom="0" />
+  <CornerRadius    x:Key="TitleBar_CornerRadius" TopLeft="0" TopRight="0" BottomRight="0"  BottomLeft="0" />
+  <sys:Double      x:Key="TitleBar_Height">32</sys:Double>
+  <sys:Double      x:Key="TitleBar_FontSize">15</sys:Double>
+
+</ResourceDictionary>

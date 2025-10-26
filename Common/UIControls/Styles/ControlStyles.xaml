@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <ResourceDictionary.MergedDictionaries>
+    <!--<ResourceDictionary Source="pack://application:,,,/UIControls;component/Themes/GlobalStyles.xaml" />-->
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/Buttons/Button.xaml" />
+
+    <!-- Data Display -->
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/DataDisplay/DataGrid.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/DataDisplay/ListView.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/DataDisplay/TreeView.xaml" />
+
+    <!--Informations-->
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/Information/ProgressBar.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/Information/TextBlock.xaml" />
+    <!-- Layout -->
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/Layout/GroupBox.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/Layout/ScrollBar.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/Layout/ScrollViewer.xaml" />
+
+    <!--Selections -->
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/Selections/CheckBox.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/Selections/ComboBox.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/Selections/RadioButton.xaml" />
+
+    <!-- TextBox -->
+
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/TextBox/CheckedTextBox/CheckedTextBox.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/TextBox/TextBox/StringTextBox.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/TextBox/TextBox/NumberTextBox.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/TextBox/TextBlock/NumberTextBlock.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/TextBox/OutlineTextBlock/OutlineTextBlock.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Styles/TextBox/OutlineTextBox/OutlineNumberTextBox.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

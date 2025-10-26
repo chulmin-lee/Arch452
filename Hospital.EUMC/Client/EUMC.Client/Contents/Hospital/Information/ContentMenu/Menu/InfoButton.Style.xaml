@@ -1,0 +1,186 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="clr-namespace:UIControls;assembly=UIControls"
+                    xmlns:local="clr-namespace:EUMC.Client">
+
+  <SolidColorBrush x:Key="Color_RECEPT" Color="#25539C" />
+  <SolidColorBrush x:Key="Color_FLOOR_MAP" Color="#17AFB4" />
+  <SolidColorBrush x:Key="Color_AMENITIES" Color="#006E99" />
+  <SolidColorBrush x:Key="Color_FIND_CAR" Color="#84BD00" />
+  <SolidColorBrush x:Key="Color_TRAFFIC_INFO" Color="#1DA7CF" />
+  <ImageSource x:Key="CropImage">/Contents/ServiceCommon/Information/ContentMenu/Menu/information_kiosk.png</ImageSource>
+
+  <Style TargetType="{x:Type ButtonBase}" x:Key="InfoHomeButtonStyle">
+    <Setter Property="Command" Value="{Binding ButtonCommand}" />
+    <Setter Property="CommandParameter" Value="{Binding}" />
+    <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ButtonBase}">
+
+          <Border x:Name="border" BorderBrush="Transparent" BorderThickness="0,0,5,5" CornerRadius="25"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                  Padding="60,40,40,40" Margin="0,25,0,15">
+
+            <!--<Border.Effect>
+              <DropShadowEffect Opacity="0.2" ShadowDepth="10" />
+            </Border.Effect>-->
+
+            <Border.Style>
+              <Style TargetType="{x:Type Border}">
+                <Setter Property="Background" Value="White" />
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding ID}" Value="{x:Static local:INFO_TYPE.RECEPT}">
+                    <Setter Property="Background" Value="{StaticResource Color_RECEPT}" />
+                  </DataTrigger>
+                  <DataTrigger Binding="{Binding ID}" Value="{x:Static local:INFO_TYPE.FLOOR_MAP}">
+                    <Setter Property="Background" Value="{StaticResource Color_FLOOR_MAP}" />
+                  </DataTrigger>
+                  <DataTrigger Binding="{Binding ID}" Value="{x:Static local:INFO_TYPE.AMENITIES}">
+                    <Setter Property="Background" Value="{StaticResource Color_AMENITIES}" />
+                  </DataTrigger>
+                  <DataTrigger Binding="{Binding ID}" Value="{x:Static local:INFO_TYPE.FIND_CAR}">
+                    <Setter Property="Background" Value="{StaticResource Color_FIND_CAR}" />
+                  </DataTrigger>
+                  <DataTrigger Binding="{Binding ID}" Value="{x:Static local:INFO_TYPE.TRAFFIC_INFO}">
+                    <Setter Property="Background" Value="{StaticResource Color_TRAFFIC_INFO}" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </Border.Style>
+
+            <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*" />
+                <RowDefinition Height="1*" />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="30" />
+              </Grid.ColumnDefinitions>
+
+              <Label Grid.Row="0" Grid.Column="0" Content="{Binding Title}"
+                     FontSize="50" FontWeight="SemiBold"
+                     Foreground="White"
+                     VerticalAlignment="Center" HorizontalAlignment="Left" />
+              <Label Grid.Row="1" Grid.Column="0" Content="{Binding Description}"
+                     FontSize="32" FontWeight="Normal"
+                     Foreground="White"
+                     VerticalAlignment="Center" HorizontalAlignment="Left" />
+
+              <Path Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"
+                    Stretch="Uniform" Stroke="White" StrokeThickness="7"
+                    Data="M 0 0 L 50 50 L 0 100" />
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="true">
+              <Setter TargetName="border" Property="BorderThickness" Value="5,5,0,0" />
+              <!--<Setter TargetName="border" Property="Effect">
+                <Setter.Value>
+                  <DropShadowEffect Opacity="0.0" ShadowDepth="15" />
+                </Setter.Value>
+              </Setter>-->
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter Property="Opacity" Value="0.5" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style TargetType="{x:Type ButtonBase}" x:Key="InfoReceptButtonStyle">
+    <Setter Property="Command" Value="{Binding ButtonCommand}" />
+    <Setter Property="CommandParameter" Value="{Binding}" />
+    <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ButtonBase}">
+
+          <Grid>
+            <Border x:Name="border" BorderBrush="Transparent" BorderThickness="0,0,5,5"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+              <!-- Image: 1100x200, 1080으로 변환필요 SourceRect: x,y,width,height -->
+              <Image Width="180" Height="180">
+                <Image.Style>
+                  <Style TargetType="{x:Type Image}">
+                    <Style.Triggers>
+                      <DataTrigger Binding="{Binding ID}" Value="{x:Static local:INFO_TYPE.RECEPT}">
+                        <Setter Property="Source">
+                          <Setter.Value>
+                            <CroppedBitmap Source="{StaticResource CropImage}" SourceRect="0 0 180 180" />
+                          </Setter.Value>
+                        </Setter>
+                      </DataTrigger>
+                      <DataTrigger Binding="{Binding ID}" Value="{x:Static local:INFO_TYPE.FLOOR_MAP}">
+                        <Setter Property="Source">
+                          <Setter.Value>
+                            <CroppedBitmap Source="{StaticResource CropImage}" SourceRect="180 0 180 180" />
+                          </Setter.Value>
+                        </Setter>
+                      </DataTrigger>
+                      <DataTrigger Binding="{Binding ID}" Value="{x:Static local:INFO_TYPE.AMENITIES}">
+                        <Setter Property="Source">
+                          <Setter.Value>
+                            <CroppedBitmap Source="{StaticResource CropImage}" SourceRect="360 0 180 180" />
+                          </Setter.Value>
+                        </Setter>
+                      </DataTrigger>
+                      <DataTrigger Binding="{Binding ID}" Value="{x:Static local:INFO_TYPE.FIND_CAR}">
+                        <Setter Property="Source">
+                          <Setter.Value>
+                            <CroppedBitmap Source="{StaticResource CropImage}" SourceRect="540 0 180 180" />
+                          </Setter.Value>
+                        </Setter>
+                      </DataTrigger>
+                      <DataTrigger Binding="{Binding ID}" Value="{x:Static local:INFO_TYPE.TRAFFIC_INFO}">
+                        <Setter Property="Source">
+                          <Setter.Value>
+                            <CroppedBitmap Source="{StaticResource CropImage}" SourceRect="720 0 180 180" />
+                          </Setter.Value>
+                        </Setter>
+                      </DataTrigger>
+                      <DataTrigger Binding="{Binding ID}" Value="{x:Static local:INFO_TYPE.HOME}">
+                        <Setter Property="Source">
+                          <Setter.Value>
+                            <CroppedBitmap Source="{StaticResource CropImage}" SourceRect="900 0 180 180" />
+                          </Setter.Value>
+                        </Setter>
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </Image.Style>
+              </Image>
+            </Border>
+
+            <Border x:Name="BorderColor" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Blue">
+              <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                  <Setter Property="Opacity" Value="0" />
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding MenuSelected, Converter={ui:DebugConverter}}" Value="True">
+                      <Setter Property="Opacity" Value="0.5" />
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Border.Style>
+            </Border>
+          </Grid>
+
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="true">
+              <Setter TargetName="border" Property="BorderThickness" Value="5,5,0,0" />
+              <Setter TargetName="BorderColor" Property="Opacity" Value="0.0" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="BorderColor" Property="Opacity" Value="0.2" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

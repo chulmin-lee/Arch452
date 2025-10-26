@@ -1,0 +1,177 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+  <sys:Double x:Key="Menu_Height">32</sys:Double>
+  <sys:Double x:Key="Menu_FontSize">14</sys:Double>
+  <sys:Double x:Key="Menu_IconHeight">32</sys:Double>
+  <sys:Double x:Key="Menu_IconWidth">32</sys:Double>
+
+  <GridLength x:Key="Menu_IconGridHeight">32</GridLength>
+  <GridLength x:Key="Menu_IconGridWidth">32</GridLength>
+
+
+  <!-- ################################################################### -->
+  <!-- Topmenu                                                             -->
+  <!-- ################################################################### -->
+  <!-- Normal -->
+  <SolidColorBrush x:Key="Topmenu.Foreground" Color="#bdc4cf"/>
+  <SolidColorBrush x:Key="Topmenu.Background" Color="#30353a"/>
+  <SolidColorBrush x:Key="Topmenu.BorderBrush" Color="#5965E7"/>
+  <!-- Hover -->
+  <SolidColorBrush x:Key="Topmenu.Foreground.Hover" Color="#bdc4cf"/>
+  <SolidColorBrush x:Key="Topmenu.Background.Hover" Color="#23272b"/>
+  <SolidColorBrush x:Key="Topmenu.BorderBrush.Hover" Color="#6f7af2"/>
+  <!-- Pressed -->
+  <SolidColorBrush x:Key="Topmenu.Foreground.Pressed" Color="White"/>
+  <SolidColorBrush x:Key="Topmenu.Background.Pressed" Color="#15181b"/>
+  <SolidColorBrush x:Key="Topmenu.BorderBrush.Pressed" Color="#838cf2"/>
+  <!-- Disable -->
+  <SolidColorBrush x:Key="Topmenu.Foreground.Disabled" Color="#5B636B"/>
+  <SolidColorBrush x:Key="Topmenu.Background.Disabled" Color="#EEE"/>
+  <SolidColorBrush x:Key="Topmenu.BorderBrush.Disabled" Color="#AAA"/>
+
+  <!-- ################################################################### -->
+  <!-- Submenu                                                             -->
+  <!-- ################################################################### -->
+  <!-- Normal -->
+  <SolidColorBrush x:Key="Submenu.Foreground" Color="#d5dce6"/>
+  <SolidColorBrush x:Key="Submenu.Background" Color="#404850"/>
+  <SolidColorBrush x:Key="Submenu.BorderBrush" Color="#5965E7"/>
+  <!-- Hover -->
+  <SolidColorBrush x:Key="Submenu.Foreground.Hover" Color="#d5dce6"/>
+  <SolidColorBrush x:Key="Submenu.Background.Hover" Color="#30353a"/>
+  <SolidColorBrush x:Key="Submenu.BorderBrush.Hover" Color="#6f7af2"/>
+  <!-- Pressed -->
+  <SolidColorBrush x:Key="Submenu.Foreground.Pressed" Color="White"/>
+  <SolidColorBrush x:Key="Submenu.Background.Pressed" Color="#30353a"/>
+  <SolidColorBrush x:Key="Submenu.BorderBrush.Pressed" Color="#838cf2"/>
+  <!-- Disable -->
+  <SolidColorBrush x:Key="Submenu.Foreground.Disabled" Color="#5B636B"/>
+  <SolidColorBrush x:Key="Submenu.Background.Disabled" Color="#EEE"/>
+  <SolidColorBrush x:Key="Submenu.BorderBrush.Disabled" Color="#AAA"/>
+
+
+  <!-- ################################################################### -->
+  <!-- Polygon                                                             -->
+  <!-- ################################################################### -->
+  <Geometry x:Key="Menu_UpArrow">M0,4 H7 L3.5,0 z</Geometry>
+  <Geometry x:Key="Menu_DownArrow">M0,0 H7 L3.5,4 z</Geometry>
+  <Geometry x:Key="Menu_CheckMark">M 0 5 L 5 10 L 10 0</Geometry>
+  <Geometry x:Key="Menu_HasChildMark">M 0 0 L 0 7 L 4 3.5 Z</Geometry>
+  <SolidColorBrush x:Key="CheckMark_Stroke" Color="#3ef79b"/>
+
+  <!-- ################################################################### -->
+  <!-- Seperator                                                           -->
+  <!-- ################################################################### -->
+  <SolidColorBrush x:Key="MenuSeperator.BorderBrush" Color="#5b636b"/>
+
+  <Style x:Key="MenuSeperatorStyle" TargetType="{x:Type Separator}">
+    <Setter Property="Height" Value="1" />
+    <Setter Property="Margin" Value="0,4,0,4" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type Separator}">
+          <Border BorderThickness="1" BorderBrush="{StaticResource MenuSeperator.BorderBrush}" />
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- ################################################################### -->
+  <!-- Menu ScrollViewer (메뉴 항목이 다 보이지 않을때 ScrollViewer 스타일)  -->
+  <!-- ################################################################### -->
+  <Style x:Key="MenuScrollButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type RepeatButton}">
+    <Setter Property="ClickMode" Value="Hover"/>
+    <Setter Property="MinWidth" Value="0"/>
+    <Setter Property="MinHeight" Value="0"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type RepeatButton}">
+          <DockPanel Background="Transparent" SnapsToDevicePixels="true">
+            <Rectangle x:Name="R1" DockPanel.Dock="Right" Fill="Transparent" Width="1"/>
+            <Rectangle x:Name="B1" DockPanel.Dock="Bottom" Fill="Transparent" Height="1"/>
+            <Rectangle x:Name="L1" DockPanel.Dock="Left" Fill="Transparent" Width="1"/>
+            <Rectangle x:Name="T1" DockPanel.Dock="Top" Fill="Transparent" Height="1"/>
+            <ContentPresenter x:Name="ContentContainer" HorizontalAlignment="Center" Margin="2,2,2,2" VerticalAlignment="Center"/>
+          </DockPanel>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="true">
+              <Setter Property="Fill" TargetName="R1" Value="{StaticResource {x:Static SystemColors.ControlLightLightBrushKey}}"/>
+              <Setter Property="Fill" TargetName="B1" Value="{StaticResource {x:Static SystemColors.ControlLightLightBrushKey}}"/>
+              <Setter Property="Fill" TargetName="L1" Value="{StaticResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"/>
+              <Setter Property="Fill" TargetName="T1" Value="{StaticResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"/>
+              <Setter Property="Margin" TargetName="ContentContainer" Value="3,3,1,1"/>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!--ScrollViewer for a MenuItem-->
+  <MenuScrollingVisibilityConverter x:Key="MenuScrollingVisibilityConverter" />
+
+  <Style x:Key="MenuScrollViewerStyle" TargetType="{x:Type ScrollViewer}" BasedOn="{x:Null}">
+    <Setter Property="HorizontalScrollBarVisibility" Value="Hidden" />
+    <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ScrollViewer}">
+          <Grid SnapsToDevicePixels="True">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Border Grid.Row="1" Grid.Column="0">
+              <ScrollContentPresenter Margin="{TemplateBinding Padding}" />
+            </Border>
+            <RepeatButton Style="{StaticResource MenuScrollButtonStyle}" Grid.Row="0" Grid.Column="0"
+                        Command="{x:Static ScrollBar.LineUpCommand}"
+                        CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                        Focusable="False">
+              <RepeatButton.Visibility>
+                <MultiBinding FallbackValue="Visibility.Collapsed"
+                            Converter="{StaticResource MenuScrollingVisibilityConverter}"
+                            ConverterParameter="0">
+                  <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="ComputedVerticalScrollBarVisibility" />
+                  <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="VerticalOffset" />
+                  <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="ExtentHeight" />
+                  <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="ViewportHeight" />
+                </MultiBinding>
+              </RepeatButton.Visibility>
+              <Path Fill="Yellow" Data="{StaticResource Menu_UpArrow}"  />
+            </RepeatButton>
+            <RepeatButton Style="{StaticResource MenuScrollButtonStyle}"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Command="{x:Static ScrollBar.LineDownCommand}"
+                        CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                        Focusable="False">
+              <RepeatButton.Visibility>
+                <MultiBinding FallbackValue="Visibility.Collapsed"
+                            Converter="{StaticResource MenuScrollingVisibilityConverter}"
+                            ConverterParameter="100">
+                  <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                         Path="ComputedVerticalScrollBarVisibility" />
+                  <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                         Path="VerticalOffset" />
+                  <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                         Path="ExtentHeight" />
+                  <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                         Path="ViewportHeight" />
+                </MultiBinding>
+              </RepeatButton.Visibility>
+              <Path Fill="Yellow" Data="{StaticResource Menu_DownArrow}" />
+            </RepeatButton>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,25 @@
+﻿<Application x:Class="DS.Server.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DS.Server"
+             StartupUri="MainWindow.xaml">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/UIControls;component/Windows/AllCustomWindowStyles.xaml" />
+        <ResourceDictionary Source="/UIControls;component/Styles/ControlStyles.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+
+      <!--<Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource CommonRadioButtonStyle}" />
+      <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource CommonCheckBoxStyle}" />
+      <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource CommonComboBoxStyle}" />
+      <Style TargetType="{x:Type GroupBox}" BasedOn="{StaticResource CommonGroupBoxStyle}" />
+      <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource CommonDataGridStyle}" />
+      <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource CommonTextBoxStyle}" />
+      <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CommonButtonStyle}" />
+
+      <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource CommonListViewStyle}" />
+      <Style TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource GridViewColumnHeaderStyle}" /> -->
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

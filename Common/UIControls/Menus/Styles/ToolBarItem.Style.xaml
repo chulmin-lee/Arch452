@@ -1,0 +1,184 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:local="clr-namespace:UIControls">
+
+  <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+  <sys:Double x:Key="Tooltip_Height">30</sys:Double>
+
+  <sys:Double x:Key="Icon_Width">26</sys:Double>
+  <sys:Double x:Key="Icon_Height">26</sys:Double>
+
+  <sys:Double x:Key="Button_Width">28</sys:Double>
+  <sys:Double x:Key="Button_Height">28</sys:Double>
+
+  <Style TargetType="TextBlock" x:Key="TooltipTextBlockStyle">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Foreground" Value="Black" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="FontSize" Value="11" />
+  </Style>
+
+  <Geometry x:Key="TooltipRightData">
+    M0,7
+      L2,5 L2,2
+      C2,2 2,0 4,0
+      L30,0
+      C30,0 32,0 32,2
+      L32,12
+      C32,12 32,14, 30,14
+      L4,14
+      C4,14 2,14, 2,12
+      L2,9
+      Z</Geometry>
+
+  <Style TargetType="{x:Type Path}" x:Key="Style.ToolBarToolTip.Polygon">
+    <Setter Property="Fill" Value="DarkGray" />
+    <Setter Property="Stroke" Value="White" />
+    <Setter Property="StrokeThickness" Value="1" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+    <Setter Property="Stretch" Value="Fill" />
+    <Setter Property="Data" Value="{StaticResource TooltipRightData}" />
+  </Style>
+
+  <Style TargetType="{x:Type ToolTip}" x:Key="Style.ToolBar.ToolTip">
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Margin" Value="0" />
+    <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
+    <Setter Property="ToolTipService.InitialShowDelay" Value="0"/>
+    <Setter Property="HorizontalOffset" Value="5" />
+    <Setter Property="Placement" Value="Right" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ToolTip}">
+          <Grid Height="{StaticResource Tooltip_Height}"
+                Width="{Binding ElementName=TooltipTextBlock, Path=ActualWidth, Converter={local:ActualSizeAddConverter}, ConverterParameter=40}" >
+            <Path Style="{StaticResource Style.ToolBarToolTip.Polygon}" />
+            <TextBlock x:Name="TooltipTextBlock" Style="{StaticResource TooltipTextBlockStyle}"
+                       Text="{Binding ToolTip}" />
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+
+  <!-- Icon style -->
+  <Style TargetType="{x:Type Image}" x:Key="Style.ToolBar.Icon">
+    <Setter Property="Width" Value="{StaticResource Icon_Width}" />
+    <Setter Property="Height" Value="{StaticResource Button_Height}" />
+    <Setter Property="Stretch" Value="Uniform" />
+    <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor" />
+  </Style>
+
+  <!-- Action Button Style -->
+  <Style TargetType="{x:Type ButtonBase}" x:Key="Style.ToolBarButton.Action">
+    <Setter Property="Width" Value="{StaticResource Button_Width}" />
+    <Setter Property="Height" Value="{StaticResource Button_Height}" />
+    <Setter Property="Margin" Value="1" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="Command" Value="{Binding Command}" />
+    <Setter Property="CommandParameter" Value="{Binding}" />
+    <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
+    <Setter Property="Visibility" Value="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityConverter }}"/>
+    <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
+    <Setter Property="ToolTipService.InitialShowDelay" Value="0"/>
+    <Setter Property="ToolTip">
+      <Setter.Value>
+        <ToolTip Style="{StaticResource Style.ToolBar.ToolTip}" />
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ButtonBase}">
+          <Border x:Name="border" BorderBrush="Transparent" BorderThickness="1">
+            <Image x:Name="IconImage" Style="{StaticResource Style.ToolBar.Icon}" Source="{Binding Icons.Normal}" />
+          </Border>
+          <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding IsChecked}" Value="True">
+              <Setter TargetName="IconImage" Property="Source" Value="{Binding Icons.MouseOver}" />
+            </DataTrigger>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="IconImage" Property="Source" Value="{Binding Icons.MouseOver}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+              <Setter TargetName="IconImage" Property="Source" Value="{Binding Icons.Selected}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter TargetName="IconImage" Property="Source" Value="{Binding Icons.Disabled}"/>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+
+  <!-- group button style -->
+  <Style TargetType="{x:Type Button}" x:Key="Style.ToolBarButton.Group" BasedOn="{StaticResource Style.ToolBarButton.Action}">
+    <Setter Property="local:IsPressedAttached.IsEnabled" Value="True" />
+    <Setter Property="local:IsPressedAttached.ButtonPressed" Value="{Binding IsMenuPressed, Mode=OneWayToSource}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type Button}">
+          <Border x:Name="border" BorderBrush="Transparent" BorderThickness="1">
+            <Image x:Name="IconImage" Style="{StaticResource Style.ToolBar.Icon}" Source="{Binding Icons.Normal}" />
+          </Border>
+          <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding IsChecked}" Value="True">
+              <Setter TargetName="IconImage" Property="Source" Value="{Binding Icons.Selected}" />
+            </DataTrigger>
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsChecked}" Value="false"/>
+                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True"/>
+              </MultiDataTrigger.Conditions>
+              <Setter TargetName="IconImage" Property="Source" Value="{Binding Icons.MouseOver}" />
+            </MultiDataTrigger>
+            <Trigger Property="IsPressed" Value="true">
+              <Setter TargetName="IconImage" Property="Source" Value="{Binding Icons.Selected}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter TargetName="IconImage" Property="Source" Value="{Binding Icons.Disabled}"/>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!--Toggle Button style-->
+  <Style TargetType="{x:Type ToggleButton}" x:Key="Style.ToolBarButton.Toggle" BasedOn="{StaticResource Style.ToolBarButton.Action}">
+    <Setter Property="IsChecked" Value="{Binding IsChecked}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ToggleButton}">
+          <Border x:Name="border" BorderBrush="Transparent" BorderThickness="1">
+            <Image x:Name="IconImage" Style="{StaticResource Style.ToolBar.Icon}" Source="{Binding Icons.Normal}" />
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+              <Setter TargetName="IconImage" Property="Source" Value="{Binding Icons.MouseOver}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+              <Setter TargetName="IconImage" Property="Source" Value="{Binding Icons.Selected}" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+              <Setter TargetName="IconImage" Property="Source" Value="{Binding Icons.Selected}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter TargetName="IconImage" Property="Source" Value="{Binding Icons.Disabled}"/>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+
+
+
+
+</ResourceDictionary>

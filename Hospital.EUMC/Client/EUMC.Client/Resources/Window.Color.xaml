@@ -1,0 +1,276 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:ui="clr-namespace:UIControls;assembly=UIControls"
+                    xmlns:local="clr-namespace:EUMC.Client">
+
+  <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+  <SolidColorBrush x:Key="Window_Foreground" Color="#00583f" />
+  <SolidColorBrush x:Key="Window_Background" Color="#FDFDFD" />
+
+  <!-- ================================================================ -->
+  <!-- Image                                                            -->
+  <!-- ================================================================ -->
+  <!-- title bar -->
+
+  <ImageSource x:Key="TitleBar_Panel_Large">/EUMC.Client;component/Resources/Images/MainView/titlebar-panel-large.png</ImageSource>
+  <!-- logo -->
+  <ImageSource x:Key="LogoLarge_Normal">/EUMC.Client;component/Resources/Images/MainView/logo-large-normal.png</ImageSource>
+  <ImageSource x:Key="LogoLarge_Detail">/EUMC.Client;component/Resources/Images/MainView/logo-large-detail.png</ImageSource>
+  <ImageSource x:Key="LogoLarge_Black">/EUMC.Client;component/Resources/Images/MainView/logo-large-black.png</ImageSource>
+  <ImageSource x:Key="LogoMiddle_Bottom">/EUMC.Client;component/Resources/Images/MainView/logo-middle-bottom.png</ImageSource>
+  <!-- 진료실 -->
+  <ImageSource x:Key="DEFAULT_PHOTO_LOGO">pack://application:,,,/EUMC.Client;component/Resources/Images/Office/doctor-default.png</ImageSource>
+  <ImageSource x:Key="DEFAULT_PHOTO_LOGO2">pack://application:,,,/EUMC.Client;component/Resources/Images/Office/doctor-test.png</ImageSource>
+  <!-- 검사실 -->
+  <ImageSource x:Key="ExamTitleBG1">/EUMC.Client;component/Resources/Images/Exam/exam-title-1.png</ImageSource>
+  <ImageSource x:Key="ExamTitleBG2">/EUMC.Client;component/Resources/Images/Exam/exam-title-2.png</ImageSource>
+
+  <!-- 분만실 -->
+  <ImageSource x:Key="Delivery_Baby_M">/EUMC.Client;component/Resources/Images/Delivery/delivery-baby-M.png</ImageSource>
+  <ImageSource x:Key="Delivery_Baby_F">/EUMC.Client;component/Resources/Images/Delivery/delivery-baby-F.png</ImageSource>
+
+  <!-- 응급실 state icon -->
+  <ImageSource x:Key="er_blood_finished"        >/EUMC.Client;component/Resources/Images/Emergency/er_blood_finished.png</ImageSource>
+  <ImageSource x:Key="er_blood_inspecting"      >/EUMC.Client;component/Resources/Images/Emergency/er_blood_inspecting.png</ImageSource>
+  <ImageSource x:Key="er_blood_progress"        >/EUMC.Client;component/Resources/Images/Emergency/er_blood_progress.png</ImageSource>
+  <ImageSource x:Key="er_collabo_progress"      >/EUMC.Client;component/Resources/Images/Emergency/er_collabo_progress.png</ImageSource>
+  <ImageSource x:Key="er_collabo_visited"       >/EUMC.Client;component/Resources/Images/Emergency/er_collabo_visited.png</ImageSource>
+  <ImageSource x:Key="er_discharged"            >/EUMC.Client;component/Resources/Images/Emergency/er_discharged.png</ImageSource>
+  <ImageSource x:Key="er_hospitalization"       >/EUMC.Client;component/Resources/Images/Emergency/er_hospitalization.png</ImageSource>
+  <ImageSource x:Key="er_medical_care_progress" >/EUMC.Client;component/Resources/Images/Emergency/er_medical_care_progress.png</ImageSource>
+  <ImageSource x:Key="er_medical_care_visited"  >/EUMC.Client;component/Resources/Images/Emergency/er_medical_care_visited.png</ImageSource>
+  <ImageSource x:Key="er_radio_finished"        >/EUMC.Client;component/Resources/Images/Emergency/er_radio_finished.png</ImageSource>
+  <ImageSource x:Key="er_radio_wait"            >/EUMC.Client;component/Resources/Images/Emergency/er_radio_wait.png</ImageSource>
+  <ImageSource x:Key="er_visit_doctor"          >/EUMC.Client;component/Resources/Images/Emergency/er_visit_doctor.png</ImageSource>
+  <ImageSource x:Key="er_ward_assign"           >/EUMC.Client;component/Resources/Images/Emergency/er_ward_assign.png</ImageSource>
+  <ImageSource x:Key="er_ward_wait"             >/EUMC.Client;component/Resources/Images/Emergency/er_ward_wait.png</ImageSource>
+
+  <!-- 기타 -->
+  <!-- updater -->
+  <ImageSource x:Key="Updater">pack://application:,,,/EUMC.Client;component/Resources/Images/MainView/Updater.png</ImageSource>
+  <!-- 장례식장 -->
+  <ImageSource x:Key="funeral-photo"      >/EUMC.Client;component/Resources/Images/Funeral/funeral-photo.png</ImageSource>
+  <ImageSource x:Key="funeral-small-photo">/EUMC.Client;component/Resources/Images/Funeral/funeral-small-photo.png</ImageSource>
+
+  <!-- clock -->
+  <sys:Double x:Key="Date_FontSize_Landscape">28</sys:Double>
+  <sys:Double x:Key="Time_FontSize_Landscape">44</sys:Double>
+  <sys:Double x:Key="Date_FontSize_Portrait">25</sys:Double>
+  <sys:Double x:Key="Time_FontSize_Portrait">40</sys:Double>
+
+  <!-- NOTICE -->
+  <GridLength x:Key="Notice_Height_Landscape">92</GridLength>
+  <sys:Double x:Key="Notice_FontSize_Landscape">44</sys:Double>
+  <GridLength x:Key="Notice_Height_Portrait">88</GridLength>
+  <sys:Double x:Key="Notice_FontSize_Portrait">40</sys:Double>
+
+  <!-- popup -->
+  <sys:Double x:Key="Popup_Width_Landscape">735</sys:Double>
+  <sys:Double x:Key="Popup_Height_Landscape">410</sys:Double>
+  <!-- font size: 80/60/48   75  90-->
+
+  <sys:Double x:Key="Popup_Width_Portrait">1087</sys:Double>
+  <sys:Double x:Key="Popup_Height_Portrait">700</sys:Double>
+
+  <!-- duck san -->
+  <SolidColorBrush x:Key="primary" Color="#302952" />
+  <SolidColorBrush x:Key="accent1" Color="#F68D38" />
+  <SolidColorBrush x:Key="accent2" Color="#FAD45D" />
+
+  <!-- font size: 180/130/84-->
+
+  <!-- color -->
+  <SolidColorBrush x:Key="Gray100" Color="#F2F4F7" />
+  <SolidColorBrush x:Key="Gray200" Color="#E4E7EC" />
+  <SolidColorBrush x:Key="Gray300" Color="#D0D5DD" />
+  <SolidColorBrush x:Key="Gray400" Color="#A3ADBE" />
+  <SolidColorBrush x:Key="Gray500" Color="#667085" />
+  <SolidColorBrush x:Key="Gray600" Color="#475467" />
+  <SolidColorBrush x:Key="Gray800" Color="#1D2939" />
+  <SolidColorBrush x:Key="Gray900" Color="#101828" />
+  <SolidColorBrush x:Key="Error500" Color="#F92E20" />
+  <SolidColorBrush x:Key="main1" Color="#25539C" />
+  <SolidColorBrush x:Key="main2" Color="#17AFB4" />
+  <SolidColorBrush x:Key="main3" Color="#006E99" />
+  <SolidColorBrush x:Key="main4" Color="#84BD00" />
+  <SolidColorBrush x:Key="main5" Color="#1AAFDE" />
+  <SolidColorBrush x:Key="main6" Color="#016FBF" />
+  <SolidColorBrush x:Key="sub_1" Color="#E8F9FF" />
+  <SolidColorBrush x:Key="sub_3" Color="#FFFCDC" />
+  <SolidColorBrush x:Key="sub_5" Color="#F1F6FF" />
+  <SolidColorBrush x:Key="white" Color="#FFFFFF" />
+  <SolidColorBrush x:Key="pet_reset" Color="#A349A4" />
+
+  <SolidColorBrush x:Key="transparent" Color="Transparent" />
+
+  <!-- border -->
+  <sys:Double x:Key="grid_border_thick">2</sys:Double>
+  <SolidColorBrush x:Key="grid_row_bg_1" Color="#E2ECFF" />
+  <SolidColorBrush x:Key="grid_row_bg_2" Color="#7FFAD45D" />
+  <SolidColorBrush x:Key="grid_border_brush" Color="White" />
+
+  <SolidColorBrush x:Key="ExamPopupBg" Color="#17AFB4" />
+  <SolidColorBrush x:Key="ktasHigh" Color="#E1200E" />
+  <SolidColorBrush x:Key="ktasMedium" Color="#FFD138" />
+  <SolidColorBrush x:Key="ktasLow" Color="#A3ADBE" />
+
+  <!-- drug -->
+  <SolidColorBrush x:Key="OpRow1" Color="Transparent" />
+  <SolidColorBrush x:Key="OpRow2" Color="#E4EAFD" />
+  <SolidColorBrush x:Key="OpColumn1" Color="#60CFD7F0" />
+  <SolidColorBrush x:Key="OpColumn2" Color="Transparent" />
+
+  <GridLength x:Key="GridHeaderHeight">115</GridLength>
+  <sys:Double x:Key="HeaderHeight">115</sys:Double>
+
+  <GridLength x:Key="GridHeaderHeight2">75</GridLength>
+  <sys:Double x:Key="HeaderHeight2">75</sys:Double>
+
+  <!--<FontFamily x:Key="EHWA_FONT">pack://applicaton:,,,/EUMC.Client;component/Resources/Fonts/#EHWA</FontFamily>-->
+  <FontFamily x:Key="FONT">pack://applicaton:,,,/EUMC.Client;component/Resources/Fonts/#Pretendard Variable</FontFamily>
+
+  <Style TargetType="{x:Type Label}" x:Key="CommonLabel">
+    <Setter Property="Foreground" Value="{StaticResource Gray800}" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="FontSize" Value="36" />
+    <Setter Property="FontWeight" Value="Bold" />
+  </Style>
+
+  <Style TargetType="{x:Type TextBlock}" x:Key="CommonTextBlock">
+    <Setter Property="Foreground" Value="{StaticResource Gray800}" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="TextWrapping" Value="Wrap" />
+    <Setter Property="FontSize" Value="36" />
+    <Setter Property="TextAlignment" Value="Justify" />
+    <Setter Property="FontWeight" Value="Bold" />
+  </Style>
+
+  <Style TargetType="{x:Type ui:TextBorder}">
+    <Setter Property="AutoFontRatio" Value="0.9" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="TextTrimming" Value="None" />
+    <Setter Property="TextWrapping" Value="NoWrap" />
+    <Setter Property="Foreground" Value="{StaticResource Gray800}" />
+    <Setter Property="TextAlignment" Value="Center" />
+    <Setter Property="AutoFontSize" Value="true" />
+    <Setter Property="FontSize" Value="36" />
+  </Style>
+
+  <!-- Page -->
+  <DataTemplate DataType="{x:Type local:PageIndexer}">
+    <ItemsControl ItemsSource="{Binding Pages}" Margin="20,0,0,0">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel Orientation="Horizontal" />
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+      <ItemsControl.ItemTemplate>
+        <DataTemplate>
+          <Grid Width="50" Height="80">
+            <Ellipse Width="40" Height="40" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+              <Ellipse.Style>
+                <Style TargetType="{x:Type Ellipse}">
+                  <Setter Property="Stroke" Value="{StaticResource Gray500}" />
+                  <Setter Property="Fill" Value="Transparent" />
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                      <Setter Property="Stroke" Value="Red" />
+                      <!--<Setter Property="Fill" Value="Yellow" />-->
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Ellipse.Style>
+            </Ellipse>
+            <Label Content="{Binding PageNo}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontWeight="SemiBold">
+              <Label.Style>
+                <Style TargetType="{x:Type Label}">
+                  <Setter Property="FontSize" Value="{Binding FontSize}" />
+                  <Setter Property="Foreground" Value="{StaticResource Gray500}" />
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                      <Setter Property="Foreground" Value="Red" />
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Label.Style>
+            </Label>
+          </Grid>
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
+  </DataTemplate>
+
+  <!-- Message Popup -->
+
+  <!-- Background="White" -->
+  <DataTemplate DataType="{x:Type local:CallMessageVM}">
+    <Border
+              BorderBrush="#25539C" BorderThickness="3"
+              IsHitTestVisible="False"
+              CornerRadius="30" Background="White"
+              HorizontalAlignment="Center" VerticalAlignment="Center">
+      <!--<Border.Effect>
+        <DropShadowEffect  ShadowDepth="13" Opacity="0.4" />
+      </Border.Effect>-->
+
+      <Border.Style>
+        <Style TargetType="{x:Type Border}">
+          <Setter Property="Width" Value="1008" />
+          <Setter Property="Height" Value="520" />
+          <Style.Triggers>
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsLandscape}" Value="True" />
+                <Condition Binding="{Binding MinPopup}" Value="false" />
+              </MultiDataTrigger.Conditions>
+              <Setter Property="Width" Value="1096" />
+              <Setter Property="Height" Value="560" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsLandscape}" Value="True" />
+                <Condition Binding="{Binding MinPopup}" Value="True" />
+              </MultiDataTrigger.Conditions>
+              <Setter Property="Width" Value="880" />
+              <Setter Property="Height" Value="560" />
+              <Setter Property="Margin" Value="0,80,40,0" />
+            </MultiDataTrigger>
+          </Style.Triggers>
+        </Style>
+      </Border.Style>
+
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="50" />
+          <RowDefinition Height="2*" />
+          <RowDefinition Height="20" />
+          <RowDefinition Height="1.5*" />
+          <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+          <!--<Image Grid.Column="0" Source="{StaticResource PopupIcon}" Stretch="Uniform" />-->
+          <Border VerticalAlignment="Center">
+            <Label Style="{StaticResource CommonLabel}" FontSize="150"
+                   Content="{Binding PopupPatientName}" />
+          </Border>
+          <Border VerticalAlignment="Center" Height="auto">
+            <Label Style="{StaticResource CommonLabel}" FontSize="120"
+                   Content="님" />
+          </Border>
+        </StackPanel>
+
+        <Border Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"
+                  Margin="60,0,60,0">
+          <TextBlock Style="{StaticResource CommonTextBlock}"
+                       FontSize="58"
+                       Text="{Binding PopupMessage}" />
+        </Border>
+      </Grid>
+    </Border>
+  </DataTemplate>
+</ResourceDictionary>

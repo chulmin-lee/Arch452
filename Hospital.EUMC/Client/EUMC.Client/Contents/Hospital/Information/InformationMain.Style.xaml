@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:EUMC.Client">
+
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="/Contents/Hospital/Information/ContentMenu/InformationHome.Style.xaml" />
+    <ResourceDictionary Source="/Contents/Hospital/Information/ContentMenu/InformationContent.Style.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <DataTemplate DataType="{x:Type local:InfomationMainVM}">
+    <Grid>
+      <ContentControl Content="{Binding Contents}" />
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

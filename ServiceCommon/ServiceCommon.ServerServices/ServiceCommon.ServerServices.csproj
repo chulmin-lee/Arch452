@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5DD517ED-9ACD-45C6-B436-BEF5B9B85B1B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ServiceCommon.ServerServices</RootNamespace>
+    <AssemblyName>ServiceCommon.ServerServices</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NetworkService\Common\ServerSessionHandler\IServerSessionHandler.cs" />
+    <Compile Include="NetworkService\Common\ServerSessionHandler\ServerSessionHandlerBase.cs" />
+    <Compile Include="NetworkService\Common\ServerSession\IServerSession.cs" />
+    <Compile Include="NetworkService\Common\ServerSession\IServerSessionOwner.cs" />
+    <Compile Include="NetworkService\Common\ServerSession\ServerSessionBase.cs" />
+    <Compile Include="NetworkService\GRPC\GrpcSSServerSession.cs" />
+    <Compile Include="NetworkService\GRPC\GrpcSSServerSessionHandler.cs" />
+    <Compile Include="NetworkService\SERVER_SESSION_HANDLER.cs" />
+    <Compile Include="NetworkService\TCP\TcpServerSession.cs" />
+    <Compile Include="NetworkService\TCP\TcpServerSessionHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerService\IServerService.cs" />
+    <Compile Include="ServiceHandler\MessageGenerator\DataExtractor\DataExtractorBase.cs" />
+    <Compile Include="ServiceHandler\MessageGenerator\DataExtractor\IDataExtractor.cs" />
+    <Compile Include="ServiceHandler\MessageGenerator\IGeneratorMemberOwner.cs" />
+    <Compile Include="ServiceHandler\MessageGenerator\IMessageGenerator.cs" />
+    <Compile Include="ServiceHandler\MessageGenerator\MessageGeneratorBase.cs" />
+    <Compile Include="ServiceHandler\MessageGenerator\MessageTransformer\IMessageTransformer.cs" />
+    <Compile Include="ServiceHandler\MessageGenerator\MessageTransformer\MessageTransformerBase.cs" />
+    <Compile Include="ServiceHandler\MessageService\IMessageServiceHandler.cs" />
+    <Compile Include="ServiceHandler\MessageService\MessageLoader\IMessageLoader.cs" />
+    <Compile Include="ServiceHandler\MessageService\MessageLoader\MessageLoaderBase.cs" />
+    <Compile Include="ServiceHandler\MessageService\MessageServiceHandlerBase.cs" />
+    <Compile Include="Services\UserServiceHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common\Common.csproj">
+      <Project>{ae628b92-969a-4032-a07e-b4d0b7712189}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\DataSource\Framework.DataSource\Framework.DataSource.csproj">
+      <Project>{9d1f4a9a-1628-4486-95a6-10cc99d33792}</Project>
+      <Name>Framework.DataSource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Networks\Network.TCP\Framework.Network.TCP.csproj">
+      <Project>{871d3a9e-e05e-4263-ba26-78cc7f56c6e0}</Project>
+      <Name>Framework.Network.TCP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Networks\Network\Framework.Network.csproj">
+      <Project>{3418fe83-44a1-4031-af6d-e15d069b853c}</Project>
+      <Name>Framework.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceCommon\ServiceCommon.csproj">
+      <Project>{1f35525c-5141-4e42-b692-55246a179d95}</Project>
+      <Name>ServiceCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

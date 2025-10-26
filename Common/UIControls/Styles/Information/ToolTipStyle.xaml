@@ -1,0 +1,98 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:local="clr-namespace:UIControls">
+
+  <sys:Double x:Key="Tooltip_Height">30</sys:Double>
+
+  <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+  <Geometry x:Key="TooltipBottomData">
+    M16,0 L18,2
+      C30,2 32,2 32,4
+      L32,12
+      C32,12 32,14 30,14
+      L2,14
+      C2,14 0,14, 0,12
+      L0,4
+      C0,4 0,2, 2,2
+      L14,2
+      L14,2 Z</Geometry>
+
+  <Geometry x:Key="TooltipRightData">
+    M0,7
+      L2,5 L2,2
+      C2,2 2,0 4,0
+      L30,0
+      C30,0 32,0 32,2
+      L32,12
+      C32,12 32,14, 30,14
+      L4,14
+      C4,14 2,14, 2,12
+      L2,9
+      Z</Geometry>
+
+  <Style TargetType="TextBlock" x:Key="TooltipTextBlockStyle">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Foreground" Value="Black" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="FontSize" Value="11" />
+  </Style>
+  <Style TargetType="{x:Type Path}" x:Key="TooltipPathStyle">
+    <Setter Property="Fill" Value="DarkGray" />
+    <Setter Property="Stroke" Value="White" />
+    <Setter Property="StrokeThickness" Value="1" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+    <Setter Property="Stretch" Value="Fill" />
+    <Setter Property="Data" Value="{StaticResource TooltipRightData}" />
+  </Style>
+  <Style TargetType="{x:Type Image}" x:Key="ToolbarIconStyle">
+    <Setter Property="Width" Value="{StaticResource Icon.Width}" />
+    <Setter Property="Height" Value="{StaticResource Button.Height}" />
+    <Setter Property="Stretch" Value="Uniform" />
+    <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor" />
+  </Style>
+
+  <Style TargetType="{x:Type ToolTip}" x:Key="ToolbarTooltipStyle">
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Margin" Value="0" />
+    <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
+    <Setter Property="ToolTipService.InitialShowDelay" Value="0"/>
+    <Setter Property="HorizontalOffset" Value="5" />
+    <Setter Property="Placement" Value="Right" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ToolTip}">
+          <Grid Height="{StaticResource Tooltip_Height}"
+                Width="{Binding ElementName=TooltipTextBlock, Path=ActualWidth, Converter={local:ActualSizeAddConverter}, ConverterParameter=40}" >
+            <Path Style="{StaticResource TooltipPathStyle}" />
+            <TextBlock x:Name="TooltipTextBlock" Style="{StaticResource TooltipTextBlockStyle}" Text="{Binding Name}" />
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style TargetType="{x:Type ToolTip}" x:Key="MenuToolTipStyle">
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Margin" Value="0" />
+    <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
+    <Setter Property="ToolTipService.InitialShowDelay" Value="0"/>
+    <Setter Property="HorizontalOffset" Value="5" />
+    <Setter Property="Placement" Value="Right" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ToolTip}">
+          <Grid Height="{StaticResource Tooltip_Height}"
+                Width="{Binding ElementName=TooltipTextBlock, Path=ActualWidth, Converter={local:ActualSizeAddConverter}, ConverterParameter=40}" >
+            <Path Style="{StaticResource TooltipPathStyle}" />
+            <TextBlock x:Name="TooltipTextBlock" Style="{StaticResource TooltipTextBlockStyle}"
+                       Text="{Binding ToolTip}" />
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+</ResourceDictionary>

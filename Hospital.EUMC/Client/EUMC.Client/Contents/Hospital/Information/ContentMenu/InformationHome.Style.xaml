@@ -1,0 +1,45 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:EUMC.Client">
+
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/EUMC.Client;component/Contents/Hospital/Information/ContentMenu/Menu/InfoButton.Style.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <DataTemplate DataType="{x:Type local:InformationHomeVM}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="auto" />
+      </Grid.RowDefinitions>
+
+      <Grid Margin="100" Grid.Row="0">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="60" />
+          <RowDefinition Height="100" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="순천향 대학교 천안병원을 찾아주셔서 감사합니다."
+             Foreground="{StaticResource Gray900}"
+             FontSize="32" FontWeight="Bold" />
+        <Label Grid.Row="1" Content="원하시는 서비스를 선택해주세요."
+             Foreground="{StaticResource Gray900}"
+             FontSize="52" FontWeight="Bold" />
+
+        <ItemsControl Grid.Row="2" ItemsSource="{Binding Buttons}">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <UniformGrid Rows="{Binding RowCount}" Columns="{Binding ColumnCount}" />
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+              <Button Style="{StaticResource InfoHomeButtonStyle}" DataContext="{Binding}" Margin="0,10,0,10" />
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </Grid>
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

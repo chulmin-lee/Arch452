@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6098BECB-3B95-4CB7-B8AE-5BD1571B8FDE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EUMC.HospitalService</RootNamespace>
+    <AssemblyName>EUMC.HospitalService</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config\HospitalServiceConfigurations.cs" />
+    <Compile Include="DataSource\DataRepository.cs" />
+    <Compile Include="DataSource\DtoModel.cs" />
+    <Compile Include="DataSource\Repository.Interface\IHospitalRepository.cs" />
+    <Compile Include="DataSource\Repository.Interface\IMySqlRepository.cs" />
+    <Compile Include="DataSource\Repository\HospitalParamDictionary.cs" />
+    <Compile Include="DataSource\Repository\HospitalRepository.cs" />
+    <Compile Include="DataSource\Repository\HospitalRepositorySim.cs" />
+    <Compile Include="ETL\DataExtractors\Common\DataConfig.cs" />
+    <Compile Include="ETL\DataExtractors\Common\DataConfigurations.cs" />
+    <Compile Include="ETL\DataExtractors\Common\DATA_ID.cs" />
+    <Compile Include="ETL\DataExtractors\DataExtractor.cs" />
+    <Compile Include="ETL\DataExtractors\DataExtractor.Factory.cs" />
+    <Compile Include="ETL\DataExtractors\DataModel\DataMapper.cs" />
+    <Compile Include="ETL\DataExtractors\DataModel\DataModel.cs" />
+    <Compile Include="ETL\DataExtractors\Extractor\DELIVERY_Extractor.cs" />
+    <Compile Include="ETL\DataExtractors\Extractor\DRUG_Extractor.cs" />
+    <Compile Include="ETL\DataExtractors\Extractor\DR_PHOTO_Extractor.cs" />
+    <Compile Include="ETL\DataExtractors\Extractor\DR_SCH_Extractor.cs" />
+    <Compile Include="ETL\DataExtractors\Extractor\ENDO_Extractor.cs" />
+    <Compile Include="ETL\DataExtractors\Extractor\ER_AREA_CONGEST_Extractor.cs" />
+    <Compile Include="ETL\DataExtractors\Extractor\ER_CONGESTION_Extractor.cs" />
+    <Compile Include="ETL\DataExtractors\Extractor\ER_ISOLATION_Extractor.cs" />
+    <Compile Include="ETL\DataExtractors\Extractor\ER_PATIENT_Extractor.cs" />
+    <Compile Include="ETL\DataExtractors\Extractor\ICU_Extractor.cs" />
+    <Compile Include="ETL\DataExtractors\Extractor\INSPECTION_Extractor.cs" />
+    <Compile Include="ETL\DataExtractors\Extractor\OPD_EXAM_Extractor.cs" />
+    <Compile Include="ETL\DataExtractors\Extractor\OPD_OFFICE_Extractor.cs" />
+    <Compile Include="ETL\DataExtractors\Extractor\OPERATION_Extractor.cs" />
+    <Compile Include="ETL\DataExtractors\Extractor\WARD_Extractor.cs" />
+    <Compile Include="ETL\MessageTransformers\Common\ServiceConfig.cs" />
+    <Compile Include="ETL\MessageTransformers\Common\ServiceConfigurations.cs" />
+    <Compile Include="ETL\MessageTransformers\MessageTransformer.cs" />
+    <Compile Include="ETL\MessageTransformers\MessageTransformerFactory.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\DELIVERY_Service.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\DRUG_Service.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\DR_PHOTO_Service.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\DR_SCH_Service.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\ENDO_Service.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\ER_AREA_CONGEST_Service.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\ER_CONGESTION_Service.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\ER_ISOLATION_Service.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\ER_PATIENT_Service.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\ER_STATISTICS_Service.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\ICU_Service.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\INSPECTION_Service.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\OPD_EXAM_Service.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\OPD_OFFICE_Service.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\OPERATION_Service.cs" />
+    <Compile Include="ETL\MessageTransformers\Service\WARD_Service.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceHandler\HospitalMessageGenerator.cs" />
+    <Compile Include="ServiceHandler\HospitalMessageServiceHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataSource\Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Common\Common.csproj">
+      <Project>{ae628b92-969a-4032-a07e-b4d0b7712189}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Framework\DataSource\Framework.DataSource\Framework.DataSource.csproj">
+      <Project>{9d1f4a9a-1628-4486-95a6-10cc99d33792}</Project>
+      <Name>Framework.DataSource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Framework\Networks\Network.HTTP\Framework.Network.HTTP.csproj">
+      <Project>{4736f7d8-3e92-4a03-b46a-0065a1d96c1f}</Project>
+      <Name>Framework.Network.HTTP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ServiceCommon\ServiceCommon.HospitalService\ServiceCommon.HospitalService.csproj">
+      <Project>{9e83fd59-7145-454e-826e-294058297cd3}</Project>
+      <Name>ServiceCommon.HospitalService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ServiceCommon\ServiceCommon.ServerServices\ServiceCommon.ServerServices.csproj">
+      <Project>{5dd517ed-9acd-45c6-b436-bef5b9b85b1b}</Project>
+      <Name>ServiceCommon.ServerServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ServiceCommon\ServiceCommon\ServiceCommon.csproj">
+      <Project>{1f35525c-5141-4e42-b692-55246a179d95}</Project>
+      <Name>ServiceCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

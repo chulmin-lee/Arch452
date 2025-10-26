@@ -1,0 +1,219 @@
+﻿<Window x:Class="EUMC.Client.ContentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EUMC.Client"
+        xmlns:ui="clr-namespace:UIControls;assembly=UIControls"
+        xmlns:client="clr-namespace:EUMC.ClientServices;assembly=EUMC.ClientServices"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Foreground="{StaticResource Window_Foreground}"
+        Background="{StaticResource Window_Background}"
+        RenderOptions.BitmapScalingMode="HighQuality"
+        TextOptions.TextRenderingMode="ClearType"
+        TextOptions.TextHintingMode="Animated"
+        TextOptions.TextFormattingMode="Display"
+        RenderOptions.ClearTypeHint="Enabled"
+        FontFamily="{StaticResource FONT}">
+
+  <Window.Resources>
+    <ResourceDictionary>
+
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Contents/Hospital/ICU/IcuStaffContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/Hospital/ICU/IcuGuardContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/Hospital/ICU/IcuBabyContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/Hospital/Delivery/DeliveryContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/Hospital/ENDO/EndoContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/Hospital/WardRoom/WardRoomContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/Hospital/Drug/DrugContent.Style.xaml" />
+
+        <ResourceDictionary Source="/Contents/Hospital/Operation/OperationContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/Hospital/Emergency/ErPatientContent.Style.xaml" />
+
+        <ResourceDictionary Source="/Contents/Hospital/Exam/ExamSingleContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/Hospital/Exam/ExamMultiContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/Hospital/Office/OfficeSingleContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/Hospital/Office/OfficeMultiContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/Hospital/Information/InformationMain.Style.xaml" />
+
+        <ResourceDictionary Source="/Contents/Hospital/Promotion/PromotionContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/ETC/Error/ErrorContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/ETC/NoSchedule/NoScheduleContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/ETC/Updater/UpdaterContent.Style.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+
+      <Style TargetType="{x:Type ui:ClockControl}" x:Key="ClockStyle">
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="DateFontColor" Value="{StaticResource Gray800}" />
+        <Setter Property="TimeFontColor" Value="{StaticResource Gray800}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="ClockSetting" Value="{Binding Contents.ClockSetting}" />
+        <Setter Property="Visibility" Value="{Binding Contents.ClockSetting.Enabled, Converter={StaticResource BooleanToVisibilityConverter}}" />
+      </Style>
+
+      <Style TargetType="{x:Type ui:MarqueeControl}" x:Key="MarqueeStyle">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="{StaticResource primary}" />
+        <Setter Property="FontSize" Value="44" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="ScrollSpeed" Value="{Binding Contents.Notice.ScrollSpeed, Mode=OneWay}" />
+        <Setter Property="Message" Value="{Binding Contents.Notice.NoticeMessage, Mode=OneWay}" />
+      </Style>
+    </ResourceDictionary>
+  </Window.Resources>
+
+  <Border x:Name="WindowOuterBorder" Background="Black">
+    <Grid Background="White"
+          Visibility="{Binding Contents.IsScreenOn, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+      <Grid.RowDefinitions>
+        <!-- 0. title bar -->
+        <RowDefinition Height="auto" />
+        <!-- 1. Content Area -->
+        <RowDefinition Height="100*" />
+        <!-- 2. Notice -->
+        <RowDefinition Height="auto" />
+      </Grid.RowDefinitions>
+
+      <!-- =============================================== -->
+      <!-- 0. Titlebar (병원로고, 타이틀, 시계)               -->
+      <!-- =============================================== -->
+      <Grid Grid.Row="0" Visibility="{Binding Contents.ShowTitleBar, Converter={StaticResource BooleanToVisibilityConverter}}">
+        <!-- LargeDefault -->
+        <Grid Height="130" Visibility="{Binding Contents.TitlebarStyle, Converter={local:TitleBarVisibleConverter},
+                                                ConverterParameter={x:Static client:TitlebarStyle.LargeNormal}}">
+          <Grid.Background>
+            <ImageBrush ImageSource="{StaticResource TitleBar_Panel_Large}" Stretch="None" />
+          </Grid.Background>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+
+          <!-- 0.logo -->
+          <Border Grid.Column="0">
+            <Image Source="{StaticResource LogoLarge_Detail}" Stretch="None" />
+          </Border>
+
+          <!-- 1.ContentTitle -->
+          <Border Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="{x:Null}" HorizontalAlignment="Center">
+            <TextBlock Text="{Binding Contents.ContentTitle}"
+                       Style="{StaticResource CommonTextBlock}"
+                       FontSize="60" FontWeight="Bold"
+                       Foreground="{StaticResource primary}" />
+          </Border>
+          <!-- 2. LargeDefault: Clock -->
+          <Border Grid.Column="2">
+            <ui:ClockControl Style="{StaticResource ClockStyle}"
+                             DateFontSize="28"
+                             TimeFontSize="44" />
+          </Border>
+        </Grid>
+
+        <!-- LargeFuneral -->
+        <Grid Height="130" Visibility="{Binding Contents.TitlebarStyle, Converter={local:TitleBarVisibleConverter},
+                                                ConverterParameter={x:Static client:TitlebarStyle.LargeNormalBlack}}">
+          <Grid.Background>
+            <ImageBrush ImageSource="{StaticResource TitleBar_Panel_Large}" Stretch="None" />
+          </Grid.Background>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+
+          <!-- 0.logo -->
+          <Border Grid.Column="0" Margin="40,0,0,0">
+            <Image Source="{StaticResource LogoLarge_Black}" Stretch="None" />
+          </Border>
+
+          <!-- 1.ContentTitle -->
+          <Border Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="{x:Null}" HorizontalAlignment="Center">
+            <TextBlock Text="{Binding Contents.ContentTitle}"
+                       Style="{StaticResource CommonTextBlock}"
+                       FontSize="60" FontWeight="Bold"
+                       Foreground="{StaticResource primary}" />
+          </Border>
+          <!-- 2. Lagre : Clock -->
+          <Border Grid.Column="2">
+            <ui:ClockControl Style="{StaticResource ClockStyle}"
+                             DateFontSize="28"
+                             TimeFontSize="44" />
+          </Border>
+        </Grid>
+
+        <!-- MiddleExamRoom -->
+        <Grid Height="410" Visibility="{Binding Contents.TitlebarStyle, Converter={local:TitleBarVisibleConverter},
+                                                ConverterParameter={x:Static client:TitlebarStyle.MiddleExamRoom}}">
+          <Grid.Background>
+            <ImageBrush ImageSource="{StaticResource ExamTitleBG1}" Stretch="UniformToFill" />
+          </Grid.Background>
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+          </Grid.RowDefinitions>
+
+          <!-- 0. Middle Clock -->
+          <Border Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <ui:ClockControl Style="{StaticResource ClockStyle}"
+                             DateFontSize="36"
+                             TimeFontSize="36"
+                             DateFontColor="White"
+                             TimeFontColor="White" />
+          </Border>
+
+          <!-- 1.ContentTitle -->
+          <Border Grid.Row="1" HorizontalAlignment="Right">
+            <TextBlock Text="{Binding Contents.ContentTitle}" Margin="0,0,40,0"
+                       Style="{StaticResource CommonTextBlock}"
+                       FontSize="110" FontWeight="Bold"
+                       Foreground="White" />
+          </Border>
+        </Grid>
+      </Grid>
+
+      <!-- =============================================== -->
+      <!-- 1. Content View                                 -->
+      <!-- =============================================== -->
+      <Border Grid.Row="1" Background="White">
+        <ContentControl Content="{Binding Contents}" />
+      </Border>
+
+      <!-- =============================================== -->
+      <!-- 2. Notice                                       -->
+      <!-- =============================================== -->
+      <Grid Grid.Row="2" Visibility="{Binding Contents.ShowBottomArea, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+        <!-- LargeNotice -->
+        <Grid Height="84" Visibility="{Binding Contents.BottomStyle, Converter={local:BottomVisibleConverter},
+                          ConverterParameter={x:Static client:BottomStyle.LargeNotice}}">
+          <ui:MarqueeControl Style="{StaticResource MarqueeStyle}" />
+        </Grid>
+
+        <!-- MiddleNotice -->
+        <Grid Height="84" Visibility="{Binding Contents.BottomStyle, Converter={local:BottomVisibleConverter},
+                          ConverterParameter={x:Static client:BottomStyle.MiddleNotice}}">
+        </Grid>
+
+        <!-- Logo -->
+        <Border Height="125" Visibility="{Binding Contents.BottomStyle, Converter={local:BottomVisibleConverter},
+                             ConverterParameter={x:Static client:BottomStyle.Logo}}"
+                Margin="30,0,30,0"
+                BorderThickness="0,3,0,0" BorderBrush="{StaticResource primary}">
+
+          <Image Source="{StaticResource LogoMiddle_Bottom}"
+                 Height="50"
+                 Stretch="Uniform"
+                 VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Border>
+      </Grid>
+    </Grid>
+  </Border>
+</Window>

@@ -1,0 +1,127 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:UIControls">
+
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Windows/Styles/WindowCommon.xaml"/>
+    <ResourceDictionary Source="pack://application:,,,/UIControls;component/Windows/Styles/WindowButton.xaml"/>
+  </ResourceDictionary.MergedDictionaries>
+
+  <!-- 플러그인, Menu/ContextMenu, Close button, Title 왼쪽 정렬  -->
+
+  <!-- ################################################################### -->
+  <!-- CustomDialogWindow                                                  -->
+  <!-- ################################################################### -->
+
+  <Style TargetType="{x:Type local:CustomDialogWindow}" BasedOn="{StaticResource BaseWindowStyle}">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type local:CustomDialogWindow}">
+
+          <!-- window 전체를 둘러싸는 테두리 -->
+          <Border x:Name="WindowOutBorder"
+                  Background="{StaticResource OutBorder_Background}"
+                  BorderThickness="{StaticResource OutBorder_BorderThickness}"
+                  BorderBrush="{StaticResource OutBorder_BorderBrush.Dialog}"
+                  CornerRadius="{StaticResource OutBorder_CornerRadius}">
+
+            <Grid x:Name="LayoutRoot">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding Source={StaticResource TitleBar_Height}}"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="*"/>
+              </Grid.RowDefinitions>
+
+              <!--0. Titlebar (icon, title, contextmenu, close) -->
+              <Grid x:Name="PART_TitleBar" Background="Transparent">
+                <Border Background="{StaticResource TitleBar_Background}"
+                        BorderThickness="{StaticResource TitleBar_BorderThickness}"
+                        CornerRadius="{StaticResource TitleBar_CornerRadius}">
+                  <Grid>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="40"/>
+                      <ColumnDefinition Width="*"/>
+                      <ColumnDefinition Width="35"/>
+                      <ColumnDefinition Width="35"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- 0. App icon -->
+                    <Grid Grid.Column="0">
+                      <Image Source="{TemplateBinding Icon}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform"
+                         Width="{Binding Source={StaticResource WindowIcon_Width}}"
+                         Height="{Binding Source={StaticResource WindowIcon_Height}}" />
+                    </Grid>
+
+                    <!-- 1. title (no columnspan) -->
+                    <Border  Grid.Column="1" BorderBrush="{x:Null}" HorizontalAlignment="Left">
+                      <TextBlock x:Name="PART_Title" IsHitTestVisible="False"
+                                 Text="{TemplateBinding Title}"
+                                 HorizontalAlignment="Left"  VerticalAlignment="Center" TextAlignment="Left"
+                                 TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
+                                 FontSize="{Binding Source={StaticResource TitleBar_FontSize}}"
+                                 Panel.ZIndex="0" IsEnabled="{TemplateBinding IsActive}">
+                        <TextBlock.Resources>
+                          <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Foreground" Value="{StaticResource TitleBar_Foreground}"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Style.Triggers>
+                              <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=IsActive}" Value="false">
+                                <Setter Property="Foreground" Value="{StaticResource TitleBar_Foreground.Inactive}"/>
+                                <Setter Property="FontWeight" Value="Normal"/>
+                              </DataTrigger>
+                            </Style.Triggers>
+                          </Style>
+                        </TextBlock.Resources>
+                      </TextBlock>
+                    </Border>
+                    <!-- 2. context menu & main menu -->
+                    <StackPanel Grid.Column="2" Orientation="Horizontal">
+                      <Button x:Name="ContextMenuButton" Style="{StaticResource WindowButtonStyle}" Visibility="Collapsed">
+                        <Button.ContextMenu>
+                          <ContextMenu Style="{StaticResource Style.ContextMenu.Base}"/>
+                        </Button.ContextMenu>
+                        <Path Style="{StaticResource WindowButton_Horizon}" />
+                      </Button>
+
+                      <Menu x:Name="MainMenu" IsMainMenu="True" Style="{StaticResource Style.Menu.Base}"
+                        Visibility="Collapsed" />
+                    </StackPanel>
+
+                    <!-- 3. button -->
+                    <Grid x:Name="ButtonsArea" Grid.Column="3" Background="Transparent">
+                      <Button x:Name="CloseButton" Style="{StaticResource WindowButtonStyle}">
+                        <Path Style="{StaticResource WindowButton_Close}" />
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Border>
+              </Grid>
+
+              <!-- 1. seperator -->
+              <Rectangle Grid.Row="1" Height="1" Fill="{StaticResource Seperator_Background}"/>
+
+              <!-- 2. Client content -->
+              <Border Grid.Row="2"
+                      Background="{StaticResource Client_Background}"
+                      BorderThickness="{StaticResource Client_BorderThickness}"
+                      CornerRadius="{StaticResource Client_CornerRadius}">
+                <Grid Panel.ZIndex="10" Margin="3">
+                  <AdornerDecorator>
+                    <ContentPresenter x:Name="PART_MainContentPresenter"/>
+                  </AdornerDecorator>
+                </Grid>
+              </Border>
+            </Grid>
+          </Border>
+
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsActive" Value="false ">
+              <Setter TargetName="WindowOutBorder" Property="BorderBrush" Value="{StaticResource OutBorder_BorderBrush.Inactive}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+</ResourceDictionary>

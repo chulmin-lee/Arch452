@@ -1,0 +1,127 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+  <!-- ################################################################### -->
+  <!-- Window button                                                       -->
+  <!-- ################################################################### -->
+  <SolidColorBrush x:Key="WindowButton_Foreground"        Color="#bdc4cf"/>
+  <SolidColorBrush x:Key="WindowButton_Foreground.Hover"  Color="White"/>
+
+  <!-- icon button -->
+  <Style x:Key="WindowButton_Shape.Base" TargetType="{x:Type Path}">
+    <Setter Property="Fill" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}, Path=Foreground}" />
+    <Setter Property="Stretch" Value="Uniform" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="RenderOptions.EdgeMode" Value="Aliased" />
+  </Style>
+
+  <Style x:Key="WindowButton_Line.Base" TargetType="{x:Type Path}">
+    <Setter Property="Fill" Value="Transparent" />
+    <Setter Property="Stroke" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}, Path=Foreground}" />
+    <Setter Property="Stretch" Value="Uniform" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="RenderOptions.EdgeMode" Value="Aliased" />
+    <Setter Property="StrokeThickness" Value="2" />
+    <Setter Property="StrokeStartLineCap" Value="Flat" />
+    <Setter Property="StrokeEndLineCap" Value="Flat" />
+    <Setter Property="Stretch" Value="Uniform" />
+    <Setter Property="UseLayoutRounding" Value="True" />
+  </Style>
+
+  <Style x:Key="WindowButton_Minimize" TargetType="{x:Type Path}" BasedOn="{StaticResource WindowButton_Line.Base}">
+    <Setter Property="Data">
+      <Setter.Value>
+        <LineGeometry StartPoint="0,0" EndPoint="40,0" />
+      </Setter.Value>
+    </Setter>
+    <Setter Property="VerticalAlignment" Value="Bottom" />
+  </Style>
+
+  <Style x:Key="WindowButton_Horizon" TargetType="{x:Type Path}" BasedOn="{StaticResource WindowButton_Line.Base}">
+    <Setter Property="Data">
+      <Setter.Value>
+        <GeometryGroup>
+          <LineGeometry StartPoint="0,0"  EndPoint="40,0" />
+          <LineGeometry StartPoint="0,15" EndPoint="40,15" />
+          <LineGeometry StartPoint="0,30" EndPoint="40,30" />
+        </GeometryGroup>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Stretch" Value="Fill" />
+  </Style>
+
+  <Style x:Key="WindowButton_Restore" TargetType="{x:Type Path}" BasedOn="{StaticResource WindowButton_Line.Base}">
+    <!--<Setter Property="Data">
+      <Setter.Value>
+        <GeometryGroup>
+          <RectangleGeometry Rect="0, 10, 30, 30" />
+          <LineGeometry StartPoint="10,10" EndPoint="10,0" />
+          <LineGeometry StartPoint="10,0" EndPoint="40,0" />
+          <LineGeometry StartPoint="40,0" EndPoint="40,30" />
+          <LineGeometry StartPoint="40,30" EndPoint="30,30" />
+        </GeometryGroup>
+      </Setter.Value>
+    </Setter>-->
+    <!--<Setter Property="Data" Value="M0,10 H30 V40 H0 V10 M10,0 V10 M10,0 H40 V30 H30" />-->
+    <!--<Setter Property="Data" Value="M0,4 H12 V16 H0 V4 M4,0 V4 M4,0 H16 V12 H12" />-->
+    <Setter Property="Data" Value="M0,3 H11 V15 H0 V3 M3,0 V3 M3,0 H15 V11 H11" />
+    <Setter Property="StrokeThickness" Value="1.5" />
+    <Setter Property="Stretch" Value="None" />
+    <Setter Property="Width" Value="16" />
+    <Setter Property="Height" Value="16" />
+  </Style>
+
+  <Style x:Key="WindowButton_Maximize" TargetType="{x:Type Path}" BasedOn="{StaticResource WindowButton_Line.Base}">
+    <Setter Property="Data">
+      <Setter.Value>
+        <RectangleGeometry Rect="0, 0, 40, 40" />
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="WindowButton_Close" TargetType="{x:Type Path}" BasedOn="{StaticResource WindowButton_Line.Base}">
+    <Setter Property="Data" Value="M0,0 L40, 40 M0,40 L40, 0" />
+    <Setter Property="StrokeThickness" Value="1.5" />
+  </Style>
+
+  <Style TargetType="{x:Type Button}" x:Key="WindowButtonStyle">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="Width" Value="35" />
+    <Setter Property="Height" Value="32" />
+    <Setter Property="Foreground" Value="{StaticResource WindowButton_Foreground}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ButtonBase}">
+          <Border x:Name="Chrome"
+                  Padding="7"
+                  Background="Transparent"
+                  SnapsToDevicePixels="True">
+
+            <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}"
+                              Content="{TemplateBinding Content}"
+                              ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              Margin="{TemplateBinding Padding}"
+                              RecognizesAccessKey="True"
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter Property="Foreground" Value="{StaticResource WindowButton_Foreground.Hover}" />
+              <!--<Setter TargetName="Chrome" Property="Background"  Value="#23272b" />-->
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+</ResourceDictionary>

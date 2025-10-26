@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:UIControls">
+
+  <Style TargetType="{x:Type TextBlock}"  x:Key="DefaultTextBlockStyle">
+    <Setter Property="Focusable" Value="false" />
+    <Setter Property="IsHitTestVisible" Value="false" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="FontFamily" Value="Tahoma" />
+    <Setter Property="FontWeight" Value="Normal" />
+    <Setter Property="Foreground" Value="#EEEEEE" />
+  </Style>
+
+
+  <Style TargetType="{x:Type local:NumberTextBlock}" BasedOn="{StaticResource DefaultTextBlockStyle}">
+    <Setter Property="ScientificNotation" Value="True" />
+    <Setter Property="IntegerPoint" Value="7" />
+    <Setter Property="DecimalPoint" Value="4" />
+  </Style>
+
+  <!--<Style TargetType="{x:Type local:NumberTextBlockExt}"  BasedOn="{StaticResource DefaultTextBlockStyle}">
+    <Setter Property="ScientificNotation" Value="True" />
+  </Style>-->
+
+</ResourceDictionary>

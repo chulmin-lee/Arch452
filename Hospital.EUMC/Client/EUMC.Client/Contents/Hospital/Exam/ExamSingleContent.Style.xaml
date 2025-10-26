@@ -1,0 +1,135 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:ui="clr-namespace:UIControls;assembly=UIControls"
+                    xmlns:local="clr-namespace:EUMC.Client">
+
+  <Style TargetType="{x:Type Label}">
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="FontWeight" Value="Normal" />
+  </Style>
+
+  <DataTemplate DataType="{x:Type local:ExamSingleContentVM}">
+
+    <Grid DataContext="{Binding ITEM}" x:Name="main_grid">
+
+      <Grid>
+        <Grid.RowDefinitions>
+          <!-- 1.대기인원 -->
+          <RowDefinition Height="120" />
+          <!-- 1.진료중 -->
+          <RowDefinition Height="300" />
+          <!-- 2. 대기환자 목록 -->
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- ==================================================== -->
+        <!-- 0.대기인원 -->
+        <!-- ==================================================== -->
+        <Grid Grid.Row="0" Background="{StaticResource accent2}">
+          <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Foreground="Black">
+              <Run FontSize="60" Text="현재 대기인원 &#x00A0; " FontWeight="Medium" />
+              <Run FontSize="80" Text="{Binding WaitCount}" FontWeight="Bold" />
+              <Run FontSize="60" Text="&#x00A0; 명" FontWeight="Medium" />
+            </TextBlock>
+          </Border>
+        </Grid>
+
+        <!-- ==================================================== -->
+        <!-- 1.진료중 -->
+        <!-- ==================================================== -->
+        <Grid Grid.Row="1" Margin="0,42,0,24">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition Height="140" />
+          </Grid.RowDefinitions>
+
+          <Border Grid.Row="0">
+            <Label Content="검사중" Style="{StaticResource CommonLabel}" FontSize="64" Foreground="#F68D38" />
+          </Border>
+          <Border Grid.Row="1" HorizontalAlignment="Center">
+            <TextBlock FontWeight="Bold" Foreground="Black">
+                <Run FontSize="120" Text="{Binding RoomPatient.PatientName}" />
+                <Run FontSize="100">&#x00A0;님</Run>
+            </TextBlock>
+          </Border>
+        </Grid>
+
+        <!-- ==================================================== -->
+        <!-- 2. 대기환자 목록 (175*4) -->
+        <!-- ==================================================== -->
+        <Grid Grid.Row="2" Margin="15,0,15,20">
+
+          <ItemsControl ItemsSource="{Binding Patients}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate>
+                <UniformGrid Rows="{Binding CONFIG.ItemRows}" Columns="1" />
+              </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Grid Margin="32,16,32,16">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1.8*" />
+                  </Grid.ColumnDefinitions>
+
+                  <Grid Grid.Column="0">
+                    <Grid.Resources>
+                      <Style TargetType="{x:Type Grid}">
+                        <Setter Property="Background" Value="{StaticResource primary}" />
+                        <Style.Triggers>
+                          <DataTrigger Binding="{Binding Index}" Value="1">
+                            <Setter Property="Background" Value="{StaticResource accent2}" />
+                          </DataTrigger>
+                        </Style.Triggers>
+                      </Style>
+                    </Grid.Resources>
+
+                    <TextBlock>
+                      <TextBlock.Resources>
+                        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource CommonTextBlock}">
+                          <Setter Property="FontSize" Value="52" />
+                          <Setter Property="TextWrapping" Value="NoWrap" />
+                          <Setter Property="Foreground" Value="White" />
+                          <Setter Property="Text" Value="대기중입니다" />
+                          <Style.Triggers>
+                            <DataTrigger Binding="{Binding Index}" Value="1">
+                              <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+                              <Setter Property="Foreground" Value="Black" />
+                              <Setter Property="Text" Value="다음순서 입니다" />
+                              <Setter Property="TextAlignment" Value="Center" />
+                              <Setter Property="Margin" Value="60,0,60,0" />
+                            </DataTrigger>
+                          </Style.Triggers>
+                        </Style>
+                      </TextBlock.Resources>
+                    </TextBlock>
+                  </Grid>
+
+                  <Grid Grid.Column="1" Background="#F2F2F2">
+                    <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                      <Label Content="{Binding PatientName}"
+                             FontSize="100"
+                             FontWeight="Bold"
+                             Foreground="{StaticResource Gray800}"
+                             Style="{StaticResource CommonLabel}" />
+                    </Border>
+                  </Grid>
+                </Grid>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </Grid>
+
+        <!-- 2.Seperator -->
+      </Grid>
+
+      <ContentControl Content="{Binding CallMessages}"
+                      Visibility="{Binding CallMessages.ShowPopup, Converter={StaticResource BooleanToVisibilityConverter}}"
+                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>
