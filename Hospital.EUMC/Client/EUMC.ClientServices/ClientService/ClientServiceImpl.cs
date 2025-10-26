@@ -5,7 +5,7 @@ namespace EUMC.ClientServices
 {
   public class ClientServiceImpl : ClientServiceBase
   {
-    public ClientServiceImpl(IClientViewManager vm) : base(vm, true)
+    public ClientServiceImpl(IClientViewManager vm) : base(vm, false)
     {
     }
     protected override ServerConfig get_service_config()

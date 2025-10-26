@@ -146,6 +146,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Fonts\PretendardVariable.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -268,16 +269,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Fonts\" />
-    <Folder Include="Resources\Images\Delivery\" />
-    <Folder Include="Resources\Images\Emergency\" />
-    <Folder Include="Resources\Images\Exam\" />
-    <Folder Include="Resources\Images\Funeral\" />
-    <Folder Include="Resources\Images\MainView\" />
-    <Folder Include="Resources\Images\Office\" />
-    <Folder Include="Resources\Sound\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Common\Common.csproj">
       <Project>{ae628b92-969a-4032-a07e-b4d0b7712189}</Project>
@@ -303,6 +295,49 @@
       <Project>{b7153654-dd3e-4a84-9994-90ce182d4ebc}</Project>
       <Name>EUMC.ClientServices</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Delivery\delivery-baby-F.png" />
+    <Resource Include="Resources\Images\Delivery\delivery-baby-M.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Emergency\er_blood_finished.png" />
+    <Resource Include="Resources\Images\Emergency\er_blood_inspecting.png" />
+    <Resource Include="Resources\Images\Emergency\er_blood_progress.png" />
+    <Resource Include="Resources\Images\Emergency\er_collabo_progress.png" />
+    <Resource Include="Resources\Images\Emergency\er_collabo_visited.png" />
+    <Resource Include="Resources\Images\Emergency\er_discharged.png" />
+    <Resource Include="Resources\Images\Emergency\er_hospitalization.png" />
+    <Resource Include="Resources\Images\Emergency\er_medical_care_progress.png" />
+    <Resource Include="Resources\Images\Emergency\er_medical_care_visited.png" />
+    <Resource Include="Resources\Images\Emergency\er_radio_finished.png" />
+    <Resource Include="Resources\Images\Emergency\er_radio_wait.png" />
+    <Resource Include="Resources\Images\Emergency\er_visit_doctor.png" />
+    <Resource Include="Resources\Images\Emergency\er_ward_assign.png" />
+    <Resource Include="Resources\Images\Emergency\er_ward_wait.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Exam\exam-title-1.png" />
+    <Resource Include="Resources\Images\Exam\exam-title-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Funeral\funeral-photo.png" />
+    <Resource Include="Resources\Images\Funeral\funeral-small-photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MainView\logo-large-black.png" />
+    <Resource Include="Resources\Images\MainView\logo-large-detail.png" />
+    <Resource Include="Resources\Images\MainView\logo-large-normal.png" />
+    <Resource Include="Resources\Images\MainView\logo-middle-bottom.png" />
+    <Resource Include="Resources\Images\MainView\titlebar-panel-large.png" />
+    <Resource Include="Resources\Images\MainView\Updater.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Office\doctor-default.png" />
+    <Resource Include="Resources\Images\Office\doctor-test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Sound\Doorbell.WAV" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
