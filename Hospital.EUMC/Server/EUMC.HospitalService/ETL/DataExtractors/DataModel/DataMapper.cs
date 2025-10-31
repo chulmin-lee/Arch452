@@ -185,12 +185,6 @@ namespace EUMC.HospitalService
             .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.PT_NM))
             .ForMember(dest => dest.Gubn, opt => opt.MapFrom(src => src.GUBN))
             ;
-      // 여성암병원 초음파실
-      cfg.CreateMap<ENDO_WGO_PT_DTO, ENDO_WGO_PT_INFO>()
-            .ForMember(dest => dest.PatientNo, opt => opt.MapFrom(src => src.PT_NO))
-            .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.PT_NM))
-            .ForMember(dest => dest.Gubn, opt => opt.MapFrom(src => src.GUBUN))
-            ;
       // 방사선종양학과 일반촬영실
       cfg.CreateMap<RAD_PT_DTO, RAD_PT_INFO>()
             .ForMember(dest => dest.RoomCode, opt => opt.MapFrom(src => src.RAD_RM_NO))

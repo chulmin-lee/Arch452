@@ -401,11 +401,11 @@ namespace EUMC.HospitalService
     /// 여성 암병원 초음파 실 대기/검사 인원 조회
     /// </summary>
     /// <returns></returns>
-    public List<ENDO_WGO_PT_DTO> ENDO_WGO()
+    public List<ENDO_PT_DTO> ENDO_WGO()
     {
       var proc = "PKG_ELPD_DB.PC_WGO_PT_INFO_US";
       var param = new HospitalParamBuilder().HSP_TP_CD(HspCode).TRP_RSV_DT().Build();
-      return this.QueryProcedure<ENDO_WGO_PT_DTO>(XEDP, proc, param).ToList();
+      return this.QueryProcedure<ENDO_PT_DTO>(XEDP, proc, param).ToList();
     }
     #endregion
 

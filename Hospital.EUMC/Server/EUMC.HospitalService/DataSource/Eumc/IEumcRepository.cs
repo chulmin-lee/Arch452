@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ServiceCommon;
+using System.Collections.Generic;
 
 namespace EUMC.HospitalService
 {
@@ -41,9 +42,10 @@ namespace EUMC.HospitalService
     List<ANG_PT_DTO> ANG2_PT();
     List<ANG_PT_DTO> ANG_IMC_PT();
     List<ENDO_PT_DTO> ENDO_PT();
+    List<ENDO_PT_DTO> ENDO_WGO();
     List<RAD_PT_DTO> RAD_PT(List<string> exam_room_codes);
     List<RAD_TR_PT_DTO> RAD_TR_PT();
-    List<ENDO_WGO_PT_DTO> ENDO_WGO();
+    
     #endregion
 
     //=====================================

@@ -46,11 +46,9 @@
     <Compile Include="MessageLoaders\Loader\ALL\ALL_LoaderBase.cs" />
     <Compile Include="MessageLoaders\Loader\ALL\DRUG_Loader.cs" />
     <Compile Include="MessageLoaders\Loader\ALL\DR_SCH_Loader.cs" />
-    <Compile Include="MessageLoaders\Loader\ALL\ENDO_Loader.cs" />
+    <Compile Include="MessageLoaders\Loader\Group\ENDO_Loader.cs" />
     <Compile Include="MessageLoaders\Loader\ETC\ER_CPR_Loader.cs" />
-    <Compile Include="MessageLoaders\Loader\ALL\INSPECTION_Loader.cs" />
     <Compile Include="MessageLoaders\Loader\ALL\OPERATION_Loader.cs" />
-    <Compile Include="MessageLoaders\Loader\ETC\DR_PHOTO_Loader.cs" />
     <Compile Include="MessageLoaders\Loader\Group\ANG_Loader.cs" />
     <Compile Include="MessageLoaders\Loader\Group\ER_CONGESTION_Loader.cs" />
     <Compile Include="MessageLoaders\Loader\Group\ER_PATIENT_Loader.cs" />
@@ -58,7 +56,6 @@
     <Compile Include="MessageLoaders\Loader\Group\ICU_Loader.cs" />
     <Compile Include="MessageLoaders\Loader\Group\OPD_EXAM_Loader.cs" />
     <Compile Include="MessageLoaders\Loader\Group\OPD_OFFICE_Loader.cs" />
-    <Compile Include="MessageLoaders\Loader\Group\WARD_Loader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

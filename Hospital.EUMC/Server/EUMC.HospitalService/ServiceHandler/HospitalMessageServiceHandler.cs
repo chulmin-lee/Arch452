@@ -21,25 +21,24 @@ namespace EUMC.HospitalService
         //===================
         case SERVICE_ID.ER_PATIENT: return new ER_PATIENT_Loader();
         case SERVICE_ID.ER_CONGESTION: return new ER_CONGESTION_Loader();
-        case SERVICE_ID.ER_STATISTICS: return new ER_STATISTICS_Loader();
+        case SERVICE_ID.ER_CPR: return new ER_CPR_Loader();
         //===================
         // IPD
         //===================
-        case SERVICE_ID.DELIVERY_ROOM: return new DELIVERY_Loader();
         case SERVICE_ID.ICU: return new ICU_Loader();
         case SERVICE_ID.OPERATION: return new OPERATION_Loader();
-        case SERVICE_ID.WARD_ROOMS: return new WARD_Loader();
         //===================
         // OPD
         //===================
         case SERVICE_ID.OFFICE_PT: return new OPD_OFFICE_Loader();
         case SERVICE_ID.EXAM_PT: return new OPD_EXAM_Loader();
+        case SERVICE_ID.ANG: return new ANG_Loader();
         case SERVICE_ID.ENDO: return new ENDO_Loader();
+
         //===================
         // ETC
         //===================
         case SERVICE_ID.DRUG: return new DRUG_Loader();
-        case SERVICE_ID.DR_PHOTO: return new DR_PHOTO_Loader();
       }
       LOG.ec($"{id} not supported");
       return null;

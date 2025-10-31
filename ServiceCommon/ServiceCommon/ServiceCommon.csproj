@@ -56,7 +56,6 @@
     <Compile Include="Message\Hospital\Emergency\ER_CT.cs" />
     <Compile Include="Message\Hospital\Emergency\ER_PATIENT.cs" />
     <Compile Include="Message\Hospital\ETC\DRUG.cs" />
-    <Compile Include="Message\Hospital\ETC\DR_PHOTO.cs" />
     <Compile Include="Message\Hospital\ETC\DR_SCH.cs" />
     <Compile Include="Message\Hospital\IPD\ICU.cs" />
     <Compile Include="Message\Hospital\IPD\OPERATION.cs" />

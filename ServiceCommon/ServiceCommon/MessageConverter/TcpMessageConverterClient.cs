@@ -26,36 +26,28 @@ namespace ServiceCommon
           // 응급실
           //===============================
           case SERVICE_ID.ER_PATIENT: return typeof(ER_PATIENT_RESP);
-          case SERVICE_ID.ER_AREA_CONGEST: return typeof(ER_AREA_CONGEST_RESP);
           case SERVICE_ID.ER_CONGESTION: return typeof(ER_CONGESTION_RESP);
-          case SERVICE_ID.ER_ISOLATION: return typeof(ER_ISOLATION_RESP);
-          case SERVICE_ID.ER_STATISTICS: return typeof(ER_STATISTICS_RESP);
+          case SERVICE_ID.ER_CPR: return typeof(ER_CPR_RESP);
           //===============================
           // IPD
           //===============================
-          case SERVICE_ID.DELIVERY_ROOM: return typeof(DELIVERY_ROOM_RESP);
           case SERVICE_ID.ICU: return typeof(ICU_RESP);
           case SERVICE_ID.OPERATION: return typeof(OPERATION_RESP);
-          case SERVICE_ID.WARD_ROOMS: return typeof(WARD_ROOM_RESP);
           //===============================
           // OPD
           //===============================
           case SERVICE_ID.OFFICE_PT: return typeof(OFFICE_RESP);
           case SERVICE_ID.EXAM_PT: return typeof(EXAM_RESP);
-          case SERVICE_ID.INSPECTION: return typeof(INSPECTION_RESP);
+          case SERVICE_ID.ANG: return typeof(ANG_RESP);
           case SERVICE_ID.ENDO: return typeof(ENDO_RESP);
           //===============================
           // 기타
           //===============================
           case SERVICE_ID.DR_SCH: return typeof(DR_SCH_RESP);
           case SERVICE_ID.DRUG: return typeof(DRUG_RESP);
-          case SERVICE_ID.CAFETERIA: return typeof(CAFETERIA_RESP);
-          case SERVICE_ID.DR_PHOTO: return typeof(DR_PHOTO_RESP);
-          case SERVICE_ID.DR_PHOTO_NOTI: return typeof(DR_PHOTO_UPDATED);
           //===============================
           // 장례식장
           //===============================
-          case SERVICE_ID.FUNERAL_ROOM: return typeof(FUNERAL_RESP);
 
           //===============================
           // ticket
@@ -70,11 +62,11 @@ namespace ServiceCommon
           case SERVICE_ID.SVR_COMMAND: return typeof(SERVER_CMD_NOTI);
           case SERVICE_ID.SVR_STATUS: return typeof(SERVER_STATUS_NOTI);
           case SERVICE_ID.CLIENT_STATUS: return typeof(CLIENT_STATUS_RESP);
-          case SERVICE_ID.SVR_CALL_PATIENT: return typeof(CALL_PATIENT_NOTI);
-          case SERVICE_ID.SVR_CALL_ANNOUNCE: return typeof(CALL_ANNOUNCE_NOTI);
-          case SERVICE_ID.SVR_CALL_OPERATION: return typeof(CALL_OPERATION_NOTI);
-          case SERVICE_ID.SVR_BELL_CALL: return typeof(CALLL_BELL_NOTI);
-          case SERVICE_ID.USER_MESSAGE: return null;
+          //case SERVICE_ID.SVR_CALL_PATIENT: return typeof(CALL_PATIENT_NOTI);
+          //case SERVICE_ID.SVR_CALL_ANNOUNCE: return typeof(CALL_ANNOUNCE_NOTI);
+          //case SERVICE_ID.SVR_CALL_OPERATION: return typeof(CALL_OPERATION_NOTI);
+          //case SERVICE_ID.SVR_BELL_CALL: return typeof(CALLL_BELL_NOTI);
+          //case SERVICE_ID.USER_MESSAGE: return null;
         }
         #endregion types
 

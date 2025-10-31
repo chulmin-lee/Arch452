@@ -13,36 +13,26 @@ namespace EUMC.HospitalService
         #region Emergency
 
         case SERVICE_ID.ER_PATIENT: return new ER_PATIENT_Service(owner);
-        case SERVICE_ID.ER_AREA_CONGEST: return new ER_AREA_CONGEST_Service(owner);
         case SERVICE_ID.ER_CONGESTION: return new ER_CONGESTION_Service(owner);
-        case SERVICE_ID.ER_ISOLATION: return new ER_ISOLATION_Service(owner);
-        case SERVICE_ID.ER_STATISTICS: return new ER_STATISTICS_Service(owner);
+        case SERVICE_ID.ER_CPR: return new ER_CPR_Service(owner);
         #endregion Emergency
 
         #region IPD
         case SERVICE_ID.ICU: return new ICU_Service(owner);
         case SERVICE_ID.OPERATION: return new OPERATION_Service(owner);
-        case SERVICE_ID.DELIVERY_ROOM: return new DELIVERY_Service(owner);
-        case SERVICE_ID.WARD_ROOMS: return new WARD_Service(owner);
         #endregion IPD
 
         #region OPD
-
-        case SERVICE_ID.OFFICE_PT: return new OFFICE_PT_Service(owner);
+        case SERVICE_ID.OFFICE_PT: return new OFFICE_PT_Service(owner, o.OFFICE_PT);
         case SERVICE_ID.EXAM_PT: return new EXAM_PT_Service(owner);
-        case SERVICE_ID.INSPECTION: return new INSPECTION_Service(owner);
+        case SERVICE_ID.ANG: return new ANG_Service(owner);
         case SERVICE_ID.ENDO: return new ENDO_Service(owner);
         #endregion OPD
 
         #region ETC
         case SERVICE_ID.DRUG: return new DRUG_Service(owner);
-        case SERVICE_ID.DR_SCH: return new DR_SCH_Service(owner);
-        case SERVICE_ID.DR_PHOTO:
-          {
-            return new DR_PHOTO_Service(owner, o.OFFICE_PT);
-          }
+        //case SERVICE_ID.DR_SCH: return new DR_SCH_Service(owner);
         #endregion ETC
-
         default:
           {
             throw new ServiceException($"{id} not supported");

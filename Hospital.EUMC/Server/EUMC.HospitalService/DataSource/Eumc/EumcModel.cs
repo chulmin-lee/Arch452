@@ -340,12 +340,12 @@ namespace EUMC.HospitalService
   /// <summary>
   /// 여성암병원 초음파실 대기/검사 현황
   /// </summary>
-  public class ENDO_WGO_PT_DTO : OriginDataModel
-  {
-    [Origin(DTO.UNIQUE)] public string PT_NO { get; set; }
-    [Origin] public string PT_NM { get; set; }
-    [Origin(DTO.UNIQUE)] public string GUBUN { get; set; }
-  }
+  //public class ENDO_WGO_PT_DTO : OriginDataModel
+  //{
+  //  [Origin(DTO.UNIQUE)] public string GUBUN { get; set; }
+  //  [Origin(DTO.UNIQUE)] public string PT_NO { get; set; }
+  //  [Origin] public string PT_NM { get; set; }
+  //}
   /// <summary>
   /// 영상의학과 일반촬영실 대기/완료 환자
   /// </summary>

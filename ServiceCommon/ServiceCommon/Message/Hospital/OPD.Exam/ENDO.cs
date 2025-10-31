@@ -17,6 +17,10 @@ namespace ServiceCommon
   {
     public List<ENDO_PT_INFO> Patients { get; set; } = new List<ENDO_PT_INFO>();
     public ENDO_RESP() : base(SERVICE_ID.ENDO) { }
+    public ENDO_RESP(ENDO_PT_INFO d) : this()
+    {
+      this.Patients.Add(d);
+    }
     public ENDO_RESP(List<ENDO_PT_INFO> d) : this()
     {
       this.Patients = d;

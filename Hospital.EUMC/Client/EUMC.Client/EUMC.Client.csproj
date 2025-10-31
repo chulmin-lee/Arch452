@@ -107,9 +107,6 @@
     <Compile Include="Contents\Hospital\Operation\OperationInformation.cs" />
     <Compile Include="Contents\Hospital\Promotion\PromotionContentVM.cs" />
     <Compile Include="Contents\Hospital\Promotion\PromotionInformation.cs" />
-    <Compile Include="Contents\Hospital\WardRoom\WardConverter.cs" />
-    <Compile Include="Contents\Hospital\WardRoom\WardRoomContentVM.cs" />
-    <Compile Include="Contents\Hospital\WardRoom\WardRoomInformation.cs" />
     <Compile Include="Contents\IContentViewModel.cs" />
     <Compile Include="Window\ContentWindow\ContentWindow.xaml.cs">
       <DependentUpon>ContentWindow.xaml</DependentUpon>
@@ -249,10 +246,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Contents\Hospital\Promotion\PromotionContent.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\WardRoom\WardRoomContent.Style.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

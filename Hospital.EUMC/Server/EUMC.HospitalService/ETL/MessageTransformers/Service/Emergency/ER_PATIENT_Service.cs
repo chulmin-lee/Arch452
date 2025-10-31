@@ -28,6 +28,7 @@ namespace EUMC.HospitalService
     /// <returns></returns>
     INotifyMessage emergency_update(UpdateData<ER_PATIENT_INFO> updated)
     {
+      /*
       var items = new List<ER_PATIENT_GROUP>();
       // 성인/소아 변경 사항 구분
       var types = updated.ChangedAll.Select(x => x.IsChild).Distinct().ToList();
@@ -43,6 +44,8 @@ namespace EUMC.HospitalService
       }
 
       return new NotifyMessage<ER_PATIENT_GROUP> { ID = this.ID, Updated = items };
+      */
+      return null;
     }
   }
 }
