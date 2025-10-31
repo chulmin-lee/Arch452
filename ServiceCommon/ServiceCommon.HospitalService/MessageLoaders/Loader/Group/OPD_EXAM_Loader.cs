@@ -8,7 +8,7 @@ namespace ServiceCommon.HospitalService
 {
   public class OPD_EXAM_Loader : Grouping_LoaderBase<OPD_ROOM_INFO, string>
   {
-    public OPD_EXAM_Loader() : base(SERVICE_ID.EXAM_ROOM)
+    public OPD_EXAM_Loader() : base(SERVICE_ID.EXAM_PT)
     {
     }
     protected override ServiceMessage request_service(ServiceMessage m)

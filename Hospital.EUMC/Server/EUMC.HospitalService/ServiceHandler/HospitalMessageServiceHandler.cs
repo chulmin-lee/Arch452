@@ -32,8 +32,8 @@ namespace EUMC.HospitalService
         //===================
         // OPD
         //===================
-        case SERVICE_ID.OFFICE_ROOM: return new OPD_OFFICE_Loader();
-        case SERVICE_ID.EXAM_ROOM: return new OPD_EXAM_Loader();
+        case SERVICE_ID.OFFICE_PT: return new OPD_OFFICE_Loader();
+        case SERVICE_ID.EXAM_PT: return new OPD_EXAM_Loader();
         case SERVICE_ID.ENDO: return new ENDO_Loader();
         //===================
         // ETC
@@ -51,21 +51,19 @@ namespace EUMC.HospitalService
       //===================
       // Emergency
       //===================
-      map.Add(PACKAGE.ER_PATIENT, new List<SERVICE_ID> { SERVICE_ID.ER_PATIENT, SERVICE_ID.ER_CONGESTION, SERVICE_ID.ER_STATISTICS });
+      map.Add(PACKAGE.ER_PATIENT, new List<SERVICE_ID> { SERVICE_ID.ER_PATIENT, SERVICE_ID.ER_CONGESTION, SERVICE_ID.ER_CPR });
       //===================
       // IPD
       //===================
-      map.Add(PACKAGE.DELIVERY_ROOM, new List<SERVICE_ID> { SERVICE_ID.DELIVERY_ROOM });
       map.Add(PACKAGE.ICU, new List<SERVICE_ID> { SERVICE_ID.ICU });
       map.Add(PACKAGE.OPERATION, new List<SERVICE_ID> { SERVICE_ID.OPERATION });
-      map.Add(PACKAGE.WARD_ROOMS, new List<SERVICE_ID> { SERVICE_ID.WARD_ROOMS });
       //===================
       // OPD
       //===================
-      map.Add(PACKAGE.OFFICE_SINGLE, new List<SERVICE_ID> { SERVICE_ID.OFFICE_ROOM, SERVICE_ID.DR_PHOTO });
-      map.Add(PACKAGE.OFFICE_MULTI, new List<SERVICE_ID> { SERVICE_ID.OFFICE_ROOM });
-      map.Add(PACKAGE.EXAM_SINGLE, new List<SERVICE_ID> { SERVICE_ID.EXAM_ROOM });
-      map.Add(PACKAGE.EXAM_MULTI, new List<SERVICE_ID> { SERVICE_ID.EXAM_ROOM });
+      map.Add(PACKAGE.OFFICE_SINGLE, new List<SERVICE_ID> { SERVICE_ID.OFFICE_PT });
+      map.Add(PACKAGE.OFFICE_MULTI, new List<SERVICE_ID> { SERVICE_ID.OFFICE_PT });
+      map.Add(PACKAGE.EXAM_SINGLE, new List<SERVICE_ID> { SERVICE_ID.EXAM_PT });
+      map.Add(PACKAGE.EXAM_MULTI, new List<SERVICE_ID> { SERVICE_ID.EXAM_PT });
       map.Add(PACKAGE.ENDO, new List<SERVICE_ID> { SERVICE_ID.ENDO });
       //===================
       // ETC

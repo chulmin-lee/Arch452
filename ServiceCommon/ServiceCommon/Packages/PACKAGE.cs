@@ -28,9 +28,13 @@
     EXAM_MULTI = 304,
     EXAM_MULTI_PET = 305,
     EXAM_OFFICE_MIX = 306,
-    INSPECTION = 307,
-    ENDO = 308,
+    
+    ANG = 320,
 
+    ENDO = 328,
+
+
+    INSPECTION = 330,
     //---------------------------------------
     // ETC
     //---------------------------------------

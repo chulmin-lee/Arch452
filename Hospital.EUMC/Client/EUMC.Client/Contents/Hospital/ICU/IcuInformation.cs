@@ -34,14 +34,14 @@ namespace EUMC.Client
         {
           foreach (var d in o.Datas)
           {
-            var find = _groups.Where(x => x.IcuCode == d.WardCode).FirstOrDefault();
+            var find = _groups.Where(x => x.IcuCode == d.IcuCode).FirstOrDefault();
             if (find != null)
             {
               find.Update(d);
             }
             else
             {
-              LOG.ec($"{d.WardCode} not found");
+              LOG.ec($"{d.IcuCode} not found");
             }
           }
           // 모든 icu 를 통합한 전체 페이지수

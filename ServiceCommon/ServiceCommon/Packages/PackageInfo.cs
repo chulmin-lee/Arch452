@@ -34,7 +34,8 @@ namespace ServiceCommon
     // OPD
     public OpdRoomPackage OpdRoom { get; set; }
     public InspectionPackage Inspection { get; set; }
-
+    public AngPackage Angiography { get; set; }
+    public EndoPackage Endoscope { get; set; }
     // funeral
     public FuneralPackage Funeral { get; set; }
 

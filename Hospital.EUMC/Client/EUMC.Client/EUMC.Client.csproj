@@ -146,7 +146,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Resource Include="Resources\Fonts\PretendardVariable.ttf" />
+    <Resource Include="Resources\Fonts\ehwa.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -325,18 +325,23 @@
     <Resource Include="Resources\Images\Funeral\funeral-small-photo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\MainView\logo-large-black.png" />
-    <Resource Include="Resources\Images\MainView\logo-large-detail.png" />
-    <Resource Include="Resources\Images\MainView\logo-large-normal.png" />
-    <Resource Include="Resources\Images\MainView\logo-middle-bottom.png" />
-    <Resource Include="Resources\Images\MainView\titlebar-panel-large.png" />
     <Resource Include="Resources\Images\MainView\Updater.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Office\doctor-default.png" />
     <Resource Include="Resources\Images\Office\doctor-test.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Images\MainView\content-bg-mokdong.png" />
+    <Resource Include="Resources\Images\MainView\content-bg-seoul.png" />
+    <Resource Include="Resources\Images\Office\doctor-default.png" />
+    <Resource Include="Resources\Images\MainView\logo-large-mokdong.png" />
+    <Resource Include="Resources\Images\MainView\logo-large-seoul.png" />
+    <Resource Include="Resources\Images\MainView\logo-middle-mokdong.png" />
+    <Resource Include="Resources\Images\MainView\logo-middle-seoul.png" />
+    <Resource Include="Resources\Images\MainView\notice-large.png" />
+    <Resource Include="Resources\Images\MainView\notice-middle.png" />
+    <Resource Include="Resources\Images\MainView\titlebar-BG-large.png" />
+    <Resource Include="Resources\Images\MainView\titlebar-BG-middle.png" />
     <Content Include="Resources\Sound\Doorbell.WAV" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

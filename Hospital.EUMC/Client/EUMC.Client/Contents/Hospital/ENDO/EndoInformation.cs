@@ -11,13 +11,13 @@ namespace EUMC.Client
   internal class EndoInformation : ContentInformation
   {
     public EndoViewConfig.ContentConfig CONFIG { get; set; }
-    public ObservableCollection<ENDO_INFO> Waiting { get; set; } = new ObservableCollection<ENDO_INFO>();
-    public ObservableCollection<ENDO_INFO> Inspecting { get; set; } = new ObservableCollection<ENDO_INFO>();
-    public ObservableCollection<ENDO_INFO> Recovering { get; set; } = new ObservableCollection<ENDO_INFO>();
+    public ObservableCollection<ENDO_PT_INFO> Waiting { get; set; } = new ObservableCollection<ENDO_PT_INFO>();
+    public ObservableCollection<ENDO_PT_INFO> Inspecting { get; set; } = new ObservableCollection<ENDO_PT_INFO>();
+    public ObservableCollection<ENDO_PT_INFO> Recovering { get; set; } = new ObservableCollection<ENDO_PT_INFO>();
 
-    List<ENDO_INFO> _all_waiting = new List<ENDO_INFO>();
-    List<ENDO_INFO> _all_inspecting = new List<ENDO_INFO>();
-    List<ENDO_INFO> _all_recovering = new List<ENDO_INFO>();
+    List<ENDO_PT_INFO> _all_waiting = new List<ENDO_PT_INFO>();
+    List<ENDO_PT_INFO> _all_inspecting = new List<ENDO_PT_INFO>();
+    List<ENDO_PT_INFO> _all_recovering = new List<ENDO_PT_INFO>();
 
     int _waiting_count = 0;
     int _inspecting_count = 0;
@@ -30,7 +30,7 @@ namespace EUMC.Client
       _inspecting_count = this.CONFIG.ItemRows;
       _recovering_count = this.CONFIG.ItemRows * 2;
     }
-    internal bool Update(List<ENDO_INFO> patients)
+    internal bool Update(List<ENDO_PT_INFO> patients)
     {
       lock (LOCK)
       {
@@ -45,7 +45,7 @@ namespace EUMC.Client
         // 대기중
         {
           _all_waiting.Clear();
-          patients.Where(x => x.StateCode == ENDO_INFO.STATE.Waiting).ToList().ForEach(x => _all_waiting.Add(x));
+          patients.Where(x => x.StateCode == ENDO_PT_INFO.STATE.Waiting).ToList().ForEach(x => _all_waiting.Add(x));
 
           this.Waiting.Clear();
           _all_waiting.GetPageItems(0, _waiting_count).ForEach(x => this.Waiting.Add(x));
@@ -53,7 +53,7 @@ namespace EUMC.Client
         // 검사중
         {
           _all_inspecting.Clear();
-          patients.Where(x => x.StateCode == ENDO_INFO.STATE.Inspecting).ToList().ForEach(x => _all_inspecting.Add(x));
+          patients.Where(x => x.StateCode == ENDO_PT_INFO.STATE.Inspecting).ToList().ForEach(x => _all_inspecting.Add(x));
 
           this.Inspecting.Clear();
           _all_inspecting.GetPageItems(0, _inspecting_count).ForEach(x => this.Inspecting.Add(x));
@@ -62,7 +62,7 @@ namespace EUMC.Client
         // 회복중
         {
           _all_recovering.Clear();
-          patients.Where(x => x.StateCode == ENDO_INFO.STATE.Recovering).ToList().ForEach(x => _all_recovering.Add(x));
+          patients.Where(x => x.StateCode == ENDO_PT_INFO.STATE.Recovering).ToList().ForEach(x => _all_recovering.Add(x));
 
           this.Recovering.Clear();
           _all_recovering.GetPageItems(0, _recovering_count).ForEach(x => this.Recovering.Add(x));

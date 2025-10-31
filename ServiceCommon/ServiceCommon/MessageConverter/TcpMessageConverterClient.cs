@@ -40,8 +40,8 @@ namespace ServiceCommon
           //===============================
           // OPD
           //===============================
-          case SERVICE_ID.OFFICE_ROOM: return typeof(OFFICE_RESP);
-          case SERVICE_ID.EXAM_ROOM: return typeof(EXAM_RESP);
+          case SERVICE_ID.OFFICE_PT: return typeof(OFFICE_RESP);
+          case SERVICE_ID.EXAM_PT: return typeof(EXAM_RESP);
           case SERVICE_ID.INSPECTION: return typeof(INSPECTION_RESP);
           case SERVICE_ID.ENDO: return typeof(ENDO_RESP);
           //===============================

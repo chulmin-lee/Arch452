@@ -3,71 +3,84 @@ using System;
 
 namespace EUMC.HospitalService
 {
-  internal class OFFICE_POCO
+  #region Base
+  internal class DEPT_MASTER_POCO
   {
-    public string DeptCode { get; set; } = string.Empty;  // 원본에는 없다
+    public string DeptCode { get; set; } = string.Empty;
+    public string DeptName { get; set; } = string.Empty;
+  }
+  #endregion
+
+
+  internal class OFFICE_ROOM_POCO
+  {
+    public string DeptCode { get; set; } = string.Empty;
+    public string RoomCode { get; set; } = string.Empty;
+    public string RoomName { get; set; } = string.Empty;
+    public string DoctorNo { get; set; } = string.Empty;
+    public string DoctorName { get; set; } = string.Empty;
+    public string DelayReason { get; set; } = string.Empty;
+    public string DelayTime { get; set; } = string.Empty;
+    public string GroupKey => $"{this.DeptCode}:{this.RoomCode}";
+  }
+  internal class OFFICE_PT_POCO
+  {
+    public string DeptCode { get; set; } = string.Empty;
     public string DeptName { get; set; } = string.Empty;
     public string RoomCode { get; set; } = string.Empty;
     public string RoomName { get; set; } = string.Empty;
-    public string ShortRoomName { get; set; } = string.Empty;
-    public string AssistantName { get; set; } = string.Empty;
-    // doctor
-    public string DoctorNo { get; set; } = string.Empty;
-    public string DoctorName { get; set; } = string.Empty;
-    public string DoctorPart { get; set; } = string.Empty;
-    // patient
     public string PatientNo { get; set; } = string.Empty;
     public string PatientName { get; set; } = string.Empty;
-    public string PatientNameTTS { get; set; } = string.Empty;
-    public int WaitNo { get; set; }
+    public string PhoneNo { get; set; } = string.Empty;
+    public int Rank { get; set; }
+    public string Floor { get; set; } = string.Empty;
+    public string PactId { get; set; } = string.Empty;
     public bool InRoom { get; set; }
-    public bool IsCall { get; set; }
-    public string CallMessage { get; set; } = string.Empty;
-    public bool UseRoom { get; set; }
+    public string GroupKey => $"{this.DeptCode}:{this.RoomCode}";
   }
-  internal class PHOTO_POCO
+  internal class DR_PHOTO_POCO
   {
     public string DoctorNo { get; set; } = string.Empty;
-    public string Filename { get; set; } = string.Empty;
-    public string FilePath { get; set; } = string.Empty;
-    public string RoomKey { get; set; } = string.Empty;
+    public string PhotoUrl { get; set; } = string.Empty;
   }
-  internal class EXAM_POCO
+  internal class EXAM_DEPT_POCO
   {
-    // room
+    public string DeptName { get; set; } = string.Empty;
+    public string DeptCode { get; set; } = string.Empty;
+  }
+  internal class EXAM_ROOM_POCO
+  {
+    public string DeptCode { get; set; } = string.Empty;
+    public string RoomCode { get; set; } = string.Empty;
+    public string RoomName { get; set; } = string.Empty;
+    public string DelayReason { get; set; } = string.Empty;
+    public string DelayTime { get; set; } = string.Empty;
+    public string GroupKey => $"{this.DeptCode}:{this.RoomCode}";
+  }
+  internal class EXAM_STAFF_POCO
+  {
+    public string DeptCode { get; set; } = string.Empty;
+    public string RoomCode { get; set; } = string.Empty;
+    public string RoomName { get; set; } = string.Empty;
+    public string DoctorNo{ get; set; } = string.Empty;
+    public string DoctorName { get; set; } = string.Empty;
+
+    public string DelayReason { get; set; } = string.Empty;
+    public string DelayTime { get; set; } = string.Empty;
+    public string GroupKey => $"{this.DeptCode}:{this.RoomCode}";
+  }
+  internal class EXAM_PT_POCO
+  {
     public string DeptName { get; set; } = string.Empty; // 없다
     public string DeptCode { get; set; } = string.Empty;
     public string RoomCode { get; set; } = string.Empty;
     public string RoomName { get; set; } = string.Empty; // 없다
-    public string AssistantName { get; set; } = string.Empty; // 없다
-    public string Gender { get; set; } = string.Empty;
-    public string Age { get; set; } = string.Empty;
-    // patient
     public string PatientNo { get; set; } = string.Empty;
     public string PatientName { get; set; } = string.Empty;
-    public string PatientNameTTS { get; set; } = string.Empty;
-
-    // patient 상태
     public int WaitNo { get; set; }
-    public bool InRoom { get; set; }
-    public PATIENT_CALL_TYPE CallType { get; set; }
-    public string StateCode { get; set; } = string.Empty;
-    public string StateName { get; set; } = string.Empty;
-    public int ReserveTime { get; set; }
-    public string CallTime { get; set; } = string.Empty;
+    public string GroupKey => $"{this.DeptCode}:{this.RoomCode}";
   }
-  public class ER_ISOLATION_POCO
-  {
-    public string RoomCode { get; set; } = string.Empty;
-    public string RoomName { get; set; } = string.Empty;
 
-    public string DeptCode { get; set; } = string.Empty;
-    public string DeptName { get; set; } = string.Empty;
-    public string PatientNo { get; set; } = string.Empty;
-    public string PatientName { get; set; } = string.Empty;
-    public string Gender { get; set; } = string.Empty;
-    public string Age { get; set; } = string.Empty;
-  }
   internal class DR_SCH_POCO
   {
     public string DeptCode { get; set; } = string.Empty;

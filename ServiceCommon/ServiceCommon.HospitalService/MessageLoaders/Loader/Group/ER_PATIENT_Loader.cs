@@ -30,7 +30,7 @@ namespace ServiceCommon.HospitalService
 
     protected override ServiceMessage create_message(List<ER_PATIENT_GROUP> list)
     {
-      var patients = new List<EMERGENCY_INFO>();
+      var patients = new List<ER_PATIENT_INFO>();
       list.ForEach(x => patients.AddRange(x.Patients));
       return new ER_PATIENT_RESP(patients, list.First().IsChild);
     }

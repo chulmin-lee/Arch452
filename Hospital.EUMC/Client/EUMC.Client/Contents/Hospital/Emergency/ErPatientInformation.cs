@@ -115,7 +115,7 @@ namespace EUMC.Client
     public ER_MEDICAL_STATE MedicalStateCode { get; set; }
     public ER_WARD_STATE WardStateCode { get; set; }
 
-    public EmergencyPatientModel(EMERGENCY_INFO o)
+    public EmergencyPatientModel(ER_PATIENT_INFO o)
     {
       PatientName = o.PatientName;
       Gender = o.Gender;
@@ -135,7 +135,7 @@ namespace EUMC.Client
       DoctorState = new EmergencyPatientState(o.DoctorState, "#555555");
       BloodState = new EmergencyPatientState(o.BloodState, "#EE0043");
       ConState = new EmergencyPatientState(o.ConState, "#125F50");
-      RadState = new EmergencyPatientState(o.RadState, "#F68D38");
+      RadState = new EmergencyPatientState(o.RadioState, "#F68D38");
       InOutState = new EmergencyPatientState(o.InOutState, "#14CA66");
     }
   }

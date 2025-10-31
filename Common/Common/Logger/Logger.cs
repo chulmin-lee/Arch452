@@ -23,7 +23,7 @@ namespace Common
 
       this.FM = new LogFileManager(filename, dir);
       this.FM.DayChanged += (s, e) => { lock (LOCK) FM.CurrentLogBackup(e); };
-
+      _flush_timer = new Timer(s => log_flush(), null, Timeout.Infinite, Timeout.Infinite);
       this.Enqueue($"--------- logging started ({DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")})---------");
     }
     void write_log_proc(string s)
@@ -49,6 +49,43 @@ namespace Common
                               Thread.CurrentThread.ManagedThreadId,
                               s));
     }
+
+    Timer _flush_timer; // = new Timer(s => log_flush(), null, Timeout.Infinite, Timeout.Infinite);
+    bool _timer_running = false;
+    public void enqueue_entry(string s)
+    {
+      lock(LOCK)
+      {
+        this.start_timer();
+        // data buffering
+      }
+    }
+    void log_flush()
+    {
+      lock (LOCK)
+      {
+        // file flush
+        this.stop_timer();
+      }
+    }
+
+    void start_timer()
+    {
+      if (!_timer_running)
+      {
+        _flush_timer.Change(500, -1);
+        _timer_running = true;
+      }
+    }
+    void stop_timer()
+    {
+      if (_timer_running)
+      {
+        _flush_timer.Change(-1, -1);
+        _timer_running = false;
+      }
+    }
+
     public void StopLogging()
     {
       Trace.WriteLine("stop logging");

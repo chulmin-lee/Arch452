@@ -95,5 +95,17 @@ namespace ServiceCommon
     }
   }
 
+  public class AngPackage
+  {
+    // 1: 혈관조영실
+    // 2: 혈관조영실 3층
+    // 3: 심뇌혈관 조영실
+    public ANG_TYPE Type { get; set; }
+  }
+  public class EndoPackage
+  {
+    public ENDO_TYPE Type { get; set; }
+  }
+
   #endregion OPD
 }

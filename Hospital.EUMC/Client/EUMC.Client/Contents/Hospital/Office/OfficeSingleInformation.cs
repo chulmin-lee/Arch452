@@ -26,7 +26,7 @@ namespace EUMC.Client
         DeptName = room.DeptName,
         DeptCode = room.DeptCode,
         RoomCode = room.RoomCode,
-        ShortRoomName = room.RoomCode,
+        //ShortRoomName = room.RoomCode,
         RoomName = room.RoomName,
       };
       for (int i = 0; i < this.CONFIG.ItemRows; i++)
@@ -49,7 +49,7 @@ namespace EUMC.Client
           this.DOCTOR = room.Doctor;
           this.RoomPatient = room.RoomPatient;
 
-          LOG.dc($"InRoom: {this.RoomPatient?.PatientNameTTS ?? "No"}, count: {room.WaitPatients.Count}");
+          LOG.dc($"count: {room.WaitPatients.Count}");
 
           this.Patients.Clear();
 

@@ -16,7 +16,7 @@ namespace EUMC.Client
       if (base.MessageReceived(m)) return true;
       switch (m.ServiceId)
       {
-        case SERVICE_ID.EXAM_ROOM:
+        case SERVICE_ID.EXAM_PT:
           {
             return this.ITEM.Update(m.CastTo<EXAM_RESP>());
           }

@@ -7,15 +7,22 @@ namespace EUMC.HospitalService
     #region Property
     public bool IsBackup { get; set; } = true;
     public int ScheduleInterval { get; set; } = 10;
+    public ICU_Extractor.Config ICU { get; set; }
     public DR_PHOTO_Extractor.Config DR_PHOTO { get; set; }
+
+
     #endregion Property
 
-    public DataConfigurations()
+    public DataConfigurations(bool seoul)
     {
+      this.ICU = new ICU_Extractor.Config
+      {
+        IcuDeptNames = new List<string> { "중환자", "뇌졸중집중치료실", "55병동" }
+      };
       this.DR_PHOTO = new DR_PHOTO_Extractor.Config()
       {
-        PhotoDirName = "Photo",
-        UseHttp = false,
+        PhotoDir= @"c:\APM_Setup\didmate\dr_photos",
+        PhotoUrl=@"http://192.168.0.30/dr_photos",
         Interval = 60
       };
     }
@@ -34,9 +41,9 @@ namespace EUMC.HospitalService
       return list;
     }
 
-    public static DataConfigurations Factory()
+    public static DataConfigurations Factory(bool seoul)
     {
-      return new DataConfigurations();
+      return new DataConfigurations(seoul);
     }
   }
 }

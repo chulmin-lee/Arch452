@@ -19,7 +19,7 @@ namespace EUMC.Client
       LOG.dc($"{m.ServiceId}");
       switch (m.ServiceId)
       {
-        case SERVICE_ID.OFFICE_ROOM:
+        case SERVICE_ID.OFFICE_PT:
           return this.ITEM.Update(m.CastTo<OFFICE_RESP>());
         case SERVICE_ID.SVR_CALL_PATIENT:
           {

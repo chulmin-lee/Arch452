@@ -8,11 +8,20 @@ namespace ServiceCommon
     public string GroupKey => this.Room.GroupKey;
     public string DeptCode => this.Room.DeptCode;
     public string RoomCode => this.Room.RoomCode;
+    public string DoctorNo => this.Doctor.DoctorNo;
 
     public ROOM_INFO Room { get; set; } = new ROOM_INFO();
     public DOCTOR_INFO Doctor { get; set; } = new DOCTOR_INFO();
     public PATIENT_INFO RoomPatient { get; set; }
     public List<PATIENT_INFO> WaitPatients { get; set; } = new List<PATIENT_INFO>();
+
+    public void Clear()
+    {
+      this.Room.UseRoom = false;
+      this.Doctor = new DOCTOR_INFO();
+      this.RoomPatient = null;
+      this.WaitPatients.Clear();
+    }
   }
 
   /// <summary>
@@ -24,9 +33,10 @@ namespace ServiceCommon
     public string DeptName { get; set; } = string.Empty;
     public string RoomCode { get; set; } = string.Empty;
     public string RoomName { get; set; } = string.Empty;
-    public string ShortRoomName { get; set; } = string.Empty;
     public string DurationTime { get; set; } = string.Empty;
+    public string DelayReason { get; set; } = string.Empty;
     public string DelayTime { get; set; } = string.Empty;
+
     public string AssistantName { get; set; } = string.Empty;
     public bool UseRoom { get; set; } = true;
     public string GroupKey => $"{this.DeptCode}:{this.RoomCode}";
@@ -38,8 +48,9 @@ namespace ServiceCommon
   {
     public string DoctorNo { get; set; } = string.Empty;
     public string DoctorName { get; set; } = string.Empty;
-    // DS
+    public string DoctorDeptName { get; set; } = string.Empty;
     public string SpecialPart { get; set; } = string.Empty;
+    public string PhotoUrl { get; set; } = string.Empty;
   }
   /// <summary>
   /// 환자 호출
@@ -58,29 +69,12 @@ namespace ServiceCommon
   {
     public string PatientNo { get; set; } = string.Empty;
     public string PatientName { get; set; } = string.Empty;
-    public string PatientNameTTS { get; set; } = string.Empty;
     public string Gender { get; set; } = string.Empty;
     public string Age { get; set; } = string.Empty;
-
-    public string AssistantName { get; set; } = string.Empty;
-    public string PatientDetail => $"{this.PatientNo}     {this.PatientName}";
-    public string PatientReserv => $"{this.ReserveTime} {this.PatientName}";
     // 환자상태
     public int WaitNo { get; set; }
-    public bool InRoom { get; set; }
     public string StateCode { get; set; } = string.Empty;
-    public string StateName { get; set; } = string.Empty;
     public int ReserveTime { get; set; }  // 예약 시간  "0930" : 930, "1015": 1015, 없으면 0
-    public string ReserveTimeStr => this.ReserveTime.ToTimeString();
-
-    // 호출
-    public PATIENT_CALL_TYPE CallType { get; set; }
-    public string CallTime { get; set; } = string.Empty;
-    public string CallMessage { get; set; } = string.Empty;
-    public string DeptCode { get; set; } = string.Empty;
-    public string RoomCode { get; set; } = string.Empty;
-    public string RoomName { get; set; } = string.Empty;
-
-    public string GetKey() => $"{this.PatientNo}:{this.PatientName}";
+    public bool InRoom { get; set; }
   }
 }

@@ -28,34 +28,21 @@ namespace ServiceCommon
 
   public class ICU_PT_INFO : IGroupKeyData<string>
   {
-    public string WardCode { get; set; } = string.Empty;
-    public string WardName { get; set; } = string.Empty;
+    public string IcuCode { get; set; } = string.Empty;
+    public string IcuName { get; set; } = string.Empty;
     public List<ICU_INFO> Patients { get; set; } = new List<ICU_INFO>();
-    public string GroupKey => this.WardCode;
+    public string GroupKey => this.IcuCode;
   }
 
   public class ICU_INFO
   {
+    public string IcuCode { get; set; } = string.Empty;
+    public string IcuName { get; set; } = string.Empty;
+    public string DeptCode { get; set; } = string.Empty;
     public string DeptName { get; set; } = string.Empty;
     public string PatientNo { get; set; } = string.Empty;
     public string PatientName { get; set; } = string.Empty;
-    public string Age { get; set; } = string.Empty;
-    public string Gender { get; set; } = string.Empty;
     public string BedNo { get; set; } = string.Empty;
 
-    public string DoctorName { get; set; } = string.Empty;
-    public string Infections { get; set; } = string.Empty;
-    public string Delimeter { get; set; } = string.Empty;
-
-    // extension
-    public string PatientInfo => $"({this.Gender} / {this.Age})";
-
-    // not used
-    public string WardCode { get; set; } = string.Empty;
-    public string WardName { get; set; } = string.Empty;
-    public string DeptCode { get; set; } = string.Empty;
-    public string IcuCode { get; set; } = string.Empty;  // MICU, MECU,
-    public string StateCode { get; set; } = string.Empty;
-    public string StateName { get; set; } = string.Empty;
   }
 }

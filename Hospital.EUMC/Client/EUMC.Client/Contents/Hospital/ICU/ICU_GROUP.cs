@@ -27,14 +27,14 @@ namespace EUMC.Client
 
     internal void Update(ICU_PT_INFO d)
     {
-      if (d.WardCode != this.IcuCode)
+      if (d.IcuCode != this.IcuCode)
       {
-        LOG.ec($"{d.WardCode} not match {this.IcuCode}");
+        LOG.ec($"{d.IcuCode} not match {this.IcuCode}");
         return;
       }
 
-      var code = d.WardCode;
-      var name = d.WardName;
+      var code = d.IcuCode;
+      var name = d.IcuName;
 
       this._all_page.Clear();
 

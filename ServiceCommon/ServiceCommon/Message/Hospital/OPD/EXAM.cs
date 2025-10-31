@@ -6,7 +6,7 @@ namespace ServiceCommon
   {
     public string DeptCode { get; set; } = string.Empty;
     public List<string> RoomCodes { get; set; } = new List<string>();
-    public EXAM_REQ() : base(SERVICE_ID.EXAM_ROOM) { }
+    public EXAM_REQ() : base(SERVICE_ID.EXAM_PT) { }
     public EXAM_REQ(string dept, string room_no) : this()
     {
       this.DeptCode = dept;
@@ -23,7 +23,7 @@ namespace ServiceCommon
   {
     public List<OPD_ROOM_INFO> Rooms { get; set; } = new List<OPD_ROOM_INFO>();
     public List<PATIENT_INFO> WaitPatients { get; set; } = new List<PATIENT_INFO>();
-    public EXAM_RESP() : base(SERVICE_ID.EXAM_ROOM) { }
+    public EXAM_RESP() : base(SERVICE_ID.EXAM_PT) { }
     public EXAM_RESP(OPD_ROOM_INFO d) : this()
     {
       this.Rooms.Add(d);

@@ -18,24 +18,17 @@ namespace ServiceCommon
   }
   public class OPERATION_INFO
   {
-    public string BuildingNo { get; set; } = string.Empty;
-    public string RoomCode { get; set; } = string.Empty;
     public string PatientNo { get; set; } = string.Empty;
     public string PatientName { get; set; } = string.Empty;
-    public string PatientNameTTS { get; set; } = string.Empty;
-    public string DeptName { get; set; } = string.Empty;
-    public string DeptCode { get; set; } = string.Empty;
-    public string DoctorName { get; set; } = string.Empty;
-    public string StateCode { get; set; } = string.Empty;
-    public string StateName { get; set; } = string.Empty;
-    public string LocationCode { get; set; } = string.Empty;
-    public string LocationName { get; set; } = string.Empty;
-    public bool CallPatient { get; set; }
-    public string Gender { get; set; } = string.Empty;
-    public string Age { get; set; } = string.Empty;
-    public string PatientInfo => $"{this.Gender}/{this.Age}";
-
-    // 2025/09/10 SCH 수술실 이름 (OpRoomNm)
-    public string RoomName { get; set; } = string.Empty;
+    public OPERATION_STATE StateCode { get; set; }
+  }
+  public enum OPERATION_STATE
+  {
+    None = 0,
+    Waiting = 1, // 대기중
+    Operating = 2, // 수술중
+    RecoveryRoom = 3, // 회복실
+    WardRoom = 4, // 병실
+    IcuRoom = 5, // 중환자실
   }
 }

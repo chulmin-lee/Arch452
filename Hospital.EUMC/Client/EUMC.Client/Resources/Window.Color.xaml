@@ -13,12 +13,21 @@
   <!-- ================================================================ -->
   <!-- title bar -->
 
-  <ImageSource x:Key="TitleBar_Panel_Large">/EUMC.Client;component/Resources/Images/MainView/titlebar-panel-large.png</ImageSource>
+  <ImageSource x:Key="TitleBar_BG_Large">/EUMC.Client;component/Resources/Images/MainView/titlebar-BG-large.png</ImageSource>
+  <ImageSource x:Key="TitleBar_BG_Middle">/EUMC.Client;component/Resources/Images/MainView/titlebar-BG-middle.png</ImageSource>
   <!-- logo -->
-  <ImageSource x:Key="LogoLarge_Normal">/EUMC.Client;component/Resources/Images/MainView/logo-large-normal.png</ImageSource>
-  <ImageSource x:Key="LogoLarge_Detail">/EUMC.Client;component/Resources/Images/MainView/logo-large-detail.png</ImageSource>
-  <ImageSource x:Key="LogoLarge_Black">/EUMC.Client;component/Resources/Images/MainView/logo-large-black.png</ImageSource>
-  <ImageSource x:Key="LogoMiddle_Bottom">/EUMC.Client;component/Resources/Images/MainView/logo-middle-bottom.png</ImageSource>
+  <ImageSource x:Key="LogoLarge_Seoul">/EUMC.Client;component/Resources/Images/MainView/logo-large-seoul.png</ImageSource>
+  <ImageSource x:Key="LogoLarge_Mokdong">/EUMC.Client;component/Resources/Images/MainView/logo-large-mokdong.png</ImageSource>
+  <ImageSource x:Key="LogoMiddle_Seoul">/EUMC.Client;component/Resources/Images/MainView/logo-middle-seoul.png</ImageSource>
+  <ImageSource x:Key="LogoMiddle_Mokdong">/EUMC.Client;component/Resources/Images/MainView/logo-middle-mokdong.png</ImageSource>
+  <!-- content background -->
+  <ImageSource x:Key="Content_BG_Large">/EUMC.Client;component/Resources/Images/MainView/content-BG-mokdong.png</ImageSource>
+  <ImageSource x:Key="Content_BG_Middle">/EUMC.Client;component/Resources/Images/MainView/content-BG-seoul.png</ImageSource>
+  <!-- notice -->
+  <ImageSource x:Key="NoticeLarge">/EUMC.Client;component/Resources/Images/MainView/notice-large.png</ImageSource>
+  <ImageSource x:Key="NoticeMiddle">/EUMC.Client;component/Resources/Images/MainView/notice-middle.png</ImageSource>
+
+
   <!-- 진료실 -->
   <ImageSource x:Key="DEFAULT_PHOTO_LOGO">pack://application:,,,/EUMC.Client;component/Resources/Images/Office/doctor-default.png</ImageSource>
   <ImageSource x:Key="DEFAULT_PHOTO_LOGO2">pack://application:,,,/EUMC.Client;component/Resources/Images/Office/doctor-test.png</ImageSource>
@@ -127,8 +136,7 @@
   <GridLength x:Key="GridHeaderHeight2">75</GridLength>
   <sys:Double x:Key="HeaderHeight2">75</sys:Double>
 
-  <!--<FontFamily x:Key="EHWA_FONT">pack://applicaton:,,,/EUMC.Client;component/Resources/Fonts/#EHWA</FontFamily>-->
-  <FontFamily x:Key="FONT">pack://applicaton:,,,/EUMC.Client;component/Resources/Fonts/#Pretendard Variable</FontFamily>
+  <FontFamily x:Key="FONT">pack://applicaton:,,,/EUMC.Client;component/Resources/Fonts/#EHWA</FontFamily>
 
   <Style TargetType="{x:Type Label}" x:Key="CommonLabel">
     <Setter Property="Foreground" Value="{StaticResource Gray800}" />

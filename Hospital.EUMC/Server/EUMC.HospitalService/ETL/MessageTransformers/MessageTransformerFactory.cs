@@ -28,8 +28,8 @@ namespace EUMC.HospitalService
 
         #region OPD
 
-        case SERVICE_ID.OFFICE_ROOM: return new OPD_OFFICE_Service(owner);
-        case SERVICE_ID.EXAM_ROOM: return new OPD_EXAM_Service(owner);
+        case SERVICE_ID.OFFICE_PT: return new OFFICE_PT_Service(owner);
+        case SERVICE_ID.EXAM_PT: return new EXAM_PT_Service(owner);
         case SERVICE_ID.INSPECTION: return new INSPECTION_Service(owner);
         case SERVICE_ID.ENDO: return new ENDO_Service(owner);
         #endregion OPD
@@ -39,7 +39,7 @@ namespace EUMC.HospitalService
         case SERVICE_ID.DR_SCH: return new DR_SCH_Service(owner);
         case SERVICE_ID.DR_PHOTO:
           {
-            return new DR_PHOTO_Service(owner, o.DR_PHOTO);
+            return new DR_PHOTO_Service(owner, o.OFFICE_PT);
           }
         #endregion ETC
 

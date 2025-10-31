@@ -53,6 +53,11 @@ namespace ServiceCommon.ServerServices
         _readyFlag |= 1 << i;
       }
     }
+    /// <summary>
+    /// 현재 수신한 이벤트로 서비스 준비가 완료되었을때 처리
+    /// </summary>
+    /// <returns></returns>
+    protected virtual INotifyMessage IsJustReady() => null;
     protected abstract INotifyMessage data_notified(INotifyData<D> o);
     public void OnDataNotify(INotifyData<D> o)
     {

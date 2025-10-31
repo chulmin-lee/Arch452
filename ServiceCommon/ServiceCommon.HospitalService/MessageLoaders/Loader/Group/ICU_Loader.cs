@@ -17,7 +17,7 @@ namespace ServiceCommon.HospitalService
       var msg = this.create_message(req.WardCodes);
       if (msg != null) return msg;
 
-      var temp = req.WardCodes.Select(x => new ICU_PT_INFO { WardCode = x }).ToList();
+      var temp = req.WardCodes.Select(x => new ICU_PT_INFO { IcuCode = x }).ToList();
       return new ICU_RESP(temp);
     }
 

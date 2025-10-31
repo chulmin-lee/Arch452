@@ -53,32 +53,40 @@ namespace ServiceCommon
     // 응급실
     //===============================
     ER_PATIENT      = SERVICE_TYPE.HOSPITAL + 10, // 응급실 환자
-    ER_ISOLATION    = SERVICE_TYPE.HOSPITAL + 20, // 응급실 진료실
-    ER_AREA_CONGEST = SERVICE_TYPE.HOSPITAL + 30, // 응급실 구역별 혼잡도
-    ER_CONGESTION   = SERVICE_TYPE.HOSPITAL + 40, // 응급실 혼잡도
-    ER_STATISTICS   = SERVICE_TYPE.HOSPITAL + 41, // 응급실 통계
-                                                  //===============================
-                                                  // IPD
-                                                  //===============================
+    ER_AREA_CONGEST = SERVICE_TYPE.HOSPITAL + 12, // 응급실 구역별 혼잡도
+    ER_CONGESTION   = SERVICE_TYPE.HOSPITAL + 14, // 응급실 혼잡도
+    ER_STATISTICS   = SERVICE_TYPE.HOSPITAL + 16, // 응급실 통계
+    ER_CT           = SERVICE_TYPE.HOSPITAL + 18, // 응급실 CT
+    ER_CPR          = SERVICE_TYPE.HOSPITAL + 20, // CPR
+    ER_ISOLATION    = SERVICE_TYPE.HOSPITAL + 22, // 응급실 진료실
+    //===============================
+    // IPD
+    //===============================
     OPERATION       = SERVICE_TYPE.HOSPITAL + 50, // 수술실
     ICU             = SERVICE_TYPE.HOSPITAL + 60, // 중환자실
     DELIVERY_ROOM   = SERVICE_TYPE.HOSPITAL + 80,
     WARD_ROOMS            = SERVICE_TYPE.HOSPITAL + 81, // 병실 현황 조회
-                                                        //=====================================
-                                                        // 외래
-                                                        //=====================================
-    OFFICE_ROOM     = SERVICE_TYPE.HOSPITAL + 100, // 진료실 (부서코드, 방번호)
-    EXAM_ROOM       = SERVICE_TYPE.HOSPITAL + 110, // 검사실 (부서코드, 방번호)
-    INSPECTION      = SERVICE_TYPE.HOSPITAL + 120, // 검사실 (부서코드, 방번호)
-    ENDO            = SERVICE_TYPE.HOSPITAL + 130, // 검사실 (부서코드, 방번호)
-                                                   //=====================================
-                                                   // 기타
-                                                   //=====================================
-    DR_SCH         = SERVICE_TYPE.HOSPITAL + 200, // 진료 스케쥴
-    DRUG           = SERVICE_TYPE.HOSPITAL + 210, // 약제과
-    CAFETERIA      = SERVICE_TYPE.HOSPITAL + 220,
-    DR_PHOTO       = SERVICE_TYPE.HOSPITAL + 230, // 의료진 사진
-    DR_PHOTO_NOTI  = SERVICE_TYPE.HOSPITAL + 240, // 의료진 사진 변경 알림
+
+    //=====================================
+    // 외래
+    //=====================================
+    OFFICE_PT     = SERVICE_TYPE.HOSPITAL + 100, // 진료실
+    EXAM_PT       = SERVICE_TYPE.HOSPITAL + 110, // 검사실
+    INSPECTION      = SERVICE_TYPE.HOSPITAL + 120, // 검사실
+    ANG             = SERVICE_TYPE.HOSPITAL + 130,  // 혈관 조영술 (Angiography)
+    ENDO            = SERVICE_TYPE.HOSPITAL + 140, // 내시경(Endoscope)
+    ENDO_WGO       = SERVICE_TYPE.HOSPITAL + 150, // 여성암병원 초음파실(Ultrasound, Sonography)
+    RAD_SEOUL       = SERVICE_TYPE.HOSPITAL + 160, // 여성암병원 초음파실(Ultrasound, Sonography)
+    RAD_TR          = SERVICE_TYPE.HOSPITAL + 161, // 방사선종양학과 (Radiation Ultrasound, Sonography)
+
+    //=====================================
+    // 기타
+    //=====================================
+    DR_SCH         = SERVICE_TYPE.HOSPITAL + 900, // 진료 스케쥴
+    DRUG           = SERVICE_TYPE.HOSPITAL + 910, // 약제과
+    CAFETERIA      = SERVICE_TYPE.HOSPITAL + 920,
+    DR_PHOTO       = SERVICE_TYPE.HOSPITAL + 930, // 의료진 사진
+    DR_PHOTO_NOTI  = SERVICE_TYPE.HOSPITAL + 940, // 의료진 사진 변경 알림
     #endregion hospital
 
     #region funeral
