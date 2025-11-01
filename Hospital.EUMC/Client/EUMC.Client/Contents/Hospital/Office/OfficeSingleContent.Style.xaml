@@ -107,6 +107,8 @@
                       <ColumnDefinition Width="1.8*" />
                     </Grid.ColumnDefinitions>
 
+                    <Border Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="{StaticResource primary}" />
+
                     <Grid Grid.Column="0" Background="{StaticResource primary}">
                       <Label>
                         <Label.Resources>
@@ -128,16 +130,9 @@
                     </Grid>
 
                     <Grid Grid.Column="1" >
-                      <Border Grid.Column="1" 
-                              BorderThickness="0,5,5,5"
-                              BorderBrush="{StaticResource primary}"
-                              >
                         <Label Content="{Binding PatientName}"
-                              FontSize="100"
-                              FontWeight="Bold"
-                              Foreground="{StaticResource primary}"
-                            Style="{StaticResource CommonLabel}" />
-                      </Border>
+                               FontSize="97"
+                               Style="{StaticResource CommonLabelPrimary}" />
                     </Grid>
                   </Grid>
                 </DataTemplate>

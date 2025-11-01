@@ -148,6 +148,14 @@
     <Setter Property="FontWeight" Value="Normal" />
   </Style>
 
+  <Style TargetType="{x:Type Label}" x:Key="CommonLabelPrimary">
+    <Setter Property="Foreground" Value="{StaticResource primary}" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="FontSize" Value="36" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+  </Style>
+  
   <Style TargetType="{x:Type TextBlock}" x:Key="CommonTextBlock">
     <Setter Property="Foreground" Value="{StaticResource Gray800}" />
     <Setter Property="HorizontalAlignment" Value="Center" />
