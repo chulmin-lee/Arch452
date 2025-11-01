@@ -1,4 +1,6 @@
-﻿namespace ServiceCommon.ClientServices
+﻿using System.Collections.Generic;
+
+namespace ServiceCommon.ClientServices
 {
   public enum WindowScreenType
   {
@@ -88,7 +90,7 @@
     // ETC
     //==================================
     public bool CanReboot { get; protected set; } = true;
-
+    public List<CONTENT_FILE> ContentFiles { get; set; } = new List<CONTENT_FILE>();
     //==================================
     // Config error
     //==================================
@@ -107,6 +109,7 @@
       this.PackageInfo = p;
       this.Package = p.Package;
       this.Notice = s.NoticeConfig;
+      this.ContentFiles = s.ContentFiles;
     }
   }
 

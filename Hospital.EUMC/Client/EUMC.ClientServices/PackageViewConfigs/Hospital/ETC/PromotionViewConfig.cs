@@ -26,14 +26,12 @@ namespace EUMC.ClientServices
       }
       this.Config = new ContentConfig
       {
-        ContentFiles = s.ContentFiles,
         MediaVolumn = s.MediaVolume, // 0 ~ 1.0
       };
     }
     public class ContentConfig
     {
       public double MediaVolumn { get; set; } = 0.5;
-      public List<CONTENT_FILE> ContentFiles { get; set; } = new List<CONTENT_FILE>();
     }
   }
 }
