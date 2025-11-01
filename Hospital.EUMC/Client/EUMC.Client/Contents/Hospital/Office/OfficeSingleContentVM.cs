@@ -21,14 +21,6 @@ namespace EUMC.Client
       {
         case SERVICE_ID.OFFICE_PT:
           return this.ITEM.Update(m.CastTo<OFFICE_RESP>());
-        case SERVICE_ID.DR_PHOTO:
-          return this.ITEM.UpdatePhoto(m.CastTo<DR_PHOTO_RESP>());
-        case SERVICE_ID.DR_PHOTO_NOTI:
-          return this.ITEM.PhotoNotify(m.CastTo<DR_PHOTO_UPDATED>());
-        case SERVICE_ID.SVR_CALL_PATIENT:
-          {
-            return this.ITEM.CallPatient(m.CastTo<CALL_PATIENT_NOTI>());
-          }
       }
       return false;
     }

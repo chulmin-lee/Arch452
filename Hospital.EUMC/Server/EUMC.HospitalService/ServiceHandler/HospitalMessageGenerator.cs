@@ -6,12 +6,12 @@ namespace EUMC.HospitalService
 {
   internal interface IHospitalMemberOwner : IGeneratorMemberOwner
   {
-    IEumcRepository Repository { get; }
+    IHospitalRepository Repository { get; }
   }
 
   public class HospitalMessageGenerator : MessageGeneratorBase<DATA_ID>, IHospitalMemberOwner
   {
-    public IEumcRepository Repository { get; private set; }
+    public IHospitalRepository Repository { get; private set; }
     HospitalServiceConfigurations _config;
 
     public HospitalMessageGenerator() : base("EUMC")

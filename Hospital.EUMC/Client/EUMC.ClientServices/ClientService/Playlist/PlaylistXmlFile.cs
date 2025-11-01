@@ -6,6 +6,15 @@ using System.Xml.Serialization;
 
 namespace EUMC.ClientServices
 {
+  public enum ROOM_TYPE
+  {
+    NONE,
+    A, // 진료실 palyer : M, GET_PC_MED_ALL_RM_PT_INFO
+    B, // 검사실 palyer : I, GET_PC_EXAM_STATE_PT_LIST
+    C, // 검사실(일반촬영실) palyer : C, GET_PC_RAD_EXAM_PT_INFO_SEOUL
+    D, // 검사실(초음파) palyer : D, GET_PC_EXAM_ROOM_PT_LIST
+    E, // 진료실(CT/MRI) palyer : E, GET_PC_RAD_EXAM_PT_INFO_SEOUL
+  }
 
   [XmlRoot(ElementName = "Root")]
   public class PlaylistXmlFile
@@ -33,27 +42,18 @@ namespace EUMC.ClientServices
     [XmlElement("ticker_rss_url")] public string ticker_rss_url { get; set; } = string.Empty;
     [XmlElement("volume")] public string volume { get; set; } = string.Empty;
 
-    // 순천향
-    [XmlElement("common_ticker_use")] public string common_ticker_use { get; set; } = string.Empty;
-    [XmlElement("common_ticker_msg")] public string common_ticker_msg { get; set; } = string.Empty;
-
     /// <summary>
-    /// volume (0~31)값을 0~100 값으로 변환
+    /// volume (0~31)값을 0~1.0 값으로 변환
     /// </summary>
     /// <returns></returns>
     public double MediaVolumn()
     {
-      if (!double.TryParse(this.volume, out double vol))
+      if (double.TryParse(this.volume, out double vol))
       {
-        vol = 0d;
+        vol = vol >= 31 ? 1 : vol / 31d;
       }
-      if (vol > 31)
-      {
-        vol = 31d;
-      }
-      return vol / 31d;
+      return vol;
     }
-
     public NoticeConfig GetNoticeSetting()
     {
       int speed = 12;
@@ -90,19 +90,12 @@ namespace EUMC.ClientServices
           case "big": size = 50; break;
         }
       }
-
-      var common_notice = this.common_ticker_use.ToBoolean();
-      var common_message = this.common_ticker_msg;
-
       return new NoticeConfig
       {
         ScrollSpeed = speed,
         Foreground = foreground,
         Background = background,
         FontSize = size,
-
-        UseCommonNotice = common_notice,
-        CommonNoticeMessage = common_message,
       };
     }
   }
@@ -114,57 +107,30 @@ namespace EUMC.ClientServices
     [XmlElement("hsp_tp_cd")] public string HospitalCode { get; set; } = string.Empty;
     [XmlElement("large")] public xml_med_large large { get; set; }
     [XmlElement("middle")] public xml_med_middle middle { get; set; }
-    [XmlElement("icu")] public List<xml_med_icu> icus { get; set; } = new List<xml_med_icu>();
-    [XmlElement("strTitle")] public xml_med_title large_title { get; set; }
-    [XmlElement("emergency")] public List<xml_med_middle> emergency { get; set; } = new List<xml_med_middle>(); // 응급 격리실
-    [XmlElement("common")] public xml_med_common common { get; set; } // 약제과
-    [XmlElement("ward_room")] public xml_ward_room ward_room { get; set; }
-    [XmlElement("funeral")] public xml_funeral funeral { get; set; }
-  }
-  public class xml_med_middle
-  {
-    [XmlElement("dept_cd")] public string DeptCode = string.Empty;
-    [XmlElement("dept_nm")] public string DeptName = string.Empty;
-    [XmlElement("med_room_cd")] public string RoomCode = string.Empty;  // A 일때는 숫자, B일때는 NR001
-    [XmlElement("room_no")] public string RoomName = string.Empty;
-    [XmlElement("type")] public string RoomType = string.Empty;  // A: 진료실, B: 검사실, C:
-    [XmlElement("dur_tm")] public string DurationTime = string.Empty;
-    [XmlElement("strTitle")] public string Title = string.Empty;
+    [XmlElement("icus")] public xml_med_icus icus { get; set; }
   }
   public class xml_med_large
   {
-    [XmlElement("group")] public List<xml_med_large_group> groups { get; set; } = new List<xml_med_large_group>();
+    [XmlElement("middle")] public List<xml_med_middle> middles { get; set; }
+  }
+  public class xml_med_middle
+  {
+    [XmlElement("med_dept_cd")] public string DeptCode = string.Empty;
+    [XmlElement("mtm_no")] public string RoomCode = string.Empty;  // A 일때는 숫자, B일때는 NR001
+    [XmlElement("mtm_nm")] public string RoomName = string.Empty;
+    [XmlElement("type")] public string RoomType = string.Empty;  // A: 진료실, B: 검사실, C:
+  }
 
-    public class xml_med_large_group
-    {
-      [XmlElement("dept_cd")] public string DeptCode = string.Empty;
-      [XmlElement("dept_nm")] public string DeptName = string.Empty;
-      [XmlElement("middle")] public List<xml_med_middle> middles { get; set; } = new List<xml_med_middle>();
-    }
+  public class xml_med_icus
+  {
+    [XmlElement("icus")] public List<xml_med_icu> icu { get; set; }
   }
   public class xml_med_icu
   {
-    [XmlElement("dept_cd")] public string DeptCode = string.Empty;
-    [XmlElement("dept_nm")] public string DeptName = string.Empty;
-    [XmlElement("strTitle")] public string strTitle = string.Empty;
+    [XmlElement("dept_cd")] public string IcuCode = string.Empty;
+    [XmlElement("dept_nm")] public string IcuName = string.Empty;
   }
-  public class xml_med_common
-  {
-    [XmlElement("strTitle")] public string strTitle = string.Empty;
-  }
-  public class xml_med_title
-  {
-    [XmlElement("strTitle")] public string strTitle { get; set; } = string.Empty;
-  }
-  public class xml_ward_room
-  {
-    [XmlElement("floor")] public string floor = string.Empty;
-    [XmlElement("area")] public string area = string.Empty;
-  }
-  public class xml_funeral
-  {
-    [XmlElement("room_code")] public List<string> room_code = new List<string>();
-  }
+
   #endregion medical
 
   #region playlist
@@ -185,7 +151,7 @@ namespace EUMC.ClientServices
     public TVSetting GetTVSetting() => this.config.GetTVSetting();
     public List<REMOTE_FILE> GetRemoteFiles() => this.layout.GetRemoteFiles();
     public PLAYLIST_SOUND_TYPE GetSoundType() => this.config.GetSoundType();
-
+    public bool ShowDelayTime => this.config.delaytime_use.ToBoolean();
     public class xml_schedule_config
     {
       [XmlElement("s_date")] public string s_date { get; set; } = string.Empty;
@@ -207,9 +173,6 @@ namespace EUMC.ClientServices
       [XmlElement("sound_type")] public string sound_type { get; set; } = string.Empty;
       [XmlElement("tv_use")] public string tv_use { get; set; } = string.Empty;
       [XmlElement("channel")] public string tv_channel { get; set; } = string.Empty;
-      // 순천향
-      [XmlElement("contents_use")] public string contents_use { get; set; } = string.Empty;
-      [XmlElement("delay_person")] public string delay_person { get; set; } = string.Empty;
 
       public TVSetting GetTVSetting()
       {

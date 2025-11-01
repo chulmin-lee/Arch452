@@ -27,7 +27,7 @@ namespace EUMC.Client
     /// - popup 출력시 크기/위치 결정
     /// </summary>
     bool IsWideContent { get; }
-
+    bool IsSeoul { get; }
     //==================================
     // Titlebar
     //==================================

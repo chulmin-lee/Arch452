@@ -13,8 +13,8 @@
   <!-- ================================================================ -->
   <!-- title bar -->
 
-  <ImageSource x:Key="TitleBar_BG_Large">/EUMC.Client;component/Resources/Images/MainView/titlebar-BG-large.png</ImageSource>
-  <ImageSource x:Key="TitleBar_BG_Middle">/EUMC.Client;component/Resources/Images/MainView/titlebar-BG-middle.png</ImageSource>
+  <ImageSource x:Key="TitleBar_Panel_Large">/EUMC.Client;component/Resources/Images/MainView/titlebar-panel-large.png</ImageSource>
+  <ImageSource x:Key="TitleBar_Panel_Middle">/EUMC.Client;component/Resources/Images/MainView/titlebar-panel-middle.png</ImageSource>
   <!-- logo -->
   <ImageSource x:Key="LogoLarge_Seoul">/EUMC.Client;component/Resources/Images/MainView/logo-large-seoul.png</ImageSource>
   <ImageSource x:Key="LogoLarge_Mokdong">/EUMC.Client;component/Resources/Images/MainView/logo-large-mokdong.png</ImageSource>
@@ -82,8 +82,10 @@
   <sys:Double x:Key="Popup_Width_Portrait">1087</sys:Double>
   <sys:Double x:Key="Popup_Height_Portrait">700</sys:Double>
 
+  
+  
   <!-- duck san -->
-  <SolidColorBrush x:Key="primary" Color="#302952" />
+  <SolidColorBrush x:Key="primary" Color="#0E7758" />
   <SolidColorBrush x:Key="accent1" Color="#F68D38" />
   <SolidColorBrush x:Key="accent2" Color="#FAD45D" />
 
@@ -139,11 +141,11 @@
   <FontFamily x:Key="FONT">pack://applicaton:,,,/EUMC.Client;component/Resources/Fonts/#EHWA</FontFamily>
 
   <Style TargetType="{x:Type Label}" x:Key="CommonLabel">
-    <Setter Property="Foreground" Value="{StaticResource Gray800}" />
+    <Setter Property="Foreground" Value="White" />
     <Setter Property="HorizontalAlignment" Value="Center" />
     <Setter Property="VerticalAlignment" Value="Center" />
     <Setter Property="FontSize" Value="36" />
-    <Setter Property="FontWeight" Value="Bold" />
+    <Setter Property="FontWeight" Value="Normal" />
   </Style>
 
   <Style TargetType="{x:Type TextBlock}" x:Key="CommonTextBlock">
@@ -153,7 +155,7 @@
     <Setter Property="TextWrapping" Value="Wrap" />
     <Setter Property="FontSize" Value="36" />
     <Setter Property="TextAlignment" Value="Justify" />
-    <Setter Property="FontWeight" Value="Bold" />
+    <Setter Property="FontWeight" Value="Normal" />
   </Style>
 
   <Style TargetType="{x:Type ui:TextBorder}">

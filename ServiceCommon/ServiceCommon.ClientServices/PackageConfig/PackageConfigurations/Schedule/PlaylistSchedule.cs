@@ -8,6 +8,7 @@ namespace ServiceCommon.ClientServices
 
   public class PlaylistSchedule
   {
+    public string HospitalCode { get; set; } = "01";
     public int No { get; set; }
     public string Mode { get; set; } = string.Empty;
     public bool IsDefaultPackage { get; set; }
@@ -23,6 +24,7 @@ namespace ServiceCommon.ClientServices
     public NoticeConfig NoticeConfig { get; set; } = new NoticeConfig();
     public int Duration { get; set; }  // 홍보 로테이션 시간
     public int DelayPerson { get; set; } // 대기자수
+    public bool ShowDelayTime { get; set; }
     public TVSetting TVSetting { get; set; } = new TVSetting();
 
     public List<REMOTE_FILE> RemoteContents { get; set; } = new List<REMOTE_FILE>();

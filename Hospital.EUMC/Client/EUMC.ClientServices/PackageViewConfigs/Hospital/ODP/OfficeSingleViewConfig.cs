@@ -19,7 +19,8 @@ namespace EUMC.ClientServices
       {
         ItemRows = s.DelayPerson > 0 ? s.DelayPerson : 4,
         UseRotation = false,
-        UseInRoomPoupup = true
+        UseInRoomPoupup = true,
+        ShowDelayTime = s.ShowDelayTime,
       };
 
       var opd = this.PackageInfo.OpdRoom ?? throw new ServiceException("opdroom");
@@ -33,6 +34,7 @@ namespace EUMC.ClientServices
 
     public class ContentConfig
     {
+      public bool ShowDelayTime { get; set; }
       public bool UseRotation { get; set; } = false; // 페이지 혹은 Item 순환 여부
       public int ItemRows { get; set; }  // content 줄수
       public bool UseInRoomPoupup { get; set; }

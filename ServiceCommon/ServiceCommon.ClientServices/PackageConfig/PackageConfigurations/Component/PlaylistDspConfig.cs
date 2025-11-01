@@ -30,7 +30,7 @@ namespace ServiceCommon.ClientServices
     {
       var notice = this.GetNoticeConfigClone();
       notice.UseNotice = use_notice;
-      notice.NoticeMessage = message;
+      notice.NoticeMessage = message.Trim();
       return notice;
     }
 

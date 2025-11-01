@@ -206,17 +206,18 @@ namespace EUMC.HospitalService
     }
     void update_room_patients(OPD_ROOM_INFO opd_room, string key)
     {
-      if (_exam_patients.ContainsKey(key))
+      if(!_exam_patients.TryGetValue(key, out var list))
       {
-        var patients = _exam_patients[key];
-        opd_room.RoomPatient = patients.Where(x => x.InRoom).FirstOrDefault();
-        opd_room.WaitPatients.Clear();
-        opd_room.WaitPatients.AddRange(patients.Where(x => !x.InRoom));
+        list = new List<PATIENT_INFO>();
       }
-      else
+
+      opd_room.RoomPatient = null;
+      opd_room.WaitPatients.Clear();
+
+      if(list.Any())
       {
-        opd_room.RoomPatient = null;
-        opd_room.WaitPatients.Clear();
+        opd_room.RoomPatient = list.First();
+        opd_room.WaitPatients = list.Skip(1).ToList();
       }
     }
     #endregion

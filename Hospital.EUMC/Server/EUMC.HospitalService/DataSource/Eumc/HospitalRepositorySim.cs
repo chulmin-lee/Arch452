@@ -8,7 +8,7 @@ using System.Reflection.Emit;
 
 namespace EUMC.HospitalService
 {
-  public class HospitalRepositorySim : IEumcRepository
+  public class HospitalRepositorySim : IHospitalRepository
   {
     string _sim_dir;
     public HospitalRepositorySim(string dir_name = "SIM")

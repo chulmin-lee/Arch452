@@ -60,7 +60,7 @@ namespace EUMC.ClientServices
     static PlaylistSchedule create_schedule(xml_schedule sch, TimeRange tr, PlaylistDspConfig dsp, PlaylistMedical medical)
     {
       var o = new PlaylistSchedule(sch.config.package, tr, medical);
-
+      o.HospitalCode = medical.HospitalCode;
       o.No = sch.no.ToInt();
       o.Mode = sch.mode;
 
@@ -107,8 +107,7 @@ namespace EUMC.ClientServices
       o.MediaVolume = dsp.MediaVolume;
       o.SoundType = sch.GetSoundType();
       o.Duration = dsp.Duration;
-      o.DelayPerson = sch.config.delay_person.ToInt();
-      o.ContentUse = sch.config.contents_use.ToBoolean();
+      o.ShowDelayTime = sch.ShowDelayTime;
       return o;
     }
 
@@ -122,9 +121,9 @@ namespace EUMC.ClientServices
       };
       if (m.icus != null)
       {
-        foreach (var p in m.icus)
+        foreach (var p in m.icus.icu)
         {
-          medical.AddIcu(p.DeptCode, p.DeptName);
+          medical.AddIcu(p.IcuCode, p.IcuName);
         }
       }
       if (m.middle != null)
@@ -133,57 +132,28 @@ namespace EUMC.ClientServices
       }
       if (m.large != null)
       {
-        foreach (var group in m.large.groups)
+        foreach (var p in m.large.middles)
         {
-          foreach (var p in group.middles)
-          {
-            medical.AddDeptRoom(Room_Convert(p));
-          }
+          medical.AddDeptRoom(Room_Convert(p));
         }
-      }
-
-      if (m.emergency != null)
-      {
-        var rooms = new List<PlaylistMedical.ROOM>();
-        {
-          m.emergency.ForEach(x => rooms.Add(Room_Convert(x)));
-        }
-        medical.AddCustomRooms("ErIsolations", rooms);
-      }
-
-      medical.LargeTitle = m.large_title?.strTitle ?? string.Empty;
-
-      // ward
-      if (m.ward_room != null)
-      {
-        medical.WardRooms = new PlaylistMedical.WARD_ROOM()
-        {
-          Floor = m.ward_room.floor.ToInt(),
-          AreaCode = m.ward_room.area
-        };
-      }
-
-      // funeral
-      if (m.funeral != null)
-      {
-        medical.Funeral = new PlaylistMedical.FUNERAL()
-        {
-          RoomCodes = m.funeral.room_code
-        };
       }
       return medical;
     }
     static PlaylistMedical.ROOM Room_Convert(xml_med_middle p)
     {
+      /*
+          A, // 진료실 palyer : M, GET_PC_MED_ALL_RM_PT_INFO
+          B, // 검사실 palyer : I, GET_PC_EXAM_STATE_PT_LIST
+          C, // 검사실(일반촬영실) palyer : C, GET_PC_RAD_EXAM_PT_INFO_SEOUL
+          D, // 검사실(초음파) palyer : D, GET_PC_EXAM_ROOM_PT_LIST
+          E, // 진료실(CT/MRI) palyer : E, GET_PC_RAD_EXAM_PT_INFO_SEOUL
+      */
       return new PlaylistMedical.ROOM
       {
         DeptCode = p.DeptCode,
-        DeptName = p.DeptName,
         RoomCode = p.RoomCode,
         RoomName = p.RoomName,
-        RoomType = p.RoomType,
-        DurationTime = p.DurationTime,
-        RoomTitle = p.Title
+        RoomType = p.RoomType == "A" ? "A" : "B",
       };
     }
     static PlaylistDspConfig create_dsp(xml_dspconfig o)

@@ -15,6 +15,8 @@ namespace EUMC.Client
     public PACKAGE ClientPackage => Config.Package;
     bool _screenOn = false;
     public bool IsScreenOn { get => _screenOn; set => Set(ref _screenOn, value); }
+    bool _isSeoul = false;
+    public bool IsSeoul { get => _isSeoul; set => Set(ref _isSeoul, value); }
     //===================================
     // Window Style
     //===================================
@@ -29,8 +31,9 @@ namespace EUMC.Client
     public string ContentTitle { get => _contentTitle; set => Set(ref _contentTitle, value); }
     public ClockSetting ClockSetting { get; set; } = new ClockSetting()
     {
-      YearLength = 2,
+      YearLength = 4,
       YearDelimiter = ".",
+      ShowTime = false
     };
 
     //==================================
@@ -50,6 +53,7 @@ namespace EUMC.Client
       var o = this.Config as PackageViewConfig ?? throw new Exception("this.Config");
       this.TitlebarStyle = o.TitlebarStyle;
       this.BottomStyle = o.BottomStyle;
+      this.IsSeoul = o.IsSeoul;
     }
 
     public int ContentWidth { get; set; }

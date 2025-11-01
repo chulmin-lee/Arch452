@@ -59,7 +59,7 @@ namespace UIControls
       if (string.IsNullOrEmpty(this.Message)) return;
 
       var canvasWidth = out_canvas.ActualWidth;
-      if (canvasWidth <= 0 || out_canvas.ActualHeight <= 0)
+      if (canvasWidth <= 0 || out_canvas.ActualHeight <= 0 || string.IsNullOrEmpty(this.Caption.Content?.ToString()))
         return;
 
       // scroll 설정 (메시지가 화면보다 긴 경우 전체를 회전할 시간 계산)

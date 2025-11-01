@@ -70,7 +70,7 @@ namespace ServiceCommon
         }
         #endregion types
 
-        LOG.e($"TcpMessageClient: {id} not supported");
+        LOG.w($"TcpMessageClient: {id} not supported");
         return null;
       }
     }

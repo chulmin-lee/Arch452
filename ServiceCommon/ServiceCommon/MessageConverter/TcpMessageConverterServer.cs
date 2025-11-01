@@ -61,7 +61,7 @@ namespace ServiceCommon
           case SERVICE_ID.CLIENT_STATUS: return typeof(CLIENT_STATUS_REQ);
         }
         #endregion types
-        LOG.e($"TcpMessageServer: {id} not supported");
+        LOG.w($"TcpMessageServer: {id} not supported");
         return null;
       }
     }

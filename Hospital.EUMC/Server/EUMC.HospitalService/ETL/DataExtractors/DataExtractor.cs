@@ -23,11 +23,10 @@ namespace EUMC.HospitalService
     }
   }
 
-
   internal abstract class DataExtractor<T> : DataExtractorBase<T, DATA_ID>
     where T : OriginDataModel
   {
-    protected IEumcRepository Repository { get; private set; }
+    protected IHospitalRepository Repository { get; private set; }
     protected IMapper Mapper = DataMapper.Mapper;
 
     public DataExtractor(IHospitalMemberOwner owner, DATA_ID id) : base(owner, id)

@@ -22,6 +22,10 @@ namespace ServiceCommon
       this.RoomPatient = null;
       this.WaitPatients.Clear();
     }
+    public override string ToString()
+    {
+      return $"{this.GroupKey} Count: {WaitPatients.Count}";
+    }
   }
 
   /// <summary>

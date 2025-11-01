@@ -8,7 +8,7 @@ using ServiceCommon;
 
 namespace EUMC.HospitalService
 {
-  public class EumcRepository : OracleRepository, IEumcRepository
+  public class EumcRepository : OracleRepository, IHospitalRepository
   {
     const string XMED = "XMED";
     const string XEDP = "XEDP";

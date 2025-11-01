@@ -55,7 +55,7 @@
     <Compile Include="DataSource\DataRepository.cs" />
     <Compile Include="DataSource\Eumc\EumcModel.cs" />
     <Compile Include="DataSource\Eumc\HospitalParamBuilder.cs" />
-    <Compile Include="DataSource\Eumc\IEumcRepository.cs" />
+    <Compile Include="DataSource\Eumc\IHospitalRepository.cs" />
     <Compile Include="DataSource\Repository.Interface\IMySqlRepository.cs" />
     <Compile Include="DataSource\Eumc\HospitalParamDictionary.cs" />
     <Compile Include="DataSource\Eumc\EumcRepository.cs" />

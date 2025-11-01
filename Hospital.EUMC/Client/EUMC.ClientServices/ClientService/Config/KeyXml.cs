@@ -11,10 +11,9 @@ namespace EUMC.ClientServices
   public class KeyXml
   {
     public string UploadURL { get; set; } = string.Empty;  // http://192.168.0.30
-    public string ApiURL { get; set; } = string.Empty;  // http://127.0.0.1<
     public string ClientID { get; set; } = string.Empty;
     public string ProductName { get; set; } = string.Empty;
-    public string ApiPort { get; set; } = string.Empty;  // 30000
+    public string Port { get; set; } = string.Empty;  // 30000
 
     public static ServerConfig Load(string path)
     {
@@ -31,9 +30,7 @@ namespace EUMC.ClientServices
       {
         ClientID = key.ClientID.ToInt(),
         ServerIP = NetworkHelper.ParseIP(key.UploadURL),
-        ServerPort = key.ApiPort.ToInt(),
-        ApiServerIP = NetworkHelper.ParseIP(key.ApiURL),
-        ApiServerPort = key.ApiPort.ToInt(),
+        ServerPort = key.Port.ToInt(),
         HTTP_HOME = key.UploadURL,
         ProductName = key.ProductName,
       };

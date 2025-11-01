@@ -71,7 +71,7 @@ namespace EUMC.Client
         //-------------------------------
         case PACKAGE.PROMOTION:
           return new PromotionContentVM(config.CastTo<PromotionViewConfig>());
-
+          */
         //-------------------------------
         // 내부용
         //-------------------------------
@@ -81,9 +81,9 @@ namespace EUMC.Client
           return new NoScheduleContentVM(config.CastTo<NoScheduleViewConfig>());
         case PACKAGE.ERROR_PACKAGE:
           return new ErrorContentVM(config.CastTo<ErrorViewConfig>());
-        case PACKAGE.INFORMATION:
-          return new InfomationMainVM(config);
-          */
+        //case PACKAGE.INFORMATION:
+        //  return new InfomationMainVM(config);
+          
       }
 
       LOG.ec($"{config.Package} not supported");

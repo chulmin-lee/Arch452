@@ -58,7 +58,7 @@
 
       <Style TargetType="{x:Type ui:MarqueeControl}" x:Key="MarqueeStyle">
         <Setter Property="Foreground" Value="White" />
-        <Setter Property="Background" Value="{StaticResource primary}" />
+        <Setter Property="Background" Value="#16b1a9" />
         <Setter Property="FontSize" Value="44" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="ScrollSpeed" Value="{Binding Contents.Notice.ScrollSpeed, Mode=OneWay}" />
@@ -88,7 +88,7 @@
         <Grid Height="130" Visibility="{Binding Contents.TitlebarStyle, Converter={local:TitleBarVisibleConverter},
                                                 ConverterParameter={x:Static client:TitlebarStyle.LargeNormal}}">
           <Grid.Background>
-            <ImageBrush ImageSource="{StaticResource TitleBar_Panel_Large}" Stretch="None" />
+            <ImageBrush ImageSource="{StaticResource TitleBar_Panel_Large}" Stretch="UniformToFill" />
           </Grid.Background>
 
           <Grid.ColumnDefinitions>
@@ -99,7 +99,18 @@
 
           <!-- 0.logo -->
           <Border Grid.Column="0">
-            <Image Source="{StaticResource LogoLarge_Detail}" Stretch="None" />
+            <Image Stretch="None">
+              <Image.Style>
+                <Style TargetType="{x:Type Image}">
+                  <Setter Property="Source" Value="{StaticResource LogoLarge_Seoul}" />
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding Contents.IsSeoul}" Value="false">
+                      <Setter Property="Source" Value="{StaticResource LogoLarge_Mokdong}" />
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Image.Style>
+            </Image>
           </Border>
 
           <!-- 1.ContentTitle -->
@@ -117,66 +128,39 @@
           </Border>
         </Grid>
 
-        <!-- LargeFuneral -->
-        <Grid Height="130" Visibility="{Binding Contents.TitlebarStyle, Converter={local:TitleBarVisibleConverter},
-                                                ConverterParameter={x:Static client:TitlebarStyle.LargeNormalBlack}}">
+        <!-- MiddleNormal -->
+        <Grid Height="70" Visibility="{Binding Contents.TitlebarStyle, Converter={local:TitleBarVisibleConverter},
+                                                ConverterParameter={x:Static client:TitlebarStyle.MiddleNormal}}">
           <Grid.Background>
-            <ImageBrush ImageSource="{StaticResource TitleBar_Panel_Large}" Stretch="None" />
+            <ImageBrush ImageSource="{StaticResource TitleBar_Panel_Middle}" Stretch="UniformToFill" />
           </Grid.Background>
 
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
           </Grid.ColumnDefinitions>
 
           <!-- 0.logo -->
-          <Border Grid.Column="0" Margin="40,0,0,0">
-            <Image Source="{StaticResource LogoLarge_Black}" Stretch="None" />
+          <Border Grid.Column="0">
+            <Image Stretch="None" HorizontalAlignment="Left" Margin="50,0,0,0">
+              <Image.Style>
+                <Style TargetType="{x:Type Image}">
+                  <Setter Property="Source" Value="{StaticResource LogoMiddle_Seoul}" />
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding Contents.IsSeoul}" Value="false">
+                      <Setter Property="Source" Value="{StaticResource LogoMiddle_Mokdong}" />
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Image.Style>
+            </Image>
           </Border>
-
-          <!-- 1.ContentTitle -->
-          <Border Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="{x:Null}" HorizontalAlignment="Center">
-            <TextBlock Text="{Binding Contents.ContentTitle}"
-                       Style="{StaticResource CommonTextBlock}"
-                       FontSize="60" FontWeight="Bold"
-                       Foreground="{StaticResource primary}" />
-          </Border>
-          <!-- 2. Lagre : Clock -->
-          <Border Grid.Column="2">
-            <ui:ClockControl Style="{StaticResource ClockStyle}"
-                             DateFontSize="28"
-                             TimeFontSize="44" />
-          </Border>
-        </Grid>
-
-        <!-- MiddleExamRoom -->
-        <Grid Height="410" Visibility="{Binding Contents.TitlebarStyle, Converter={local:TitleBarVisibleConverter},
-                                                ConverterParameter={x:Static client:TitlebarStyle.MiddleExamRoom}}">
-          <Grid.Background>
-            <ImageBrush ImageSource="{StaticResource ExamTitleBG1}" Stretch="UniformToFill" />
-          </Grid.Background>
-
-          <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="2*" />
-          </Grid.RowDefinitions>
 
           <!-- 0. Middle Clock -->
-          <Border Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center">
+          <Border Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
             <ui:ClockControl Style="{StaticResource ClockStyle}"
                              DateFontSize="36"
-                             TimeFontSize="36"
-                             DateFontColor="White"
-                             TimeFontColor="White" />
-          </Border>
-
-          <!-- 1.ContentTitle -->
-          <Border Grid.Row="1" HorizontalAlignment="Right">
-            <TextBlock Text="{Binding Contents.ContentTitle}" Margin="0,0,40,0"
-                       Style="{StaticResource CommonTextBlock}"
-                       FontSize="110" FontWeight="Bold"
-                       Foreground="White" />
+                             TimeFontSize="36" />
           </Border>
         </Grid>
       </Grid>
@@ -192,29 +176,19 @@
       <!-- 2. Notice                                       -->
       <!-- =============================================== -->
       <Grid Grid.Row="2" Visibility="{Binding Contents.ShowBottomArea, Converter={StaticResource BooleanToVisibilityConverter}}">
-
         <!-- LargeNotice -->
-        <Grid Height="84" Visibility="{Binding Contents.BottomStyle, Converter={local:BottomVisibleConverter},
+        <Grid Height="85" Visibility="{Binding Contents.BottomStyle, Converter={local:BottomVisibleConverter},
                           ConverterParameter={x:Static client:BottomStyle.LargeNotice}}">
           <ui:MarqueeControl Style="{StaticResource MarqueeStyle}" />
+          <Image HorizontalAlignment="Left" Source="{StaticResource NoticeLarge}" />
         </Grid>
 
         <!-- MiddleNotice -->
-        <Grid Height="84" Visibility="{Binding Contents.BottomStyle, Converter={local:BottomVisibleConverter},
+        <Grid Height="100" Visibility="{Binding Contents.BottomStyle, Converter={local:BottomVisibleConverter},
                           ConverterParameter={x:Static client:BottomStyle.MiddleNotice}}">
+          <ui:MarqueeControl Style="{StaticResource MarqueeStyle}" />
+          <Image HorizontalAlignment="Left" Source="{StaticResource NoticeMiddle}" />
         </Grid>
-
-        <!-- Logo -->
-        <Border Height="125" Visibility="{Binding Contents.BottomStyle, Converter={local:BottomVisibleConverter},
-                             ConverterParameter={x:Static client:BottomStyle.Logo}}"
-                Margin="30,0,30,0"
-                BorderThickness="0,3,0,0" BorderBrush="{StaticResource primary}">
-
-          <Image Source="{StaticResource LogoMiddle_Bottom}"
-                 Height="50"
-                 Stretch="Uniform"
-                 VerticalAlignment="Center" HorizontalAlignment="Center" />
-        </Border>
       </Grid>
     </Grid>
   </Border>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EUMC.HospitalService
 {
-  public interface IEumcRepository
+  public interface IHospitalRepository
   {
     #region Base
     List<DEPT_MASTER_DTO> DEPT_MASTER();

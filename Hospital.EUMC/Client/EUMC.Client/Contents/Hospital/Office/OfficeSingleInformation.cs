@@ -1,9 +1,11 @@
 ﻿using Common;
 using EUMC.ClientServices;
+using Framework.Network.HTTP;
 using ServiceCommon;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Media;
 using UIControls;
 
@@ -21,7 +23,7 @@ namespace EUMC.Client
 
       var room = o.Room;
 
-      _room = new ROOM_INFO()
+      this.ROOM = new ROOM_INFO()
       {
         DeptName = room.DeptName,
         DeptCode = room.DeptCode,
@@ -47,14 +49,11 @@ namespace EUMC.Client
         {
           this.ROOM = room.Room;
           this.DOCTOR = room.Doctor;
+
           this.RoomPatient = room.RoomPatient;
-
-          LOG.dc($"count: {room.WaitPatients.Count}");
-
           this.Patients.Clear();
 
           var list = room.WaitPatients.OrderBy(x => x.WaitNo).Take(this.CONFIG.ItemRows).ToList();
-
           for (int i = 0; i < this.CONFIG.ItemRows; i++)
           {
             var name = (list.Count > i) ? list[i].PatientName : string.Empty;
@@ -96,33 +95,52 @@ namespace EUMC.Client
 
     #region Binding
     public ROOM_INFO ROOM { get => _room; set => Set(ref _room, value); }
+    ImageSource _photo = null;
     public ImageSource Photo { get { return _photo; } set { Set(ref _photo, value); } }
+    string _photo_url = string.Empty;
+    public string PhotoURL
+    {
+      get => _photo_url;
+      set
+      {
+        if (Set(ref _photo_url, value))
+        {
+          this.Photo = null;
+          if (!string.IsNullOrEmpty(value))
+          {
+            Task.Run(async () =>
+            {
+              var x = await HttpDownloader.GetMemoryStreamAsync(value);
+              if (x != null)
+              {
+                UIContextHelper.CheckBeginInvokeOnUI(() =>
+                {
+                  var src = ImageLoader.GetImageFromStream(x);
+                  this.Photo = src;
+                });
+              }
+            });
+          }
+        }
+      }
+    }
+
     public DOCTOR_INFO DOCTOR
     {
       get => _doctor;
       set
       {
-        if (Set(ref _doctor, value))
+        if(Set(ref _doctor, value))
         {
-          this.DoctorNo = value?.DoctorNo ?? string.Empty;
-        }
-      }
-    }
-    public string DoctorNo
-    {
-      get => _doctorNo;
-      set
-      {
-        if (Set(ref _doctorNo, value))
-        {
-          this.Photo = null;
-          if (!string.IsNullOrEmpty(value))
+          if(value != null)
           {
-            //CLIENT_SERVICE.Send(new DR_PHOTO_REQ(value));
+            this.PhotoURL = value.PhotoUrl;
           }
         }
       }
     }
+    bool _roomPatientExist;
+    public bool RoomPatientExist { get => _roomPatientExist; set => Set(ref _roomPatientExist, value); }
     public PATIENT_INFO RoomPatient
     {
       get => _roomPatient;
@@ -130,6 +148,7 @@ namespace EUMC.Client
       {
         if (Set(ref _roomPatient, value))
         {
+          this.RoomPatientExist = value != null;
           /*
           var key = value?.GetKey();
           if (value != null)
@@ -162,6 +181,9 @@ namespace EUMC.Client
     string _roomPatientKey;
     DOCTOR_INFO _doctor;
     string _doctorNo = string.Empty;
-    ImageSource _photo = null;
+
   }
+
+
+  
 }

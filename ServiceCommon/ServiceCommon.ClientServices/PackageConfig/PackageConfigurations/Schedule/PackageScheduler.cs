@@ -7,6 +7,7 @@ namespace ServiceCommon.ClientServices
 {
   public class PackageScheduler
   {
+
     string EmptyPackage = "no";
     DateTime _scheduleDate = DateTime.MinValue;
     Holidays Holidays = new Holidays();

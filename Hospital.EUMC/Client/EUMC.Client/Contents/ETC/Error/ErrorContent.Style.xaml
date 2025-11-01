@@ -19,7 +19,7 @@
 
         <!-- 0.logo -->
         <Border Grid.Column="0">
-          <Image Source="{StaticResource LogoLarge_Normal}" Stretch="None" />
+          <!--<Image Source="{StaticResource LogoLarge_Normal}" Stretch="None" />-->
         </Border>
 
         <!-- 1.ContentTitle -->
