@@ -73,32 +73,7 @@ namespace EUMC.Client
     }
 
     #region Photo
-    public bool UpdatePhoto(DR_PHOTO_RESP o)
-    {
-      if (this.DoctorNo == o.DoctorNo)
-      {
-        this.UpdatePhoto(o.Photo);
-      }
-      else
-      {
-        LOG.ec($"{this.DoctorNo} != {o.DoctorNo}");
-      }
-      return true;
-    }
-    public bool PhotoNotify(DR_PHOTO_UPDATED o)
-    {
-      var dr_no = this.DoctorNo;
-      if (o.DeletedDoctors.Contains(dr_no))
-      {
-        this.UpdatePhoto();
-      }
-      else if (o.UpdatedDoctors.Contains(dr_no))
-      {
-        this.UpdatePhoto();
-        CLIENT_SERVICE.Send(new DR_PHOTO_REQ(dr_no));
-      }
-      return true;
-    }
+    
     void UpdatePhoto(string photo = null)
     {
       if (string.IsNullOrEmpty(photo))
@@ -143,7 +118,7 @@ namespace EUMC.Client
           this.Photo = null;
           if (!string.IsNullOrEmpty(value))
           {
-            CLIENT_SERVICE.Send(new DR_PHOTO_REQ(value));
+            //CLIENT_SERVICE.Send(new DR_PHOTO_REQ(value));
           }
         }
       }
@@ -155,6 +130,7 @@ namespace EUMC.Client
       {
         if (Set(ref _roomPatient, value))
         {
+          /*
           var key = value?.GetKey();
           if (value != null)
           {
@@ -175,6 +151,7 @@ namespace EUMC.Client
           {
             _roomPatientKey = string.Empty;
           }
+          */
         }
       }
     }

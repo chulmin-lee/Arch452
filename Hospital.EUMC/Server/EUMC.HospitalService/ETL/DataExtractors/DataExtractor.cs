@@ -11,7 +11,7 @@ namespace EUMC.HospitalService
     public DataEventData(DATA_ID id, UpdateData<T> d) : base(id, d) { }
   }
 
-  public static class DataEventDataExtension
+  internal static class DataEventDataExtension
   {
     public static UpdateData<T> Data<T>(this INotifyData<DATA_ID> d) where T : class
     {

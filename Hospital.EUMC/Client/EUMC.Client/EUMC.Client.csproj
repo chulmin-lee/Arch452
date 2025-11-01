@@ -69,44 +69,10 @@
     <Compile Include="Contents\ETC\NoSchedule\NoScheduleContentVM.cs" />
     <Compile Include="Contents\ETC\Updater\UpdaterContentVM.cs" />
     <Compile Include="Contents\ETC\Updater\UpdaterInformation.cs" />
-    <Compile Include="Contents\Hospital\Delivery\DeliveryContentVM.cs" />
-    <Compile Include="Contents\Hospital\Delivery\DeliveryInformation.cs" />
-    <Compile Include="Contents\Hospital\Drug\DrugContentVM.cs" />
-    <Compile Include="Contents\Hospital\Drug\DrugInformation.cs" />
-    <Compile Include="Contents\Hospital\Emergency\ErPatientContentVM.cs" />
-    <Compile Include="Contents\Hospital\Emergency\ErPatientInformation.cs" />
-    <Compile Include="Contents\Hospital\ENDO\EndoContentVM.cs" />
-    <Compile Include="Contents\Hospital\ENDO\EndoInformation.cs" />
-    <Compile Include="Contents\Hospital\Exam\ExamMultiContentVM.cs" />
-    <Compile Include="Contents\Hospital\Exam\ExamMultiInformation.cs" />
-    <Compile Include="Contents\Hospital\Exam\ExamSingleContentVM.cs" />
-    <Compile Include="Contents\Hospital\Exam\ExamSingleInformation.cs" />
-    <Compile Include="Contents\Hospital\ICU\IcuContentVM.cs" />
-    <Compile Include="Contents\Hospital\ICU\IcuInformation.cs" />
-    <Compile Include="Contents\Hospital\ICU\ICU_GROUP.cs" />
-    <Compile Include="Contents\Hospital\Information\Common\IInformationContent.cs" />
-    <Compile Include="Contents\Hospital\Information\Common\IInformationMenu.cs" />
-    <Compile Include="Contents\Hospital\Information\Common\INFO_TYPE.cs" />
-    <Compile Include="Contents\Hospital\Information\ContentMenu\InformationContentVM.cs" />
-    <Compile Include="Contents\Hospital\Information\ContentMenu\InformationHomeVM.cs" />
-    <Compile Include="Contents\Hospital\Information\ContentMenu\Menu\InfoButton.cs" />
-    <Compile Include="Contents\Hospital\Information\ContentMenu\Menu\InfoButtonBar.cs" />
-    <Compile Include="Contents\Hospital\Information\Contents\AmenitiesVM.cs" />
-    <Compile Include="Contents\Hospital\Information\Contents\FindCarVM.cs" />
-    <Compile Include="Contents\Hospital\Information\Contents\FloorMapVM.cs" />
-    <Compile Include="Contents\Hospital\Information\Contents\ReceptionVM.cs" />
-    <Compile Include="Contents\Hospital\Information\Contents\TrafficVM.cs" />
-    <Compile Include="Contents\Hospital\Information\InfomationMainVM.cs" />
-    <Compile Include="Contents\Hospital\Office\OfficeConverter.cs" />
-    <Compile Include="Contents\Hospital\Office\OfficeMultiContentVM.cs" />
-    <Compile Include="Contents\Hospital\Office\OfficeMultiInformation.cs" />
+    <Compile Include="Contents\Hospital\Office\Common\OfficeConverter.cs" />
+    <Compile Include="Contents\Hospital\Office\Common\ViewModel.cs" />
     <Compile Include="Contents\Hospital\Office\OfficeSingleContentVM.cs" />
     <Compile Include="Contents\Hospital\Office\OfficeSingleInformation.cs" />
-    <Compile Include="Contents\Hospital\Operation\OperationContentVM.cs" />
-    <Compile Include="Contents\Hospital\Operation\OperationConverter.cs" />
-    <Compile Include="Contents\Hospital\Operation\OperationInformation.cs" />
-    <Compile Include="Contents\Hospital\Promotion\PromotionContentVM.cs" />
-    <Compile Include="Contents\Hospital\Promotion\PromotionInformation.cs" />
     <Compile Include="Contents\IContentViewModel.cs" />
     <Compile Include="Window\ContentWindow\ContentWindow.xaml.cs">
       <DependentUpon>ContentWindow.xaml</DependentUpon>
@@ -161,91 +127,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Contents\Hospital\Delivery\DeliveryContent.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Drug\DrugContent.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Emergency\ErPatientContent.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\ENDO\EndoContent.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Exam\ExamMultiContent.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Exam\ExamSingleContent.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\ICU\IcuBabyContent.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\ICU\IcuGuardContent.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\ICU\IcuStaffContent.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Information\ContentMenu\InformationContent.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Information\ContentMenu\InformationHome.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Information\ContentMenu\Menu\InfoButton.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Information\Contents\Amenities.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Information\Contents\FindCar.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Information\Contents\FloorMap.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Information\Contents\Reception.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Information\Contents\Traffic.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Information\InformationMain.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Office\OfficeMultiContent.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Contents\Hospital\Office\OfficeSingleContent.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Operation\OperationContent.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Contents\Hospital\Promotion\PromotionContent.Style.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

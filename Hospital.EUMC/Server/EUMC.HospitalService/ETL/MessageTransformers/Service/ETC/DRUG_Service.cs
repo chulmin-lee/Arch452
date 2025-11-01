@@ -14,7 +14,7 @@ namespace EUMC.HospitalService
     {
       switch (o.ID)
       {
-        case DATA_ID.DRUG: return drug_update(o.Data<DRUG_INFO, DATA_ID>());
+        case DATA_ID.DRUG: return drug_update(o.Data<DRUG_INFO>());
       }
       return null;
     }

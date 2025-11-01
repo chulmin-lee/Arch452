@@ -21,7 +21,7 @@ namespace EUMC.HospitalService
         case DATA_ID.EXAM_DEPT:
           {
             this.exam_dept_codes.Clear();
-            var dept_codes = o.All<EXAM_STAFF_DTO>().Select(x => x.DEPT_CD);
+            var dept_codes = o.All<EXAM_DEPT_POCO>().Select(x => x.DeptCode);
             this.exam_dept_codes.AddRange(dept_codes);
             return true;
           }

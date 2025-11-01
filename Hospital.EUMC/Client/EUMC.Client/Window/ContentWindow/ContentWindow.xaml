@@ -22,7 +22,9 @@
     <ResourceDictionary>
 
       <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Contents/Hospital/ICU/IcuStaffContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/Hospital/Office/OfficeSingleContent.Style.xaml" />
+
+        <!--<ResourceDictionary Source="/Contents/Hospital/ICU/IcuStaffContent.Style.xaml" />
         <ResourceDictionary Source="/Contents/Hospital/ICU/IcuGuardContent.Style.xaml" />
         <ResourceDictionary Source="/Contents/Hospital/ICU/IcuBabyContent.Style.xaml" />
         <ResourceDictionary Source="/Contents/Hospital/Delivery/DeliveryContent.Style.xaml" />
@@ -35,11 +37,11 @@
 
         <ResourceDictionary Source="/Contents/Hospital/Exam/ExamSingleContent.Style.xaml" />
         <ResourceDictionary Source="/Contents/Hospital/Exam/ExamMultiContent.Style.xaml" />
-        <ResourceDictionary Source="/Contents/Hospital/Office/OfficeSingleContent.Style.xaml" />
+
         <ResourceDictionary Source="/Contents/Hospital/Office/OfficeMultiContent.Style.xaml" />
         <ResourceDictionary Source="/Contents/Hospital/Information/InformationMain.Style.xaml" />
 
-        <ResourceDictionary Source="/Contents/Hospital/Promotion/PromotionContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/Hospital/Promotion/PromotionContent.Style.xaml" />-->
         <ResourceDictionary Source="/Contents/ETC/Error/ErrorContent.Style.xaml" />
         <ResourceDictionary Source="/Contents/ETC/NoSchedule/NoScheduleContent.Style.xaml" />
         <ResourceDictionary Source="/Contents/ETC/Updater/UpdaterContent.Style.xaml" />

@@ -16,7 +16,7 @@ namespace EUMC.HospitalService
     {
       switch (o.ID)
       {
-        case DATA_ID.ER_CONGESTION: return congest_update(o.Data<ER_CONGESTION_INFO, DATA_ID>());
+        case DATA_ID.ER_CONGESTION: return congest_update(o.Data<ER_CONGESTION_INFO>());
       }
       return null;
     }

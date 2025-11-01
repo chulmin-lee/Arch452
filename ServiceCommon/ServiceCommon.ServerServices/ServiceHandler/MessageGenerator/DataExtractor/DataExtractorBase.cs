@@ -69,6 +69,7 @@ namespace ServiceCommon.ServerServices
     }
 
     #region 데이터 통지 하기
+    INotifyData<D> _notify_data;
     ModelEqualityComparer<T> DtoComparer = new ModelEqualityComparer<T>();
     protected virtual void check_update(List<T> news)
     {
@@ -83,11 +84,10 @@ namespace ServiceCommon.ServerServices
           NewtonJson.Serialize(updated.All, this.BackupJsonPath);
         }
 
-        var p = this.data_mapping(updated);
-        if (p != null)
+        _notify_data = this.data_mapping(updated);
+        if (_notify_data != null)
         {
-          LOG.dc($"{this.ID} event publish");
-          this.Subscribers.ToList().ForEach(s => Task.Run(() => s.OnDataNotify(p)));
+          this.Subscribers.ToList().ForEach(s => Task.Run(() => s.OnDataNotify(_notify_data)));
         }
       }
     }
@@ -106,6 +106,11 @@ namespace ServiceCommon.ServerServices
           return false;
         }
         this.Subscribers.Add(subscriber);
+
+        if(this.IsReady && _notify_data != null)
+        {
+          subscriber.OnDataNotify(_notify_data);
+        }
         return true;
       }
     }

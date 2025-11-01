@@ -106,7 +106,7 @@ namespace EUMC.HospitalService
     public List<ENDO_PT_DTO> ENDO_PT() => this.LoadData<ENDO_PT_DTO>();
     public List<RAD_PT_DTO> RAD_PT(List<string> exam_room_codes) => this.LoadData<RAD_PT_DTO>();
     public List<RAD_TR_PT_DTO> RAD_TR_PT() => this.LoadData<RAD_TR_PT_DTO>();
-    public List<ENDO_PT_DTO> ENDO_WGO() => this.LoadData<ENDO_PT_DTO>("ENDO_WGO_PT_INFO");
+    public List<ENDO_PT_DTO> ENDO_WGO() => this.LoadData<ENDO_PT_DTO>("ENDO_WGO_PT_DTO");
     #endregion
 
     #region ETC

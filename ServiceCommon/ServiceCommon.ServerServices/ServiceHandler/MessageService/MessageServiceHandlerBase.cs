@@ -34,7 +34,7 @@ namespace ServiceCommon.ServerServices
             var loader = this.CreateMessageLoaderImpl(id);
             if (loader != null)
             {
-              LOG.dc($"{loader.ID}");
+              LOG.wc($"LoaderCreate: {loader.ID}");
               if (this.Broker.MessageSubscribe(loader))
               {
                 this.MessageMaps.Add(loader.ID, loader);

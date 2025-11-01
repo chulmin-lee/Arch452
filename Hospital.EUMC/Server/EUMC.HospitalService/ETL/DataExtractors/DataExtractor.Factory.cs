@@ -20,6 +20,7 @@ namespace EUMC.HospitalService
         //==========================
         case DATA_ID.ER_PATIENT: return new ER_PATIENT_Extractor(owner);
         case DATA_ID.ER_CONGESTION: return new ER_CONGESTION_Extractor(owner);
+        case DATA_ID.ER_CPR: return new ER_CPR_Extractor(owner);
         case DATA_ID.ER_CT: return new ER_CT_Extractor(owner);
         //==========================
         // IPD

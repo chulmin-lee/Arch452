@@ -65,8 +65,8 @@ namespace EUMC.HospitalService
     public string DoctorNo{ get; set; } = string.Empty;
     public string DoctorName { get; set; } = string.Empty;
 
-    public string DelayReason { get; set; } = string.Empty;
-    public string DelayTime { get; set; } = string.Empty;
+    //public string DelayReason { get; set; } = string.Empty;  // 사용안함
+    //public string DelayTime { get; set; } = string.Empty;  // 사용안함
     public string GroupKey => $"{this.DeptCode}:{this.RoomCode}";
   }
   internal class EXAM_PT_POCO

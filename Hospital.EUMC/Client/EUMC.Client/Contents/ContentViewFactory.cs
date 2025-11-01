@@ -14,6 +14,23 @@ namespace EUMC.Client
 
       switch (config.Package)
       {
+        case PACKAGE.OFFICE_SINGLE:
+          {
+            var o = config.CastTo<OfficeSingleViewConfig>();
+            return new OfficeSingleContentVM(o);
+          }
+        //case PACKAGE.OFFICE_MULTI:
+        //  {
+        //    var o = config.CastTo<OfficeMultiViewConfig>();
+        //    return new OfficeMultiContentVM(o);
+        //  }
+        //case PACKAGE.EXAM_SINGLE:
+        //  {
+        //    var o = config.CastTo<ExamSingleViewConfig>();
+        //    return new ExamSingleContentVM(o);
+        //  }
+
+          /*
         case PACKAGE.ER_PATIENT:
           return new ErPatientContentVM(config.CastTo<ErPatientViewConfig>());
         case PACKAGE.ICU:
@@ -35,21 +52,7 @@ namespace EUMC.Client
             return new DeliveryContentVM(o);
           }
 
-        case PACKAGE.OFFICE_SINGLE:
-          {
-            var o = config.CastTo<OfficeSingleViewConfig>();
-            return new OfficeSingleContentVM(o);
-          }
-        case PACKAGE.OFFICE_MULTI:
-          {
-            var o = config.CastTo<OfficeMultiViewConfig>();
-            return new OfficeMultiContentVM(o);
-          }
-        case PACKAGE.EXAM_SINGLE:
-          {
-            var o = config.CastTo<ExamSingleViewConfig>();
-            return new ExamSingleContentVM(o);
-          }
+
         case PACKAGE.EXAM_MULTI:
           {
             var o = config.CastTo<ExamMultiViewConfig>();
@@ -80,6 +83,7 @@ namespace EUMC.Client
           return new ErrorContentVM(config.CastTo<ErrorViewConfig>());
         case PACKAGE.INFORMATION:
           return new InfomationMainVM(config);
+          */
       }
 
       LOG.ec($"{config.Package} not supported");

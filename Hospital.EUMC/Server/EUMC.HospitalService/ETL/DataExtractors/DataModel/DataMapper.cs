@@ -148,9 +148,10 @@ namespace EUMC.HospitalService
             .ForMember(dest => dest.RoomName, opt => opt.MapFrom(src => src.EXAMRMNM))
             .ForMember(dest => dest.DoctorNo, opt => opt.MapFrom(src => src.STFNO))
             .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => src.STFNM))
-            .ForMember(dest => dest.DelayReason, opt => opt.MapFrom(src => src.DELEYTXT))
-            .ForMember(dest => dest.DelayTime, opt => opt.MapFrom(src => src.DELEYTM));
-      cfg.CreateMap<EXAM_STAFF_POCO, DOCTOR_INFO>();
+            //.ForMember(dest => dest.DelayReason, opt => opt.MapFrom(src => src.DELEYTXT))
+            //.ForMember(dest => dest.DelayTime, opt => opt.MapFrom(src => src.DELEYTM));
+            ;
+      //cfg.CreateMap<EXAM_STAFF_POCO, DOCTOR_INFO>();
 
       cfg.CreateMap<EXAM_PT_DTO, EXAM_PT_POCO>()
             .ForMember(dest => dest.DeptCode, opt => opt.MapFrom(src => src.DEPTCD))

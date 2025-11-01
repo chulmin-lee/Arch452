@@ -11,8 +11,8 @@ namespace EUMC.ClientServices
 
     public OfficeSingleViewConfig(PackageInfo p, PlaylistSchedule s) : base(p, s)
     {
-      this.TitlebarStyle = TitlebarStyle.None;
-      this.BottomStyle = BottomStyle.Logo;
+      this.TitlebarStyle = TitlebarStyle.MiddleNormal;
+      this.BottomStyle = BottomStyle.MiddleNotice;
       this.IsWideContent = false;
 
       this.Config = new ContentConfig()

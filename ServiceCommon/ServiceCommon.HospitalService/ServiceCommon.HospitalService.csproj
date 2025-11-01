@@ -54,8 +54,8 @@
     <Compile Include="MessageLoaders\Loader\Group\ER_PATIENT_Loader.cs" />
     <Compile Include="MessageLoaders\Loader\Group\Grouping_LoaderBase.cs" />
     <Compile Include="MessageLoaders\Loader\Group\ICU_Loader.cs" />
-    <Compile Include="MessageLoaders\Loader\Group\OPD_EXAM_Loader.cs" />
-    <Compile Include="MessageLoaders\Loader\Group\OPD_OFFICE_Loader.cs" />
+    <Compile Include="MessageLoaders\Loader\Group\EXAM_PT_Loader.cs" />
+    <Compile Include="MessageLoaders\Loader\Group\OFFICE_PT_Loader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

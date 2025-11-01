@@ -15,7 +15,7 @@ namespace ServiceCommon.ServerServices
     /// </summary>
     public List<D> SubscribeList { get; set; } = new List<D>();
     /// <summary>
-    /// 나의 가입자
+    /// 나의 가입자 (SERVICE_ID 기준이므로 1명만 받는다)
     /// </summary>
     HashSet<IMessageSubscriber> Subscribers  = new HashSet<IMessageSubscriber>();
     protected object LOCK = new object();
@@ -72,11 +72,10 @@ namespace ServiceCommon.ServerServices
           }
         }
 
-        LOG.dc($"[{this.ID}] {o.ID} data updated");
+        LOG.dc($"[{this.ID}] Data '{o.ID}' updated");
         var updated = this.data_notified(o);
         if (updated != null)
         {
-          LOG.dc($"[{this.ID}] event publish");
           this.Subscribers.ToList().ForEach(s => Task.Run(() => s.OnMessageNotify(updated)));
         }
       }

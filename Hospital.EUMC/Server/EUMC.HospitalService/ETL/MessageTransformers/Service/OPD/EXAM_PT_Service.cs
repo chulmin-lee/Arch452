@@ -22,7 +22,7 @@ namespace EUMC.HospitalService
         case DATA_ID.DEPT_MASTER: return dept_master_updated(o.Data<DEPT_MASTER_POCO>());
         case DATA_ID.EXAM_ROOM: return exam_room_updated(o.Data<EXAM_ROOM_POCO>());
         case DATA_ID.EXAM_STAFF: return exam_staff_updated(o.Data<EXAM_STAFF_POCO>());
-        case DATA_ID.EXAM_PT: return exam_pt_update(o.Data<EXAM_PT_POCO, DATA_ID>());
+        case DATA_ID.EXAM_PT: return exam_pt_update(o.Data<EXAM_PT_POCO>());
       }
       return null;
     }
@@ -108,8 +108,7 @@ namespace EUMC.HospitalService
       // data backup
       //========================
       _exam_staffs.Clear();
-      Mapper.Map<EXAM_STAFF_POCO[], List<DOCTOR_INFO>>(o.All.ToArray())
-            .ForEach(x => _exam_staffs.Add(x.DoctorNo, x));
+      o.All.ForEach(x => _exam_staffs.Add(x.GroupKey, x));
       if (!this.IsReady) return null;
       //========================
       // check first ready
@@ -122,14 +121,9 @@ namespace EUMC.HospitalService
       var updated = new List<OPD_ROOM_INFO>();
       foreach (var dr in o.ChangedAll)
       {
-        var opd_room = ROOMS.Values.Where(x => x.DoctorNo == dr.DoctorNo).FirstOrDefault();
-        if(_exam_staffs.ContainsKey(dr.DoctorNo))
+        if (this.ROOMS.TryGetValue(dr.GroupKey, out var opd_room))
         {
-          opd_room.Doctor = _exam_staffs[dr.DoctorNo];
-        }
-        else
-        {
-          opd_room.Clear();
+          this.update_doctor(opd_room);
         }
         updated.Add(opd_room);
       }
@@ -200,19 +194,15 @@ namespace EUMC.HospitalService
       var key = room.GroupKey;
       var opd_room = new OPD_ROOM_INFO() { Room = room, };
       this.update_room_patients(opd_room, key);
-      this.update_doctor(opd_room, key);
+      this.update_doctor(opd_room);
       return opd_room;
     }
-    void update_doctor(OPD_ROOM_INFO opd_room, string dr_no)
+    void update_doctor(OPD_ROOM_INFO opd_room)
     {
-      if(_exam_staffs.ContainsKey(dr_no))
-      {
-        opd_room.Doctor = _exam_staffs[dr_no];
-      }
-      else
-      {
-        opd_room.Doctor = new DOCTOR_INFO();
-      }
+      var key = opd_room.GroupKey;
+      _exam_staffs.TryGetValue(key, out var staff);
+      opd_room.Doctor.DoctorNo = staff?.DoctorNo ?? string.Empty;
+      opd_room.Doctor.DoctorName = staff?.DoctorName ?? string.Empty;
     }
     void update_room_patients(OPD_ROOM_INFO opd_room, string key)
     {
@@ -235,7 +225,7 @@ namespace EUMC.HospitalService
     Dictionary<string, string> _dept_names = new Dictionary<string, string>();
     Dictionary<string, ROOM_INFO> _exam_rooms = new Dictionary<string, ROOM_INFO>();
     Dictionary<string, List<PATIENT_INFO>> _exam_patients = new Dictionary<string, List<PATIENT_INFO>>();
-    Dictionary<string, DOCTOR_INFO> _exam_staffs = new Dictionary<string, DOCTOR_INFO>();
+    Dictionary<string, EXAM_STAFF_POCO> _exam_staffs = new Dictionary<string, EXAM_STAFF_POCO>();  // groupkey
     #endregion
   }
 }

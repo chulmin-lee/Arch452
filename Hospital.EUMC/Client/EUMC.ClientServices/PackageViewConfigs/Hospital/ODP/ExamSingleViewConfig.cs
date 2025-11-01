@@ -10,8 +10,8 @@ namespace EUMC.ClientServices
     public OpdRoomConfig Room { get; set; }
     public ExamSingleViewConfig(PackageInfo p, PlaylistSchedule s) : base(p, s)
     {
-      this.TitlebarStyle = TitlebarStyle.MiddleExamRoom;
-      this.BottomStyle = BottomStyle.Logo;
+      this.TitlebarStyle = TitlebarStyle.MiddleNormal;
+      this.BottomStyle = BottomStyle.MiddleNotice;
       this.IsWideContent = false;
 
       this.Config = new ContentConfig

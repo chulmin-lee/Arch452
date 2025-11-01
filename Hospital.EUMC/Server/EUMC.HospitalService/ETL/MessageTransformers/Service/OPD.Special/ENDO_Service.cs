@@ -12,7 +12,6 @@ namespace EUMC.HospitalService
     }
     protected override INotifyMessage data_notified(INotifyData<DATA_ID> o)
     {
-   
       ENDO_TYPE type = ENDO_TYPE.None;
       switch (o.ID)
       {

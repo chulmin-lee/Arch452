@@ -45,16 +45,4 @@ namespace ServiceCommon.ServerServices
       this.Data = d;
     }
   }
-
-  public static class NotifyDataExtension
-  {
-    public static UpdateData<T> Data<T, D>(this INotifyData<D> d) where T : class where D : Enum
-    {
-      return (d as NotifyData<T, D>)?.Data ?? throw new InvalidOperationException("Data");
-    }
-    public static List<T> All<T, D>(this INotifyData<D> d) where T : class where D : Enum
-    {
-      return (d as NotifyData<T, D>)?.Data.All ?? throw new InvalidOperationException("Data");
-    }
-  }
 }

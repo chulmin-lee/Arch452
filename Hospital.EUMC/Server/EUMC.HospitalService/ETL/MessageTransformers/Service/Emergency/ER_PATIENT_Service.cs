@@ -17,7 +17,7 @@ namespace EUMC.HospitalService
     {
       switch (o.ID)
       {
-        case DATA_ID.ER_PATIENT: return emergency_update(o.Data<ER_PATIENT_INFO, DATA_ID>());
+        case DATA_ID.ER_PATIENT: return emergency_update(o.Data<ER_PATIENT_INFO>());
       }
       return null;
     }

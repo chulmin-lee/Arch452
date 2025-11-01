@@ -30,8 +30,8 @@ namespace EUMC.HospitalService
         //===================
         // OPD
         //===================
-        case SERVICE_ID.OFFICE_PT: return new OPD_OFFICE_Loader();
-        case SERVICE_ID.EXAM_PT: return new OPD_EXAM_Loader();
+        case SERVICE_ID.OFFICE_PT: return new OFFICE_PT_Loader();
+        case SERVICE_ID.EXAM_PT: return new EXAM_PT_Loader();
         case SERVICE_ID.ANG: return new ANG_Loader();
         case SERVICE_ID.ENDO: return new ENDO_Loader();
 
@@ -62,7 +62,7 @@ namespace EUMC.HospitalService
       map.Add(PACKAGE.OFFICE_SINGLE, new List<SERVICE_ID> { SERVICE_ID.OFFICE_PT });
       map.Add(PACKAGE.OFFICE_MULTI, new List<SERVICE_ID> { SERVICE_ID.OFFICE_PT });
       map.Add(PACKAGE.EXAM_SINGLE, new List<SERVICE_ID> { SERVICE_ID.EXAM_PT });
-      map.Add(PACKAGE.EXAM_MULTI, new List<SERVICE_ID> { SERVICE_ID.EXAM_PT });
+      //map.Add(PACKAGE.EXAM_MULTI, new List<SERVICE_ID> { SERVICE_ID.EXAM_PT });
       map.Add(PACKAGE.ENDO, new List<SERVICE_ID> { SERVICE_ID.ENDO });
       //===================
       // ETC
