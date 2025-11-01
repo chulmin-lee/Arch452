@@ -1,4 +1,5 @@
 ﻿using Common;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace EUMC.Server
@@ -15,6 +16,10 @@ namespace EUMC.Server
       if (ProcessHelper.IsAlreadyRunning())
       {
         Current.Shutdown();
+      }
+      else
+      {
+        //MaskedNameHelper.Initialize(MaskPosition.Right, 0.5, new List<string> { "아기" });
       }
     }
   }

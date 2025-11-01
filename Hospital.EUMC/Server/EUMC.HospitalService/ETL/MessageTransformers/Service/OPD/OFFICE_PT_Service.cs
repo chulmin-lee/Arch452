@@ -113,6 +113,7 @@ namespace EUMC.HospitalService
         var key = $"{p.Key.DeptCode}:{p.Key.RoomCode}";
         LOG.dc($"{this.ID} extractor: {key} count: {p.Count()}");
         var room_pt = Mapper.Map<OFFICE_PT_POCO[], List<PATIENT_INFO>>(p.ToArray()).OrderBy(x => x.WaitNo).ToList();
+        room_pt.ForEach(x => x.PatientName = x.PatientName.MaskedName());
         _office_patients.Add(key, room_pt);
       });
       if (!this.IsReady) return null;

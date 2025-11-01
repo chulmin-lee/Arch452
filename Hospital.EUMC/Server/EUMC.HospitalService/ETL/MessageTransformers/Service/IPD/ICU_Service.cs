@@ -37,6 +37,8 @@ namespace EUMC.HospitalService
       {
         var ward_code = group.Key;
         var patients = group.ToList();
+        patients.ForEach(x => x.PatientName.MaskedName());
+
         var ward = new ICU_PT_INFO()
         {
           IcuCode = patients.First().IcuCode,

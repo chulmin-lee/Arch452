@@ -60,6 +60,7 @@
     <Compile Include="Helper\NetworkHelper.cs" />
     <Compile Include="Helper\ProcessHelper.cs" />
     <Compile Include="Helper\ReflectionHelper.cs" />
+    <Compile Include="Helper\String\MaskedNameHelper.cs" />
     <Compile Include="Helper\String\SpeechHelper.cs" />
     <Compile Include="Helper\String\StringExtension.cs" />
     <Compile Include="Helper\SystemHelper.cs" />

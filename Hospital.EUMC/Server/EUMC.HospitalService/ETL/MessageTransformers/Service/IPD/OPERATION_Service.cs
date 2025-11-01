@@ -25,9 +25,10 @@ namespace EUMC.HospitalService
     /// </summary>
     /// <param name="o"></param>
     /// <returns></returns>
-    INotifyMessage operation_update(UpdateData<OPERATION_INFO> updated)
+    INotifyMessage operation_update(UpdateData<OPERATION_INFO> o)
     {
-      return new NotifyMessage<OPERATION_INFO> { ID = this.ID, Updated = updated.All };
+      o.All.ForEach(x => x.PatientName.MaskedName());
+      return new NotifyMessage<OPERATION_INFO> { ID = this.ID, Updated = o.All };
     }
 
     internal class EventData : INotifyMessage

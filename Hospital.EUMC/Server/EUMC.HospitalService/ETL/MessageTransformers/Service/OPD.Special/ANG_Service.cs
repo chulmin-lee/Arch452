@@ -24,7 +24,7 @@ namespace EUMC.HospitalService
         default: return null;
       }
       var all = o.All<ANG_PT_INFO>();
-      all.ForEach(x => x.Type = type);
+      all.ForEach(x => { x.Type = type; x.PatientName = x.PatientName.MaskedName(); });
       return new NotifyMessage<ANG_PT_INFO> { ID = this.ID, Updated = all };
     }
   }

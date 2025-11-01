@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\HospitalExtension.cs" />
     <Compile Include="Config\HospitalServiceConfigurations.cs" />
     <Compile Include="DataSource\DataRepository.cs" />
     <Compile Include="DataSource\Eumc\EumcModel.cs" />

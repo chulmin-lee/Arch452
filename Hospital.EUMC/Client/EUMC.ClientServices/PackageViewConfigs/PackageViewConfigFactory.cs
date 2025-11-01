@@ -1,6 +1,8 @@
 ﻿using Common;
 using ServiceCommon;
 using ServiceCommon.ClientServices;
+using System.Linq;
+using static ServiceCommon.CLIENT_STATUS_REQ;
 
 namespace EUMC.ClientServices
 {
@@ -39,28 +41,49 @@ namespace EUMC.ClientServices
         switch (s.PackageName)
         {
           #region Emergency
-          case PackageNames.ER_PATIENT_ADULT: return PackageInfoFactory.ER_PATIENT(s, false);
-          case PackageNames.ER_PATIENT_CHILD: return PackageInfoFactory.ER_PATIENT(s, true);
+          //case PackageNames.ER_PATIENT_ADULT: return PackageInfoFactory.ER_PATIENT(s, false);
+          //case PackageNames.ER_PATIENT_CHILD: return PackageInfoFactory.ER_PATIENT(s, true);
           #endregion Emergency
 
           #region IPD
-          case PackageNames.ICU_STAFF: return PackageInfoFactory.ICU(s);
+          case PackageNames.ICU_RM:
+          case PackageNames.ICU2_RM:
+          case PackageNames.ICU_BABY:
+            return PackageInfoFactory.ICU(s);
           case PackageNames.OPERATION: return PackageInfoFactory.OPERATION(s);
-          case PackageNames.DELIVERY_ROOM: return PackageInfoFactory.DELIVERY_ROOM(s);
-          case PackageNames.WARD_ROOMS: return PackageInfoFactory.WARD_ROOMS(s);
           #endregion IPD
 
           #region OPD
-          case PackageNames.OFFICE_SINGLE: return PackageInfoFactory.OFFICE_SINGLE(s);
-          case PackageNames.EXAM_SINGLE: return PackageInfoFactory.EXAM_SINGLE(s);
-          case PackageNames.OFFICE_MULTI: return PackageInfoFactory.OFFICE_MULTI(s);
-          case PackageNames.EXAM_MULTI: return PackageInfoFactory.EXAM_MULTI(s);
+          case PackageNames.SINGLE_OPD:
+            {
+              if(s.Medical.DeptRooms.Any())
+              {
+                var type = s.Medical.DeptRooms[0].RoomType;
+                return type == "A" ? PackageInfoFactory.OFFICE_SINGLE(s) : PackageInfoFactory.EXAM_SINGLE(s);
+              }
+              else
+              {
+               return new PackageInfo(s.PackageName, PACKAGE_ERROR.InvalidValue, "no room");
+              }
+            }
+          case PackageNames.MULTI_OPD:
+            {
+              if (s.Medical.DeptRooms.Any())
+              {
+                var type = s.Medical.DeptRooms[0].RoomType;
+                return type == "A" ? PackageInfoFactory.OFFICE_MULTI(s) : PackageInfoFactory.EXAM_MULTI(s);
+              }
+              else
+              {
+                return new PackageInfo(s.PackageName, PACKAGE_ERROR.InvalidValue, "no room");
+              }
+            }
           case PackageNames.ENDO: return PackageInfoFactory.ENDO(s);
           #endregion OPD
 
           case PackageNames.DRUG: return PackageInfoFactory.DRUG(s);
-          case PackageNames.PROMOTION: return PackageInfoFactory.PROMOTION(s);
-          case PackageNames.PROMOTION_V: return PackageInfoFactory.PROMOTION(s);
+          //case PackageNames.PROMOTION: return PackageInfoFactory.PROMOTION(s);
+          //case PackageNames.PROMOTION_V: return PackageInfoFactory.PROMOTION(s);
         }
 
         LOG.ec($"{s.PackageName} not supported");

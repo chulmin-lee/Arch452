@@ -21,7 +21,7 @@ namespace EUMC.HospitalService
       }
 
       var all = o.All<ENDO_PT_INFO>();
-      all.ForEach(x => x.Type = type);
+      all.ForEach(x => { x.Type = type; x.PatientName = x.PatientName.MaskedName(); });
       return new NotifyMessage<ENDO_PT_INFO> { ID = this.ID, Updated = all };
     }
   }
