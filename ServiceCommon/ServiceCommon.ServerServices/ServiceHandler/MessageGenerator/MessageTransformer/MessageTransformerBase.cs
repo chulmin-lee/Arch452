@@ -28,13 +28,16 @@ namespace ServiceCommon.ServerServices
     {
       lock (LOCK)
       {
-        if (this.ID != subscriber.ID)
+        bool success = this.ID == subscriber.ID;
+        if (success)
+        {
+          this.Subscribers.Add(subscriber);
+        }
+        else
         {
           LOG.ec($"no service id");
-          return false;
         }
-        this.Subscribers.Add(subscriber);
-        return true;
+        return success;
       }
     }
 
