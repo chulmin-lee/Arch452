@@ -82,8 +82,8 @@
   <sys:Double x:Key="Popup_Width_Portrait">1087</sys:Double>
   <sys:Double x:Key="Popup_Height_Portrait">700</sys:Double>
 
-  
-  
+
+
   <!-- duck san -->
   <SolidColorBrush x:Key="primary" Color="#0E7758" />
   <SolidColorBrush x:Key="accent1" Color="#F68D38" />
@@ -155,9 +155,9 @@
     <Setter Property="FontSize" Value="36" />
     <Setter Property="FontWeight" Value="SemiBold" />
   </Style>
-  
+
   <Style TargetType="{x:Type TextBlock}" x:Key="CommonTextBlock">
-    <Setter Property="Foreground" Value="{StaticResource Gray800}" />
+    <Setter Property="Foreground" Value="{StaticResource primary}" />
     <Setter Property="HorizontalAlignment" Value="Center" />
     <Setter Property="VerticalAlignment" Value="Center" />
     <Setter Property="TextWrapping" Value="Wrap" />
@@ -167,11 +167,11 @@
   </Style>
 
   <Style TargetType="{x:Type ui:TextBorder}">
-    <Setter Property="AutoFontRatio" Value="0.9" />
+    <Setter Property="AutoFontRatio" Value="0.8" />
     <Setter Property="FontWeight" Value="SemiBold" />
     <Setter Property="TextTrimming" Value="None" />
     <Setter Property="TextWrapping" Value="NoWrap" />
-    <Setter Property="Foreground" Value="{StaticResource Gray800}" />
+    <Setter Property="Foreground" Value="{StaticResource primary}" />
     <Setter Property="TextAlignment" Value="Center" />
     <Setter Property="AutoFontSize" Value="true" />
     <Setter Property="FontSize" Value="36" />

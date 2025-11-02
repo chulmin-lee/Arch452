@@ -83,12 +83,16 @@
               <RowDefinition Height="2*" />
               <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Style="{StaticResource CommonTextBlock}">
-                <Run FontSize="127" Text="{Binding RoomPatient.PatientName}" />
-                <Run FontSize="100">&#x00A0;님</Run>
-            </TextBlock>
-            <Label Grid.Row="1" Content="성함을 호명하면 들어오십시오" FontSize="47" Style="{StaticResource CommonLabel}"
-                   Foreground="{StaticResource primary}"/>
+
+            <Grid Grid.Row="0" Margin="30,0,30,0" HorizontalAlignment="Center">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+              </Grid.ColumnDefinitions>
+              <ui:TextBorder Grid.Column="0" Text="{Binding RoomPatient.PatientName}" FontSize="127" HorizontalAlignment="Right" />
+              <ui:TextBorder Grid.Column="1" Text="&#x00A0;님" FontSize="100" HorizontalAlignment="Left" />
+            </Grid>
+            <Label Grid.Row="1" Content="성함을 호명하면 들어오십시오" FontSize="47" Style="{StaticResource CommonLabelPrimary}" />
           </Grid>
 
           <!-- 3. 환자 목록 -->
@@ -130,9 +134,10 @@
                     </Grid>
 
                     <Grid Grid.Column="1" >
-                        <Label Content="{Binding PatientName}"
+                      <ui:TextBorder Text="{Binding PatientName}" FontSize="96" AutoFontRatio="0.8" />
+                      <!--<Label Content="{Binding PatientName}"
                                FontSize="97"
-                               Style="{StaticResource CommonLabelPrimary}" />
+                               Style="{StaticResource CommonLabelPrimary}" />-->
                     </Grid>
                   </Grid>
                 </DataTemplate>

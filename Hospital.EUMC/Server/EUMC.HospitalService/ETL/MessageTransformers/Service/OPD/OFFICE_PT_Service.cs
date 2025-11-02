@@ -111,7 +111,7 @@ namespace EUMC.HospitalService
       patients.All.GroupBy(x => new { x.DeptCode, x.RoomCode }).ToList().ForEach(p =>
       {
         var key = $"{p.Key.DeptCode}:{p.Key.RoomCode}";
-         var room_pt = Mapper.Map<OFFICE_PT_POCO[], List<PATIENT_INFO>>(p.ToArray()).OrderBy(x => x.WaitNo).ToList();
+        var room_pt = Mapper.Map<OFFICE_PT_POCO[], List<PATIENT_INFO>>(p.ToArray()).OrderBy(x => x.WaitNo).ToList();
         room_pt.ForEach(x => x.PatientName = x.PatientName.MaskedName());
         _office_patients.Add(key, room_pt);
       });

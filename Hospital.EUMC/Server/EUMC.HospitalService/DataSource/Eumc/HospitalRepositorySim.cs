@@ -88,7 +88,10 @@ namespace EUMC.HospitalService
     #region Office
     public List<OFFICE_ROOM_MASTER_DTO> OFFICE_ROOM_MASTER() => this.LoadData<OFFICE_ROOM_MASTER_DTO>();
     public List<OFFICE_ROOM_DTO> OFFICE_ROOM() => this.LoadData<OFFICE_ROOM_DTO>();
-    public List<OFFICE_PT_DTO> OFFICE_PT(Dictionary<string, List<string>> dept_room_no) => this.LoadData<OFFICE_PT_DTO>();
+    public List<OFFICE_PT_DTO> OFFICE_PT(Dictionary<string, List<string>> dept_room_no)
+    {
+      return this.LoadData<OFFICE_PT_DTO>().Where(x => x.PT_NM == x.ELDP_PT_NM).ToList();
+    }
     public List<DR_PHOTO_DTO> DR_PHOTO() => this.LoadData<DR_PHOTO_DTO>();
     #endregion
 
