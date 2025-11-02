@@ -10,8 +10,8 @@
     public const string ICU_BABY    = "h11"; // winInfoICUBaby 신생아 중환자실
 
     // OPD
-    public const string SINGLE_OPD  = "w1"; // 진료실/검사실 중대합
-    public const string MULTI_OPD   = "w2"; // 진료실/검사실 대대합
+    public const string SINGLE_OPD  = "w1"; // 진료실/검사실 중대합 (A, B)
+    public const string MULTI_OPD   = "w2"; // 진료실/검사실 대대합 (A, B, C,..)
 
     // OPD Exam
     // 조영실

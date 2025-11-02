@@ -153,7 +153,7 @@ namespace EUMC.ClientServices
         DeptCode = p.DeptCode,
         RoomCode = p.RoomCode,
         RoomName = p.RoomName,
-        RoomType = p.RoomType == "A" ? "A" : "B",
+        RoomType = p.RoomType  // 대대합인 경우 여러값이 온다. 중대합은 A/B
       };
     }
     static PlaylistDspConfig create_dsp(xml_dspconfig o)

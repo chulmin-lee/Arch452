@@ -22,14 +22,16 @@ namespace Common
     }
     public string MaskedName(string name)
     {
+      name = name.Trim();
       if (string.IsNullOrEmpty(name) || name.Contains("*"))
         return name;
 
-      name = name.Trim();
       string postfix = string.Empty;
-      foreach(var p in _postfix)
+      foreach (var p in _postfix)
       {
-        if(name.EndsWith(p))
+        if (name.Length <= p.Length) continue;
+        if (name.Length - p.Length < 2) continue;
+        if (name.EndsWith(p))
         {
           postfix = p;
           name = name.Replace(postfix, string.Empty).Trim();

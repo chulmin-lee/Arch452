@@ -157,23 +157,16 @@ namespace UIControls
 
     public string GetDate(DateTime d)
     {
-      var year = d.Year;
-      string year_str = year.ToString();
-      switch (this.YearLength)
+      string year = d.Year.ToString();
+      if (year.Length >= this.YearLength)
       {
-        case 0:
-          year_str = string.Empty;
-          break;
-        case 2:
-          year_str = (year - (year / 100) * 100).ToString("D2");
-          break;
+        year = year.Substring(year.Length - this.YearLength);
       }
-
       var date_str = $"{d.Month.ToString("D2")}{this.YearDelimiter}{d.Day.ToString("D2")}";
 
       if (this.ShowYear)
       {
-        date_str = $"{year_str}{this.YearDelimiter}{date_str}";
+        date_str = $"{year}{this.YearDelimiter}{date_str}";
       }
 
       if (this.ShowWeekOfDay)
