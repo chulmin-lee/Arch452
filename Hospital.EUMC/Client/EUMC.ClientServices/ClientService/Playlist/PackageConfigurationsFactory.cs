@@ -162,7 +162,7 @@ namespace EUMC.ClientServices
       {
         TimeRanges = TimeRange.ConvertToTimeRanges(o.time_value),
         WeekdayRange = new WeekdayRange(o.week_value.ToIntList()),
-        Holidays = new Holidays(o.holiday_value.ToList(',')),
+        Holidays = new Holidays(o.holiday_value.ToStringList(',')),
         Duration = o.duration.ToInt(10),
         MediaVolume = o.MediaVolumn(),
       };

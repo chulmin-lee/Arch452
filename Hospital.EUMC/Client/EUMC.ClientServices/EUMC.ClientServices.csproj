@@ -52,6 +52,7 @@
     <Compile Include="ClientService\Playlist\PlaylistUpdater.cs" />
     <Compile Include="ClientService\Playlist\PlaylistXmlFile.cs" />
     <Compile Include="CLIENT_SERVICE.cs" />
+    <Compile Include="FRAMEWORK_CONFIG.cs" />
     <Compile Include="PackageViewConfigs\Hospital\Emergency\ErPatientViewConfig.cs" />
     <Compile Include="PackageViewConfigs\Hospital\ETC\DrSchViewConfig.cs" />
     <Compile Include="PackageViewConfigs\Hospital\ETC\DrugViewConfig.cs" />

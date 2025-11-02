@@ -16,7 +16,7 @@ namespace Common
       var list = ToLines(s);
       return list != null ? list.Length > 1 : false;
     }
-    public static List<string> ToList(this string s, params char[] seperator)
+    public static List<string> ToStringList(this string s, params char[] seperator)
     {
       var list = new List<string>();
       if (!string.IsNullOrWhiteSpace(s))

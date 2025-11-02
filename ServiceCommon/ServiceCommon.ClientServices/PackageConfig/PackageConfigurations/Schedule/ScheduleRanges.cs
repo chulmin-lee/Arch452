@@ -181,9 +181,9 @@ namespace ServiceCommon.ClientServices
     public static List<TimeRange> ConvertToTimeRanges(string s)
     {
       var ranges = new List<TimeRange>();
-      foreach (var p in s.ToList())
+      foreach (var p in s.ToStringList())
       {
-        var times = p.ToList('~');
+        var times = p.ToStringList('~');
         if (times.Count >= 2)
         {
           ranges.AddRange(ConvertToTimeRanges(times[0], times[1]));

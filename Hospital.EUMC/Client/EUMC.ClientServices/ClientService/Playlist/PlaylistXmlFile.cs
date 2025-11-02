@@ -181,7 +181,7 @@ namespace EUMC.ClientServices
         string channel_name = string.Empty;
 
         // 형식: "111,KBS1"
-        var arr = this.tv_channel.ToList(',');
+        var arr = this.tv_channel.ToStringList(',');
         for (int i = 0; i < arr.Count; i++)
         {
           switch (i)
