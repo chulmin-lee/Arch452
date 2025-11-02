@@ -11,7 +11,7 @@ namespace Framework.DataSource
   {
     [JsonIgnore]
     [Origin(DTO.PRIMARY)]
-    public int ID
+    public int HashCode
     {
       get => (_hashCode == 0) ? GetHashCode() : _hashCode;
       set => _hashCode = value;

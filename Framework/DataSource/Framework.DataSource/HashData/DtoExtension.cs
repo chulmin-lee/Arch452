@@ -11,7 +11,7 @@ namespace Framework.DataSource
 
     public static bool IsUniqueKeys<T>(this IEnumerable<T> news) where T : OriginDataModel
     {
-      var hashcodes = news.Select(x => x.ID);
+      var hashcodes = news.Select(x => x.HashCode);
       return hashcodes.Count() == hashcodes.Distinct().Count();
     }
 
@@ -37,7 +37,7 @@ namespace Framework.DataSource
       //}
 
       // 중복 제거
-      if (news.Count != news.Select(x => x.ID).Distinct().Count())
+      if (news.Count != news.Select(x => x.HashCode).Distinct().Count())
       {
         news = news.Distinct(compare).ToList();
       }
@@ -56,7 +56,7 @@ namespace Framework.DataSource
       // 조회 데이타 중 같은 id를 가진 데이타들
       foreach (var new_data in news.Intersect(origin, compare))
       {
-        if (new_data.IsEqualModel(dic[new_data.ID]))
+        if (new_data.IsEqualModel(dic[new_data.HashCode]))
         {
           o.Constant.Add(new_data);
         }

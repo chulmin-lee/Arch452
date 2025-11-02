@@ -81,7 +81,7 @@ namespace ServiceCommon.ServerServices
     void data_updated(UpdateData<T> updated)
     {
       this.DATA.Clear();
-      updated.All.ForEach(x => this.DATA.Add(x.ID, x));
+      updated.All.ForEach(x => this.DATA.Add(x.HashCode, x));
       if (this.IsBackup)
       {
         NewtonJson.Serialize(updated.All, this.BackupJsonPath);

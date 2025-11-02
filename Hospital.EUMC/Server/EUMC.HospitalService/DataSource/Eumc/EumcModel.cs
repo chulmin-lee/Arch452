@@ -26,7 +26,7 @@ namespace EUMC.HospitalService
 
     public override string ToString()
     {
-      return $"[{ID}] {LWR_CTG_NM}/{LWR_CTG_CNTE}";
+      return $"[{HashCode}] {LWR_CTG_NM}/{LWR_CTG_CNTE}";
     }
   }
   public class ER_PATIENT_DTO : OriginDataModel
@@ -163,7 +163,7 @@ namespace EUMC.HospitalService
 
     public override string ToString()
     {
-      return $"[{ID}] {MED_DEPT_CD}/{MTM_NO}/{MTM_NM}/USE:{OEDP_MRK_YN}";
+      return $"[{HashCode}] {MED_DEPT_CD}/{MTM_NO}/{MTM_NM}/USE:{OEDP_MRK_YN}";
     }
     public bool UseYN() => this.OEDP_MRK_YN == "Y";
   }
@@ -238,7 +238,7 @@ namespace EUMC.HospitalService
     [Origin] public string LWR_CTG_CNTE { get; set; } = string.Empty;
     public override string ToString()
     {
-      return $"[{ID}] {DEPT_CD}/{LWR_CTG_CNTE}";
+      return $"[{HashCode}] {DEPT_CD}/{LWR_CTG_CNTE}";
     }
   }
   /// <summary>
