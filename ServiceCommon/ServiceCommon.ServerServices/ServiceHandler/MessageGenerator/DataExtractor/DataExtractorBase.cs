@@ -62,7 +62,7 @@ namespace ServiceCommon.ServerServices
 
           if(!IsInitialized)
           {
-            LOG.wc($"[{this.ID}] Initalized");
+            LOG.wc($"[{this.ID}] Initialized");
             IsInitialized = true;
             this.data_updated(updated);
           }
