@@ -75,7 +75,7 @@
     <Compile Include="PackageConfig\PackageConfigurations\Schedule\PlaylistSchedule.cs" />
     <Compile Include="PackageConfig\PackageConfigurations\Schedule\ScheduleRanges.cs" />
     <Compile Include="PackageConfig\PackageConfigurations\Schedule\ScheduleUnit.cs" />
-    <Compile Include="PackageConfig\PackageViewConfig.cs" />
+    <Compile Include="PackageConfig\PackageViewConfigBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Monitoring\PerformanceMonitor.cs" />
     <Compile Include="Utility\WatchDog\WatchDogClient.cs" />

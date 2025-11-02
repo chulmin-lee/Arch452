@@ -5,6 +5,9 @@ namespace EUMC.ClientServices
 {
   public class ErrorViewConfig : PackageViewConfig
   {
+    public PACKAGE_ERROR Error { get; protected set; }
+    public string ErrorMessage { get; protected set; } = string.Empty;
+
     public ErrorViewConfig(PackageInfo p, PlaylistSchedule s) : base(p, s)
     {
       this.WindowType = WindowScreenType.Maximized;

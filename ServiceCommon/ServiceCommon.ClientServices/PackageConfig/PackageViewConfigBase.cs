@@ -49,13 +49,7 @@ namespace ServiceCommon.ClientServices
     // ETC
     //==================================
     bool CanReboot { get; }
-
-    //==================================
-    // Config error
-    //==================================
-    PACKAGE_ERROR Error { get; }
-    string ErrorMessage { get; }
-    bool Success { get; }
+    List<CONTENT_FILE> ContentFiles { get; }
   }
 
   public abstract class PackageViewConfigBase : IPackageViewConfig
@@ -91,12 +85,6 @@ namespace ServiceCommon.ClientServices
     //==================================
     public bool CanReboot { get; protected set; } = true;
     public List<CONTENT_FILE> ContentFiles { get; set; } = new List<CONTENT_FILE>();
-    //==================================
-    // Config error
-    //==================================
-    public PACKAGE_ERROR Error { get; protected set; } = PACKAGE_ERROR.Success;
-    public bool Success => this.Error == PACKAGE_ERROR.Success;
-    public string ErrorMessage { get; protected set; } = string.Empty;
 
     public PackageViewConfigBase(PACKAGE p)
     {
