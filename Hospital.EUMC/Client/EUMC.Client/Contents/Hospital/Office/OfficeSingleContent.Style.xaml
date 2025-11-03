@@ -96,7 +96,7 @@
           </Grid>
 
           <!-- 3. 환자 목록 -->
-          <Grid Grid.Row="3" Margin="15,0,15,20">
+          <Grid Grid.Row="3" Margin="35,0,35,20">
             <ItemsControl ItemsSource="{Binding Patients}">
               <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -105,7 +105,7 @@
               </ItemsControl.ItemsPanel>
               <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                  <Grid Margin="32,16,32,16">
+                  <Grid Margin="0,10,0,10">
                     <Grid.ColumnDefinitions>
                       <ColumnDefinition Width="1*" />
                       <ColumnDefinition Width="1.8*" />
@@ -147,7 +147,7 @@
 
           <!-- 4. 지연 사유-->
           <Border Grid.Row="4" Visibility="{Binding CONFIG.ShowDelayTime, Converter={StaticResource BooleanToVisibilityConverter}}">
-            <TextBlock VerticalAlignment="Center" Height="90" HorizontalAlignment="Right" FontSize="56"  Margin="25,0,25,0" FontWeight="Bold">
+            <TextBlock VerticalAlignment="Center" Height="90" HorizontalAlignment="Right" FontSize="56"  Margin="35,0,35,0" FontWeight="SemiBold">
               <TextBlock.Inlines>
                 지연 사유 :
                 <Run Text="{Binding ROOM.DelayReason}"/> / 대기시간 :
