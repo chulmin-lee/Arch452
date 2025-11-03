@@ -32,7 +32,7 @@ namespace EUMC.Client
     public ClockSetting ClockSetting { get; set; } = new ClockSetting()
     {
       YearLength = 4,
-      YearDelimiter = ".",
+      DateSeperator = ".",
       ShowTime = false
     };
 
