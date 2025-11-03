@@ -144,7 +144,9 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Contents\Hospital\OPD\OfficeSingle\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Common\Common.csproj">
       <Project>{ae628b92-969a-4032-a07e-b4d0b7712189}</Project>
@@ -157,10 +159,6 @@
     <ProjectReference Include="..\..\..\Common\WinFormTV\WinFormTV.csproj">
       <Project>{24d4a82b-f487-4789-a5b0-c028010502c4}</Project>
       <Name>WinFormTV</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Framework\Networks\Network.HTTP\Framework.Network.HTTP.csproj">
-      <Project>{4736f7d8-3e92-4a03-b46a-0065a1d96c1f}</Project>
-      <Name>Framework.Network.HTTP</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\ServiceCommon\ServiceCommon.ClientServices\ServiceCommon.ClientServices.csproj">
       <Project>{cf588fd4-f09e-44f8-884b-b7cbd30a3c1b}</Project>

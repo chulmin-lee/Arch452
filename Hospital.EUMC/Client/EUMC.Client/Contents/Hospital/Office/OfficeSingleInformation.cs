@@ -1,6 +1,5 @@
 ﻿using Common;
 using EUMC.ClientServices;
-using Framework.Network.HTTP;
 using ServiceCommon;
 using System;
 using System.Collections.ObjectModel;
@@ -41,7 +40,7 @@ namespace EUMC.Client
     {
       lock (LOCK)
       {
-        this.StopTimer();
+        //this.StopTimer();
 
         var room = o.Rooms.Where(x => x.GroupKey == this.ROOM.GroupKey).FirstOrDefault();
 
@@ -105,20 +104,13 @@ namespace EUMC.Client
       {
         if (Set(ref _photo_url, value))
         {
-          this.Photo = null;
+          this.Photo = null;  // default photo
           if (!string.IsNullOrEmpty(value))
           {
-            Task.Run(async () =>
+            UIContextHelper.CheckBeginInvokeOnUI(async () =>
             {
-              var x = await HttpDownloader.GetMemoryStreamAsync(value);
-              if (x != null)
-              {
-                UIContextHelper.CheckBeginInvokeOnUI(() =>
-                {
-                  var src = ImageLoader.GetImageFromStream(x);
-                  this.Photo = src;
-                });
-              }
+              // ImageSource는 UI Thread에서 만들어야 한다
+              this.Photo = await ImageLoader.GetImageFromUrlAsync(value);
             });
           }
         }
