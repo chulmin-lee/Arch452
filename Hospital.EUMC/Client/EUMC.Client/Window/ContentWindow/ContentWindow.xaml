@@ -65,6 +65,26 @@
         <Setter Property="ScrollSpeed" Value="{Binding Contents.Notice.ScrollSpeed, Mode=OneWay}" />
         <Setter Property="Message" Value="{Binding Contents.Notice.NoticeMessage, Mode=OneWay}" />
       </Style>
+
+      <Style TargetType="{x:Type Border}" x:Key="TitlebarBackgroundBorder">
+        <Setter Property="CornerRadius" Value="0,0,20,20" />
+        <Setter Property="Background">
+          <Setter.Value>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+              <GradientStop Color="White" Offset="0.0" />
+              <GradientStop Color="White" Offset="0.85" />
+              <GradientStop Color="#D3D3D3" Offset="1.0" />
+            </LinearGradientBrush>
+          </Setter.Value>
+        </Setter>
+      </Style>
+      <Style TargetType="{x:Type Border}" x:Key="LargeTitlebarBackgroundBorder" BasedOn="{StaticResource TitlebarBackgroundBorder}">
+        <Setter Property="Height" Value="137" />
+      </Style>
+      <Style TargetType="{x:Type Border}" x:Key="MiddleTitlebarBackgroundBorder" BasedOn="{StaticResource TitlebarBackgroundBorder}">
+        <Setter Property="Height" Value="82" />
+      </Style>
+
     </ResourceDictionary>
   </Window.Resources>
 
@@ -86,84 +106,82 @@
       <!-- =============================================== -->
       <Grid Grid.Row="0" Visibility="{Binding Contents.ShowTitleBar, Converter={StaticResource BooleanToVisibilityConverter}}">
         <!-- LargeDefault -->
-        <Grid Height="130" Visibility="{Binding Contents.TitlebarStyle, Converter={local:TitleBarVisibleConverter},
+        <Border Style="{StaticResource LargeTitlebarBackgroundBorder}"
+                Visibility="{Binding Contents.TitlebarStyle, Converter={local:TitleBarVisibleConverter},
                                                 ConverterParameter={x:Static client:TitlebarStyle.LargeNormal}}">
-          <Grid.Background>
-            <ImageBrush ImageSource="{StaticResource TitleBar_Panel_Large}" Stretch="UniformToFill" />
-          </Grid.Background>
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
 
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-          </Grid.ColumnDefinitions>
+            <!-- 0.logo -->
+            <Border Grid.Column="0">
+              <Image Stretch="None">
+                <Image.Style>
+                  <Style TargetType="{x:Type Image}">
+                    <Setter Property="Source" Value="{StaticResource LogoLarge_Seoul}" />
+                    <Style.Triggers>
+                      <DataTrigger Binding="{Binding Contents.IsSeoul}" Value="false">
+                        <Setter Property="Source" Value="{StaticResource LogoLarge_Mokdong}" />
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </Image.Style>
+              </Image>
+            </Border>
 
-          <!-- 0.logo -->
-          <Border Grid.Column="0">
-            <Image Stretch="None">
-              <Image.Style>
-                <Style TargetType="{x:Type Image}">
-                  <Setter Property="Source" Value="{StaticResource LogoLarge_Seoul}" />
-                  <Style.Triggers>
-                    <DataTrigger Binding="{Binding Contents.IsSeoul}" Value="false">
-                      <Setter Property="Source" Value="{StaticResource LogoLarge_Mokdong}" />
-                    </DataTrigger>
-                  </Style.Triggers>
-                </Style>
-              </Image.Style>
-            </Image>
-          </Border>
-
-          <!-- 1.ContentTitle -->
-          <Border Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="{x:Null}" HorizontalAlignment="Center">
-            <TextBlock Text="{Binding Contents.ContentTitle}"
+            <!-- 1.ContentTitle -->
+            <Border Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="{x:Null}" HorizontalAlignment="Center">
+              <TextBlock Text="{Binding Contents.ContentTitle}"
                        Style="{StaticResource CommonTextBlock}"
                        FontSize="60" FontWeight="Bold"
                        Foreground="{StaticResource primary}" />
-          </Border>
-          <!-- 2. LargeDefault: Clock -->
-          <Border Grid.Column="2">
-            <ui:ClockControl Style="{StaticResource ClockStyle}"
+            </Border>
+            <!-- 2. LargeDefault: Clock -->
+            <Border Grid.Column="2">
+              <ui:ClockControl Style="{StaticResource ClockStyle}"
                              DateFontSize="28"
                              TimeFontSize="44" />
-          </Border>
-        </Grid>
+            </Border>
+          </Grid>
+        </Border>
 
         <!-- MiddleNormal -->
-        <Grid Height="70" Visibility="{Binding Contents.TitlebarStyle, Converter={local:TitleBarVisibleConverter},
+        <Border Style="{StaticResource MiddleTitlebarBackgroundBorder}"
+                Visibility="{Binding Contents.TitlebarStyle, Converter={local:TitleBarVisibleConverter},
                                                 ConverterParameter={x:Static client:TitlebarStyle.MiddleNormal}}">
-          <Grid.Background>
-            <ImageBrush ImageSource="{StaticResource TitleBar_Panel_Middle}" Stretch="UniformToFill" />
-          </Grid.Background>
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="1*" />
+              <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
 
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-          </Grid.ColumnDefinitions>
+            <!-- 0.logo -->
+            <Border Grid.Column="0">
+              <Image Stretch="None" HorizontalAlignment="Left" Margin="50,0,0,0">
+                <Image.Style>
+                  <Style TargetType="{x:Type Image}">
+                    <Setter Property="Source" Value="{StaticResource LogoMiddle_Seoul}" />
+                    <Style.Triggers>
+                      <DataTrigger Binding="{Binding Contents.IsSeoul}" Value="false">
+                        <Setter Property="Source" Value="{StaticResource LogoMiddle_Mokdong}" />
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </Image.Style>
+              </Image>
+            </Border>
 
-          <!-- 0.logo -->
-          <Border Grid.Column="0">
-            <Image Stretch="None" HorizontalAlignment="Left" Margin="50,0,0,0">
-              <Image.Style>
-                <Style TargetType="{x:Type Image}">
-                  <Setter Property="Source" Value="{StaticResource LogoMiddle_Seoul}" />
-                  <Style.Triggers>
-                    <DataTrigger Binding="{Binding Contents.IsSeoul}" Value="false">
-                      <Setter Property="Source" Value="{StaticResource LogoMiddle_Mokdong}" />
-                    </DataTrigger>
-                  </Style.Triggers>
-                </Style>
-              </Image.Style>
-            </Image>
-          </Border>
-
-          <!-- 0. Middle Clock -->
-          <Border Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
-            <ui:ClockControl Style="{StaticResource ClockStyle}"
+            <!-- 0. Middle Clock -->
+            <Border Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+              <ui:ClockControl Style="{StaticResource ClockStyle}"
                              DateFontSize="36"
                              TimeFontSize="36" />
-          </Border>
-        </Grid>
+            </Border>
+          </Grid>
+        </Border>
       </Grid>
 
       <!-- =============================================== -->

@@ -12,17 +12,15 @@
   <!-- Image                                                            -->
   <!-- ================================================================ -->
   <!-- title bar -->
-
-  <ImageSource x:Key="TitleBar_Panel_Large">/EUMC.Client;component/Resources/Images/MainView/titlebar-panel-large.png</ImageSource>
-  <ImageSource x:Key="TitleBar_Panel_Middle">/EUMC.Client;component/Resources/Images/MainView/titlebar-panel-middle.png</ImageSource>
   <!-- logo -->
-  <ImageSource x:Key="LogoLarge_Seoul">/EUMC.Client;component/Resources/Images/MainView/logo-large-seoul.png</ImageSource>
-  <ImageSource x:Key="LogoLarge_Mokdong">/EUMC.Client;component/Resources/Images/MainView/logo-large-mokdong.png</ImageSource>
-  <ImageSource x:Key="LogoMiddle_Seoul">/EUMC.Client;component/Resources/Images/MainView/logo-middle-seoul.png</ImageSource>
-  <ImageSource x:Key="LogoMiddle_Mokdong">/EUMC.Client;component/Resources/Images/MainView/logo-middle-mokdong.png</ImageSource>
-  <!-- content background -->
-  <ImageSource x:Key="Content_BG_Large">/EUMC.Client;component/Resources/Images/MainView/content-BG-mokdong.png</ImageSource>
-  <ImageSource x:Key="Content_BG_Middle">/EUMC.Client;component/Resources/Images/MainView/content-BG-seoul.png</ImageSource>
+  <ImageSource x:Key="LogoLarge_Seoul">/EUMC.Client;component/Resources/Seoul/logo-large-seoul.png</ImageSource>
+  <ImageSource x:Key="LogoMiddle_Seoul">/EUMC.Client;component/Resources/Seoul/logo-middle-seoul.png</ImageSource>
+  <ImageSource x:Key="Content_BG_Seoul">/EUMC.Client;component/Resources/Seoul/content-BG-seoul.png</ImageSource>
+
+  <ImageSource x:Key="LogoLarge_Mokdong">/EUMC.Client;component/Resources/Mokdong/logo-large-mokdong.png</ImageSource>
+  <ImageSource x:Key="LogoMiddle_Mokdong">/EUMC.Client;component/Resources/Mokdong/logo-middle-mokdong.png</ImageSource>
+  <ImageSource x:Key="Content_BG_Mokdong">/EUMC.Client;component/Resources/Mokdong/content-BG-mokdong.png</ImageSource>
+
   <!-- notice -->
   <ImageSource x:Key="NoticeLarge">/EUMC.Client;component/Resources/Images/MainView/notice-large.png</ImageSource>
   <ImageSource x:Key="NoticeMiddle">/EUMC.Client;component/Resources/Images/MainView/notice-middle.png</ImageSource>
@@ -31,13 +29,6 @@
   <!-- 진료실 -->
   <ImageSource x:Key="DEFAULT_PHOTO_LOGO">pack://application:,,,/EUMC.Client;component/Resources/Images/Office/doctor-default.png</ImageSource>
   <ImageSource x:Key="DEFAULT_PHOTO_LOGO2">pack://application:,,,/EUMC.Client;component/Resources/Images/Office/doctor-test.png</ImageSource>
-  <!-- 검사실 -->
-  <ImageSource x:Key="ExamTitleBG1">/EUMC.Client;component/Resources/Images/Exam/exam-title-1.png</ImageSource>
-  <ImageSource x:Key="ExamTitleBG2">/EUMC.Client;component/Resources/Images/Exam/exam-title-2.png</ImageSource>
-
-  <!-- 분만실 -->
-  <ImageSource x:Key="Delivery_Baby_M">/EUMC.Client;component/Resources/Images/Delivery/delivery-baby-M.png</ImageSource>
-  <ImageSource x:Key="Delivery_Baby_F">/EUMC.Client;component/Resources/Images/Delivery/delivery-baby-F.png</ImageSource>
 
   <!-- 응급실 state icon -->
   <ImageSource x:Key="er_blood_finished"        >/EUMC.Client;component/Resources/Images/Emergency/er_blood_finished.png</ImageSource>

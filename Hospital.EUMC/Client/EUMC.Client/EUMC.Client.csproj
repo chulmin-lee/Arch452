@@ -174,10 +174,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Delivery\delivery-baby-F.png" />
-    <Resource Include="Resources\Images\Delivery\delivery-baby-M.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Images\Emergency\er_blood_finished.png" />
     <Resource Include="Resources\Images\Emergency\er_blood_inspecting.png" />
     <Resource Include="Resources\Images\Emergency\er_blood_progress.png" />
@@ -194,10 +190,6 @@
     <Resource Include="Resources\Images\Emergency\er_ward_wait.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Exam\exam-title-1.png" />
-    <Resource Include="Resources\Images\Exam\exam-title-2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Images\Funeral\funeral-photo.png" />
     <Resource Include="Resources\Images\Funeral\funeral-small-photo.png" />
   </ItemGroup>
@@ -208,17 +200,15 @@
     <Resource Include="Resources\Images\Office\doctor-test.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\MainView\content-bg-mokdong.png" />
-    <Resource Include="Resources\Images\MainView\content-bg-seoul.png" />
+    <Resource Include="Resources\Mokdong\content-bg-mokdong.png" />
+    <Resource Include="Resources\Seoul\content-bg-seoul.png" />
     <Resource Include="Resources\Images\Office\doctor-default.png" />
-    <Resource Include="Resources\Images\MainView\logo-large-mokdong.png" />
-    <Resource Include="Resources\Images\MainView\logo-large-seoul.png" />
-    <Resource Include="Resources\Images\MainView\logo-middle-mokdong.png" />
-    <Resource Include="Resources\Images\MainView\logo-middle-seoul.png" />
+    <Resource Include="Resources\Mokdong\logo-large-mokdong.png" />
+    <Resource Include="Resources\Seoul\logo-large-seoul.png" />
+    <Resource Include="Resources\Mokdong\logo-middle-mokdong.png" />
+    <Resource Include="Resources\Seoul\logo-middle-seoul.png" />
     <Resource Include="Resources\Images\MainView\notice-large.png" />
     <Resource Include="Resources\Images\MainView\notice-middle.png" />
-    <Resource Include="Resources\Images\MainView\titlebar-panel-large.png" />
-    <Resource Include="Resources\Images\MainView\titlebar-panel-middle.png" />
     <Content Include="Resources\Sound\Doorbell.WAV" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
