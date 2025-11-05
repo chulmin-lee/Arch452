@@ -115,6 +115,7 @@
     <Compile Include="MVVM\UIContextHelper.cs" />
     <Compile Include="MVVM\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screen\ScreenHelper.cs" />
     <Compile Include="Styles\DataDisplay\TreeViewExtension.cs" />
     <Compile Include="Styles\Information\ProgressBar.Converter.cs" />
     <Compile Include="Styles\TextBox\CheckedTextBox\CheckedTextBox.cs" />

@@ -61,6 +61,7 @@
         <Setter Property="Background" Value="#16b1a9" />
         <Setter Property="FontSize" Value="44" />
         <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="AlwaysScroll" Value="True" />
         <Setter Property="ScrollSpeed" Value="{Binding Contents.Notice.ScrollSpeed, Mode=OneWay}" />
         <Setter Property="Message" Value="{Binding Contents.Notice.NoticeMessage, Mode=OneWay}" />
       </Style>

@@ -178,7 +178,6 @@ namespace UIControls
     }
 
     #region DependencyProperty
-
     static void OptionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
       (d as MediaControl)?.OptionChanged();
@@ -199,7 +198,7 @@ namespace UIControls
         if (o != null)
         {
           // CollectionChanged 인터페이스가 존재하는 경우 핸들러 연결
-          o.CollectionChanged += (s, e) => itemssource_changed();
+          o.CollectionChanged += (s, e1) => itemssource_changed();
         }
       }
     }

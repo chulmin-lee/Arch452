@@ -69,7 +69,7 @@ namespace EUMC.Client
     }
 
     #region Photo
-    
+
     void UpdatePhoto(string photo = null)
     {
       if (string.IsNullOrEmpty(photo))
@@ -171,9 +171,5 @@ namespace EUMC.Client
     string _roomPatientKey;
     DOCTOR_INFO _doctor;
     string _doctorNo = string.Empty;
-
   }
-
-
-  
 }
