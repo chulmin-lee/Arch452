@@ -13,7 +13,7 @@ namespace UIControls
   /// </summary>
   public partial class ClockControl : UserControl
   {
-    DispatcherTimer _timer;
+    DispatcherTimer _timer = new DispatcherTimer();
     DateTime CurrentDate = DateTime.MinValue;
 
     public ClockControl()
@@ -27,8 +27,8 @@ namespace UIControls
       var o = this.ClockSetting;
       if (o.ShowClock)
       {
-        this.MultiLine = o.MultiLine && (o.ShowDate && o.ShowTime);
-        if (!this.MultiLine)
+        this.MultiLine = o.MultiLine && o.ShowDate && o.ShowTime;
+        if (this.MultiLine == false)
         {
           if (o.ShowDate && o.ShowTime)
           {
@@ -38,22 +38,20 @@ namespace UIControls
           }
         }
         // timer
-        _timer = new DispatcherTimer();
         _timer.Interval = this.ClockSetting.ShowSecond ? TimeSpan.FromSeconds(0.5) : TimeSpan.FromSeconds(1);
-        _timer.Tick += Timer_Tick;
+        _timer.Tick += (s, e1) =>
+        {
+          DateTime today = DateTime.Now;
+          if (this.CurrentDate != today.Date)
+          {
+            // 날짜가 바뀔때만 그린다
+            this.CurrentDate = today.Date;
+            this.Date.Text = this.ClockSetting.GetDate(today);
+          }
+          this.Time.Text = this.ClockSetting.GetTime(today);
+        };
         _timer.Start();
       }
-    }
-    private void Timer_Tick(object sender, EventArgs e)
-    {
-      DateTime today = DateTime.Now;
-      if (this.CurrentDate != today.Date)
-      {
-        // 날짜가 바뀌기전에는 다시 그리지 않는다
-        this.CurrentDate = today.Date;
-        this.Date.Text = this.ClockSetting.GetDate(today);
-      }
-      this.Time.Text = this.ClockSetting.GetTime(today);
     }
 
     #region Font
@@ -186,9 +184,7 @@ namespace UIControls
 
     string _date_format = string.Empty;
     string _time_format = string.Empty;
-    CultureInfo _date_culture;
-    CultureInfo _time_culture;
-
-
+    CultureInfo _date_culture = CultureInfo.CreateSpecificCulture("ko-Kr");
+    CultureInfo _time_culture = CultureInfo.CreateSpecificCulture("ko-Kr");
   }
 }

@@ -56,9 +56,6 @@ namespace UIControls
           // 주의: MediaElement 자체를 캡춰시 문제가 있어서 Grid 자체를 캡춰함
           // - 캡춰 영역이 MediaElement 영역을 걸쳐서 캡춰됨.
           var v = this.MainGrid;
-          //var dpi = VisualTreeHelper.GetDpi(v);
-          //var rtb = new RenderTargetBitmap((int)v.ActualWidth, (int)v.ActualHeight,
-          //            dpi.PixelsPerInchX, dpi.PixelsPerInchY, PixelFormats.Default);
           var rtb = new RenderTargetBitmap((int)v.ActualWidth, (int)v.ActualHeight,
                       96, 96, PixelFormats.Default);
           rtb.Render(v);
@@ -202,7 +199,7 @@ namespace UIControls
         if (o != null)
         {
           // CollectionChanged 인터페이스가 존재하는 경우 핸들러 연결
-          o.CollectionChanged += (a, b) => itemssource_changed();
+          o.CollectionChanged += (s, e) => itemssource_changed();
         }
       }
     }

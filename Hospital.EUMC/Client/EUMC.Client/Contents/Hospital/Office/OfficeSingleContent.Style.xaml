@@ -4,12 +4,6 @@
                     xmlns:ui="clr-namespace:UIControls;assembly=UIControls"
                     xmlns:local="clr-namespace:EUMC.Client">
 
-  <Style TargetType="{x:Type Label}">
-    <Setter Property="HorizontalAlignment" Value="Center" />
-    <Setter Property="VerticalAlignment" Value="Center" />
-    <Setter Property="FontWeight" Value="Normal" />
-  </Style>
-
   <DataTemplate DataType="{x:Type local:OfficeSingleContentVM}">
     <Grid DataContext="{Binding ITEM}">
       <Grid>
@@ -114,11 +108,9 @@
                     <Border Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="{StaticResource primary}" />
 
                     <Grid Grid.Column="0" Background="{StaticResource primary}">
-                      <Label>
+                      <Label FontSize="60">
                         <Label.Resources>
                           <Style TargetType="{x:Type Label}" BasedOn="{StaticResource CommonLabel}">
-                            <Setter Property="FontSize" Value="60" />
-                            <Setter Property="Foreground" Value="White" />
                             <Setter Property="Content" Value="진료 대기" />
                             <Style.Triggers>
                               <DataTrigger Binding="{Binding Index}" Value="1">
@@ -135,10 +127,7 @@
 
                     <Grid Grid.Column="1" >
                       <ui:TextBorder Text="{Binding PatientName}" FontSize="96" AutoFontRatio="0.8" />
-                      <!--<Label Content="{Binding PatientName}"
-                               FontSize="97"
-                               Style="{StaticResource CommonLabelPrimary}" />-->
-                    </Grid>
+                     </Grid>
                   </Grid>
                 </DataTemplate>
               </ItemsControl.ItemTemplate>

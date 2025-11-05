@@ -15,10 +15,15 @@ namespace EUMC.HospitalService
 
     public DataConfigurations(bool seoul)
     {
+      #region 중환자실
       this.ICU = new ICU_Extractor.Config
       {
-        IcuDeptNames = new List<string> { "중환자", "뇌졸중집중치료실", "55병동" }
+        IcuDeptNames = new List<string> { "중환자", "뇌졸중집중치료실", "55병동" },
+        IcuDeptCodes = seoul ? new List<string>()
+                             : new List<string> { "MICU1", "MICU2", "MICU3", }
       };
+      #endregion
+
       this.DR_PHOTO = new DR_PHOTO_Extractor.Config()
       {
         PhotoDir= @"c:\APM_Setup\didmate\dr_photos",

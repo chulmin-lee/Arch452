@@ -40,52 +40,10 @@ namespace ServiceCommon
     public string DoctorState { get; set; } = string.Empty;
     public string BloodState { get; set; } = string.Empty;
     public string ConState { get; set; } = string.Empty;
-    public string RadioState { get; set; } = string.Empty;
+    public string RadState { get; set; } = string.Empty;
     public string InOutState { get; set; } = string.Empty;
   }
-  public enum ER_RADIO_STATE
-  {
-    None = 0,
-    Wait = 1,     // 대기
-    Finished = 2, // 완료
-  }
 
-  public enum ER_BLOOD_STATE
-  {
-    None = 0,
-    Progress = 1,  // 진행
-    Inspecting   = 2,  // 검사중
-    Finished = 3,  // 완료
-  }
-  // 진료 상태
-  public enum ER_MEDICAL_STATE
-  {
-    None = 0,
-    Progress = 1, // 진행
-    Visited = 2,   // 방문
-  }
-  // 협진
-  public enum ER_COLLABO_STATE
-  {
-    None = 0,
-    Progress = 1,  // 진행
-    Visited = 2,    // 방문
-  }
-  // 입퇴원
-  public enum ER_HOSPITALIZED_STATE
-  {
-    None = 0,
-    Hospitalization = 1, // 입원
-    Discharged = 2,   // 퇴원
-  }
-
-  // 병실 배정
-  public enum ER_WARD_STATE
-  {
-    None = 0,
-    Waiting = 1,  // 대기
-    Assigned = 2, // 배정
-  }
   public class ER_PATIENT_GROUP : IGroupKeyData<bool>
   {
     public bool IsChild { get; set; }

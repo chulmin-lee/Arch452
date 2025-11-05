@@ -5,7 +5,6 @@ namespace ServiceCommon.ClientServices
 {
   public abstract partial class ClientServiceBase : IClientService
   {
-    IPackageViewConfig CurrentPackage;
     PerformanceMonitor _perform = new PerformanceMonitor();
     void schedule_clear()
     {

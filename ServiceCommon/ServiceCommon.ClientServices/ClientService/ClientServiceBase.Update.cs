@@ -13,15 +13,24 @@ namespace ServiceCommon.ClientServices
     }
     protected virtual void reboot()
     {
-      LOG.ic("rebooting client");
-      this.exit("shutdown", "/r /f /t 0");
+#if !DEBUG
+      if (this.CurrentPackage != null && this.CurrentPackage.CanReboot)
+      {
+        LOG.ic("rebooting client");
+        this.exit("shutdown", "/r /f /t 0");
+      }
+#endif
     }
     protected virtual void shutdown()
     {
-      LOG.ic("shutting down client");
-      this.exit("shutdown", "/s /f /t 0");
+#if !DEBUG
+      if (this.CurrentPackage != null && this.CurrentPackage.CanReboot)
+      {
+        LOG.ic("shutting down client");
+        this.exit("shutdown", "/s /f /t 0");
+      }
+#endif
     }
-
     void client_update(string path)
     {
       var arg = $"{path} {this.ClientView.ClientPath}";

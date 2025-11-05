@@ -23,6 +23,8 @@ namespace ServiceCommon.ClientServices
     protected CLIENT_INFO ClientInfo;
     CLIENT_STATUS_REQ ClientStatus;
     protected WatchDogClient WatchDogClient;
+    IPackageViewConfig CurrentPackage;
+
     public ClientServiceBase(IClientViewManager vm, bool grpc)
     {
       this.ClientView = vm;
@@ -153,6 +155,7 @@ namespace ServiceCommon.ClientServices
         case SERVICE_ID.SVR_COMMAND:
           {
             var cmd = m.CastTo<SERVER_CMD_NOTI>().Command;
+            LOG.dc($"server command: {cmd}");
             switch (cmd)
             {
               case SERVER_CMD_NOTI.SERVER_COMMAND.ConfigUpdated: this.update_async(playlist: true); ; break;

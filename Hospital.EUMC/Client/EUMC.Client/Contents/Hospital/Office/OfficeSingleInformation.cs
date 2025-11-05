@@ -4,7 +4,6 @@ using ServiceCommon;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using UIControls;
 
@@ -27,7 +26,6 @@ namespace EUMC.Client
         DeptName = room.DeptName,
         DeptCode = room.DeptCode,
         RoomCode = room.RoomCode,
-        //ShortRoomName = room.RoomCode,
         RoomName = room.RoomName,
       };
       for (int i = 0; i < this.CONFIG.ItemRows; i++)

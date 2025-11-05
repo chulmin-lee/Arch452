@@ -4,11 +4,11 @@ namespace ServiceCommon
 {
   public class ICU_REQ : ServiceMessage
   {
-    public List<string> WardCodes { get; set; } = new List<string>();
+    public List<string> IcuCodes { get; set; } = new List<string>();
     public ICU_REQ() : base(SERVICE_ID.ICU) { }
     public ICU_REQ(List<string> d) : this()
     {
-      this.WardCodes = d;
+      this.IcuCodes = d;
     }
   }
 

@@ -11,20 +11,22 @@
 
     // OPD
     public const string SINGLE_OPD  = "w1"; // 진료실/검사실 중대합 (A, B)
-    public const string MULTI_OPD   = "w2"; // 진료실/검사실 대대합 (A, B, C,..)
+    public const string MULTI_OPD   = "w2"; // 진료실/검사실 대대합 (A, B)
 
     // OPD Exam
     // 조영실
-    public const string ANG           = "h4"; // winBloodVessel 혈관조영실, PC_ANG_PT_INFO
-    public const string ANG_GUARD     = "h5"; // winBVGuardian 혈관조영실 보호자용
+    public const string ANG           = "h4"; // winBloodVessel (영상의학과) 혈관조영실, PC_ANG_PT_INFO
+    public const string ANG_GUARD     = "h5"; // winBVGuardian (영상의학과) 혈관조영실 보호자용
     public const string ANG2          = "h14"; // winBloodVessel2 혈관조영실(3F), PC_ANG_PT_INFO2
     public const string ANG2_GUARD    = "h15"; // winBVGuardianToggle 혈관조영실/심뇌혈관조영실 전환형 보호자용
     public const string ANG_IMC       = "h8"; // winBloodVessel 심뇌혈관조영실 (PC_ANG_PT_INFO_IMC)
     public const string ANG_IMC_GURAD = "h9"; // winBloodVessel 심뇌혈관조영실 (PC_ANG_PT_INFO_IMC)
-    // ENDO
-    public const string ENDO          = "h6"; // winEndoscopy 내시경실 보호자용 대대합
+    
+    // 소화기내시경센터
+    public const string ENDO          = "h6"; // winEndoscopy (소화기센터 내시경실 보호자용 대대합
     // RAD
-    public const string RAD           = "r1"; // winInfoMiddleR 영상의학과 MRI/CT/초음파 중대합
+    public const string RAD           = "r1"; // winInfoMiddleR 영상의학과 MRI/CT/초음파 중대합,  
+                                              // Type C : 투시조영실
     public const string RAD_LARGE     = "w5"; // winInfoRadLarge 영상의학과 검사실 대대합
 
     // ETC
@@ -57,4 +59,8 @@
     public const string INFORMATION = "x2";
     public const string UPDATE      = "x3";
   }
+
+
+  // not used
+  // r3 - Type D (영상 초음파실)
 }

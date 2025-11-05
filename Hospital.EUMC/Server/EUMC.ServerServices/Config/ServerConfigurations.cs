@@ -5,9 +5,7 @@ namespace EUMC.ServerServices
 {
   internal class ServerConfigurations
   {
-    //public DataConfigurations DataExtractor { get; set; } = new DataConfigurations();
-    //public ServiceConfigurations ServiceTransformer { get; set; } = new ServiceConfigurations();
-
+    public string HspCode { get; set; }
     public bool TestMode { get; set; }
     public int HTTP_PORT { get; set; } = 40007;
     public string HTTP_HOME { get; set; } = @"C:\APM_Setup\didmate";

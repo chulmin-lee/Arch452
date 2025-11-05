@@ -115,6 +115,7 @@ namespace EUMC.HospitalService
     [Origin(DTO.UNIQUE)] public string PT_NO { get; set; } = string.Empty;
     [Origin] public string PT_NM { get; set; } = string.Empty;
     [Origin] public string StateCode{ get; set; } = string.Empty; //1: 대기중, 2: 수술중, [수술종료] 3: 회복실, 4: 병실, 5: 중환자실
+    public override string ToString() => $"{this.PT_NO}/{PT_NM}/{StateCode}";
   }
   public class OP_END_PT_DTO
   {

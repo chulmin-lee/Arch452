@@ -46,7 +46,7 @@ namespace EUMC.HospitalService
             .ForMember(dest => dest.DoctorState, opt => opt.MapFrom(src => src.DOC_STATE))
             .ForMember(dest => dest.BloodState, opt => opt.MapFrom(src => src.BLO_STATE))
             .ForMember(dest => dest.ConState, opt => opt.MapFrom(src => src.CON_STATE))
-            .ForMember(dest => dest.RadioState, opt => opt.MapFrom(src => src.RAD_STATE))
+            .ForMember(dest => dest.RadState, opt => opt.MapFrom(src => src.RAD_STATE))
             .ForMember(dest => dest.InOutState, opt => opt.MapFrom(src => src.INOUT_STATE))
             ;
 

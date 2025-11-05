@@ -13,8 +13,9 @@ namespace UIControls
     public MarqueeControl()
     {
       InitializeComponent();
-      this.SizeChanged += (s, e) => this.refresh();
-      this.IsVisibleChanged += (s, e) => this.refresh();
+      this.SizeChanged += (s, e) => this.refresh("size");
+      this.IsVisibleChanged += (s, e) => this.refresh("vis");
+      this.Loaded += (s, e) => this.refresh("load");
     }
 
     #region TickerMessage
@@ -28,7 +29,7 @@ namespace UIControls
         new PropertyMetadata(null, new PropertyChangedCallback(OnMessageChanged)));
     static void OnMessageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-      (d as MarqueeControl)?.refresh();
+      (d as MarqueeControl)?.refresh("changed");
     }
     #endregion TickerMessage
 
@@ -52,16 +53,17 @@ namespace UIControls
       return new Size(formattedText.Width, formattedText.Height);
     }
 
-    void refresh()
+    void refresh(string s)
     {
       _storyboard?.Stop();
-      if (!this.IsVisible) return;
-      if (string.IsNullOrEmpty(this.Message)) return;
-
+      if (!this.IsVisible || string.IsNullOrEmpty(this.Message)) return;
       var canvasWidth = out_canvas.ActualWidth;
-      if (canvasWidth <= 0 || out_canvas.ActualHeight <= 0 || string.IsNullOrEmpty(this.Caption.Content?.ToString()))
+      if (canvasWidth <= 0 || out_canvas.ActualHeight <= 0)
         return;
 
+      // Caption.Content 바인딩 속도가 느려서 Cation.Content에 직접 설정
+      // 그전에 Content 내용을 검사해서 제대로 동작하지 않았다. (Debug 모드에서는 잘됨)
+      this.Caption.Content = this.Message;
       // scroll 설정 (메시지가 화면보다 긴 경우 전체를 회전할 시간 계산)
       var textWidth = this.MeasureText(this.Caption).Width;
 

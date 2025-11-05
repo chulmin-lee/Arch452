@@ -62,14 +62,12 @@ namespace ServiceCommon.ServerServices
 
         if (this.PackageMaps.ContainsKey(package))
         {
-          bool registered = false;
           var ids = this.PackageMaps[package];
           foreach (var id in ids)
           {
             if (this.MessageMaps.TryGetValue(id, out var loader))
             {
               loader.Subscribe(session);
-              registered = true;
             }
             else
             {
@@ -77,7 +75,7 @@ namespace ServiceCommon.ServerServices
               return false;
             }
           }
-          return registered;
+          return true;
         }
       }
       return false;
@@ -96,7 +94,6 @@ namespace ServiceCommon.ServerServices
             if (this.MessageMaps.TryGetValue(id, out var loader))
             {
               loader.Unsubscribe(session);
-              return true;
             }
             else
             {
@@ -104,6 +101,7 @@ namespace ServiceCommon.ServerServices
               return false;
             }
           }
+          return true;
         }
       }
       return false;

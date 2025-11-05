@@ -11,7 +11,6 @@
 
   <Canvas ClipToBounds="True" x:Name="out_canvas">
     <Label x:Name="Caption"
-           Content="{Binding ElementName=uc, Path=Message}"
            Foreground="{Binding ElementName=uc, Path=Foreground}"
            FontSize="{Binding ElementName=uc, Path=FontSize}"
            FontWeight="{Binding ElementName=uc, Path=FontWeight}"

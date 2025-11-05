@@ -68,17 +68,17 @@ namespace EUMC.HospitalService
       // [수술종료] 3:회복실, 4:병실, 5:중환자실
       {
         var end = LoadData<OP_END_PT_DTO>();
-
-        foreach (var p in end)
+        var codes = new Dictionary<string, string>
         {
-          var o = new OPERATION_DTO { PT_NO = p.PT_NO, PT_NM = p.PT_NM, };
-          switch (p.PT_PSTN_CD)
-          {
-            case "회복실": o.StateCode = "3"; break;
-            case "병실": o.StateCode = "4"; break;
-            case "중환자실": o.StateCode = "5"; break;
-          }
-          patients.Add(o);
+          { "회복실", "3" },
+          { "병실", "4" },
+          { "중환자실", "5" },
+        };
+
+        foreach (var dd in codes)
+        {
+          var list = end.Where(x => x.PT_PSTN_CD == dd.Key).ToList();
+          list.ForEach(p => patients.Add(new OPERATION_DTO { PT_NO = p.PT_NO, PT_NM = p.PT_NM, StateCode = dd.Value }));
         }
       }
       return patients;

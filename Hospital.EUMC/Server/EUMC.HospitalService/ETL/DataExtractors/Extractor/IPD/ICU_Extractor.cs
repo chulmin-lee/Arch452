@@ -50,7 +50,8 @@ namespace EUMC.HospitalService
     internal class Config : DataConfig
     {
       // 중환자실이 있는 부서명
-      public List<string> IcuDeptNames { get; set; }
+      public List<string> IcuDeptNames { get; set; } = new List<string>();
+      public List<string> IcuDeptCodes { get; set; } = new List<string>();
       public Config() : base(DATA_ID.ICU)
       {
       }

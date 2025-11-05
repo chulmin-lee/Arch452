@@ -48,6 +48,7 @@ namespace ServiceCommon.ClientServices
     //==================================
     // ETC
     //==================================
+    bool SupportMultiMonitor { get; }
     bool CanReboot { get; }
     List<CONTENT_FILE> ContentFiles { get; }
   }
@@ -85,6 +86,7 @@ namespace ServiceCommon.ClientServices
     //==================================
     public bool CanReboot { get; protected set; } = true;
     public List<CONTENT_FILE> ContentFiles { get; set; } = new List<CONTENT_FILE>();
+    public bool SupportMultiMonitor { get; set; }
 
     public PackageViewConfigBase(PACKAGE p)
     {

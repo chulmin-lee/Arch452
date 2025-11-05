@@ -14,10 +14,10 @@ namespace ServiceCommon.HospitalService
     protected override ServiceMessage request_service(ServiceMessage m)
     {
       var req = m.CastTo<ICU_REQ>();
-      var msg = this.create_message(req.WardCodes);
+      var msg = this.create_message(req.IcuCodes);
       if (msg != null) return msg;
 
-      var temp = req.WardCodes.Select(x => new ICU_PT_INFO { IcuCode = x }).ToList();
+      var temp = req.IcuCodes.Select(x => new ICU_PT_INFO { IcuCode = x }).ToList();
       return new ICU_RESP(temp);
     }
 

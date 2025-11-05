@@ -2,13 +2,12 @@
 using ServiceCommon;
 using ServiceCommon.ClientServices;
 using System.Linq;
-using static ServiceCommon.CLIENT_STATUS_REQ;
 
 namespace EUMC.ClientServices
 {
   internal class PackageViewConfigFactory
   {
-    public static IPackageViewConfig Create(PlaylistSchedule s)
+    public static IPackageViewConfig Create(PlaylistSchedule s, bool seoul = true)
     {
       var p = create_package_info(s);
       switch (p.Package)
@@ -70,13 +69,33 @@ namespace EUMC.ClientServices
             {
               if (s.Medical.DeptRooms.Any())
               {
-                var type = s.Medical.DeptRooms[0].RoomType;
-                return type == "A" ? PackageInfoFactory.OFFICE_MULTI(s) : PackageInfoFactory.EXAM_MULTI(s);
+                bool type_a = false;
+                bool type_b = false;
+
+                foreach(var dept in s.Medical.DeptRooms)
+                {
+                  switch(dept.RoomType)
+                  {
+                    case "A": type_a = true; break;
+                    case "B": type_b = true; break;
+                  }
+                }
+
+                if(type_a && type_b)
+                {
+                  // mix
+                  return PackageInfoFactory.EXAM_OFFICE_MIX(s);
+                }
+                else if(type_a)
+                {
+                  return PackageInfoFactory.OFFICE_MULTI(s);
+                }
+                else if(type_b)
+                {
+                  return PackageInfoFactory.EXAM_MULTI(s);
+                }
               }
-              else
-              {
-                return new PackageInfo(s.PackageName, PACKAGE_ERROR.InvalidValue, "no room");
-              }
+              return new PackageInfo(s.PackageName, PACKAGE_ERROR.InvalidValue, "no room");
             }
           case PackageNames.ENDO: return PackageInfoFactory.ENDO(s);
           #endregion OPD
