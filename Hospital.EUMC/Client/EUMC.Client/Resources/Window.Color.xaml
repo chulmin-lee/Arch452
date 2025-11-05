@@ -13,45 +13,45 @@
   <!-- ================================================================ -->
   <!-- title bar -->
   <!-- logo -->
-  <ImageSource x:Key="LogoLarge_Seoul">/EUMC.Client;component/Resources/Seoul/logo-large-seoul.png</ImageSource>
-  <ImageSource x:Key="LogoMiddle_Seoul">/EUMC.Client;component/Resources/Seoul/logo-middle-seoul.png</ImageSource>
-  <ImageSource x:Key="Content_BG_Seoul">/EUMC.Client;component/Resources/Seoul/content-BG-seoul.png</ImageSource>
+  <ImageSource x:Key="LogoLarge_Seoul">/Resources/Seoul/logo-large-seoul.png</ImageSource>
+  <ImageSource x:Key="LogoMiddle_Seoul">/Resources/Seoul/logo-middle-seoul.png</ImageSource>
+  <ImageSource x:Key="Content_BG_Seoul">/Resources/Seoul/content-BG-seoul.png</ImageSource>
 
-  <ImageSource x:Key="LogoLarge_Mokdong">/EUMC.Client;component/Resources/Mokdong/logo-large-mokdong.png</ImageSource>
-  <ImageSource x:Key="LogoMiddle_Mokdong">/EUMC.Client;component/Resources/Mokdong/logo-middle-mokdong.png</ImageSource>
-  <ImageSource x:Key="Content_BG_Mokdong">/EUMC.Client;component/Resources/Mokdong/content-BG-mokdong.png</ImageSource>
+  <ImageSource x:Key="LogoLarge_Mokdong">/Resources/Mokdong/logo-large-mokdong.png</ImageSource>
+  <ImageSource x:Key="LogoMiddle_Mokdong">/Resources/Mokdong/logo-middle-mokdong.png</ImageSource>
+  <ImageSource x:Key="Content_BG_Mokdong">/Resources/Mokdong/content-BG-mokdong.png</ImageSource>
 
   <!-- notice -->
-  <ImageSource x:Key="NoticeLarge">/EUMC.Client;component/Resources/Images/MainView/notice-large.png</ImageSource>
-  <ImageSource x:Key="NoticeMiddle">/EUMC.Client;component/Resources/Images/MainView/notice-middle.png</ImageSource>
+  <ImageSource x:Key="NoticeLarge">/Resources/Images/MainView/notice-large.png</ImageSource>
+  <ImageSource x:Key="NoticeMiddle">/Resources/Images/MainView/notice-middle.png</ImageSource>
 
 
   <!-- 진료실 -->
-  <ImageSource x:Key="DEFAULT_PHOTO_LOGO">pack://application:,,,/EUMC.Client;component/Resources/Images/Office/doctor-default.png</ImageSource>
-  <ImageSource x:Key="DEFAULT_PHOTO_LOGO2">pack://application:,,,/EUMC.Client;component/Resources/Images/Office/doctor-test.png</ImageSource>
+  <ImageSource x:Key="DEFAULT_PHOTO_LOGO">/Resources/Images/Office/doctor-default.png</ImageSource>
+  <ImageSource x:Key="DEFAULT_PHOTO_LOGO2">/Resources/Images/Office/doctor-test.png</ImageSource>
 
   <!-- 응급실 state icon -->
-  <ImageSource x:Key="er_blood_finished"        >/EUMC.Client;component/Resources/Images/Emergency/er_blood_finished.png</ImageSource>
-  <ImageSource x:Key="er_blood_inspecting"      >/EUMC.Client;component/Resources/Images/Emergency/er_blood_inspecting.png</ImageSource>
-  <ImageSource x:Key="er_blood_progress"        >/EUMC.Client;component/Resources/Images/Emergency/er_blood_progress.png</ImageSource>
-  <ImageSource x:Key="er_collabo_progress"      >/EUMC.Client;component/Resources/Images/Emergency/er_collabo_progress.png</ImageSource>
-  <ImageSource x:Key="er_collabo_visited"       >/EUMC.Client;component/Resources/Images/Emergency/er_collabo_visited.png</ImageSource>
-  <ImageSource x:Key="er_discharged"            >/EUMC.Client;component/Resources/Images/Emergency/er_discharged.png</ImageSource>
-  <ImageSource x:Key="er_hospitalization"       >/EUMC.Client;component/Resources/Images/Emergency/er_hospitalization.png</ImageSource>
-  <ImageSource x:Key="er_medical_care_progress" >/EUMC.Client;component/Resources/Images/Emergency/er_medical_care_progress.png</ImageSource>
-  <ImageSource x:Key="er_medical_care_visited"  >/EUMC.Client;component/Resources/Images/Emergency/er_medical_care_visited.png</ImageSource>
-  <ImageSource x:Key="er_radio_finished"        >/EUMC.Client;component/Resources/Images/Emergency/er_radio_finished.png</ImageSource>
-  <ImageSource x:Key="er_radio_wait"            >/EUMC.Client;component/Resources/Images/Emergency/er_radio_wait.png</ImageSource>
-  <ImageSource x:Key="er_visit_doctor"          >/EUMC.Client;component/Resources/Images/Emergency/er_visit_doctor.png</ImageSource>
-  <ImageSource x:Key="er_ward_assign"           >/EUMC.Client;component/Resources/Images/Emergency/er_ward_assign.png</ImageSource>
-  <ImageSource x:Key="er_ward_wait"             >/EUMC.Client;component/Resources/Images/Emergency/er_ward_wait.png</ImageSource>
+  <ImageSource x:Key="er_blood_finished"        >/Resources/Images/Emergency/er_blood_finished.png</ImageSource>
+  <ImageSource x:Key="er_blood_inspecting"      >/Resources/Images/Emergency/er_blood_inspecting.png</ImageSource>
+  <ImageSource x:Key="er_blood_progress"        >/Resources/Images/Emergency/er_blood_progress.png</ImageSource>
+  <ImageSource x:Key="er_collabo_progress"      >/Resources/Images/Emergency/er_collabo_progress.png</ImageSource>
+  <ImageSource x:Key="er_collabo_visited"       >/Resources/Images/Emergency/er_collabo_visited.png</ImageSource>
+  <ImageSource x:Key="er_discharged"            >/Resources/Images/Emergency/er_discharged.png</ImageSource>
+  <ImageSource x:Key="er_hospitalization"       >/Resources/Images/Emergency/er_hospitalization.png</ImageSource>
+  <ImageSource x:Key="er_medical_care_progress" >/Resources/Images/Emergency/er_medical_care_progress.png</ImageSource>
+  <ImageSource x:Key="er_medical_care_visited"  >/Resources/Images/Emergency/er_medical_care_visited.png</ImageSource>
+  <ImageSource x:Key="er_radio_finished"        >/Resources/Images/Emergency/er_radio_finished.png</ImageSource>
+  <ImageSource x:Key="er_radio_wait"            >/Resources/Images/Emergency/er_radio_wait.png</ImageSource>
+  <ImageSource x:Key="er_visit_doctor"          >/Resources/Images/Emergency/er_visit_doctor.png</ImageSource>
+  <ImageSource x:Key="er_ward_assign"           >/Resources/Images/Emergency/er_ward_assign.png</ImageSource>
+  <ImageSource x:Key="er_ward_wait"             >/Resources/Images/Emergency/er_ward_wait.png</ImageSource>
 
   <!-- 기타 -->
   <!-- updater -->
-  <ImageSource x:Key="Updater">pack://application:,,,/EUMC.Client;component/Resources/Images/MainView/Updater.png</ImageSource>
+  <ImageSource x:Key="Updater">/Resources/Images/MainView/Updater.png</ImageSource>
   <!-- 장례식장 -->
-  <ImageSource x:Key="funeral-photo"      >/EUMC.Client;component/Resources/Images/Funeral/funeral-photo.png</ImageSource>
-  <ImageSource x:Key="funeral-small-photo">/EUMC.Client;component/Resources/Images/Funeral/funeral-small-photo.png</ImageSource>
+  <ImageSource x:Key="funeral-photo"      >/Resources/Images/Funeral/funeral-photo.png</ImageSource>
+  <ImageSource x:Key="funeral-small-photo">/Resources/Images/Funeral/funeral-small-photo.png</ImageSource>
 
   <!-- clock -->
   <sys:Double x:Key="Date_FontSize_Landscape">28</sys:Double>
@@ -129,7 +129,7 @@
   <GridLength x:Key="GridHeaderHeight2">75</GridLength>
   <sys:Double x:Key="HeaderHeight2">75</sys:Double>
 
-  <FontFamily x:Key="FONT">pack://applicaton:,,,/EUMC.Client;component/Resources/Fonts/#EHWA</FontFamily>
+  <FontFamily x:Key="FONT">pack://applicaton:,,,/Resources/Fonts/#EHWA</FontFamily>
 
   <Style TargetType="{x:Type Label}" x:Key="CommonLabel">
     <Setter Property="Foreground" Value="White" />
