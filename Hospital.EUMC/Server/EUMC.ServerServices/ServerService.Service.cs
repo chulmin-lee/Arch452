@@ -13,7 +13,7 @@ namespace EUMC.ServerServices
     }
     IMessageServiceHandler init_hospital_service()
     {
-      var hospital = new HospitalMessageServiceHandler(new HospitalMessageGenerator());
+      var hospital = new HospitalMessageServiceHandler(new HospitalMessageGenerator(_hspCode));
       foreach (var message in hospital.SupportMessages)
       {
         if (this.MessageMap.ContainsKey(message))

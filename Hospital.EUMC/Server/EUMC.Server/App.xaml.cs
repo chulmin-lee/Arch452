@@ -12,7 +12,7 @@ namespace EUMC.Server
     protected override void OnStartup(StartupEventArgs e)
     {
       base.OnStartup(e);
-
+      LOG.Initialize("server.txt");
       if (ProcessHelper.IsAlreadyRunning())
       {
         Current.Shutdown();

@@ -22,7 +22,6 @@ namespace EUMC.Server
     {
       InitializeComponent();
       UIContextHelper.Initialize();
-      LOG.Initialize("server.txt");
 
 #if EUMC_SEOUL
       string hspCode = "01";

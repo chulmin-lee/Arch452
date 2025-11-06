@@ -11,6 +11,11 @@ namespace EUMC.ServerServices
     public string HTTP_HOME { get; set; } = @"C:\APM_Setup\didmate";
     public int SERVER_PORT { get; set; } = 30000;
     public bool GRPC_ENABLED { get; set; } = true;
+    public ServerConfigurations() { }
+    public ServerConfigurations(string hspCode)
+    {
+      this.HspCode = hspCode;
+    }
 
     public static ServerConfigurations Load(string hspCode, string path)
     {
@@ -22,7 +27,7 @@ namespace EUMC.ServerServices
 
       if (config == null)
       {
-        config = new ServerConfigurations();
+        config = new ServerConfigurations(hspCode);
         NewtonJson.Serialize(config, path);
       }
       return config;

@@ -14,11 +14,11 @@ namespace EUMC.HospitalService
     public IHospitalRepository Repository { get; private set; }
     HospitalServiceConfigurations _config;
 
-    public HospitalMessageGenerator() : base("EUMC")
+    public HospitalMessageGenerator(string hspCode) : base("EUMC")
     {
       this.Repository = new HospitalRepositorySim(this.SimDataPath);
       var config_path = Path.Combine(this.ServiceDir, $"{this.ServiceName}_HospitalService.Config");
-      _config = HospitalServiceConfigurations.Load(config_path);
+      _config = HospitalServiceConfigurations.Load(config_path, hspCode);
       this.ScheduleInterval = _config.DataExtractor.ScheduleInterval;
       this.IsBackup = _config.DataExtractor.IsBackup;
     }

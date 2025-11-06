@@ -7,6 +7,7 @@ namespace EUMC.ServerServices
 {
   public partial class ServerService : IServerService
   {
+    string _hspCode;
     IServerSessionHandler SessionHandler;
     List<IMessageServiceHandler> MessageHandlers = new List<IMessageServiceHandler>();
     public UserServiceHandler UserService { get; private set; }
@@ -15,7 +16,11 @@ namespace EUMC.ServerServices
 
     public ServerService(string hspCode)
     {
-      var config = ServerConfigurations.Load(hspCode, "Server.Config");
+      _hspCode = hspCode;
+
+      LOG.ic($"HspCode: {_hspCode}");
+
+      var config = ServerConfigurations.Load(_hspCode, "Server.Config");
       bool grpc = config.GRPC_ENABLED;
       int port = config.SERVER_PORT;
 
