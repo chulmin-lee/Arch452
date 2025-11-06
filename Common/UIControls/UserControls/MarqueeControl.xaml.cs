@@ -16,11 +16,7 @@ namespace UIControls
       InitializeComponent();
       this.SizeChanged += (s, e) => this.refresh("size");
       this.IsVisibleChanged += (s, e) => this.refresh("vis");
-      this.Loaded += (s, e) =>
-      {
-        LOG.d("MarqueeControl::Loaded");
-        this.refresh("load");
-      };
+      this.Loaded += (s, e) => this.refresh("load");
     }
     void refresh(string s)
     {
@@ -29,7 +25,7 @@ namespace UIControls
       if (canvasWidth <= 0) return;
       if (string.IsNullOrEmpty(this.Message)) return;
 
-      LOG.wc(s);
+      LOG.tc(s);
       _storyboard?.Stop();
       // Caption.Content는 this.Message에 바인딩되어있지만, 이 시점에서 실제로 값이 바인딩되었는지는
       // 보장할 수 없다

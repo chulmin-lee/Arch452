@@ -16,8 +16,8 @@ namespace UIControls
 {
   public partial class MediaControl : UserControl
   {
-    DispatcherTimer _image_timer;
     MediaManager MEDIA_MANAGER = new MediaManager();
+    DispatcherTimer _image_timer;
     MEDIA_FILE _current;
     Dictionary<int, BitmapSource> _cache = new Dictionary<int, BitmapSource>();
     bool _loaded = false;
@@ -56,8 +56,9 @@ namespace UIControls
           // 주의: MediaElement 자체를 캡춰시 문제가 있어서 Grid 자체를 캡춰함
           // - 캡춰 영역이 MediaElement 영역을 걸쳐서 캡춰됨.
           var v = this.MainGrid;
+          var ds = v.GetDpiScale();
           var rtb = new RenderTargetBitmap((int)v.ActualWidth, (int)v.ActualHeight,
-                      96, 96, PixelFormats.Default);
+                     ds.PixelsPerInchX, ds.PixelsPerInchY, PixelFormats.Default);
           rtb.Render(v);
           _cache.Add(_current.MediaId, rtb);
 
