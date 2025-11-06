@@ -15,6 +15,18 @@ namespace EUMC.Client
     protected override void OnStartup(StartupEventArgs e)
     {
       base.OnStartup(e);
+
+      string hspCode = "01";
+      var rs = new ResourceDictionary();
+#if EUMC_SEOUL
+      hspCode = "01";
+      rs.Source = new Uri(@"./Resources/Seoul/SeoulDynamicResource.xaml", UriKind.Relative);
+#elif EUMC_MOKDONG
+      hspCode = "02";
+      rs.Source = new Uri(@"./Resources/Mokdong/MokdongDynamicResource.xaml", UriKind.Relative);
+#endif
+      this.Resources.MergedDictionaries.Add(rs);
+
       LOG.Initialize("client.txt");
 
       var restart = Environment.GetCommandLineArgs().Contains(ClientViewManager.RestartArgument);
@@ -26,7 +38,7 @@ namespace EUMC.Client
       else
       {
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-        _wm = new ClientViewManager();
+        _wm = new ClientViewManager(hspCode);
         _wm.Start();
       }
     }

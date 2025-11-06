@@ -7,7 +7,7 @@ namespace EUMC.ClientServices
 {
   internal class PackageViewConfigFactory
   {
-    public static IPackageViewConfig Create(PlaylistSchedule s, bool seoul = true)
+    public static IPackageViewConfig Create(PlaylistSchedule s)
     {
       var p = create_package_info(s);
       switch (p.Package)

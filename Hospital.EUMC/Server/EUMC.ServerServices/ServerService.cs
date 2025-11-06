@@ -13,9 +13,9 @@ namespace EUMC.ServerServices
     Dictionary<SERVICE_ID, IMessageServiceHandler> MessageMap = new Dictionary<SERVICE_ID, IMessageServiceHandler>();
     Dictionary<PACKAGE, IMessageServiceHandler> PackageMap = new Dictionary<PACKAGE, IMessageServiceHandler>();
 
-    public ServerService()
+    public ServerService(string hspCode)
     {
-      var config = ServerConfigurations.Load("Server.Config");
+      var config = ServerConfigurations.Load(hspCode, "Server.Config");
       bool grpc = config.GRPC_ENABLED;
       int port = config.SERVER_PORT;
 

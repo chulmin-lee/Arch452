@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <ImageSource x:Key="LogoLarge">/Resources/Seoul/logo-large-seoul.png</ImageSource>
+  <ImageSource x:Key="LogoMiddle">/Resources/Seoul/logo-middle-seoul.png</ImageSource>
+  <ImageSource x:Key="Content_BG">/Resources/Seoul/content-BG-seoul.png</ImageSource>
+
+</ResourceDictionary>

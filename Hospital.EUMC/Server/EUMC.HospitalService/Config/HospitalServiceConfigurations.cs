@@ -37,7 +37,6 @@ namespace EUMC.HospitalService
         }
         else
         {
-      
           db.MYSQL = seoul ? "server=172.17.10.33;uid=root;pwd=dmscksdmsco*963..;database=didmate;SslMode=none;Connect Timeout=5"
                            : "server=172.17.10.36;uid=root;pwd=dmscksdmsco*963..;database=didmate;SslMode=none;Connect Timeout=5";
           db.MSSQL = seoul ? "data source=172.17.10.33;uid=sa;pwd=neovision0620;Persist Security Info=true;Initial Catalog=didmate;Connection Timeout=5;Max Pool Size=1000"

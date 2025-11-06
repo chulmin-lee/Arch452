@@ -6,13 +6,15 @@ namespace EUMC.ClientServices
 {
   public static class CLIENT_SERVICE
   {
+    public static string HspCode { get; private set; }
     public static int ClientId => Instance.ClientId;
     static IClientService _instance;
     static IClientService Instance => _instance ?? throw new Exception("not initialized");
 
-    public static void Initialize(IClientViewManager vm)
+    public static void Initialize(string hspCode, IClientViewManager vm)
     {
-      _instance = new ClientServiceImpl(vm);
+      HspCode = hspCode;
+      _instance = new ClientServiceImpl(hspCode, vm);
     }
     public static void Start()
     {

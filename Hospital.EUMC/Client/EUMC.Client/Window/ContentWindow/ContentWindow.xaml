@@ -118,18 +118,7 @@
 
             <!-- 0.logo -->
             <Border Grid.Column="0">
-              <Image Stretch="None">
-                <Image.Style>
-                  <Style TargetType="{x:Type Image}">
-                    <Setter Property="Source" Value="{StaticResource LogoLarge_Seoul}" />
-                    <Style.Triggers>
-                      <DataTrigger Binding="{Binding Contents.IsSeoul}" Value="false">
-                        <Setter Property="Source" Value="{StaticResource LogoLarge_Mokdong}" />
-                      </DataTrigger>
-                    </Style.Triggers>
-                  </Style>
-                </Image.Style>
-              </Image>
+              <Image Stretch="None" Source="{DynamicResource LogoLarge}" />
             </Border>
 
             <!-- 1.ContentTitle -->
@@ -160,18 +149,8 @@
 
             <!-- 0.logo -->
             <Border Grid.Column="0">
-              <Image Stretch="None" HorizontalAlignment="Left" Margin="50,0,0,0">
-                <Image.Style>
-                  <Style TargetType="{x:Type Image}">
-                    <Setter Property="Source" Value="{StaticResource LogoMiddle_Seoul}" />
-                    <Style.Triggers>
-                      <DataTrigger Binding="{Binding Contents.IsSeoul}" Value="false">
-                        <Setter Property="Source" Value="{StaticResource LogoMiddle_Mokdong}" />
-                      </DataTrigger>
-                    </Style.Triggers>
-                  </Style>
-                </Image.Style>
-              </Image>
+              <Image Stretch="None" HorizontalAlignment="Left" Margin="50,0,0,0"
+                                  Source="{DynamicResource LogoMiddle}" />
             </Border>
 
             <!-- 0. Middle Clock -->

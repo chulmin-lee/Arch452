@@ -30,12 +30,12 @@ namespace EUMC.Client
       set => Application.Current.MainWindow = value;
     }
 
-    public ClientViewManager()
+    public ClientViewManager(string hspCode)
     {
       this.ClientVersion = Assembly.GetEntryAssembly()?.GetName()?.Version?.ToString() ?? "0.0.0.0";
       this.ClientPath = Process.GetCurrentProcess().MainModule?.FileName ?? throw new Exception("no main module");
 
-      CLIENT_SERVICE.Initialize(this);
+      CLIENT_SERVICE.Initialize(hspCode, this);
 
       this.WindowVM = new CustomWindowViewModel();
       this.MainWindow = new CustomWindow(WindowVM);

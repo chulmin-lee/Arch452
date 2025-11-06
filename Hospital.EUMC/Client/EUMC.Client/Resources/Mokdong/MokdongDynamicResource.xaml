@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+  <ImageSource x:Key="LogoLarge">/Resources/Mokdong/logo-large-mokdong.png</ImageSource>
+  <ImageSource x:Key="LogoMiddle">/Resources/Mokdong/logo-middle-mokdong.png</ImageSource>
+  <ImageSource x:Key="Content_BG">/Resources/Mokdong/content-BG-mokdong.png</ImageSource>
+
+
+</ResourceDictionary>

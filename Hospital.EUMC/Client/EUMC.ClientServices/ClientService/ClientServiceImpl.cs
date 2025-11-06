@@ -5,8 +5,10 @@ namespace EUMC.ClientServices
 {
   public class ClientServiceImpl : ClientServiceBase
   {
-    public ClientServiceImpl(IClientViewManager vm) : base(vm, false)
+    string _hspCode;
+    public ClientServiceImpl(string hspCode, IClientViewManager vm) : base(vm, false)
     {
+      _hspCode = hspCode;
     }
     protected override ServerConfig get_service_config()
     {
@@ -18,6 +20,7 @@ namespace EUMC.ClientServices
     }
     protected override IPackageViewConfig create_package_view(PlaylistSchedule s)
     {
+      s.HospitalCode = _hspCode;
       return PackageViewConfigFactory.Create(s);
     }
     protected override IPackageViewConfig create_updater_package_view()

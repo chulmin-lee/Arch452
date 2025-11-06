@@ -13,13 +13,13 @@
   <!-- ================================================================ -->
   <!-- title bar -->
   <!-- logo -->
-  <ImageSource x:Key="LogoLarge_Seoul">/Resources/Seoul/logo-large-seoul.png</ImageSource>
+  <!--<ImageSource x:Key="LogoLarge_Seoul">/Resources/Seoul/logo-large-seoul.png</ImageSource>
   <ImageSource x:Key="LogoMiddle_Seoul">/Resources/Seoul/logo-middle-seoul.png</ImageSource>
   <ImageSource x:Key="Content_BG_Seoul">/Resources/Seoul/content-BG-seoul.png</ImageSource>
 
   <ImageSource x:Key="LogoLarge_Mokdong">/Resources/Mokdong/logo-large-mokdong.png</ImageSource>
   <ImageSource x:Key="LogoMiddle_Mokdong">/Resources/Mokdong/logo-middle-mokdong.png</ImageSource>
-  <ImageSource x:Key="Content_BG_Mokdong">/Resources/Mokdong/content-BG-mokdong.png</ImageSource>
+  <ImageSource x:Key="Content_BG_Mokdong">/Resources/Mokdong/content-BG-mokdong.png</ImageSource>-->
 
   <!-- notice -->
   <ImageSource x:Key="NoticeLarge">/Resources/Images/MainView/notice-large.png</ImageSource>

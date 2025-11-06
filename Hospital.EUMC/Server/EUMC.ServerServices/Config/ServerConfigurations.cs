@@ -12,7 +12,7 @@ namespace EUMC.ServerServices
     public int SERVER_PORT { get; set; } = 30000;
     public bool GRPC_ENABLED { get; set; } = true;
 
-    public static ServerConfigurations Load(string path)
+    public static ServerConfigurations Load(string hspCode, string path)
     {
       ServerConfigurations config = null;
       if (File.Exists(path))

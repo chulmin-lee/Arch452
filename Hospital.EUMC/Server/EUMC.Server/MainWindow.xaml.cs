@@ -23,7 +23,14 @@ namespace EUMC.Server
       InitializeComponent();
       UIContextHelper.Initialize();
       LOG.Initialize("server.txt");
-      SM = new ServerService();
+
+#if EUMC_SEOUL
+      string hspCode = "01";
+#elif EUMC_MOKDONG
+      string hspCode = "02";
+#endif
+
+      SM = new ServerService(hspCode);
       UserService = this.SM.UserService;
 
       this.Closing += (s, e) =>
