@@ -1,5 +1,6 @@
 ﻿using ServiceCommon;
 using ServiceCommon.ClientServices;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EUMC.ClientServices
@@ -8,6 +9,7 @@ namespace EUMC.ClientServices
   {
     public ContentConfig Config { get; set; } = new ContentConfig();
     public OpdRoomConfig Room { get; set; }
+    public List<string> WaitMesages { get; set; } = new List<string>();
     public ExamSingleViewConfig(PackageInfo p, PlaylistSchedule s) : base(p, s)
     {
       this.TitlebarStyle = TitlebarStyle.MiddleNormal;
@@ -31,6 +33,12 @@ namespace EUMC.ClientServices
         DurationTime = room.DurationTime,
         Title = room.RoomTitle
       };
+
+      switch (s.HospitalCode)
+      {
+        case "01": this.WaitMesages = new List<string> { "들어오실 분", "다음 순서 입니다", "잠시만 기다려 주십시요" }; break;
+        case "02": this.WaitMesages = new List<string> { "들어오실 분", "다음 순서", "진료 대기" }; break;
+      }
     }
 
     public class ContentConfig

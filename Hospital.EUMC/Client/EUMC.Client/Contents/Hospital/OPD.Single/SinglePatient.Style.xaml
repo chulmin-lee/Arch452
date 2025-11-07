@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:ui="clr-namespace:UIControls;assembly=UIControls"
+                    xmlns:local="clr-namespace:EUMC.Client">
+
+  <DataTemplate DataType="{x:Type local:SinglePatientViewModel}">
+    <Grid Margin="0,10,0,10">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1*" />
+        <ColumnDefinition Width="1.7*" />
+      </Grid.ColumnDefinitions>
+
+      <Border Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="{StaticResource primary}" />
+      <Border Grid.Column="0" Background="{StaticResource primary}">
+        <TextBlock Text="{Binding Title}" Style="{StaticResource CommonTextBlock}" FontSize="55"
+                             Margin="0,0,0,0"
+                             TextWrapping="Wrap" TextAlignment="Center" Foreground="White"
+                             FontWeight="SemiBold" />
+      </Border>
+      <Grid Grid.Column="1">
+        <ui:TextBorder Text="{Binding PatientName}" FontSize="96" AutoFontRatio="0.8" />
+      </Grid>
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

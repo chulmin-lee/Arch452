@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\seoul\server\</OutputPath>
+    <OutputPath>..\..\assemblies\seoul\server</OutputPath>
     <DefineConstants>TRACE;DEBUG;EUMC_SEOUL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -29,7 +29,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\seoul\server\</OutputPath>
+    <OutputPath>..\..\assemblies\seoul\server</OutputPath>
     <DefineConstants>TRACE;EUMC_SEOUL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>

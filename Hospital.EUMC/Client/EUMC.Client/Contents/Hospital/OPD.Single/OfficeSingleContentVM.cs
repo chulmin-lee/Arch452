@@ -24,9 +24,5 @@ namespace EUMC.Client
       }
       return false;
     }
-    protected override void ContentClose()
-    {
-      this.ITEM.Close();
-    }
   }
 }

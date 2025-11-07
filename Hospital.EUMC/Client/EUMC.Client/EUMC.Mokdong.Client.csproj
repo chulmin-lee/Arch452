@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\mokdong\client\</OutputPath>
+    <OutputPath>..\..\assemblies\mokdong\client</OutputPath>
     <DefineConstants>TRACE;DEBUG;EUMC_MOKDONG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -29,7 +29,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\mokdong\client\</OutputPath>
+    <OutputPath>..\..\assemblies\mokdong\client</OutputPath>
     <DefineConstants>TRACE;EUMC_MOKDONG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -69,10 +69,15 @@
     <Compile Include="Contents\ETC\NoSchedule\NoScheduleContentVM.cs" />
     <Compile Include="Contents\ETC\Updater\UpdaterContentVM.cs" />
     <Compile Include="Contents\ETC\Updater\UpdaterInformation.cs" />
-    <Compile Include="Contents\Hospital\Office\Common\OfficeConverter.cs" />
-    <Compile Include="Contents\Hospital\Office\Common\ViewModel.cs" />
-    <Compile Include="Contents\Hospital\Office\OfficeSingleContentVM.cs" />
-    <Compile Include="Contents\Hospital\Office\OfficeSingleInformation.cs" />
+    <Compile Include="Contents\Hospital\Common\OfficeConverter.cs" />
+    <Compile Include="Contents\Hospital\Common\ViewModel.cs" />
+    <Compile Include="Contents\Hospital\OPD.Single\ExamSingleContentVM.cs" />
+    <Compile Include="Contents\Hospital\OPD.Single\ExamSingleInformation.cs" />
+    <Compile Include="Contents\Hospital\OPD.Single\OfficeMultiContentVM.cs" />
+    <Compile Include="Contents\Hospital\OPD.Single\OfficeMultiInformation.cs" />
+    <Compile Include="Contents\Hospital\OPD.Single\OfficeSingleContentVM.cs" />
+    <Compile Include="Contents\Hospital\OPD.Single\OfficeSingleInformation.cs" />
+    <Compile Include="Contents\Hospital\OPD.Single\SinglePatientViewModel.cs" />
     <Compile Include="Contents\IContentViewModel.cs" />
     <Compile Include="Window\ContentWindow\ContentWindow.xaml.cs">
       <DependentUpon>ContentWindow.xaml</DependentUpon>
@@ -127,7 +132,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Contents\Hospital\Office\OfficeSingleContent.Style.xaml">
+    <Page Include="Contents\Hospital\OPD.Single\ExamSingleContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\OPD.Single\OfficeMultiContent.Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Contents\Hospital\OPD.Single\OfficeSingleContent.Style.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -144,9 +157,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Contents\Hospital\OPD\OfficeSingle\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Common\Common.csproj">
       <Project>{ae628b92-969a-4032-a07e-b4d0b7712189}</Project>

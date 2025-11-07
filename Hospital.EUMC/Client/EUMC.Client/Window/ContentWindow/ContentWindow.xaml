@@ -22,7 +22,7 @@
     <ResourceDictionary>
 
       <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Contents/Hospital/Office/OfficeSingleContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/Hospital/OPD.Single/OfficeSingleContent.Style.xaml" />
 
         <!--<ResourceDictionary Source="/Contents/Hospital/ICU/IcuStaffContent.Style.xaml" />
         <ResourceDictionary Source="/Contents/Hospital/ICU/IcuGuardContent.Style.xaml" />

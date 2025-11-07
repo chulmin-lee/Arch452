@@ -1,6 +1,7 @@
 ﻿using ServiceCommon;
 using ServiceCommon.ClientServices;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EUMC.ClientServices
 {
@@ -22,15 +23,19 @@ namespace EUMC.ClientServices
         UseRotation = true,
       };
 
-      var opd = this.PackageInfo.OpdRoom ?? throw new ServiceException("opdroom");
-      foreach (var dept in opd.DeptRooms)
+      var depts = s.Medical?.DeptRooms ?? throw new ServiceException("opdroom");
+      foreach (var dept in depts.Where(x => x.RoomType == "B"))
       {
-        foreach (var roomCode in dept.RoomCodes)
+        foreach (var room in dept.Rooms)
         {
           this.ExamRooms.Add(new OpdRoomConfig
           {
-            DeptCode = dept.DeptCode,
-            RoomCode = roomCode,
+            DeptCode = room.DeptCode,
+            DeptName = room.DeptName,
+            RoomCode = room.RoomCode,
+            RoomName = room.RoomName,
+            DurationTime = room.DurationTime,
+            Title = room.RoomTitle
           });
         }
       }

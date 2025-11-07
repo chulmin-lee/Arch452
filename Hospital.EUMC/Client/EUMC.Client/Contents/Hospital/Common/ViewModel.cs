@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace EUMC.Client
 {
+  /*
   internal class OfficeRoomViewModel : ContentInformation
   {
     #region Common
@@ -23,7 +24,7 @@ namespace EUMC.Client
     public string DeptName { get => _deptName; set => Set(ref _deptName, value); }
     public string InRoomPatientName { get => _inRoomPatientName; set => Set(ref _inRoomPatientName, value); }
 
-    public ObservableCollection<PatientViewModel> Patients { get; set; } = new ObservableCollection<PatientViewModel>();
+    public ObservableCollection<OpdPatientViewModel> Patients { get; set; } = new ObservableCollection<OpdPatientViewModel>();
 
     public bool UseRoom { get; set; }
     public bool IsRotation { get; set; }
@@ -37,7 +38,7 @@ namespace EUMC.Client
 
       for (int i = 1; i <= rows; i++)
       {
-        this.Patients.Add(new PatientViewModel(i, string.Empty, false));
+        this.Patients.Add(new OpdPatientViewModel(i, string.Empty, false));
       }
     }
 
@@ -49,10 +50,10 @@ namespace EUMC.Client
       this.DoctorName = "진료의사";
       this.InRoomPatientName = "진료중";
 
-      this.Patients.Add(new PatientViewModel(1, "다음 순서 입니다", true));
+      this.Patients.Add(new OpdPatientViewModel(1, "다음 순서 입니다", true));
       for (int i = 2; i <= this.ItemRows; i++)
       {
-        this.Patients.Add(new PatientViewModel(i, "대기해주세요", true));
+        this.Patients.Add(new OpdPatientViewModel(i, "대기해주세요", true));
       }
     }
 
@@ -77,7 +78,7 @@ namespace EUMC.Client
 
         _all_patients.Clear();
         int index = 1;
-        o.WaitPatients.ForEach(x => _all_patients.Add(new PatientViewModel(index++, x.PatientName, false)));
+        o.WaitPatients.ForEach(x => _all_patients.Add(new OpdPatientViewModel(index++, x.PatientName, false)));
 
         var list = _all_patients.Take(this.ItemRows);
         this.Patients.Clear();
@@ -89,7 +90,7 @@ namespace EUMC.Client
         var remained = this.ItemRows - Patients.Count;
         for (int i = 0; i < remained; i++)
         {
-          this.Patients.Add(new PatientViewModel(index++, string.Empty, false));
+          this.Patients.Add(new OpdPatientViewModel(index++, string.Empty, false));
         }
 
         //this.IsRotation = this.UseRoom && (this.ItemRows < _all_patients.Count);
@@ -119,7 +120,7 @@ namespace EUMC.Client
     {
       return _all_patients.CalcPageCount(this.ItemRows);
     }
-    List<PatientViewModel> GetPageItems()
+    List<OpdPatientViewModel> GetPageItems()
     {
       int pageIndex = this.GetPageCount().GetCurrentPage(this.LoopCounter++);
       return _all_patients.GetPageItems(pageIndex, this.ItemRows);
@@ -150,7 +151,7 @@ namespace EUMC.Client
     //  }
     //}
 
-    List<PatientViewModel> _all_patients = new List<PatientViewModel>();
+    List<OpdPatientViewModel> _all_patients = new List<OpdPatientViewModel>();
     string _roomName = string.Empty;
     string _doctorName = string.Empty;
     string _deptName = string.Empty;
@@ -159,27 +160,5 @@ namespace EUMC.Client
     string _roomPatientKey;
   }
 
-  internal class PatientViewModel
-  {
-    public int Index { get; set; }
-    public string PatientName { get; set; } = string.Empty;
-    public string Title { get; set; } = string.Empty;
-    public bool IsPanel { get; set; }
-    public PatientViewModel(int index, string name, bool isPanel)
-    {
-      this.Index = index;
-      this.PatientName = name;
-      this.IsPanel = isPanel;
-    }
-
-    public PatientViewModel(int index, string name)
-    {
-      this.Index = index;
-      this.PatientName = name;
-    }
-    public PatientViewModel(int index)
-    {
-      this.Index = index;
-    }
-  }
+*/
 }

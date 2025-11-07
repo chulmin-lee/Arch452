@@ -1,6 +1,8 @@
 ﻿using ServiceCommon;
 using ServiceCommon.ClientServices;
 using System.Collections.Generic;
+using System.Linq;
+using static ServiceCommon.ClientServices.PlaylistMedical;
 
 namespace EUMC.ClientServices
 {
@@ -22,24 +24,26 @@ namespace EUMC.ClientServices
         UseRotation = true,
       };
 
-      var opd = this.PackageInfo.OpdRoom ?? throw new ServiceException("OpdRoom  null");
-      foreach (var dept in opd.DeptRooms)
+      var depts = s.Medical?.DeptRooms ?? throw new ServiceException("opdroom");
+      foreach (var dept in depts)
       {
-        if (dept.RoomType == "A")
+        foreach (var room in dept.Rooms)
         {
-          this.OfficeRooms.Add(new OpdRoomConfig
+          var x = new OpdRoomConfig
           {
-            DeptCode = dept.DeptCode,
-            RoomCode = dept.RoomCode,
-          });
-        }
-        else if (dept.RoomType == "B")
-        {
-          this.ExamRooms.Add(new OpdRoomConfig
+            DeptCode = room.DeptCode,
+            DeptName = room.DeptName,
+            RoomCode = room.RoomCode,
+            RoomName = room.RoomName,
+            DurationTime = room.DurationTime,
+          };
+
+          switch (dept.RoomType)
           {
-            DeptCode = dept.DeptCode,
-            RoomCode = dept.RoomCode,
-          });
+            case "A": this.OfficeRooms.Add(x); break;
+            case "B": this.ExamRooms.Add(x); break;
+            default: throw new ServiceException($"Unknown RoomType {dept.RoomType}");
+          }
         }
       }
     }
