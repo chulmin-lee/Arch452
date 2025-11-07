@@ -5,7 +5,7 @@
                     xmlns:local="clr-namespace:EUMC.Client">
 
   <ResourceDictionary.MergedDictionaries>
-    <ResourceDictionary Source="/Contents/Hospital/OPD.Single/SinglePatient.Style.xaml" />
+    <ResourceDictionary Source="/Contents/Hospital/OPD.Single/Common/SinglePatient.Style.xaml" />
   </ResourceDictionary.MergedDictionaries>
 
   <DataTemplate DataType="{x:Type local:OfficeSingleContentVM}">

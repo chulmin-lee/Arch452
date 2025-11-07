@@ -76,8 +76,8 @@
     <Compile Include="Contents\Hospital\OPD.Single\ExamSingleInformation.cs" />
     <Compile Include="Contents\Hospital\OPD.Single\OfficeSingleContentVM.cs" />
     <Compile Include="Contents\Hospital\OPD.Single\OfficeSingleInformation.cs" />
-    <Compile Include="Contents\Hospital\OPD.Single\SinglePatientViewModel.cs" />
-    <Compile Include="Contents\Hospital\OPD.Single\SingleRoomViewModel.cs" />
+    <Compile Include="Contents\Hospital\OPD.Single\Common\SinglePatientViewModel.cs" />
+    <Compile Include="Contents\Hospital\OPD.Single\Common\SingleRoomViewModel.cs" />
     <Compile Include="Contents\IContentViewModel.cs" />
     <Compile Include="Window\ContentWindow\ContentWindow.xaml.cs">
       <DependentUpon>ContentWindow.xaml</DependentUpon>
@@ -140,7 +140,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Contents\Hospital\OPD.Single\SinglePatient.Style.xaml">
+    <Page Include="Contents\Hospital\OPD.Single\Common\SinglePatient.Style.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
