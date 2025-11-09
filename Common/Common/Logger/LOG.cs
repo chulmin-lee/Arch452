@@ -17,7 +17,7 @@ namespace Common
   public static class LOG
   {
     static Logger _instance;
-    static Logger Instance => _instance ?? (_instance = create_log_instance());
+    static Logger Instance => _instance ?? throw new Exception("not init"); // (_instance = create_log_instance());
 
     public static void Initialize(string filename = "log.txt", string dir = "", LOG_LEVEL loglevel = LOG_LEVEL.DEBUG, bool delete = false)
     {

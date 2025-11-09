@@ -1,20 +1,16 @@
 ﻿using Common;
 using EUMC.ClientServices;
 using ServiceCommon;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EUMC.Client
 {
   internal class ExamSingleContentVM : ContentViewModelBase
   {
-    public ExamSingleInformation ITEM { get; set; }
+    public SingleRoomInformation ITEM { get; set; }
     public ExamSingleContentVM(ExamSingleViewConfig config) : base(config)
     {
-      this.ITEM = new ExamSingleInformation(config);
+      this.ITEM = new SingleRoomInformation(config);
     }
 
     public override bool MessageReceived(ServiceMessage m)
@@ -25,13 +21,17 @@ namespace EUMC.Client
       switch (m.ServiceId)
       {
         case SERVICE_ID.EXAM_PT:
-          return this.ITEM.Update(m.CastTo<EXAM_RESP>());
+          {
+            var room = m.CastTo<EXAM_RESP>().Rooms.Where(x => x.GroupKey == this.ITEM.Key).FirstOrDefault();
+            if (room != null)
+            {
+              this.ITEM.Update(room);
+              return true;
+            }
+            return false;
+          }
       }
       return false;
-    }
-    protected override void ContentClose()
-    {
-      this.ITEM.Close();
     }
   }
 }

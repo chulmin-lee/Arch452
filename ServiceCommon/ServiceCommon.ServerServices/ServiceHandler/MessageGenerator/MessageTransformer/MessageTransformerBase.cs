@@ -76,10 +76,17 @@ namespace ServiceCommon.ServerServices
         }
 
         LOG.dc($"[{this.ID}] Data '{o.ID}' updated");
-        var updated = this.data_notified(o);
-        if (updated != null)
+        try
         {
-          this.Subscribers.ToList().ForEach(s => Task.Run(() => s.OnMessageNotify(updated)));
+          var updated = this.data_notified(o);
+          if (updated != null)
+          {
+            this.Subscribers.ToList().ForEach(s => Task.Run(() => s.OnMessageNotify(updated)));
+          }
+        }
+        catch (Exception ex)
+        {
+          LOG.except(ex);
         }
       }
     }

@@ -14,7 +14,7 @@ namespace EUMC.ClientServices
 
       this.Config = new ContentConfig()
       {
-        ItemRows = s.DelayPerson > 0 ? s.DelayPerson : 8,
+        ItemRows = s.PatientPerRoom > 0 ? s.PatientPerRoom : 8,
       };
     }
     public class ContentConfig

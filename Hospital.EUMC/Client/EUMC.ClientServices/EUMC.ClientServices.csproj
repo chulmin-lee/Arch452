@@ -62,11 +62,9 @@
     <Compile Include="PackageViewConfigs\Hospital\IPD\OperationViewConfig.cs" />
     <Compile Include="PackageViewConfigs\Hospital\IPD\WardRoomViewConfig.cs" />
     <Compile Include="PackageViewConfigs\Hospital\ODP\EndoViewConfig.cs" />
-    <Compile Include="PackageViewConfigs\Hospital\ODP\ExamMultiViewConfig.cs" />
-    <Compile Include="PackageViewConfigs\Hospital\ODP\ExamSingleViewConfig.cs" />
     <Compile Include="PackageViewConfigs\Hospital\ODP\MixRoomViewConfig.cs" />
-    <Compile Include="PackageViewConfigs\Hospital\ODP\OfficeMultiViewConfig.cs" />
-    <Compile Include="PackageViewConfigs\Hospital\ODP\OfficeSingleViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\ODP\OpdMultiViewConfig.cs" />
+    <Compile Include="PackageViewConfigs\Hospital\ODP\OpdSingleViewConfig.cs" />
     <Compile Include="PackageViewConfigs\Internal\ErrorViewConfig.cs" />
     <Compile Include="PackageViewConfigs\Internal\InformationViewConfig.cs" />
     <Compile Include="PackageViewConfigs\Internal\NoScheduleViewConfig.cs" />

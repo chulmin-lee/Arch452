@@ -9,6 +9,14 @@ namespace EUMC.HospitalService
 {
   internal static partial class DataMapper
   {
+    #region Common
+    static int StringToInt(string s)
+    {
+      int.TryParse(s, out var result);
+      return result;
+    }
+    #endregion Common
+
     #region Emergency
     /// <summary>
     /// 응급실 구역이름으로 child 여부 판단
@@ -28,12 +36,12 @@ namespace EUMC.HospitalService
     {
       return s == "A" ? true : false;
     }
-    #endregion
+    #endregion Emergency
 
     #region IPD
     static OPERATION_STATE OperationState(string s)
     {
-      switch(s)
+      switch (s)
       {
         case "1": return OPERATION_STATE.Waiting;
         case "2": return OPERATION_STATE.Operating;
@@ -43,7 +51,7 @@ namespace EUMC.HospitalService
       }
       return OPERATION_STATE.None;
     }
-    #endregion
+    #endregion IPD
 
     #region Office
     static string OfficeFloor(string s)
@@ -72,8 +80,7 @@ namespace EUMC.HospitalService
       }
       return floor;
     }
-    #endregion
-
+    #endregion Office
 
     // EUMC
     static ANG_STATE AngState(int state)

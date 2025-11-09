@@ -1,15 +1,16 @@
 ﻿using Common;
 using EUMC.ClientServices;
 using ServiceCommon;
+using System.Linq;
 
 namespace EUMC.Client
 {
   internal class OfficeSingleContentVM : ContentViewModelBase
   {
-    public OfficeSingleInformation ITEM { get; set; }
-    public OfficeSingleContentVM(OfficeSingleViewConfig config) : base(config)
+    public SingleRoomInformation ITEM { get; set; }
+    public OfficeSingleContentVM(OpdSingleViewConfig config) : base(config)
     {
-      this.ITEM = new OfficeSingleInformation(config);
+      this.ITEM = new SingleRoomInformation(config);
     }
 
     public override bool MessageReceived(ServiceMessage m)
@@ -20,7 +21,25 @@ namespace EUMC.Client
       switch (m.ServiceId)
       {
         case SERVICE_ID.OFFICE_PT:
-          return this.ITEM.Update(m.CastTo<OFFICE_RESP>());
+          {
+            var room = m.CastTo<OFFICE_RESP>().Rooms.Where(x => x.GroupKey == this.ITEM.Key).FirstOrDefault();
+            if (room != null)
+            {
+              this.ITEM.Update(room);
+              return true;
+            }
+            return false;
+          }
+        case SERVICE_ID.EXAM_PT:
+          {
+            var room = m.CastTo<EXAM_RESP>().Rooms.Where(x => x.GroupKey == this.ITEM.Key).FirstOrDefault();
+            if (room != null)
+            {
+              this.ITEM.Update(room);
+              return true;
+            }
+            return false;
+          }
       }
       return false;
     }

@@ -39,7 +39,7 @@ namespace ServiceCommon
     public string RoomName { get; set; } = string.Empty;
     public string DurationTime { get; set; } = string.Empty;
     public string DelayReason { get; set; } = string.Empty;
-    public string DelayTime { get; set; } = string.Empty;
+    public int DelayTime { get; set; }
 
     public string AssistantName { get; set; } = string.Empty;
     public bool UseRoom { get; set; } = true;

@@ -4,7 +4,7 @@
                     xmlns:ui="clr-namespace:UIControls;assembly=UIControls"
                     xmlns:local="clr-namespace:EUMC.Client">
 
-  <DataTemplate DataType="{x:Type local:SinglePatientViewModel}">
+  <DataTemplate DataType="{x:Type local:SingleRoomPatientVM}">
     <Grid Margin="0,10,0,10">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="1*" />

@@ -5,7 +5,7 @@
                     xmlns:local="clr-namespace:EUMC.Client">
 
   <ResourceDictionary.MergedDictionaries>
-    <ResourceDictionary Source="/Contents/Hospital/OPD.Single/Common/SinglePatient.Style.xaml" />
+    <ResourceDictionary Source="/Contents/Hospital/OPD.Single/Common/SingleRoomPatient.Style.xaml" />
   </ResourceDictionary.MergedDictionaries>
 
   <DataTemplate DataType="{x:Type local:OfficeSingleContentVM}">
@@ -25,10 +25,10 @@
       <!-- ==================================================== -->
       <!-- 0. 의사정보                                           -->
       <!-- ==================================================== -->
-      <Border Grid.Row="0" Background="#F5F5F5">
+      <Border Grid.Row="0" Background="#FFF5F5">
         <Grid Grid.Row="0">
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1.2*" />
             <ColumnDefinition Width="1*" />
           </Grid.ColumnDefinitions>
 
@@ -102,44 +102,19 @@
         <ItemsControl ItemsSource="{Binding ROOM.Patients}">
           <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
-              <UniformGrid Rows="{Binding CONFIG.ItemRows}" Columns="1" />
+              <UniformGrid Rows="{Binding ROOM.ItemRows}" Columns="1" />
             </ItemsPanelTemplate>
           </ItemsControl.ItemsPanel>
-          <!--<ItemsControl.ItemTemplate>
-            <DataTemplate>
-              <Grid Margin="0,10,0,10">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="1*" />
-                  <ColumnDefinition Width="1.7*" />
-                </Grid.ColumnDefinitions>
-
-                <Border Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="{StaticResource primary}" />
-                <Border Grid.Column="0" Background="{StaticResource primary}">
-                  <TextBlock Text="{Binding Title}" Style="{StaticResource CommonTextBlock}" FontSize="55"
-                             Margin="0,0,0,0"
-                             TextWrapping="Wrap" TextAlignment="Center" Foreground="White"
-                             FontWeight="SemiBold" />
-                </Border>
-                <Grid Grid.Column="1">
-                  <ui:TextBorder Text="{Binding PatientName}" FontSize="96" AutoFontRatio="0.8" />
-                </Grid>
-              </Grid>
-            </DataTemplate>
-          </ItemsControl.ItemTemplate>-->
         </ItemsControl>
       </Grid>
 
       <!-- ==================================================== -->
       <!-- 4. 지연 사유                                          -->
       <!-- ==================================================== -->
-      <Border Grid.Row="4" Visibility="{Binding CONFIG.ShowDelayTime, Converter={StaticResource BooleanToVisibilityConverter}}">
-        <TextBlock VerticalAlignment="Center" Height="90" HorizontalAlignment="Right" FontSize="56"  Margin="35,0,35,0" FontWeight="SemiBold">
-          <TextBlock.Inlines>
-            지연 사유 :
-            <Run Text="{Binding ROOM.DelayReason}" /> / 대기시간 :
-            <Run Text="{Binding ROOM.DelayTime}" /> 분
-          </TextBlock.Inlines>
-        </TextBlock>
+      <Border Grid.Row="4" Visibility="{Binding ROOM.ShowDelay, Converter={StaticResource BooleanToVisibilityConverter}}">
+        <ui:TextBorder Text="{Binding ROOM.DelayMessage}" Height="90"
+                       HorizontalAlignment="Right" Margin="0,0,35,0"
+                       FontSize="56" FontWeight="SemiBold" />
       </Border>
     </Grid>
   </DataTemplate>

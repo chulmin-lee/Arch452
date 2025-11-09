@@ -20,7 +20,7 @@ namespace EUMC.ClientServices
       this.Config = new ContentConfig()
       {
         RoomPerPage = 5,
-        ItemRows = s.DelayPerson > 0 ? s.DelayPerson : 7,
+        ItemRows = s.PatientPerRoom > 0 ? s.PatientPerRoom : 7,
         UseRotation = true,
       };
 

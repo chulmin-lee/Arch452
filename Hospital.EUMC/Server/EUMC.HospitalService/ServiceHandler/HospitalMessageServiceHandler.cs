@@ -62,7 +62,7 @@ namespace EUMC.HospitalService
       map.Add(PACKAGE.OFFICE_SINGLE, new List<SERVICE_ID> { SERVICE_ID.OFFICE_PT });
       map.Add(PACKAGE.OFFICE_MULTI, new List<SERVICE_ID> { SERVICE_ID.OFFICE_PT });
       map.Add(PACKAGE.EXAM_SINGLE, new List<SERVICE_ID> { SERVICE_ID.EXAM_PT });
-      //map.Add(PACKAGE.EXAM_MULTI, new List<SERVICE_ID> { SERVICE_ID.EXAM_PT });
+      map.Add(PACKAGE.EXAM_MULTI, new List<SERVICE_ID> { SERVICE_ID.EXAM_PT });
       map.Add(PACKAGE.ENDO, new List<SERVICE_ID> { SERVICE_ID.ENDO });
       //===================
       // ETC

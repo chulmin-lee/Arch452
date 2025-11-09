@@ -9,8 +9,7 @@ namespace EUMC.HospitalService
     public string DeptCode { get; set; } = string.Empty;
     public string DeptName { get; set; } = string.Empty;
   }
-  #endregion
-
+  #endregion Base
 
   internal class OFFICE_ROOM_POCO
   {
@@ -20,7 +19,7 @@ namespace EUMC.HospitalService
     public string DoctorNo { get; set; } = string.Empty;
     public string DoctorName { get; set; } = string.Empty;
     public string DelayReason { get; set; } = string.Empty;
-    public string DelayTime { get; set; } = string.Empty;
+    public int DelayTime { get; set; }
     public string GroupKey => $"{this.DeptCode}:{this.RoomCode}";
   }
   internal class OFFICE_PT_POCO
@@ -54,7 +53,7 @@ namespace EUMC.HospitalService
     public string RoomCode { get; set; } = string.Empty;
     public string RoomName { get; set; } = string.Empty;
     public string DelayReason { get; set; } = string.Empty;
-    public string DelayTime { get; set; } = string.Empty;
+    public int DelayTime { get; set; }
     public string GroupKey => $"{this.DeptCode}:{this.RoomCode}";
   }
   internal class EXAM_STAFF_POCO
@@ -62,7 +61,7 @@ namespace EUMC.HospitalService
     public string DeptCode { get; set; } = string.Empty;
     public string RoomCode { get; set; } = string.Empty;
     public string RoomName { get; set; } = string.Empty;
-    public string DoctorNo{ get; set; } = string.Empty;
+    public string DoctorNo { get; set; } = string.Empty;
     public string DoctorName { get; set; } = string.Empty;
 
     //public string DelayReason { get; set; } = string.Empty;  // 사용안함

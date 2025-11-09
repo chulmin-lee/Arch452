@@ -41,11 +41,11 @@ namespace ServiceCommon.ServerServices
       if (this.IsReady)
       {
         this.RunSchedule();
+
+        var s = new Schedule(this.RunSchedule).WithName(this.ID.ToString()).NonReentrant();
+        s.ToRunEverySecond(this.Interval);
+        ScheduleManager.Add(s);
       }
-      // 무조건 스케쥴러는 시작해야 한다. IsReady가 될때까지 스케쥴링
-      var s = new Schedule(this.RunSchedule).WithName(this.ID.ToString()).NonReentrant();
-      s.ToRunEverySecond(this.Interval);
-      ScheduleManager.Add(s);
     }
     public void Stop()
     {
@@ -60,7 +60,7 @@ namespace ServiceCommon.ServerServices
         {
           var updated = this.DATA.CheckUpdate(this.query(), DtoComparer);
 
-          if(!IsInitialized)
+          if (!IsInitialized)
           {
             LOG.wc($"[{this.ID}] Initialized");
             IsInitialized = true;
@@ -86,8 +86,15 @@ namespace ServiceCommon.ServerServices
       {
         NewtonJson.Serialize(updated.All, this.BackupJsonPath);
       }
-      _notify_data = this.data_mapping(updated);
-      this.Subscribers.ToList().ForEach(s => Task.Run(() => s.OnDataNotify(_notify_data)));
+      try
+      {
+        _notify_data = this.data_mapping(updated);
+        this.Subscribers.ToList().ForEach(s => Task.Run(() => s.OnDataNotify(_notify_data)));
+      }
+      catch (Exception ex)
+      {
+        LOG.except(ex);
+      }
     }
     protected virtual INotifyData<D> data_mapping(UpdateData<T> updated) => null;
 
@@ -141,6 +148,12 @@ namespace ServiceCommon.ServerServices
           if (!this.IsReady)
           {
             _updateFlags |= 1 << this.SubscribeList.IndexOf(o.ID); ;
+
+            // 여기서 ready 조회 시작
+            if (this.IsReady)
+            {
+              this.Start();
+            }
           }
         }
         else

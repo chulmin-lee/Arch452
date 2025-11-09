@@ -19,8 +19,8 @@ namespace ServiceCommon.ClientServices
 
     public bool CheckVersion(VersionJson o)
     {
-      this.IsClientUpdated = this.ClientVersion != o.ClientVersion;
-      this.IsUpdaterUpdated = this.UpdaterVersion != o.UpdaterVersion;
+      this.IsClientUpdated = this.ClientVersion != o.ClientVersion && !string.IsNullOrEmpty(o.ClientFileName);
+      this.IsUpdaterUpdated = this.UpdaterVersion != o.UpdaterVersion && !string.IsNullOrEmpty(o.UpdaterFileName);
       return IsClientUpdated || IsUpdaterUpdated;
     }
 

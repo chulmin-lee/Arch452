@@ -23,7 +23,7 @@ namespace ServiceCommon.ClientServices
     public PlaylistMedical Medical { get; set; }
     public NoticeConfig NoticeConfig { get; set; } = new NoticeConfig();
     public int Duration { get; set; }  // 홍보 로테이션 시간
-    public int DelayPerson { get; set; } // 대기자수
+    public int PatientPerRoom { get; set; } // 대기자수
     public bool ShowDelayTime { get; set; }
     public TVSetting TVSetting { get; set; } = new TVSetting();
 

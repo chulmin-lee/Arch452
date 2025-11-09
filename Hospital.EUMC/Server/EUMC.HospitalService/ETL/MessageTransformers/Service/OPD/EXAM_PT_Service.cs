@@ -176,6 +176,7 @@ namespace EUMC.HospitalService
     {
       if (this.IsReady && this.ROOMS.Count == 0)
       {
+        LOG.ec($"isReady");
         var all = new List<OPD_ROOM_INFO>();
         foreach (var room in _exam_rooms.Values)
         {
@@ -207,7 +208,7 @@ namespace EUMC.HospitalService
     }
     void update_room_patients(OPD_ROOM_INFO opd_room, string key)
     {
-      if(!_exam_patients.TryGetValue(key, out var list))
+      if (!_exam_patients.TryGetValue(key, out var list))
       {
         list = new List<PATIENT_INFO>();
       }
@@ -215,19 +216,19 @@ namespace EUMC.HospitalService
       opd_room.RoomPatient = null;
       opd_room.WaitPatients.Clear();
 
-      if(list.Any())
+      if (list.Any())
       {
         opd_room.RoomPatient = list.First();
         opd_room.WaitPatients = list.Skip(1).ToList();
       }
     }
-    #endregion
+    #endregion internal method
 
     #region data collection
     Dictionary<string, string> _dept_names = new Dictionary<string, string>();
     Dictionary<string, ROOM_INFO> _exam_rooms = new Dictionary<string, ROOM_INFO>();
     Dictionary<string, List<PATIENT_INFO>> _exam_patients = new Dictionary<string, List<PATIENT_INFO>>();
     Dictionary<string, EXAM_STAFF_POCO> _exam_staffs = new Dictionary<string, EXAM_STAFF_POCO>();  // groupkey
-    #endregion
+    #endregion data collection
   }
 }

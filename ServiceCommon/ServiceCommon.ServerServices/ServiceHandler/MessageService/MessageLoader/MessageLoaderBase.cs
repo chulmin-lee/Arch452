@@ -6,7 +6,7 @@ namespace ServiceCommon.ServerServices
   {
     public SERVICE_ID ID { get; private set; }
     protected object LOCK = new object();
-
+    bool _initialized = false;
     public MessageLoaderBase(SERVICE_ID id)
     {
       this.ID = id;
@@ -41,6 +41,7 @@ namespace ServiceCommon.ServerServices
       this.check_id(m.ID);
       lock (LOCK)
       {
+        _initialized = true;
         LOG.dc($"[{this.ID}] {m.ID} updated");
         this.message_notified(m);
       }
@@ -52,6 +53,12 @@ namespace ServiceCommon.ServerServices
     //========================================
     public void Subscribe(IServerSession s)
     {
+      if (!_initialized)
+      {
+        LOG.ec($"{this.ID} not initialized");
+        return;
+      }
+
       LOG.ic($"{this.ID} {s}");
       lock (LOCK) this.subscribe_session(s);
     }

@@ -16,7 +16,7 @@ namespace EUMC.ClientServices
       this.Config = new ContentConfig()
       {
         UseRotation = true,
-        ItemRows = s.DelayPerson > 0 ? s.DelayPerson : 8,
+        ItemRows = s.PatientPerRoom > 0 ? s.PatientPerRoom : 8,
         //IsStaff = s.PackageName == PackageNames.ICU_STAFF,
         //IsBaby = s.PackageName == PackageNames.ICU_BABY
       };

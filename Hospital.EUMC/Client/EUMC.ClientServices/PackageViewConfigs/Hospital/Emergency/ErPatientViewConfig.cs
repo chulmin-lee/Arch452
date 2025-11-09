@@ -15,7 +15,7 @@ namespace EUMC.ClientServices
 
       this.Config = new ContentConfig()
       {
-        ItemRows = s.DelayPerson > 0 ? s.DelayPerson : 10,
+        ItemRows = s.PatientPerRoom > 0 ? s.PatientPerRoom : 10,
       };
 
       var emergency = this.PackageInfo.Emergency ?? throw new ServiceException("ememrgency");

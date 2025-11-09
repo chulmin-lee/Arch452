@@ -18,7 +18,7 @@ namespace EUMC.HospitalService
       var config = new MapperConfiguration(cfg =>
     {
       // common
-      cfg.CreateMap<string, int>().ConvertUsing(s => Convert.ToInt32(s));
+      cfg.CreateMap<string, int>().ConvertUsing(s => StringToInt(s));
       cfg.CreateMap<string, bool>().ConvertUsing(s => StringToBoolean(s));
 
       //===================================================
@@ -34,7 +34,6 @@ namespace EUMC.HospitalService
       // Emergency
       //===================================================
       #region Emergency
-
 
       // 응급실
       cfg.CreateMap<ER_PATIENT_DTO, ER_PATIENT_INFO>()
@@ -68,7 +67,7 @@ namespace EUMC.HospitalService
             .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.NUM))
             .ForMember(dest => dest.WaitNo, opt => opt.MapFrom(src => src.SEQ))
             ;
-      #endregion
+      #endregion Emergency
       //===================================================
       // IPD
       //===================================================
@@ -89,7 +88,7 @@ namespace EUMC.HospitalService
             .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.PT_NM))
             .ForMember(dest => dest.BedNo, opt => opt.MapFrom(src => src.BED_NO))
             ;
-      #endregion
+      #endregion IPD
 
       //===================================================
       // OPD: office
@@ -125,7 +124,7 @@ namespace EUMC.HospitalService
       cfg.CreateMap<DR_PHOTO_DTO, DR_PHOTO_POCO>()
             .ForMember(dest => dest.DoctorNo, opt => opt.MapFrom(src => src.STF_NO))  // 임의로 추가했음. 조회할때 추가할것
             .ForMember(dest => dest.PhotoUrl, opt => opt.MapFrom(src => Path.GetFileName(src.IMAGE_PATH)));
-      #endregion
+      #endregion OPD - Office
       //===================================================
       // OPD: Exam common
       //===================================================
@@ -163,7 +162,7 @@ namespace EUMC.HospitalService
             .ForMember(dest => dest.WaitNo, opt => opt.MapFrom(src => src.ELPDSEQ ));
       cfg.CreateMap<EXAM_PT_POCO, PATIENT_INFO>();
 
-      #endregion
+      #endregion OPD Exam Common
 
       //===================================================
       // OPD: Exam special
@@ -201,8 +200,7 @@ namespace EUMC.HospitalService
             .ForMember(dest => dest.RoomCode, opt => opt.MapFrom(src => src.TYRM_CD))  // TR001, TR002
             ;
 
-      #endregion
-
+      #endregion OPD Exam Special
 
       //===================================================
       // ETC
@@ -226,10 +224,7 @@ namespace EUMC.HospitalService
       //      .ForMember(dest => dest.AM, opt => opt.MapFrom(src => src.amordyn))
       //      .ForMember(dest => dest.PM, opt => opt.MapFrom(src => src.pmordyn));
 
-
-
-      #endregion
-
+      #endregion ETC
 
       //===================================================
       // POCO to Message Data
@@ -243,12 +238,8 @@ namespace EUMC.HospitalService
       //// exam
       //cfg.CreateMap<EXAM_POCO, ROOM_INFO>();
       //cfg.CreateMap<EXAM_POCO, PATIENT_INFO>();
-
-
     });
       return config.CreateMapper();
     }
-
-
   }
 }

@@ -21,12 +21,15 @@ namespace EUMC.Server
     public MainWindow()
     {
       InitializeComponent();
+      LOG.Initialize("server.txt");
       UIContextHelper.Initialize();
 
 #if EUMC_SEOUL
       string hspCode = "01";
+      this.Title = "EUMC Seoul Server";
 #elif EUMC_MOKDONG
       string hspCode = "02";
+      this.Title = "EUMC Mokdong Server";
 #endif
 
       SM = new ServerService(hspCode);
