@@ -14,7 +14,7 @@ namespace EUMC.HospitalService
     public IHospitalRepository Repository { get; private set; }
     HospitalServiceConfigurations _config;
 
-    public HospitalMessageGenerator(string hspCode) : base("EUMC")
+    public HospitalMessageGenerator(string hspCode) : base($"EUMC{hspCode}")
     {
       this.Repository = new HospitalRepositorySim(this.SimDataPath);
       var config_path = Path.Combine(this.ServiceDir, $"{this.ServiceName}_HospitalService.Config");

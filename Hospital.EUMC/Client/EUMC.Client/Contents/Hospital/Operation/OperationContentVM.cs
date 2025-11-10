@@ -23,14 +23,6 @@ namespace EUMC.Client
           {
             return this.ITEM.Update(m.CastTo<OPERATION_RESP>());
           }
-        case SERVICE_ID.SVR_CALL_OPERATION:
-          {
-            return this.ITEM.OperationCall(m.CastTo<CALL_OPERATION_NOTI>());
-          }
-        case SERVICE_ID.SVR_CALL_PATIENT:
-          {
-            return this.ITEM.CallPatient(m.CastTo<CALL_PATIENT_NOTI>());
-          }
       }
       return false;
     }

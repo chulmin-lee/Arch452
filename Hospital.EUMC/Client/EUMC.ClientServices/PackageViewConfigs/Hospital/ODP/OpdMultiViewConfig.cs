@@ -13,16 +13,17 @@ namespace EUMC.ClientServices
   {
     public ContentConfig Config { get; set; } = new ContentConfig();
     public RoomPanelConfig PanelConfig { get; set; } = new RoomPanelConfig();
-    public List<OpdRoomConfig> ExamRooms { get; private set; } = new List<OpdRoomConfig>();
-    public List<OpdRoomConfig> OfficeRooms { get; private set; } = new List<OpdRoomConfig>();
+    public List<PackageRoomConfig> Rooms { get; set; } = new List<PackageRoomConfig>();
 
     public OpdMultiViewConfig(PackageInfo p, PlaylistSchedule s) : base(p, s)
     {
       this.TitlebarStyle = TitlebarStyle.LargeNormal;
       this.BottomStyle = BottomStyle.LargeNotice;
+      this.ContentTitle = "종합진료안내";
 
       this.Config = new ContentConfig
       {
+        ShowDelayTime = s.ShowDelayTime,
         RoomPerPage = 4,
         ItemRows = s.PatientPerRoom > 0 ? s.PatientPerRoom : 4,
       };
@@ -30,40 +31,20 @@ namespace EUMC.ClientServices
       this.PanelConfig = new RoomPanelConfig
       {
         ItemRows = this.Config.ItemRows,
-        RoomTitle = "진료실·진료센터",
+        RoomTitle = "진료실",
         DoctorTitle = "담당의사",
-        WaitMesages = new List<string> { "들어오실분", "다음 순서 입니다", "잠시만 기다려 주십시오" }
       };
 
-      var depts = s.Medical?.DeptRooms ?? throw new ServiceException("opdroom");
-
-      foreach (var dept in depts)
-      {
-        foreach (var room in dept.Rooms)
-        {
-          var x = new OpdRoomConfig
-          {
-            DeptCode = room.DeptCode,
-            RoomCode = room.RoomCode,
-            RoomName = room.RoomName,
-          };
-
-          switch (dept.RoomType)
-          {
-            case "A": this.OfficeRooms.Add(x); break;
-            case "B": this.ExamRooms.Add(x); break;
-            default:
-              LOG.ec($"Unknown RoomType {dept.RoomType}");
-              break;
-          }
-        }
-      }
+      this.PanelConfig.WaitMesages = this.IsSeoul ? new List<string> { "들어오실 분", "다음 순서 입니다", "잠시만 기다려 주십시요" }
+                                                  : new List<string> { "들어오실 분", "다음 순서", "진료 대기" };
+      this.Rooms = p.RoomConfigs;
     }
 
     public class ContentConfig
     {
       public int RoomPerPage { get; set; }
       public int ItemRows { get; set; }
+      public bool ShowDelayTime { get; set; }
     }
   }
 

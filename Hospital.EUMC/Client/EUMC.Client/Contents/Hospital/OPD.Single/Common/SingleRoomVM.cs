@@ -17,7 +17,7 @@ namespace EUMC.Client
     public SingleRoomVM(OpdSingleViewConfig o)
     {
       this.ItemRows = o.Config.ItemRows;
-      this.Key = o.Room.GetKey();
+      this.Key = o.Room.Key;
 
       this.CONFIG = o.Config;
       this.DeptName = o.Room.DeptName;
@@ -38,38 +38,6 @@ namespace EUMC.Client
       this.update_wait_patients(o.WaitPatients);
       this.update_delay_time(o.Room);
     }
-
-    //========================================
-    // 진료중 환자 정보 (optional)
-    //========================================
-    void update_room_patient(OPD_ROOM_INFO o)
-    {
-      this.RoomPatientName = o.RoomPatient?.PatientName ?? string.Empty;
-      this.IsRoomPatientVisible = !string.IsNullOrEmpty(this.RoomPatientName);
-    }
-    public string RoomPatientName { get => _roomPatientName; set => Set(ref _roomPatientName, value); }
-    public bool IsRoomPatientVisible { get => _isRoomPatientVisible; set => Set(ref _isRoomPatientVisible, value); }
-
-    string _roomPatientName = string.Empty;
-    bool _isRoomPatientVisible = false;
-
-    //========================================
-    // 대기중 환자 정보 (optional)
-    //========================================
-    void update_wait_patients(List<PATIENT_INFO> list)
-    {
-      this.WaitCount = list.Count;
-      var patients = list.Take(this.ItemRows).ToList();
-      for (int i = 0; i < this.ItemRows; i++)
-      {
-        this.Patients[i].PatientName = patients.Count > i ? patients[i].PatientName : string.Empty;
-      }
-    }
-
-    public List<SingleRoomPatientVM> Patients { get; set; } = new List<SingleRoomPatientVM>();
-    public int WaitCount { get => _waitCount; set => Set(ref _waitCount, value); }
-    int _waitCount = 0;
-
     //========================================
     // 진료실 정보
     //========================================
@@ -83,7 +51,6 @@ namespace EUMC.Client
     public string RoomName { get => _roomName; set => Set(ref _roomName, value); }
     string _deptName = string.Empty;
     string _roomName = string.Empty;
-
     //========================================
     // 의사 정보
     //========================================
@@ -143,6 +110,37 @@ namespace EUMC.Client
     string _doctorPart = string.Empty;
     string _doctorPhotoUrl = string.Empty;
     ImageSource _photo = null;
+
+    //========================================
+    // 진료중 환자 정보 (optional)
+    //========================================
+    void update_room_patient(OPD_ROOM_INFO o)
+    {
+      this.RoomPatientName = o.RoomPatient?.PatientName ?? string.Empty;
+      this.IsRoomPatientVisible = !string.IsNullOrEmpty(this.RoomPatientName);
+    }
+    public string RoomPatientName { get => _roomPatientName; set => Set(ref _roomPatientName, value); }
+    public bool IsRoomPatientVisible { get => _isRoomPatientVisible; set => Set(ref _isRoomPatientVisible, value); }
+
+    string _roomPatientName = string.Empty;
+    bool _isRoomPatientVisible = false;
+
+    //========================================
+    // 대기중 환자 정보 (optional)
+    //========================================
+    void update_wait_patients(List<PATIENT_INFO> list)
+    {
+      this.WaitCount = list.Count;
+      var patients = list.Take(this.ItemRows).ToList();
+      for (int i = 0; i < this.ItemRows; i++)
+      {
+        this.Patients[i].PatientName = patients.Count > i ? patients[i].PatientName : string.Empty;
+      }
+    }
+
+    public List<SingleRoomPatientVM> Patients { get; set; } = new List<SingleRoomPatientVM>();
+    public int WaitCount { get => _waitCount; set => Set(ref _waitCount, value); }
+    int _waitCount = 0;
     //========================================
     // 지연시간
     //========================================
@@ -167,7 +165,6 @@ namespace EUMC.Client
       }
     }
     public bool SHowDelyPopup => this.ShowDelay && !string.IsNullOrEmpty(this.DelayMessage);
-
     public string DelayMessage { get => _delayMessage; set => Set(ref _delayMessage, value); }
     public bool ShowDelay { get => _showDelay; set => Set(ref _showDelay, value); }
     bool _showDelay = false;

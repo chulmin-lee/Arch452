@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static ServiceCommon.ClientServices.PlaylistMedical;
 
 namespace ServiceCommon.ClientServices
 {
@@ -101,120 +102,94 @@ namespace ServiceCommon.ClientServices
     #endregion IPD
 
     #region OPD
-    public static PackageInfo OFFICE_SINGLE(PlaylistSchedule s)
+    public static PackageInfo OFFICE_SINGLE(PlaylistSchedule s) => single_opd_package(s, PACKAGE.OFFICE_SINGLE);
+    public static PackageInfo EXAM_SINGLE(PlaylistSchedule s) => single_opd_package(s, PACKAGE.EXAM_SINGLE);
+    static PackageInfo single_opd_package(PlaylistSchedule s, PACKAGE package)
     {
-      var rooms = s.Medical?.DeptRooms;
-      if (rooms == null) return ElementNotFound(s, "No DeptRooms");
+      var room = s.Medical?.DeptRooms?.FirstOrDefault()?.Rooms.FirstOrDefault();
+      if (room == null) return ElementNotFound(s, "No DeptRooms");
 
-      var p = new OpdRoomPackage();
+      string room_type = "A";
+      switch (package)
       {
-        var room = rooms.First().Rooms.First();
-        if (room.RoomType != "A")
-        {
-          return InvalidValue(s, $"Room type is not A");
-        }
-        p.AddSingleRoom(room.DeptCode, room.RoomCode, room.RoomType);
+        case PACKAGE.OFFICE_SINGLE: room_type = "A"; break;
+        case PACKAGE.EXAM_SINGLE: room_type = "B"; break;
+        default: throw new Exception($"Unknown package: {package}");
       }
-      return new PackageInfo(s.PackageName, PACKAGE.OFFICE_SINGLE)
+      if (room.RoomType != room_type) return InvalidValue(s, $"Room type is not {room_type}");
+
+      var rc = new PackageRoomConfig
       {
-        OpdRoom = p
+        DeptCode = room.DeptCode,
+        DeptName = room.DeptName,
+        RoomCode = room.RoomCode,
+        RoomName = room.RoomName,
+        RoomType = room.RoomType,
+      };
+      return new PackageInfo(s.PackageName, package)
+      {
+        OpdRoom = new OpdRoomPackage(rc),
+        RoomConfigs = new List<PackageRoomConfig> { rc }
       };
     }
-    public static PackageInfo EXAM_SINGLE(PlaylistSchedule s)
-    {
-      var rooms = s.Medical?.DeptRooms;
-      if (rooms == null) return ElementNotFound(s, "No DeptRooms");
 
-      var p = new OpdRoomPackage();
+    public static PackageInfo OFFICE_MULTI(PlaylistSchedule s) => multi_opd_package(s, PACKAGE.OFFICE_MULTI);
+    public static PackageInfo EXAM_MULTI(PlaylistSchedule s) => multi_opd_package(s, PACKAGE.EXAM_MULTI);
+    public static PackageInfo EXAM_OFFICE_MIX(PlaylistSchedule s) => multi_opd_package(s, PACKAGE.EXAM_OFFICE_MIX);
+    static PackageInfo multi_opd_package(PlaylistSchedule s, PACKAGE package)
+    {
+      var depts = s.Medical?.DeptRooms;
+      if (depts == null) return ElementNotFound(s, "No DeptRooms");
+
+      var dic = new Dictionary<string, List<PackageRoomConfig>>()
       {
-        var room = rooms.First().Rooms.First();
-        if (room.RoomType != "B")
-        {
-          return InvalidValue(s, $"Room type is not B");
-        }
-        p.AddSingleRoom(room.DeptCode, room.RoomCode, room.RoomType);
-      }
-      return new PackageInfo(s.PackageName, PACKAGE.EXAM_SINGLE)
-      {
-        OpdRoom = p
+        { "A", new List<PackageRoomConfig>() },
+        { "B", new List<PackageRoomConfig>() },
       };
-    }
-    public static PackageInfo OFFICE_MULTI(PlaylistSchedule s)
-    {
-      var rooms = s.Medical?.DeptRooms;
-      if (rooms == null) return ElementNotFound(s, "No DeptRooms");
-
-      var p = new OpdRoomPackage();
+      var list = new List<PackageRoomConfig>();
+      foreach (var dept in depts)
       {
-        foreach (var dept in rooms)
+        foreach (var room in dept.Rooms)
         {
-          if (dept.RoomType == "A")
+          list.Add(new PackageRoomConfig
           {
-            p.AddMultiRooms(dept.DeptCode, dept.RoomCodes, dept.RoomType);
-          }
-        }
-
-        var err = p.CheckError();
-        if (!string.IsNullOrEmpty(err))
-        {
-          return InvalidValue(s, err);
-        }
-      }
-      return new PackageInfo(s.PackageName, PACKAGE.OFFICE_MULTI)
-      {
-        OpdRoom = p
-      };
-    }
-    public static PackageInfo EXAM_MULTI(PlaylistSchedule s)
-    {
-      var rooms = s.Medical?.DeptRooms;
-      if (rooms == null) return ElementNotFound(s, "No DeptRooms");
-
-      var p = new OpdRoomPackage();
-      {
-        foreach (var dept in rooms)
-        {
-          if (dept.RoomType == "B")
-          {
-            p.AddMultiRooms(dept.DeptCode, dept.RoomCodes, dept.RoomType);
-          }
-        }
-
-        var err = p.CheckError();
-        if (!string.IsNullOrEmpty(err))
-        {
-          return InvalidValue(s, err);
+            DeptCode = room.DeptCode,
+            DeptName = room.DeptName,
+            RoomCode = room.RoomCode,
+            RoomName = room.RoomName,
+            RoomType = room.RoomType,
+          });
         }
       }
 
-      return new PackageInfo(s.PackageName, PACKAGE.EXAM_MULTI)
+      switch (package)
       {
-        OpdRoom = p
-      };
-    }
-    public static PackageInfo EXAM_OFFICE_MIX(PlaylistSchedule s)
-    {
-      var rooms = s.Medical?.DeptRooms;
-      if (rooms == null) return ElementNotFound(s, "No DeptRooms");
+        case PACKAGE.OFFICE_MULTI:
+          list = list.Where(x => x.RoomType == "A").ToList();
+          break;
+        case PACKAGE.EXAM_MULTI:
+          list = list.Where(x => x.RoomType == "A").ToList();
+          break;
+        case PACKAGE.EXAM_OFFICE_MIX:
+          break;
 
-      var p = new OpdRoomPackage();
-      {
-        foreach (var dept in rooms)
-        {
-          p.AddMultiRooms(dept.DeptCode, dept.RoomCodes, dept.RoomType);
-        }
-
-        var err = p.CheckError();
-        if (!string.IsNullOrEmpty(err))
-        {
-          return InvalidValue(s, err);
-        }
+        default: throw new Exception($"Unknown package: {package}");
       }
-      return new PackageInfo(s.PackageName, PACKAGE.EXAM_OFFICE_MIX)
+
+      var opd = new OpdRoomPackage(list);
+      var err = opd.CheckError();
+      if (!string.IsNullOrEmpty(err))
       {
-        OpdRoom = p
+        return InvalidValue(s, err);
+      }
+
+      return new PackageInfo(s.PackageName, package)
+      {
+        OpdRoom = opd,
+        RoomConfigs = list
       };
     }
+
     public static PackageInfo ENDO(PlaylistSchedule s) => new PackageInfo(s.PackageName, PACKAGE.ENDO);
     public static PackageInfo INSPECTION(PlaylistSchedule s, int type)
     {

@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace EUMC.Client
 {
-  internal class OfficeSingleContentVM : ContentViewModelBase
+  internal class SingleRoomContentVM : ContentViewModelBase
   {
     public SingleRoomInformation ITEM { get; set; }
-    public OfficeSingleContentVM(OpdSingleViewConfig config) : base(config)
+    public SingleRoomContentVM(OpdSingleViewConfig config) : base(config)
     {
       this.ITEM = new SingleRoomInformation(config);
     }

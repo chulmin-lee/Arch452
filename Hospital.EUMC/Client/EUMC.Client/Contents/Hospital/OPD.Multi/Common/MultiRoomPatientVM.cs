@@ -2,17 +2,17 @@
 
 namespace EUMC.Client
 {
-  internal class MultiPatientViewModel : ViewModelBase
+  internal class MultiRoomPatientVM : ViewModelBase
   {
     public int Index { get; set; }
     public bool IsPanel { get; set; }
     string _patientName = string.Empty;
     public string PatientName { get => _patientName; set => Set(ref _patientName, value); }
-    public MultiPatientViewModel(int index)
+    public MultiRoomPatientVM(int index)
     {
       this.Index = index;
     }
-    public MultiPatientViewModel(int index, string init)
+    public MultiRoomPatientVM(int index, string init)
     {
       this.Index = index;
       this.IsPanel = true;

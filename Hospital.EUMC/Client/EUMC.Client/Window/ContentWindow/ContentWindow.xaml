@@ -22,8 +22,8 @@
     <ResourceDictionary>
 
       <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Contents/Hospital/OPD.Single/OfficeSingleContent.Style.xaml" />
-
+        <ResourceDictionary Source="/Contents/Hospital/OPD.Single/SingleRoomContent.Style.xaml" />
+        <ResourceDictionary Source="/Contents/Hospital/OPD.Multi/MultiRoomContent.Style.xaml" />
         <!--<ResourceDictionary Source="/Contents/Hospital/ICU/IcuStaffContent.Style.xaml" />
         <ResourceDictionary Source="/Contents/Hospital/ICU/IcuGuardContent.Style.xaml" />
         <ResourceDictionary Source="/Contents/Hospital/ICU/IcuBabyContent.Style.xaml" />
@@ -49,8 +49,8 @@
 
       <Style TargetType="{x:Type ui:ClockControl}" x:Key="ClockStyle">
         <Setter Property="FontWeight" Value="SemiBold" />
-        <Setter Property="DateFontColor" Value="{StaticResource Gray800}" />
-        <Setter Property="TimeFontColor" Value="{StaticResource Gray800}" />
+        <Setter Property="DateFontColor" Value="{StaticResource primary}" />
+        <Setter Property="TimeFontColor" Value="{StaticResource primary}" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="ClockSetting" Value="{Binding Contents.ClockSetting}" />
         <Setter Property="Visibility" Value="{Binding Contents.ClockSetting.Enabled, Converter={StaticResource BooleanToVisibilityConverter}}" />
@@ -84,7 +84,6 @@
       <Style TargetType="{x:Type Border}" x:Key="MiddleTitlebarBackgroundBorder" BasedOn="{StaticResource TitlebarBackgroundBorder}">
         <Setter Property="Height" Value="82" />
       </Style>
-
     </ResourceDictionary>
   </Window.Resources>
 
@@ -118,7 +117,7 @@
 
             <!-- 0.logo -->
             <Border Grid.Column="0">
-              <Image Stretch="None" Source="{DynamicResource LogoLarge}" />
+              <Image Stretch="None" HorizontalAlignment="Left" Margin="50,0,0,0" Source="{DynamicResource LogoLarge}" />
             </Border>
 
             <!-- 1.ContentTitle -->
@@ -131,8 +130,8 @@
             <!-- 2. LargeDefault: Clock -->
             <Border Grid.Column="2">
               <ui:ClockControl Style="{StaticResource ClockStyle}"
-                             DateFontSize="28"
-                             TimeFontSize="44" />
+                             DateFontSize="40"
+                             TimeFontSize="40" />
             </Border>
           </Grid>
         </Border>
@@ -156,8 +155,8 @@
             <!-- 0. Middle Clock -->
             <Border Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
               <ui:ClockControl Style="{StaticResource ClockStyle}"
-                             DateFontSize="36"
-                             TimeFontSize="36" />
+                             DateFontSize="30"
+                             TimeFontSize="30" />
             </Border>
           </Grid>
         </Border>
@@ -166,7 +165,10 @@
       <!-- =============================================== -->
       <!-- 1. Content View                                 -->
       <!-- =============================================== -->
-      <Border Grid.Row="1" Background="White">
+      <Border Grid.Row="1">
+        <Border.Background>
+          <ImageBrush ImageSource="{DynamicResource Content_BG}" Stretch="UniformToFill" />
+        </Border.Background>
         <ContentControl Content="{Binding Contents}" />
       </Border>
 

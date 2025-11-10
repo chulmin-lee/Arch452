@@ -10,16 +10,18 @@ namespace EUMC.ClientServices
     {
       this.TitlebarStyle = TitlebarStyle.LargeNormal;
       this.BottomStyle = BottomStyle.LargeNotice;
-      this.ContentTitle = "수술 진행 현황 안내";
+      this.ContentTitle = "수술 현황";
 
       this.Config = new ContentConfig()
       {
-        ItemRows = s.PatientPerRoom > 0 ? s.PatientPerRoom : 5,
+        ItemRows = 6,
+        UseRotation = true,
       };
     }
     public class ContentConfig
     {
       public int ItemRows { get; set; }
+      public bool UseRotation { get; set; } = true;
     }
   }
 }

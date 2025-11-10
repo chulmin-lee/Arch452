@@ -58,25 +58,72 @@ namespace ServiceCommon
         return this.RoomCodes.Select(x => $"{this.DeptCode}:{x}").ToList();
       }
     }
-    public void AddSingleRoom(string deptCode, string roomCode, string roomType)
+    public OpdRoomPackage() { }
+    public OpdRoomPackage(PackageRoomConfig o)
     {
       this.IsSingle = true;
       this.DeptRooms.Add(new DEPT_ROOMS()
       {
-        RoomType = roomType,
-        DeptCode = deptCode,
-        RoomCodes = new List<string>() { roomCode }
+        RoomType = o.RoomType,
+        DeptCode = o.DeptCode,
+        RoomCodes = new List<string>() { o.RoomCode }
       });
     }
-    public void AddMultiRooms(string deptCode, List<string> roomCodes, string roomType)
+    public OpdRoomPackage(List<PackageRoomConfig> list)
     {
-      this.DeptRooms.Add(new DEPT_ROOMS()
+      foreach (var group in list.GroupBy(x => new { x.DeptCode, x.RoomType }))
       {
-        RoomType = roomType,
-        DeptCode = deptCode,
-        RoomCodes = roomCodes
-      });
+        this.DeptRooms.Add(new DEPT_ROOMS()
+        {
+          RoomType = group.Key.RoomType,
+          DeptCode = group.Key.DeptCode,
+          RoomCodes = group.ToList().Select(x => x.RoomCode).ToList(),
+        });
+      }
     }
+
+    //public void AddSingleRoom(PackageRoomConfig o)
+    //{
+    //  this.IsSingle = true;
+    //  this.DeptRooms.Add(new DEPT_ROOMS()
+    //  {
+    //    RoomType = o.RoomType,
+    //    DeptCode = o.DeptCode,
+    //    RoomCodes = new List<string>() { o.RoomCode }
+    //  });
+    //}
+    //public void AddMultiRooms(List<PackageRoomConfig> list)
+    //{
+    //  foreach (var group in list.GroupBy(x => new { x.DeptCode, x.RoomType }))
+    //  {
+    //    this.DeptRooms.Add(new DEPT_ROOMS()
+    //    {
+    //      RoomType = group.Key.RoomType,
+    //      DeptCode = group.Key.DeptCode,
+    //      RoomCodes = group.ToList().Select(x => x.RoomCode).ToList(),
+    //    });
+    //  }
+    //}
+
+    //public void AddSingleRoom(string deptCode, string roomCode, string roomType)
+    //{
+    //  this.IsSingle = true;
+    //  this.DeptRooms.Add(new DEPT_ROOMS()
+    //  {
+    //    RoomType = roomType,
+    //    DeptCode = deptCode,
+    //    RoomCodes = new List<string>() { roomCode }
+    //  });
+    //}
+    //public void AddMultiRooms(string deptCode, List<string> roomCodes, string roomType)
+    //{
+    //  this.DeptRooms.Add(new DEPT_ROOMS()
+    //  {
+    //    RoomType = roomType,
+    //    DeptCode = deptCode,
+    //    RoomCodes = roomCodes
+    //  });
+    //}
     public string CheckError()
     {
       if (this.DeptRooms.Count == 0)

@@ -25,7 +25,6 @@
   <ImageSource x:Key="NoticeLarge">/Resources/Images/MainView/notice-large.png</ImageSource>
   <ImageSource x:Key="NoticeMiddle">/Resources/Images/MainView/notice-middle.png</ImageSource>
 
-
   <!-- 진료실 -->
   <ImageSource x:Key="DEFAULT_PHOTO_LOGO">/Resources/Images/Office/doctor-default.png</ImageSource>
   <ImageSource x:Key="DEFAULT_PHOTO_LOGO2">/Resources/Images/Office/doctor-test.png</ImageSource>
@@ -73,10 +72,10 @@
   <sys:Double x:Key="Popup_Width_Portrait">1087</sys:Double>
   <sys:Double x:Key="Popup_Height_Portrait">700</sys:Double>
 
-
-
   <!-- duck san -->
-  <SolidColorBrush x:Key="primary" Color="#0E7758" />
+  <SolidColorBrush x:Key="primary" Color="#00583f" />
+  <SolidColorBrush x:Key="primary2" Color="#0E7758" />
+
   <SolidColorBrush x:Key="accent1" Color="#F68D38" />
   <SolidColorBrush x:Key="accent2" Color="#FAD45D" />
 

@@ -103,7 +103,7 @@ namespace EUMC.HospitalService
   #endregion
 
   #region IPD
-  public class OP_WAIT_PT_DTO
+  public class OPERATION_WAIT_DTO
   {
     public string PT_NO { get; set; } = string.Empty;
     public string SEQ { get; set; } = string.Empty;
@@ -117,7 +117,7 @@ namespace EUMC.HospitalService
     [Origin] public string StateCode{ get; set; } = string.Empty; //1: 대기중, 2: 수술중, [수술종료] 3: 회복실, 4: 병실, 5: 중환자실
     public override string ToString() => $"{this.PT_NO}/{PT_NM}/{StateCode}";
   }
-  public class OP_END_PT_DTO
+  public class OPERATION_END_DTO
   {
     public string PT_NO { get; set; } = string.Empty;
     public string PT_NM { get; set; } = string.Empty;

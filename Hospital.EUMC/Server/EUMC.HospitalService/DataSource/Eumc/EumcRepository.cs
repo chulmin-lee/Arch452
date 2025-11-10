@@ -1,5 +1,4 @@
-﻿
-using Common;
+﻿using Common;
 using Framework.DataSource.Oracle;
 using System;
 using System.Linq;
@@ -38,8 +37,6 @@ namespace EUMC.HospitalService
     //  return o;
     //}
 
-
-
     #region base
     public List<DEPT_MASTER_DTO> DEPT_MASTER()
     {
@@ -48,7 +45,7 @@ namespace EUMC.HospitalService
                   $"FROM PDEDBMSM A WHERE A.HSP_TP_CD='{HspCode}' ORDER BY DEPT_CD";
       return Query<DEPT_MASTER_DTO>(XEDP, query);
     }
-    #endregion
+    #endregion base
 
     #region Emergency
     /// <summary>
@@ -102,7 +99,7 @@ namespace EUMC.HospitalService
       var param = new HospitalParamBuilder().HSP_TP_CD(HspCode).Build();
       return QueryProcedure<ER_CT_DTO>(XEDP, proc, param);
     }
-    #endregion
+    #endregion Emergency
 
     #region IPD
     /// <summary>
@@ -122,7 +119,7 @@ namespace EUMC.HospitalService
 
         var list = this.QueryProcedure<ICU_DTO>(XEDP, proc, param).ToList();
         // DEPT_CD에 Icu Code가 들어있으므로 여기서 교체한다
-        foreach(var p in list)
+        foreach (var p in list)
         {
           var icu_code = p.DEPT_CD;
           p.DEPT_CD = dept_code;
@@ -147,7 +144,7 @@ namespace EUMC.HospitalService
       {
         var proc = "PKG_ELPD_DB.PC_OP_WAIT_PT_INFO";
         var param = new HospitalParamBuilder().HSP_TP_CD(HspCode).Build();
-        var waiting = this.QueryProcedure<OP_WAIT_PT_DTO>(XEDP, proc, param);
+        var waiting = this.QueryProcedure<OPERATION_WAIT_DTO>(XEDP, proc, param);
         waiting.ForEach(x => patients.Add(new OPERATION_DTO { PT_NO = x.PT_NO, PT_NM = x.PT_NM, StateCode = "1" }));
       }
       //, 2: 수술중
@@ -161,7 +158,7 @@ namespace EUMC.HospitalService
       {
         var proc = "PKG_ELPD_DB.PC_OP_END_PT_INFO";
         var param = new HospitalParamBuilder().HSP_TP_CD(HspCode).Build();
-        var end = this.QueryProcedure<OP_END_PT_DTO>(XEDP, proc, param);
+        var end = this.QueryProcedure<OPERATION_END_DTO>(XEDP, proc, param);
 
         var codes = new Dictionary<string, string>
         {
@@ -170,7 +167,7 @@ namespace EUMC.HospitalService
           { "중환자실", "5" },
         };
 
-        foreach(var dd in codes)
+        foreach (var dd in codes)
         {
           var list = end.Where(x => x.PT_PSTN_CD == dd.Key).ToList();
           list.ForEach(p => patients.Add(new OPERATION_DTO { PT_NO = p.PT_NO, PT_NM = p.PT_NM, StateCode = dd.Value }));
@@ -178,7 +175,7 @@ namespace EUMC.HospitalService
       }
       return patients;
     }
-    #endregion
+    #endregion IPD
 
     #region Office
     /// <summary>
@@ -257,13 +254,11 @@ namespace EUMC.HospitalService
           //room_pt.Remove(p);
         }
       }
-      #endregion
+      #endregion PACT_ID 중복 검사 (2025/10/27)
       return room_pt;
     }
 
-
-
-    #endregion
+    #endregion Office
 
     #region EXAM_Common
     /// <summary>
@@ -336,7 +331,7 @@ namespace EUMC.HospitalService
       }
       return patients;
     }
-    #endregion
+    #endregion EXAM_Common
 
     #region OPD_EXAM_SPECIAL
     public List<ANG_PT_DTO> ANG_IMC_PT()
@@ -371,6 +366,16 @@ namespace EUMC.HospitalService
       return list;
     }
     /// <summary>
+    /// 여성 암병원 초음파 실 대기/검사 인원 조회
+    /// </summary>
+    /// <returns></returns>
+    public List<ENDO_PT_DTO> ENDO_WGO()
+    {
+      var proc = "PKG_ELPD_DB.PC_WGO_PT_INFO_US";
+      var param = new HospitalParamBuilder().HSP_TP_CD(HspCode).TRP_RSV_DT().Build();
+      return this.QueryProcedure<ENDO_PT_DTO>(XEDP, proc, param).ToList();
+    }
+    /// <summary>
     /// 영상의학과 일반촬영실 환자조회
     /// </summary>
     /// <param name="exam_room_codes">검사실이 있는 부서의 검사실 코드</param>
@@ -398,18 +403,8 @@ namespace EUMC.HospitalService
       var param = new HospitalParamBuilder().HSP_TP_CD(HspCode).TRP_RSV_DT().Build();
       return this.QueryProcedure<RAD_TR_PT_DTO>(XEDP, proc, param).ToList();
     }
-    /// <summary>
-    /// 여성 암병원 초음파 실 대기/검사 인원 조회
-    /// </summary>
-    /// <returns></returns>
-    public List<ENDO_PT_DTO> ENDO_WGO()
-    {
-      var proc = "PKG_ELPD_DB.PC_WGO_PT_INFO_US";
-      var param = new HospitalParamBuilder().HSP_TP_CD(HspCode).TRP_RSV_DT().Build();
-      return this.QueryProcedure<ENDO_PT_DTO>(XEDP, proc, param).ToList();
-    }
-    #endregion
 
+    #endregion OPD_EXAM_SPECIAL
 
     #region ETC
     public List<DRUG_DTO> DRUG()
@@ -439,8 +434,6 @@ namespace EUMC.HospitalService
       list.ForEach(x => x.HSP_TP_CD = HspCode);
       return list;
     }
-    #endregion
-
-
+    #endregion ETC
   }
 }

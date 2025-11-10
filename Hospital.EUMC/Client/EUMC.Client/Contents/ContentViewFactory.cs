@@ -15,20 +15,17 @@ namespace EUMC.Client
       switch (config.Package)
       {
         case PACKAGE.OFFICE_SINGLE:
-          {
-            var o = config.CastTo<OpdSingleViewConfig>();
-            return new OfficeSingleContentVM(o);
-          }
         case PACKAGE.EXAM_SINGLE:
           {
             var o = config.CastTo<OpdSingleViewConfig>();
-            return new OfficeSingleContentVM(o);
+            return new SingleRoomContentVM(o);
           }
-        //case PACKAGE.OFFICE_MULTI:
-        //  {
-        //    var o = config.CastTo<OfficeMultiViewConfig>();
-        //    return new OfficeMultiContentVM(o);
-        //  }
+        case PACKAGE.OFFICE_MULTI:
+        case PACKAGE.EXAM_MULTI:
+          {
+            var o = config.CastTo<OpdMultiViewConfig>();
+            return new MultiRoomContentVM(o);
+          }
 
         /*
       case PACKAGE.ER_PATIENT:

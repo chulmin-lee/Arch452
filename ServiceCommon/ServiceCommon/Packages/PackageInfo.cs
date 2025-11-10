@@ -1,4 +1,5 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace ServiceCommon
 {
   public class PackageInfo
@@ -44,5 +45,20 @@ namespace ServiceCommon
 
     // common
     public ErrorPackage ErrorPackage { get; set; }
+
+    // internal
+    public List<PackageRoomConfig> RoomConfigs { get; set; } = new List<PackageRoomConfig>();
+  }
+
+  public class PackageRoomConfig
+  {
+    public string DeptCode { get; set; } = string.Empty;
+    public string DeptName { get; set; } = string.Empty;
+    public string RoomCode { get; set; } = string.Empty;
+    public string RoomName { get; set; } = string.Empty;
+    public string RoomType { get; set; } = string.Empty;
+    public string DurationTime { get; set; } = string.Empty;
+    public string Title { get; set; } = string.Empty;
+    public string Key => $"{this.DeptCode}:{this.RoomCode}";
   }
 }

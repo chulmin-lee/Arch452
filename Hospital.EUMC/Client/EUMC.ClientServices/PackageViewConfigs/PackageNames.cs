@@ -1,31 +1,49 @@
-﻿namespace EUMC.ClientServices
+﻿using System;
+
+namespace EUMC.ClientServices
 {
   internal static class PackageNames
   {
-    //IPD
+    //Emergency
     public const string ER_PATIENT  = "h3"; // winInfoEmergencyRoom 응급실
+    public const string ER_CT       = "h20"; // (목동) 응급 CT 실
+
+    //IPD
     public const string OPERATION   = "h1"; // winInfoOperationRoom 수술실 안내
+
     public const string ICU_RM      = "h2"; // winInfoICU 중환자실
     public const string ICU2_RM     = "h7"; // winInfoICU2 뇌졸중집중치료실
-    public const string ICU_BABY    = "h11"; // winInfoICUBaby 신생아 중환자실
+    public const string ICU_BABY    = "h11"; // winInfoICUBaby 신생아중환자실 재원 현황
+    public const string ICU_2DEPT   = "h12"; // (목동) 중환자실 재원 현황
+    public const string ICU_3DEPT   = "h13"; // (목동) 중환자실 재원 현황
 
     // OPD
     public const string SINGLE_OPD  = "w1"; // 진료실/검사실 중대합 (A, B)
     public const string MULTI_OPD   = "w2"; // 진료실/검사실 대대합 (A, B)
 
+    //public const string MO_LARGE_PlAY1 = //w3  winInfoLarge2  진료실 대대합 안내 Type2
+    //public const string MO_LARGE_PlAY2 = "w6"; //  winInfoLarge3   진료실 대대합 안내 Type3
+
     // OPD Exam
     // 조영실
     public const string ANG           = "h4"; // winBloodVessel (영상의학과) 혈관조영실, PC_ANG_PT_INFO
     public const string ANG_GUARD     = "h5"; // winBVGuardian (영상의학과) 혈관조영실 보호자용
-    public const string ANG2          = "h14"; // winBloodVessel2 혈관조영실(3F), PC_ANG_PT_INFO2
-    public const string ANG2_GUARD    = "h15"; // winBVGuardianToggle 혈관조영실/심뇌혈관조영실 전환형 보호자용
     public const string ANG_IMC       = "h8"; // winBloodVessel 심뇌혈관조영실 (PC_ANG_PT_INFO_IMC)
     public const string ANG_IMC_GURAD = "h9"; // winBloodVessel 심뇌혈관조영실 (PC_ANG_PT_INFO_IMC)
-    
+    public const string ANG2          = "h14"; // winBloodVessel2 혈관조영실(3F), PC_ANG_PT_INFO2
+    public const string ANG2_GUARD    = "h15"; // winBVGuardianToggle 혈관조영실/심뇌혈관조영실 전환형 보호자용
+
+    // 방사성종양학과
+    public const string TR_PT_1       = "t1"; // (목동) 방사선종양학과 치료실1
+    public const string TR_PT_2       = "t2"; // (목동) 방사선종양학과 치료실2
+
     // 소화기내시경센터
     public const string ENDO          = "h6"; // winEndoscopy (소화기센터 내시경실 보호자용 대대합
-    // RAD
-    public const string RAD           = "r1"; // winInfoMiddleR 영상의학과 MRI/CT/초음파 중대합,  
+    public const string ENDO2         = "h10"; // (목동?) 소화기센터 내시경실 보호자용 대대합 2
+    public const string ENDO_WGO      = "x1"; // (목동) 목동병원 여성암병원 초음파
+
+    // 영상의학과 (서울병원)
+    public const string RAD           = "r1"; // winInfoMiddleR 영상의학과 MRI/CT/초음파 중대합,
                                               // Type C : 투시조영실
     public const string RAD_LARGE     = "w5"; // winInfoRadLarge 영상의학과 검사실 대대합
 
@@ -51,7 +69,8 @@
     public const string TICKET_DISPLAY  = "g1"; // winInfoCallMonitor 순번 표시기 (싱글)
     public const string TICKET_DISPLAY2 = "g9"; // MultiDisplayView 순번표시기 (멀티)
     // 순번 대대합
-    public const string RCPT_LARGE2     = "g5"; // winInfoReceiptLarge2 순번 대대합
+    public const string RCPT_LARGE     = "g2"; // winInfoReceiptLarge 접수수납 순번 대대합
+    public const string RCPT_LARGE2     = "g5"; // winInfoReceiptLarge2 접수수납 순번 대대합
     public const string ONE_CALL_LARGE  = "g7"; // winInfoReceiptOneLarge 순번 대대합 (영상일반촬영)
     // test
     public const string NO_SCH      = "no"; // no schedule
@@ -59,7 +78,6 @@
     public const string INFORMATION = "x2";
     public const string UPDATE      = "x3";
   }
-
 
   // not used
   // r3 - Type D (영상 초음파실)

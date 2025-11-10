@@ -36,7 +36,7 @@ namespace EUMC.HospitalService
     #region base
     public List<DEPT_MASTER_DTO> DEPT_MASTER() => this.LoadData<DEPT_MASTER_DTO>();
 
-    #endregion
+    #endregion base
 
     #region Emergency
     public List<ER_PATIENT_DTO> ER_PATIENT()
@@ -47,7 +47,7 @@ namespace EUMC.HospitalService
     public List<ER_CONGESTION_DTO> ER_CONGESTION() => LoadData<ER_CONGESTION_DTO>();
     public List<ER_CPR_DTO> ER_CPR() => LoadData<ER_CPR_DTO>();
     public List<ER_CT_DTO> ER_CT() => this.LoadData<ER_CT_DTO>();
-    #endregion
+    #endregion Emergency
 
     #region IPD
     public List<ICU_DTO> ICU(List<string> icu_dept_codes) => LoadData<ICU_DTO>();
@@ -56,7 +56,7 @@ namespace EUMC.HospitalService
       var patients = new List<OPERATION_DTO>();
       // 1: 대기중
       {
-        var waiting = this.LoadData<OP_WAIT_PT_DTO>();
+        var waiting = this.LoadData<OPERATION_WAIT_DTO>();
         waiting.ForEach(x => patients.Add(new OPERATION_DTO { PT_NO = x.PT_NO, PT_NM = x.PT_NM, StateCode = "1" }));
       }
       //, 2: 수술중
@@ -67,7 +67,7 @@ namespace EUMC.HospitalService
 
       // [수술종료] 3:회복실, 4:병실, 5:중환자실
       {
-        var end = LoadData<OP_END_PT_DTO>();
+        var end = LoadData<OPERATION_END_DTO>();
         var codes = new Dictionary<string, string>
         {
           { "회복실", "3" },
@@ -83,7 +83,7 @@ namespace EUMC.HospitalService
       }
       return patients;
     }
-    #endregion
+    #endregion IPD
 
     #region Office
     public List<OFFICE_ROOM_MASTER_DTO> OFFICE_ROOM_MASTER() => this.LoadData<OFFICE_ROOM_MASTER_DTO>();
@@ -93,14 +93,14 @@ namespace EUMC.HospitalService
       return this.LoadData<OFFICE_PT_DTO>().Where(x => x.PT_NM == x.ELDP_PT_NM).ToList();
     }
     public List<DR_PHOTO_DTO> DR_PHOTO() => this.LoadData<DR_PHOTO_DTO>();
-    #endregion
+    #endregion Office
 
     #region EXAM_Common
     public List<EXAM_DEPT_DTO> EXAM_DEPT() => this.LoadData<EXAM_DEPT_DTO>();
     public List<EXAM_ROOM_DTO> EXAM_ROOM(List<string> exam_dept_cd) => this.LoadData<EXAM_ROOM_DTO>();
     public List<EXAM_STAFF_DTO> EXAM_STAFF(List<string> exam_dept_cd) => this.LoadData<EXAM_STAFF_DTO>();
     public List<EXAM_PT_DTO> EXAM_PT(List<string> exam_dept_cd) => this.LoadData<EXAM_PT_DTO>();
-    #endregion
+    #endregion EXAM_Common
 
     #region EXAM Special
     public List<ANG_PT_DTO> ANG_PT() => this.LoadData<ANG_PT_DTO>();
@@ -110,12 +110,11 @@ namespace EUMC.HospitalService
     public List<RAD_PT_DTO> RAD_PT(List<string> exam_room_codes) => this.LoadData<RAD_PT_DTO>();
     public List<RAD_TR_PT_DTO> RAD_TR_PT() => this.LoadData<RAD_TR_PT_DTO>();
     public List<ENDO_PT_DTO> ENDO_WGO() => this.LoadData<ENDO_PT_DTO>("ENDO_WGO_PT_DTO");
-    #endregion
+    #endregion EXAM Special
 
     #region ETC
     public List<DRUG_DTO> DRUG() => LoadData<DRUG_DTO>();
     public List<DR_SCH_DTO> DR_SCH() => LoadData<DR_SCH_DTO>();
-    #endregion
-
+    #endregion ETC
   }
 }

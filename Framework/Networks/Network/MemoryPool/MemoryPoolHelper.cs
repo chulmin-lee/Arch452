@@ -20,8 +20,7 @@ namespace Framework.Network
         return;
       }
 
-      int groupCount = blockCount.CalcPageCount(_mapGroupSize);
-      blockCount = groupCount * _mapGroupSize;
+      blockCount = blockCount.CalcMaxItemCount(_mapGroupSize);
       if (blockCount > 0xFFFF)
       {
         throw new ArgumentOutOfRangeException($"blockCount {blockCount} is too large. max is 65536");

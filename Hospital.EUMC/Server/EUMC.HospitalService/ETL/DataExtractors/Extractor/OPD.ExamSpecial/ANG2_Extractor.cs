@@ -2,12 +2,16 @@
 using ServiceCommon;
 using ServiceCommon.ServerServices;
 using System.Collections.Generic;
+using System.IO;
 
 namespace EUMC.HospitalService
 {
   internal class ANG2_Extractor : DataExtractor<ANG_PT_DTO>
   {
-    public ANG2_Extractor(IHospitalMemberOwner owner) : base(owner, DATA_ID.ANG2) { }
+    public ANG2_Extractor(IHospitalMemberOwner owner) : base(owner, DATA_ID.ANG2)
+    {
+      this.BackupJsonPath = Path.Combine(owner.BackupDataPath, $"ANG2_PT_DTO.json");
+    }
     protected override List<ANG_PT_DTO> query() => this.Repository.ANG2_PT();
     protected override INotifyData<DATA_ID> data_mapping(UpdateData<ANG_PT_DTO> updated)
     {

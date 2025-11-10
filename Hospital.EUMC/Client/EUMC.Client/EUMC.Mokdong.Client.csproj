@@ -71,13 +71,17 @@
     <Compile Include="Contents\ETC\Updater\UpdaterInformation.cs" />
     <Compile Include="Contents\Hospital\Common\OfficeConverter.cs" />
     <Compile Include="Contents\Hospital\Common\ViewModel.cs" />
-    <Compile Include="Contents\Hospital\OPD.Single\ExamSingleContentVM.cs" />
-    <Compile Include="Contents\Hospital\OPD.Single\ExamSingleInformation.cs" />
-    <Compile Include="Contents\Hospital\OPD.Single\OfficeMultiContentVM.cs" />
-    <Compile Include="Contents\Hospital\OPD.Single\OfficeMultiInformation.cs" />
-    <Compile Include="Contents\Hospital\OPD.Single\OfficeSingleContentVM.cs" />
-    <Compile Include="Contents\Hospital\OPD.Single\OfficeSingleInformation.cs" />
-    <Compile Include="Contents\Hospital\OPD.Single\SinglePatientViewModel.cs" />
+    <Compile Include="Contents\Hospital\OPD.Multi\MultiRoomInformation.cs" />
+    <Compile Include="Contents\Hospital\OPD.Multi\Common\MultiRoomPatientVM.cs" />
+    <Compile Include="Contents\Hospital\OPD.Multi\Common\MultiRoomVM.cs" />
+    <Compile Include="Contents\Hospital\OPD.Multi\MultiRoomContentVM.cs" />
+    <Compile Include="Contents\Hospital\OPD.Single\Common\SingleRoomInformation.cs" />
+    <Compile Include="Contents\Hospital\OPD.Single\SingleRoomContentVM.cs" />
+    <Compile Include="Contents\Hospital\OPD.Single\Common\SingleRoomPatientVM.cs" />
+    <Compile Include="Contents\Hospital\OPD.Single\Common\SingleRoomVM.cs" />
+    <Compile Include="Contents\Hospital\Operation\OperationContentVM.cs" />
+    <Compile Include="Contents\Hospital\Operation\OperationConverter.cs" />
+    <Compile Include="Contents\Hospital\Operation\OperationInformation.cs" />
     <Compile Include="Contents\IContentViewModel.cs" />
     <Compile Include="Window\ContentWindow\ContentWindow.xaml.cs">
       <DependentUpon>ContentWindow.xaml</DependentUpon>
@@ -132,17 +136,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Contents\Hospital\OPD.Single\ExamSingleContent.Style.xaml">
+    <Page Include="Contents\Hospital\OPD.Multi\Common\MultiRoomVM.Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contents\Hospital\OPD.Multi\MultiRoomContent.Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contents\Hospital\OPD.Single\SingleRoomContent.Style.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Contents\Hospital\OPD.Single\OfficeMultiContent.Style.xaml">
+    <Page Include="Contents\Hospital\OPD.Single\Common\SingleRoomPatient.Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contents\Hospital\Operation\OperationContent.Style.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Contents\Hospital\OPD.Single\OfficeSingleContent.Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Resources\Mokdong\MokdongDynamicResource.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Seoul\SeoulDynamicResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Window.Color.xaml">
       <Generator>MSBuild:Compile</Generator>

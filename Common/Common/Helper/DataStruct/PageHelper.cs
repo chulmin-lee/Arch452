@@ -6,6 +6,17 @@ namespace Common
   public static class PageHelper
   {
     /// <summary>
+    /// 페이지를 꽉채우는 최대 아이템 갯수
+    /// </summary>
+    /// <param name="total_item">전체 아이템 갯수</param>
+    /// <param name="page_item_count">페이지 당 아이템 갯수</param>
+    /// <returns></returns>
+    public static int CalcMaxItemCount(this int total_item, int page_item_count)
+    {
+      return CalcPageCount(total_item, page_item_count) * page_item_count;
+    }
+    public static int CalcMaxItemCount<T>(this List<T> items, int page_item_count) => CalcPageCount(items.Count(), page_item_count);
+    /// <summary>
     /// 최대 페이지 수 계산
     /// </summary>
     /// <param name="total_item">전체 아이템 갯수</param>

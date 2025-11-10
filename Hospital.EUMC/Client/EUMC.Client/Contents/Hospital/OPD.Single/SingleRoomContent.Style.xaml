@@ -8,7 +8,7 @@
     <ResourceDictionary Source="/Contents/Hospital/OPD.Single/Common/SingleRoomPatient.Style.xaml" />
   </ResourceDictionary.MergedDictionaries>
 
-  <DataTemplate DataType="{x:Type local:OfficeSingleContentVM}">
+  <DataTemplate DataType="{x:Type local:SingleRoomContentVM}">
     <Grid DataContext="{Binding ITEM}">
       <Grid.RowDefinitions>
         <!-- 0.의사 정보 영역  -->

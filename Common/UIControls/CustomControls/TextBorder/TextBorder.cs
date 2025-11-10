@@ -28,7 +28,6 @@ namespace UIControls
     {
       //LOG.dc("constructor");
       TextDecorations = new TextDecorationCollection();
-
       //this.Initialized += (s, e) => { LOG.w("Initialized"); };
       //this.Loaded += (s, e) => { LOG.w("Loaded"); };
       //this.Unloaded += (s, e) => { LOG.w("Unloaded"); };
@@ -422,6 +421,7 @@ namespace UIControls
         formattedText.TextAlignment = TextAlignment;
         formattedText.Trimming = TextTrimming;
 
+        formattedText.SetForegroundBrush(Foreground);
         formattedText.SetFontSize(FontSize);
         formattedText.SetFontStyle(FontStyle);
         formattedText.SetFontWeight(FontWeight);
